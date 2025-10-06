@@ -6,31 +6,55 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <aside class="navbar" id="navbar">
-        <h2>Portfolio</h2>
+        <div class="navbar-header">
+            <h2>Portfolio</h2>
+        </div>
         <nav>
-            <a href="./index.html">Accueil</a>
-            <a href="./pages/ab_me.html">About Me</a>
-            <a href="./pages/projects.html">My Projects</a>
+            <a href="#acceuil">Accueil</a>
+            <a href="#about">About Me</a>
+            <a href="#projects">My Projects</a>
         </nav>
     </aside>
 
-    <!-- Bouton toggle -->
-    <button class="toggle-btn" id="toggle-btn">☰</button>
+<!-- Toggle button OUTSIDE sidebar -->
+<button class="toggle-btn" id="toggle-btn">☰</button>
 
+    <!-- Main Content -->
     <main class="content">
-        <!-- Section Accueil avec vidéo -->
-        <section id="acceuil" class="hero">
-            <video autoplay muted loop playsinline class="background-video">
-                <source src="./Assets/background.mp4" type="video/mp4">
-                Ton navigateur ne supporte pas la vidéo en arrière-plan.
-            </video>
-            <div class="hero-overlay">
-                <h1>Bienvenue sur mon Portfolio</h1>
-            </div>
-        </section>
+    <section id="acceuil" class="hero">
+        <video autoplay muted loop playsinline class="background-video">
+        <source src="./Assets/background.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas la vidéo en arrière-plan.
+        </video>
+        <div class="hero-overlay">
+        <h1>Bienvenue sur mon Portfolio</h1>
+        </div>
+    </section>
+
+    <!-- About Me (wraps both passions) -->
+    <section id="about" class="section-container big-section">
+        <div class="row">
+            <img src="./Assets/code.jpg" alt="Code">
+            <p>Ma première passion, le code.</p>
+        </div>
+        <div class="row reverse">
+            <img src="./Assets/pole.jpg" alt="Saut à la perche">
+            <p>Ainsi que la deuxième, le saut à la perche.</p>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section-container big-section">
+        <h1>Projects</h1>
+        <p>BlaBlaBla — mes projets à découvrir ici !</p>
+    </section>
+
+
     </main>
 
+    <!-- JavaScript at END of body -->
     <script src="script.js"></script>
 </body>
 </html>
