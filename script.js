@@ -20,35 +20,32 @@ document.addEventListener("DOMContentLoaded", () => {
             navbar.classList.remove("nav-open");
         }
     });
+
+    // --- ScrollSpy system ---
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar nav a");
+
+    function onScroll() {
+        let current = "";
+
+        // Find which section is currently visible
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 150;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        // Highlight the active link
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", onScroll);
+    onScroll(); // run once at load
 });
-
-// --- About Me Carousel ---
-const slides = document.querySelectorAll("#about-carousel .carousel-slide");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-let currentSlide = 0;
-
-function updateCarousel() {
-    slides.forEach((slide, index) => {
-        slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
-    });
-}
-
-// Initial setup
-updateCarousel();
-
-// Buttons
-prevBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateCarousel();
-});
-nextBtn.addEventListener("click", () => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateCarousel();
-});
-
-// Auto slide
-setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateCarousel();
-}, 5000);
