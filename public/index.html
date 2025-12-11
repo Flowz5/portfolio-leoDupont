@@ -2,54 +2,132 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Léo Dupont</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     
-    <!-- Sidebar -->
     <aside class="navbar" id="navbar">
         <div class="navbar-header">
-            <h2>Portfolio</h2>
-        </div>
+            <h2>Léo.D</h2> </div>
         <nav>
-            <a href="#acceuil">Accueil</a>
-            <a href="#about">About Me</a>
-            <a href="#projects">My Projects</a>
+            <a href="#acceuil" class="active"><i class="fas fa-home"></i> Accueil</a>
+            <a href="#about"><i class="fas fa-user"></i> À Propos</a>
+            <a href="#skills"><i class="fas fa-laptop-code"></i> Compétences</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i> Projets</a>
+            <a href="./CV/index.html" target="_blank"><i class="fas fa-file-alt"></i> Mon CV</a>
         </nav>
     </aside>
 
-    <!-- Toggle button -->
-    <button class="toggle-btn" id="toggle-btn">☰</button>
+    <button class="toggle-btn" id="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <!-- Main Content -->
     <main class="content">
 
-        <!-- HERO (image static background) -->
         <section id="acceuil" class="hero">
             <div class="background-image"></div>
             <div class="hero-overlay">
-                <h1>Bienvenue sur mon Portfolio</h1>
+                <h1>Léo Dupont</h1>
+                <p style="font-size: 1.5rem; margin-bottom: 2rem; color: #cbd5e1;">Développeur Web & Passionné de Code</p>
+                
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="./CV/index.html" target="_blank" class="btn-primary" 
+                        style="background: #5a56d8; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s;">
+                        <i class="fas fa-eye"></i> Voir mon CV
+                    </a>
+                    <a href="./CV/CV Dupont Léo.pdf" download="CV Dupont Léo.pdf" class="btn-secondary" 
+                        style="border: 2px solid #5a56d8; color: white; padding: 10px 23px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s;">
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
             </div>
         </section>
 
-        <!-- About Me -->
-        <section id="about" class="section-container big-section">
+        <section id="about" class="big-section">
+            <h1>À Propos de Moi</h1>
+            
             <div class="row">
-                <img src="./Assets/code.jpg" alt="Code">
-                <p>Ma première passion, le code.</p>
+                <img src="./Assets/code.jpg" alt="Coding setup" style="max-width: 300px; border-radius: 10px;">
+                <div style="text-align: left; max-width: 500px;">
+                    <h3>💻 Ma passion pour le code</h3>
+                    <p>
+                        Depuis que j'ai écrit ma première ligne de code, je n'ai jamais arrêté. 
+                        J'aime construire des applications web interactives et résoudre des problèmes complexes grâce à la logique.
+                    </p>
+                </div>
             </div>
 
             <div class="row reverse">
-                <img src="./Assets/pole.jpg" alt="Saut à la perche">
-                <p>Ainsi que la deuxième, le saut à la perche.</p>
+                <img src="./Assets/pole.jpg" alt="Saut à la perche" style="max-width: 300px; border-radius: 10px;">
+                <div style="text-align: left; max-width: 500px;">
+                    <h3>🚀 Le saut à la perche</h3>
+                    <p>
+                        Quand je ne suis pas devant un écran, je suis sur la piste. 
+                        Ce sport m'a appris la persévérance, la précision et l'importance de toujours viser plus haut.
+                    </p>
+                </div>
             </div>
         </section>
 
-        <!-- Projects -->
-        <section id="projects" class="section-container big-section">
-            <h1>Projects</h1>
-            <p>BlaBlaBla — mes projets à découvrir ici !</p>
+        <section id="skills" class="big-section">
+            <h1>Mes Compétences</h1>
+            <p>Les technologies que j'utilise au quotidien.</p>
+
+            <div class="row" style="justify-content: center; gap: 40px; margin-top: 20px;">
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center; width: 250px;">
+                    <i class="fas fa-code" style="font-size: 3rem; color: #5a56d8; margin-bottom: 10px;"></i>
+                    <h3>Front-End</h3>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center; width: 250px;">
+                    <i class="fas fa-server" style="font-size: 3rem; color: #5a56d8; margin-bottom: 10px;"></i>
+                    <h3>Back-End</h3>
+                    <p>PHP, SQL, Python</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center; width: 250px;">
+                    <i class="fas fa-tools" style="font-size: 3rem; color: #5a56d8; margin-bottom: 10px;"></i>
+                    <h3>Outils</h3>
+                    <p>Git, GitHub, VS Code</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="big-section">
+            <h1>Mes Projets</h1>
+            <p>Voici quelques-unes de mes réalisations récentes.</p>
+
+            <div class="row" style="gap: 30px; justify-content: center;">
+                
+                <div style="background: white; color: #333; padding: 20px; border-radius: 10px; width: 300px; text-align: left;">
+                    <div style="height: 150px; background-color: #ddd; border-radius: 5px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-laptop" style="font-size: 3rem; color: #888;"></i>
+                    </div>
+                    <h3 style="color: #030056;">Mon Portfolio</h3>
+                    <p style="font-size: 0.9rem;">
+                        La création de ce site vitrine pour présenter mon profil et mes compétences.
+                    </p>
+                    <p style="font-size: 0.8rem; font-weight: bold; color: #5a56d8;">Stack : HTML, CSS, JS</p>
+                    <a href="#" style="text-decoration: none; color: #030056; font-weight: bold; margin-top: 10px; display: inline-block;">Voir le projet &rarr;</a>
+                </div>
+
+                <div style="background: white; color: #333; padding: 20px; border-radius: 10px; width: 300px; text-align: left;">
+                    <div style="height: 150px; background-color: #ddd; border-radius: 5px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-database" style="font-size: 3rem; color: #888;"></i>
+                    </div>
+                    <h3 style="color: #030056;">Gestion de Base de Données</h3>
+                    <p style="font-size: 0.9rem;">
+                        Une application web pour gérer des utilisateurs et des stocks en temps réel.
+                    </p>
+                    <p style="font-size: 0.8rem; font-weight: bold; color: #5a56d8;">Stack : PHP, MySQL</p>
+                    <a href="#" style="text-decoration: none; color: #030056; font-weight: bold; margin-top: 10px; display: inline-block;">Voir le projet &rarr;</a>
+                </div>
+
+            </div>
         </section>
 
     </main>
