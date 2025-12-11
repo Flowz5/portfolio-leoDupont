@@ -4,10 +4,10 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Sert tous les fichiers du dossier "public"
+// Sert tous les fichiers statiques depuis le dossier public
 app.use(express.static(path.join(__dirname, "public")));
 
-// Route principale vers index.html
+// Redirige la route racine vers index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
