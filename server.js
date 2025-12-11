@@ -1,11 +1,11 @@
-const http = require("http");
+const express = require("express");
+const app = express();
+
 const PORT = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, {"Content-Type": "text/plain"});
-  res.end("Website online!");
-});
+// Sert tous les fichiers à la racine ou dans un dossier public
+app.use(express.static(__dirname));
 
-server.listen(PORT, () => {
-  console.log("Server listening on port " + PORT);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
