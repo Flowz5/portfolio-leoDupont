@@ -1,0 +1,255 @@
+/* =========================================================
+   GLOBAL SETTINGS
+========================================================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #1e293b;
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 220px;
+    background: #030056;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 999;
+}
+
+.navbar-header h2 {
+    margin: 0;
+    margin-left: 5rem;
+    font-size: 1.5rem;
+}
+
+.navbar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.navbar a {
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.navbar a.active,
+.navbar a:hover {
+    background: #3c3998;
+    color: #fff;
+}
+
+/* Sidebar sliding */
+.navbar.nav-open {
+    transform: translateX(0);
+}
+
+.navbar.nav-closed {
+    transform: translateX(-100%);
+}
+
+/* =========================================================
+   TOGGLE BUTTON
+========================================================= */
+.toggle-btn {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: #5a56d8;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1001;
+    transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background: #7773ff;
+}
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+.content {
+    flex: 1;
+    margin-left: 220px;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.navbar.nav-closed ~ .content {
+    margin-left: 0;
+}
+
+/* =========================================================
+   HERO SECTION (Accueil)
+========================================================= */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Background image replacing video */
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url("./Assets/background_static");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-overlay h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 5rem;
+}
+
+/* =========================================================
+   BIG SECTION CONTAINERS
+========================================================= */
+.big-section {
+    background: rgba(3, 0, 86, 0.85);
+    color: #cbd5e1;
+    padding: 3.5rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 99%;
+    min-height: 85vh;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.big-section + .big-section {
+    margin-top: 0.8rem;
+}
+
+.big-section h1 {
+    font-size: 2.6rem;
+}
+
+.big-section p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   ROWS
+========================================================= */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.row.reverse {
+    flex-direction: row-reverse;
+}
+
+.row img {
+    width: 230px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+@media (max-width: 1024px) {
+    .navbar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 180px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        width: 80%;
+        max-width: 260px;
+        transform: translateX(-100%);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+
+    .row,
+    .row.reverse {
+        flex-direction: column;
+    }
+
+    .row img {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .hero-overlay h1 {
+        font-size: 2rem;
+    }
+
+    .big-section {
+        width: 96%;
+        padding: 2.5rem 1.5rem;
+        min-height: 75vh;
+    }
+}
