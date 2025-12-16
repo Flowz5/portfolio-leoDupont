@@ -365,15 +365,18 @@ body {
     background: rgba(255,255,255,0.05);
     padding: 2.5rem;
     border-radius: 12px;
-    /* CORRECTION : On anime 'background-color' et pas 'background' */
-    transition: transform 0.3s, background-color 0.3s;
     text-align: left;
     border: 1px solid rgba(255,255,255,0.05);
+    
+    /* Animation fluide sur tout (position, couleur, ombre, bordure) */
+    transition: all 0.3s ease;
 }
 
 .service-card:hover {
     background-color: rgba(255,255,255,0.1);
-    transform: translateY(-5px);
+    transform: translateY(-10px); /* Monte plus haut */
+    border-color: #5a56d8; /* Bordure violette */
+    box-shadow: 0 10px 30px rgba(90, 86, 216, 0.2); /* Lueur violette derrière */
 }
 
 .icon-box {
@@ -499,12 +502,16 @@ body {
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s;
+    
+    /* Animation fluide */
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    background: rgba(0, 0, 0, 0.6);
+    transform: translateY(-10px); /* Monte plus haut */
+    background-color: rgba(0, 0, 0, 0.6);
+    border-color: #5a56d8; /* Bordure violette */
+    box-shadow: 0 10px 30px rgba(90, 86, 216, 0.2); /* Lueur violette */
 }
 
 .project-img {
@@ -751,4 +758,13 @@ body {
     .image-block img { width: 100%; height: auto; }
     .hero-overlay h1 { font-size: 2.8rem; }
     .hero-overlay { padding: 2rem 1rem; }
+}
+
+/* Effet survol uniquement sur PC pour les compétences */
+@media (min-width: 769px) {
+    .skill-category:hover {
+        transform: translateY(-5px);
+        border-color: #5a56d8;
+        box-shadow: 0 5px 15px rgba(90, 86, 216, 0.15);
+    }
 }
