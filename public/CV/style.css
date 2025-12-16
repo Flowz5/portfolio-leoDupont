@@ -13,6 +13,7 @@ body {
     color: #cbd5e1; /* Texte gris clair */
 }
 
+/* === MODIFICATION PRINCIPALE ICI === */
 /* Override des cartes blanches W3.CSS */
 .w3-white, .w3-card, .w3-card-4 {
     background-color: rgba(3, 0, 86, 0.6) !important; /* Fond semi-transparent */
@@ -20,6 +21,11 @@ body {
     backdrop-filter: blur(10px); /* Effet flou moderne */
     border: 1px solid rgba(255,255,255,0.05); /* Bordure subtile */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    
+    /* AJOUT DES COINS ARRONDIS */
+    border-radius: 16px !important; 
+    /* Important : empêche l'image de dépasser des coins arrondis */
+    overflow: hidden; 
 }
 
 /* Titres et textes */
@@ -45,6 +51,11 @@ h2, h5 {
     background-color: rgba(255,255,255,0.1) !important; 
 }
 
+/* AJOUT : Arrondir aussi les bouts des barres de progression */
+.w3-round-xlarge {
+    border-radius: 16px !important;
+}
+
 /* Séparateurs */
 hr { 
     border-top: 1px solid rgba(255,255,255,0.1); 
@@ -55,4 +66,9 @@ hr {
     margin-bottom: 2px; 
     display: block; 
     font-weight: 500; 
+}
+
+/* AJOUT : Arrondir le footer */
+footer.w3-teal {
+    border-radius: 16px !important;
 }
