@@ -1,18 +1,25 @@
 /* =========================================================
    GLOBAL SETTINGS
 ========================================================= */
+* {
+    box-sizing: border-box; /* INDISPENSABLE : Empêche les débordements */
+}
+
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     margin: 0;
+    padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     min-height: 100vh;
     background: #020024; /* Fond bleu très sombre */
     color: #cbd5e1; /* Texte gris clair lisible sur fond sombre */
     overflow-x: hidden;
+    width: 100%;
 }
 
 /* =========================================================
@@ -37,11 +44,12 @@ body {
 .navbar-header h2 {
     margin: 0;
     margin-bottom: 2rem;
+    margin-left: 3rem;
     font-size: 2rem;
     text-align: center;
     letter-spacing: 2px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 1rem;
+    padding-bottom: 1.5rem;
 }
 
 .navbar nav {
@@ -119,7 +127,8 @@ body {
     flex-direction: column;
     overflow-y: auto;
     transition: margin-left 0.3s ease;
-    background: transparent; /* CORRECTION ICI : Fond transparent pour voir le body */
+    background: transparent;
+    width: 100%;
 }
 
 .navbar.nav-closed ~ .content { margin-left: 0; }
@@ -147,7 +156,7 @@ body {
 }
 
 .hero-overlay {
-    background: rgba(3, 0, 86, 0.6); /* Transparence augmentée */
+    background: rgba(3, 0, 86, 0.6);
     padding: 3rem;
     border-radius: 16px;
     backdrop-filter: blur(5px);
@@ -155,6 +164,7 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
     max-width: 800px;
     margin: 0 1rem;
+    width: 100%;
 }
 
 .hero-overlay h1 {
@@ -200,7 +210,7 @@ body {
    SECTIONS GÉNÉRALES
 ========================================================= */
 .big-section {
-    background: rgba(3, 0, 86, 0.8); /* Fond bleu transparent sombre */
+    background: rgba(3, 0, 86, 0.8);
     color: #e2e8f0;
     padding: 4rem 5%;
     margin: 2rem 2rem;
@@ -208,7 +218,7 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
     min-height: auto;
-    border: 1px solid rgba(255,255,255,0.05); /* Bordure subtile */
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .section-title {
@@ -233,7 +243,6 @@ body {
    LAYOUT : FULL WIDTH & GRID
 ========================================================= */
 
-/* Pour la section À Propos */
 .full-width-container {
     display: flex;
     align-items: center;
@@ -330,7 +339,8 @@ body {
 ========================================================= */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Ajusté à 260px pour éviter les débordements */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     width: 100%;
 }
@@ -356,31 +366,58 @@ body {
 }
 
 /* =========================================================
-   SKILLS & PROJECTS GRID
+   SKILLS GRID & ACCORDION (NOUVEAU)
 ========================================================= */
 .skills-wrapper {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
     width: 100%;
 }
 
+/* Style de base de la carte compétence */
 .skill-category {
     background: rgba(0,0,0,0.3);
-    padding: 2rem;
     border-radius: 12px;
-    flex: 1;
-    min-width: 250px;
     border: 1px solid rgba(255,255,255,0.05);
+    overflow: hidden; /* Nécessaire pour l'animation */
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* L'en-tête (Titre + Flèche) */
+.skill-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.skill-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    color: #5a56d8;
+}
+
+/* Le contenu masquable */
+.skill-content {
+    transition: max-height 0.4s ease-out;
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .skill-list {
+    padding: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    margin-top: 1rem;
 }
 
 .skill-list span {
@@ -392,22 +429,60 @@ body {
     color: white;
 }
 
+/* =========================================================
+   COMPORTEMENT ACCORDÉON (MOBILE) VS GRID (DESKTOP)
+========================================================= */
+
+/* Par défaut (Mobile) : C'est un accordéon fermé */
+.skill-header { cursor: pointer; }
+.skill-content { max-height: 0; overflow: hidden; }
+
+/* Quand ouvert (via JS) */
+.skill-category.open .skill-content { max-height: 500px; } /* Hauteur arbitraire suffisante */
+.skill-category.open .arrow-icon { transform: rotate(180deg); }
+.skill-category.open { border-color: #5a56d8; }
+
+/* SUR GRANDS ÉCRANS (DESKTOP) : On annule l'accordéon pour remettre la grille */
+@media (min-width: 769px) {
+    .skills-wrapper {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .skill-category {
+        flex: 1;
+        min-width: 250px;
+        margin-bottom: 0;
+    }
+
+    /* On désactive le clic et on montre tout */
+    .skill-header { cursor: default; }
+    .arrow-icon { display: none; }
+    .skill-content { max-height: none; overflow: visible; opacity: 1; }
+}
+
+/* =========================================================
+   PROJECTS GRID
+========================================================= */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Ajusté à 260px */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 2rem;
     width: 100%;
 }
 
 .project-card {
-    background: rgba(0, 0, 0, 0.4); /* CORRECTION : Fond sombre transparent */
-    color: #cbd5e1; /* Texte clair */
+    background: rgba(0, 0, 0, 0.4);
+    color: #cbd5e1;
     border-radius: 12px;
     overflow: hidden;
     text-align: left;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255,255,255,0.1); /* Bordure subtile */
+    border: 1px solid rgba(255,255,255,0.1);
     transition: transform 0.3s;
 }
 
@@ -419,7 +494,7 @@ body {
 .project-img {
     height: 180px;
     width: 100%;
-    background: #1e1b4b !important; /* Fond bleu nuit pour l'image placeholder */
+    background: #1e1b4b !important;
 }
 
 .project-info {
@@ -429,7 +504,7 @@ body {
     flex-direction: column;
 }
 
-.project-info h3 { margin-top: 0; color: #fff; } /* Titre projet en blanc */
+.project-info h3 { margin-top: 0; color: #fff; }
 
 .project-desc {
     font-size: 0.95rem;
@@ -450,7 +525,7 @@ body {
 
 .btn-link {
     text-decoration: none;
-    color: #7773ff; /* Violet clair pour le lien */
+    color: #7773ff;
     font-weight: bold;
     align-self: flex-start;
 }
@@ -466,11 +541,12 @@ body {
     gap: 3rem;
     justify-content: center;
     text-align: left;
+    width: 100%;
 }
 
 .contact-info {
     flex: 1;
-    min-width: 300px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -487,7 +563,7 @@ body {
 
 .contact-form {
     flex: 1;
-    min-width: 300px;
+    min-width: 260px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -501,6 +577,7 @@ body {
     background: rgba(0,0,0,0.3);
     color: white;
     font-family: inherit;
+    width: 100%;
 }
 
 .contact-form input:focus,
@@ -510,7 +587,7 @@ body {
 }
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE (MOBILE)
 ========================================================= */
 @media (max-width: 1024px) {
     .navbar { width: 80px; padding: 1rem 0.5rem; }
@@ -521,24 +598,37 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Navbar Mobile Standard */
     .navbar { width: 240px; transform: translateX(-100%); }
     .navbar.nav-open { transform: translateX(0); }
     .navbar-header h2 { display: block; }
     .navbar a { justify-content: flex-start; }
+    .navbar a span { display: inline; }
     
-    .content { margin-left: 0; }
+    .content { margin-left: 0; width: 100%; }
     
+    /* Layout général mobile : Marges et padding réduits */
     .big-section {
-        margin: 1rem;
-        padding: 2rem 1.5rem;
+        margin: 2rem 1rem; /* 1rem sur les côtés suffit */
+        padding: 2.5rem 1.5rem; 
+        width: auto;
     }
 
+    /* Titres qui ne cassent pas la page */
+    .section-title {
+        margin-top: 1rem; 
+        font-size: 2rem;
+        word-break: break-word;
+    }
+    
+    /* Empilement des colonnes */
     .full-width-container, 
     .full-width-container.reverse {
         flex-direction: column;
         gap: 2rem;
     }
 
-    .image-block img { width: 100%; }
-    .hero-overlay h1 { font-size: 3rem; }
+    .image-block img { width: 100%; height: auto; }
+    .hero-overlay h1 { font-size: 2.8rem; }
+    .hero-overlay { padding: 2rem 1rem; }
 }

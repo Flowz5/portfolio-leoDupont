@@ -48,4 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", onScroll);
     onScroll(); // run once at load
+
+
+    // --- ACCORDÉON COMPÉTENCES (MOBILE) ---
+    // Ce code gère l'ouverture/fermeture des cartes sur mobile
+    const skillHeaders = document.querySelectorAll('.skill-header');
+
+    skillHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            // Si on est sur un grand écran (>768px), le clic est désactivé
+            if (window.innerWidth > 768) return;
+
+            const parent = header.parentElement;
+            
+            // On bascule la classe 'open' qui déclenche le CSS
+            parent.classList.toggle('open');
+        });
+    });
 });
