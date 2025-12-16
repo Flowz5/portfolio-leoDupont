@@ -1,5 +1,5 @@
 /* =========================================================
-   GLOBAL SETTINGS
+    GLOBAL SETTINGS
 ========================================================= */
 * {
     box-sizing: border-box; /* INDISPENSABLE : Empêche les débordements */
@@ -23,7 +23,7 @@ body {
 }
 
 /* =========================================================
-   NAVBAR
+    NAVBAR
 ========================================================= */
 .navbar {
     position: fixed;
@@ -117,7 +117,7 @@ body {
 .toggle-btn:hover { background: #7773ff; }
 
 /* =========================================================
-   MAIN CONTENT & HERO
+    MAIN CONTENT & HERO
 ========================================================= */
 .content {
     flex: 1;
@@ -223,7 +223,7 @@ body {
 .btn-secondary:hover { background: rgba(90, 86, 216, 0.2); transform: translateY(-2px); }
 
 /* =========================================================
-   SECTIONS GÉNÉRALES
+    SECTIONS GÉNÉRALES
 ========================================================= */
 .big-section {
     background: rgba(3, 0, 86, 0.8);
@@ -256,7 +256,7 @@ body {
 }
 
 /* =========================================================
-   LAYOUT : FULL WIDTH & GRID
+    LAYOUT : FULL WIDTH & GRID
 ========================================================= */
 
 .full-width-container {
@@ -304,7 +304,7 @@ body {
 .image-block img:hover { transform: scale(1.02); }
 
 /* =========================================================
-   TIMELINE (Parcours)
+    TIMELINE (Parcours)
 ========================================================= */
 .timeline {
     position: relative;
@@ -351,7 +351,7 @@ body {
 .timeline-content h4 { margin: 5px 0 10px 0; font-weight: normal; color: #a0aec0; font-style: italic; }
 
 /* =========================================================
-   SERVICES GRID
+    SERVICES GRID
 ========================================================= */
 .services-grid {
     display: grid;
@@ -382,7 +382,7 @@ body {
 }
 
 /* =========================================================
-   SKILLS GRID & ACCORDION (NOUVEAU)
+    SKILLS GRID & ACCORDION (NOUVEAU)
 ========================================================= */
 .skills-wrapper {
     width: 100%;
@@ -446,7 +446,7 @@ body {
 }
 
 /* =========================================================
-   COMPORTEMENT ACCORDÉON (MOBILE) VS GRID (DESKTOP)
+    COMPORTEMENT ACCORDÉON (MOBILE) VS GRID (DESKTOP)
 ========================================================= */
 
 /* Par défaut (Mobile) : C'est un accordéon fermé */
@@ -480,7 +480,7 @@ body {
 }
 
 /* =========================================================
-   PROJECTS GRID
+    PROJECTS GRID
 ========================================================= */
 .projects-grid {
     display: grid;
@@ -549,7 +549,7 @@ body {
 .btn-link:hover { color: #fff; }
 
 /* =========================================================
-   CONTACT
+    CONTACT
 ========================================================= */
 .contact-container {
     display: flex;
@@ -603,7 +603,7 @@ body {
 }
 
 /* =========================================================
-   RESPONSIVE (MOBILE)
+    RESPONSIVE (MOBILE)
 ========================================================= */
 @media (max-width: 1024px) {
     .navbar { width: 80px; padding: 1rem 0.5rem; }
