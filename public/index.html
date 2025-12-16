@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Portfolio - Léo Dupont | Développeur BTS SIO</title>
+    <meta name="description" content="Portfolio de Léo Dupont, étudiant en BTS SIO SLAM. Découvrez mes projets Web & Application.">
+    
+    <meta property="og:title" content="Portfolio de Léo Dupont - Développeur Web & App">
+    <meta property="og:description" content="Étudiant en BTS SIO SLAM. Découvrez mes projets en HTML, CSS, JS, PHP et Python.">
+    <meta property="og:image" content="https://portfolio-leodupont.onrender.com/Assets/apercu-portfolio.jpg">
+    <meta property="og:url" content="https://portfolio-leodupont.onrender.com/">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="./Assets/favicon.png">
+
     <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -31,20 +43,20 @@
 
     <main class="content">
 
-        <section id="acceuil" class="hero">
+        <section id="acceuil" class="hero" data-aos="fade-in" data-aos-duration="1500">
             <div class="background-image"></div>
             <div class="hero-overlay">
-                <h1>Léo Dupont</h1>
-                <h2 style="font-size: 1.8rem; font-weight: 300; margin-bottom: 2rem; color: #cbd5e1;">
+                <h1 data-aos="zoom-in" data-aos-delay="200">Léo Dupont</h1>
+                <h2 style="font-size: 1.8rem; font-weight: 300; margin-bottom: 2rem; color: #cbd5e1;" data-aos="fade-up" data-aos-delay="400">
                     Développeur Application & Web <br>
                     <span style="font-size: 1.2rem; color: #7773ff;">Étudiant BTS SIO spécialité SLAM</span>
                 </h2>
                 
-                <p style="max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;">
+                <p style="max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;" data-aos="fade-up" data-aos-delay="600">
                     Passionné par le code, curieux et acharné, je transforme des problèmes complexes en solutions logiques et fonctionnelles.
                 </p>
 
-                <div class="btn-group">
+                <div class="btn-group" data-aos="fade-up" data-aos-delay="800">
                     <a href="./CV/index.html" target="_blank" class="btn-primary">
                         <i class="fas fa-eye"></i> Voir mon CV
                     </a>
@@ -56,10 +68,10 @@
         </section>
 
         <section id="about" class="big-section">
-            <h1 class="section-title">Qui suis-je ?</h1>
+            <h1 class="section-title" data-aos="fade-up">Qui suis-je ?</h1>
             
             <div class="full-width-container">
-                <div class="text-block">
+                <div class="text-block" data-aos="fade-right">
                     <h3><i class="fas fa-terminal"></i> Un codeur acharné</h3>
                     <p>
                         Mon aventure a commencé par simple curiosité, mais c'est rapidement devenu une vocation. 
@@ -70,13 +82,13 @@
                         Aujourd'hui, je développe des sites et des petits jeux pour monter en compétence, avec l'objectif de devenir un expert en développement applicatif.
                     </p>
                 </div>
-                <div class="image-block">
+                <div class="image-block" data-aos="fade-left">
                     <img src="./Assets/code.jpg" alt="Setup de code">
                 </div>
             </div>
 
             <div class="full-width-container reverse">
-                <div class="text-block">
+                <div class="text-block" data-aos="fade-left">
                     <h3><i class="fas fa-running"></i> La mentalité sportive</h3>
                     <p>
                         Pratiquant le <strong>saut à la perche</strong>, j'applique la même rigueur sur la piste que devant mon IDE.
@@ -84,17 +96,17 @@
                         C'est cette résilience que j'apporte dans mes projets informatiques.
                     </p>
                 </div>
-                <div class="image-block">
+                <div class="image-block" data-aos="fade-right">
                     <img src="./Assets/pole.jpg" alt="Saut à la perche">
                 </div>
             </div>
         </section>
 
         <section id="parcours" class="big-section">
-            <h1 class="section-title">Mon Parcours</h1>
+            <h1 class="section-title" data-aos="fade-up">Mon Parcours</h1>
             <div class="timeline">
                 
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="timeline-date">Depuis 2024</div>
                     <div class="timeline-content">
                         <h3>BTS SIO - Option SLAM</h3>
@@ -106,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="timeline-date">2024</div>
                     <div class="timeline-content">
                         <h3>Baccalauréat Général</h3>
@@ -118,7 +130,7 @@
                     </div>
                 </div>
 
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="timeline-date">Avant 2023</div>
                     <div class="timeline-content">
                         <h3>Découverte & Stages</h3>
@@ -132,22 +144,22 @@
         </section>
 
         <section id="services" class="big-section">
-            <h1 class="section-title">Ce que je peux vous apporter</h1>
+            <h1 class="section-title" data-aos="fade-up">Ce que je peux vous apporter</h1>
             <div class="services-grid">
                 
-                <div class="service-card">
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="icon-box"><i class="fas fa-globe"></i></div>
                     <h3>Développement Web</h3>
                     <p>Création de sites vitrines modernes et responsives. Intégration de maquettes et respect des standards du web (HTML5, CSS3).</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="icon-box"><i class="fas fa-cogs"></i></div>
                     <h3>Applications Métier</h3>
                     <p>Développement de fonctionnalités logiques pour gérer vos données (Gestion de stock, utilisateurs, calculs automatisés) via Python ou PHP.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="icon-box"><i class="fas fa-palette"></i></div>
                     <h3>Design & Retouche</h3>
                     <p>Grâce à ma maîtrise de la suite Adobe, je peux créer des visuels, retoucher des assets graphiques et soigner l'UI de vos projets.</p>
@@ -157,10 +169,10 @@
         </section>
 
         <section id="skills" class="big-section">
-            <h1 class="section-title">Stack Technique</h1>
+            <h1 class="section-title" data-aos="fade-up">Stack Technique</h1>
             <div class="skills-wrapper">
                 
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <div class="skill-header">
                         <h3><i class="fas fa-code"></i> Front-End</h3>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -175,7 +187,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <div class="skill-header">
                         <h3><i class="fas fa-database"></i> Back-End</h3>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -190,7 +202,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
                     <div class="skill-header">
                         <h3><i class="fas fa-tools"></i> Outils</h3>
                         <i class="fas fa-chevron-down arrow-icon"></i>
@@ -209,12 +221,12 @@
         </section>
 
         <section id="projects" class="big-section">
-            <h1 class="section-title">Réalisations</h1>
-            <p style="margin-bottom: 2rem;">Des projets personnels et académiques pour repousser mes limites.</p>
+            <h1 class="section-title" data-aos="fade-up">Réalisations</h1>
+            <p style="margin-bottom: 2rem;" data-aos="fade-up">Des projets personnels et académiques pour repousser mes limites.</p>
 
             <div class="projects-grid">
                 
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-img" style="background: #222; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-user-circle" style="font-size: 4rem; color: #5a56d8;"></i>
                     </div>
@@ -232,7 +244,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-img" style="background: #222; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-gamepad" style="font-size: 4rem; color: #5a56d8;"></i>
                     </div>
@@ -249,7 +261,7 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-img" style="background: #222; display: flex; align-items: center; justify-content: center;">
                         <i class="fas fa-database" style="font-size: 4rem; color: #5a56d8;"></i>
                     </div>
@@ -271,11 +283,11 @@
         </section>
 
         <section id="contact" class="big-section">
-            <h1 class="section-title">Me Contacter</h1>
-            <p>Un projet ? Une opportunité d'alternance ? N'hésitez pas !</p>
+            <h1 class="section-title" data-aos="fade-up">Me Contacter</h1>
+            <p data-aos="fade-up">Un projet ? Une opportunité d'alternance ? N'hésitez pas !</p>
             
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-right">
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <span>dupontleo999@gmail.com</span>
@@ -290,7 +302,7 @@
                     </div>
                 </div>
 
-                <form action="https://formsubmit.co/dupontleo999@gmail.com" method="POST" class="contact-form">
+                <form action="https://formsubmit.co/dupontleo999@gmail.com" method="POST" class="contact-form" data-aos="fade-left">
                     
                     <input type="hidden" name="_subject" value="Nouveau contact depuis le Portfolio !">
                     <input type="hidden" name="_captcha" value="false">
@@ -310,5 +322,11 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 100
+        });
+    </script>
 </body>
 </html>
