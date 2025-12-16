@@ -51,18 +51,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // --- ACCORDÉON COMPÉTENCES (MOBILE) ---
-    // Ce code gère l'ouverture/fermeture des cartes sur mobile
     const skillHeaders = document.querySelectorAll('.skill-header');
 
     skillHeaders.forEach(header => {
         header.addEventListener('click', () => {
-            // Si on est sur un grand écran (>768px), le clic est désactivé
             if (window.innerWidth > 768) return;
-
             const parent = header.parentElement;
-            
-            // On bascule la classe 'open' qui déclenche le CSS
             parent.classList.toggle('open');
+        });
+    });
+
+    // --- NOUVEAU : Année dynamique (Footer) ---
+    const yearSpan = document.getElementById('year');
+    if(yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+    // --- NOUVEAU : Bouton Retour en haut (Scroll To Top) ---
+    const scrollTopBtn = document.getElementById('scroll-top');
+
+    window.addEventListener('scroll', () => {
+        // Si on a scrollé de plus de 300px, on affiche le bouton
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('active');
+        } else {
+            scrollTopBtn.classList.remove('active');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
     });
 });
