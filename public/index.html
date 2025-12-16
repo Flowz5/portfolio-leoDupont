@@ -290,10 +290,18 @@
                     </div>
                 </div>
 
-                <form class="contact-form">
-                    <input type="text" placeholder="Votre Nom" required>
-                    <input type="email" placeholder="Votre Email" required>
-                    <textarea placeholder="Votre Message" rows="5" required></textarea>
+                <form action="https://formsubmit.co/dupontleo999@gmail.com" method="POST" class="contact-form">
+                    
+                    <input type="hidden" name="_subject" value="Nouveau contact depuis le Portfolio !">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <input type="hidden" name="_next" value="https://portfolio-leodupont.onrender.com">
+                    
+                    <input type="text" name="nom" placeholder="Votre Nom" required>
+                    <input type="email" name="email" placeholder="Votre Email" required>
+                    <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
+                    
                     <button type="submit" class="btn-primary">Envoyer</button>
                 </form>
             </div>
