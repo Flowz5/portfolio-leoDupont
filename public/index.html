@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Portfolio - Léo Dupont | Développeur BTS SIO</title>
+    <meta name="description" content="Portfolio de Léo Dupont, étudiant en BTS SIO SLAM. Découvrez mes projets en Python, C# et Web.">
+    
+    <meta property="og:title" content="Portfolio de Léo Dupont - Développeur Software & Web">
+    <meta property="og:description" content="Étudiant en BTS SIO SLAM. Passionné par la création de solutions logiques et interactives (Python, C#, Web).">
+    <meta property="og:image" content="./Assets/apercu-portfolio.jpg">
+    <meta property="og:url" content="https://portfolio-leodupont-1jr4.onrender.com/">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/png" href="./Assets/favicon.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    
+    <aside class="navbar" id="navbar">
+        <div class="navbar-header">
+            <h2>Léo.D</h2>
+        </div>
+        <nav>
+            <a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a>
+            <a href="#about"><i class="fas fa-user"></i> À Propos</a>
+            <a href="#parcours"><i class="fas fa-road"></i> Parcours</a>
+            <a href="#services"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="#skills"><i class="fas fa-laptop-code"></i> Compétences</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i> Projets</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="./CV/index.html" target="_blank" class="highlight-link"><i class="fas fa-file-alt"></i> Mon CV</a>
+        </nav>
+    </aside>
+
+    <button class="toggle-btn" id="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <main class="content">
+
+        <section id="accueil" class="hero" data-aos="fade-in" data-aos-duration="1500">
+            <div class="background-image"></div>
+            <div class="hero-overlay">
+                <h1 data-aos="zoom-in" data-aos-delay="200">Léo Dupont</h1>
+                <h2 style="font-size: 1.8rem; font-weight: 300; margin-bottom: 2rem; color: #cbd5e1;" data-aos="fade-up" data-aos-delay="400">
+                    Développeur Application & Web <br>
+                    <span style="font-size: 1.2rem; color: #7773ff;">Étudiant BTS SIO spécialité SLAM</span>
+                </h2>
+                
+                <p style="max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.6;" data-aos="fade-up" data-aos-delay="600">
+                    Passionné par le code et la technologie, je transforme des problèmes complexes en solutions logiques, propres et fonctionnelles.
+                </p>
+
+                <div class="btn-group" data-aos="fade-up" data-aos-delay="800">
+                    <a href="./CV/index.html" target="_blank" class="btn-primary">
+                        <i class="fas fa-eye"></i> Voir mon CV
+                    </a>
+                    <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="btn-secondary">
+                        <i class="fas fa-download"></i> Télécharger PDF
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Qui suis-je ?</h1>
+            
+            <div class="full-width-container">
+                <div class="text-block" data-aos="fade-right">
+                    <h3><i class="fas fa-terminal"></i> Tech & Rigueur</h3>
+                    <p>
+                        Ce qui m'anime, c'est de <strong>créer des choses utiles</strong> et d'être toujours à jour sur la tech. Que ce soit une automatisation en Python ou une application, j'aime voir le résultat concret de mon code.
+                        Je suis très exigeant sur la qualité : je ne supporte pas de laisser un bug traîner ou de voir un code mal organisé. Pour moi, un code doit être aussi lisible que fonctionnel.
+                    </p>
+                    <p>
+                        Mon objectif est de poursuivre mes études pour maîtriser toutes les notions d'architecture logicielle et devenir un <strong>Développeur Software</strong> complet.
+                    </p>
+                </div>
+                <div class="image-block" data-aos="fade-left">
+                    <img src="./Assets/code.jpg" alt="Setup de code">
+                </div>
+            </div>
+
+            <div class="full-width-container reverse">
+                <div class="text-block" data-aos="fade-left">
+                    <h3><i class="fas fa-microchip"></i> Logique & Résolution de Problèmes</h3>
+                    <p>
+                        Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel.Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe. Aujourd'hui, j'applique cette même rigueur à la conception de logiciels robustes et à l'automatisation de processus.
+                    </p>
+                </div>
+                <div class="image-block" data-aos="fade-right">
+                    <img src="./Assets/code2.jpg" alt="Passion tech">
+                </div>
+            </div>
+        </section>
+
+        <section id="parcours" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Mon Parcours</h1>
+            <div class="timeline">
+                
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-date">Depuis 2024</div>
+                    <div class="timeline-content">
+                        <h3>BTS SIO - Option SLAM</h3>
+                        <h4>Lycée La Colinière, Nantes</h4>
+                        <p>
+                            Spécialisation en <strong>Solutions Logicielles et Applications Métiers</strong>.
+                            Apprentissage approfondi du développement, de la gestion de données et de la cybersécurité.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat Général</h3>
+                        <h4>Mention Assez Bien</h4>
+                        <p>
+                            Spécialités <strong>Mathématiques</strong> et <strong>NSI</strong> (Numérique et Sciences Informatiques).
+                            Acquisition des bases solides en algorithmique et logique de programmation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-date">Avant 2023</div>
+                    <div class="timeline-content">
+                        <h3>Découverte & Stages</h3>
+                        <p>
+                            Plusieurs stages d'observation en entreprise qui ont confirmé ma volonté de travailler dans le secteur du numérique et du développement.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="services" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Ce que je peux faire</h1>
+            <div class="services-grid">
+                
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Développement Logiciel</h3>
+                    <p>Création d'outils, de scripts d'automatisation (Python) ou de petites applications Windows (C#). J'aime construire la logique cachée derrière les interfaces.</p>
+                </div>
+
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="icon-box"><i class="fas fa-globe"></i></div>
+                    <h3>Intégration Web</h3>
+                    <p>Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.</p>
+                </div>
+
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="icon-box"><i class="fas fa-database"></i></div>
+                    <h3>Data & Automatisation</h3>
+                    <p>Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Stack Technique</h1>
+            <div class="skills-wrapper">
+                
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-header">
+                        <h3><i class="fas fa-code"></i> Langages & Web</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>Python</span>
+                            <span>C# (Bases)</span>
+                            <span>HTML5 / CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                            <span>Bash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-header">
+                        <h3><i class="fas fa-database"></i> Data & Back</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>SQL (MySQL)</span>
+                            <span>Requêtes / Jointures</span>
+                            <span>Algorithmique</span>
+                            <span>DBeaver</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-header">
+                        <h3><i class="fas fa-tools"></i> Outils & Créa</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>Git / GitHub</span>
+                            <span>VS Code</span>
+                            <span>Blender (Modé/Anim)</span>
+                            <span>Node.js (Bases)</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Réalisations</h1>
+            <p style="margin-bottom: 2rem;" data-aos="fade-up">Des projets pour apprendre, tester et créer.</p>
+
+            <div class="projects-grid">
+                
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-id-card" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio Personnel</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Concevoir une interface moderne et responsive pour présenter mes compétences. Utilisation de CSS Grid/Flexbox et d'animations AOS sans framework lourd.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://github.com/Flowz5/portfolio-leoDupont" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-chart-line" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Cyber-Watch : Veille B.I.</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Solution complète de Business Intelligence. Collecte automatisée (Scraping), stockage BDD et restitution via un <strong>Dashboard interactif Streamlit</strong> (KPIs, Analyse sémantique).
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Streamlit</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Data Viz</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://github.com/Flowz5/VeilleTechScraper" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-magnifying-glass" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Doc-Hunter : Assistant Dev</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Moteur de recherche intégré à l'OS (Hyprland). Permet de scraper les docs officielles et d'afficher des <strong>Cheat Sheets</strong> de code instantanément sans quitter le clavier.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Scraping</span>
+                            <span class="tag">Linux/System</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://github.com/Flowz5/doc_hunter" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user-shield" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>SecurePwd Pro</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Utilitaire de sécurité intégrant le calcul d'entropie et une vérification en temps réel via l'API <em>HaveIBeenPwned</em> (K-Anonymity) avec une interface terminal riche.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">API Rest</span>
+                            <span class="tag">Rich UI</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://github.com/Flowz5/securepwd_tool" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-rocket" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Réplique "Asteroids"</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Recréer le célèbre jeu d'arcade en JavaScript. Gestion de la physique, des collisions et du score en temps réel.
+                        </p>
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Logique Jeu</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://asteroid-8iv6.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-link">
+                                <i class="fas fa-play-circle"></i> Jouer au jeu
+                            </a>
+                            <a href="https://github.com/Flowz5/Asteroid" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-tasks" style="font-size: 4rem; color: #5a56d8;"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Gestionnaire de Projets</h3>
+                        <p class="project-desc">
+                            <strong>Le défi :</strong> Application structurée pour organiser des tâches. Gestion des priorités et dates avec une approche orientée objet (POO).
+                        </p>
+                        <div class="tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                        </div>
+                        <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="https://github.com/Flowz5/ProjectManager" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
+                                <i class="fab fa-github"></i> Voir le code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="big-section">
+            <h1 class="section-title" data-aos="fade-up">Me Contacter</h1>
+            <p data-aos="fade-up">Un projet ? Une opportunité de stage ? N'hésitez pas !</p>
+            
+            <div class="contact-container">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>dupontleo999@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Nantes, France</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>Léo Dupont</span>
+                    </div>
+                </div>
+
+                <form action="https://formsubmit.co/dupontleo999@gmail.com" method="POST" class="contact-form" data-aos="fade-left">
+                    
+                    <input type="hidden" name="_subject" value="Nouveau contact depuis le Portfolio !">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+
+                    <input type="hidden" name="_next" value="https://portfolio-leodupont-1jr4.onrender.com/">
+                    
+                    <input type="text" name="nom" placeholder="Votre Nom" required>
+                    <input type="email" name="email" placeholder="Votre Email" required>
+                    <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
+                    
+                    <button type="submit" class="btn-primary">Envoyer</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <h3>Léo Dupont</h3>
+                <p>Développeur passionné, prêt à relever de nouveaux défis.</p>
+                <div class="socials">
+                    <a href="https://github.com/Flowz5" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/léo-dupont-646a58385" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:dupontleo999@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year"></span> Léo Dupont. Tous droits réservés.</p>
+            </div>
+        </footer>
+
+        <a href="#" class="scroll-top" id="scroll-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 100
+        });
+    </script>
+</body>
+</html>
