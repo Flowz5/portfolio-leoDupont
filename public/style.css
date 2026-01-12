@@ -41,15 +41,30 @@ body {
     z-index: 999;
 }
 
+/* 1. On applique la ligne sur le conteneur pour qu'elle fasse toute la largeur */
+.navbar-header {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* La ligne est déplacée ici */
+    padding-bottom: 1.5rem;  /* Espace entre le texte et la ligne */
+    margin-bottom: 2rem;     /* Espace sous la ligne avant le menu */
+}
+
+/* 2. On ajuste le texte Léo.D pour l'aligner sans casser la ligne */
 .navbar-header h2 {
     margin: 0;
-    margin-bottom: 2rem;
-    margin-left: 3rem;
+    margin-left: 5rem;       /* On garde le décalage pour ne pas toucher le bouton */
+    margin-top: -2px;        /* Correction d'alignement vertical */
+    
+    /* On retire les styles de bordure qui étaient ici avant */
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    /* Le reste du style de texte */
     font-size: 2rem;
-    text-align: center;
     letter-spacing: 2px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 1.5rem;
+    line-height: 1.2;
+    color: #fff;
 }
 
 .navbar nav {
