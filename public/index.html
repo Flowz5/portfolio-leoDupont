@@ -8,7 +8,7 @@
     <meta name="description" content="Portfolio de Léo Dupont, étudiant en BTS SIO SLAM. Découvrez mes projets en Python, C# et Web.">
     
     <meta property="og:title" content="Portfolio de Léo Dupont - Développeur Software & Web">
-    <meta property="og:description" content="Étudiant en BTS SIO SLAM. Passionné par la création de solutions logiques et interactives (Python, C#, Web).">
+    <meta property="og:description" content="Étudiant en BTS SIO SLAM. Passionné par la création de solutions logiques et interactives.">
     <meta property="og:image" content="./Assets/apercu-portfolio.jpg">
     <meta property="og:url" content="https://portfolio-leodupont-1jr4.onrender.com/">
     <meta property="og:type" content="website">
@@ -21,27 +21,31 @@
 </head>
 <body>
     
-    <aside class="navbar" id="navbar">
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+
+    <aside class="navbar" id="navbar" aria-label="Menu principal">
         <div class="navbar-header">
             <h2>Léo.D</h2>
         </div>
         <nav>
-            <a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a>
-            <a href="#about"><i class="fas fa-user"></i> À Propos</a>
-            <a href="#parcours"><i class="fas fa-road"></i> Parcours</a>
-            <a href="#services"><i class="fas fa-briefcase"></i> Services</a>
-            <a href="#skills"><i class="fas fa-laptop-code"></i> Compétences</a>
-            <a href="#projects"><i class="fas fa-project-diagram"></i> Projets</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="./CV/index.html" target="_blank" class="highlight-link"><i class="fas fa-file-alt"></i> Mon CV</a>
+            <a href="#accueil" class="active"><i class="fas fa-home" aria-hidden="true"></i> Accueil</a>
+            <a href="#about"><i class="fas fa-user" aria-hidden="true"></i> À Propos</a>
+            <a href="#parcours"><i class="fas fa-road" aria-hidden="true"></i> Parcours</a>
+            <a href="#services"><i class="fas fa-briefcase" aria-hidden="true"></i> Services</a>
+            <a href="#skills"><i class="fas fa-laptop-code" aria-hidden="true"></i> Compétences</a>
+            <a href="#projects"><i class="fas fa-project-diagram" aria-hidden="true"></i> Projets</a>
+            <a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i> Contact</a>
+            <a href="./CV/index.html" target="_blank" class="highlight-link" aria-label="Voir mon CV (s'ouvre dans un nouvel onglet)">
+                <i class="fas fa-file-alt" aria-hidden="true"></i> Mon CV
+            </a>
         </nav>
     </aside>
 
-    <button class="toggle-btn" id="toggle-btn">
-        <i class="fas fa-bars"></i>
+    <button class="toggle-btn" id="toggle-btn" aria-label="Ouvrir ou fermer le menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
     </button>
 
-    <main class="content">
+    <main class="content" id="main-content">
 
         <section id="accueil" class="hero" data-aos="fade-in" data-aos-duration="1500">
             <div class="background-image"></div>
@@ -58,10 +62,10 @@
 
                 <div class="btn-group" data-aos="fade-up" data-aos-delay="800">
                     <a href="./CV/index.html" target="_blank" class="btn-primary">
-                        <i class="fas fa-eye"></i> Voir mon CV
+                        <i class="fas fa-eye" aria-hidden="true"></i> Voir mon CV
                     </a>
                     <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="btn-secondary">
-                        <i class="fas fa-download"></i> Télécharger PDF
+                        <i class="fas fa-download" aria-hidden="true"></i> Télécharger PDF
                     </a>
                 </div>
             </div>
@@ -72,7 +76,7 @@
             
             <div class="full-width-container">
                 <div class="text-block" data-aos="fade-right">
-                    <h3><i class="fas fa-terminal"></i> Tech & Rigueur</h3>
+                    <h3><i class="fas fa-terminal" aria-hidden="true"></i> Tech & Rigueur</h3>
                     <p>
                         Ce qui m'anime, c'est de <strong>créer des choses utiles</strong> et d'être toujours à jour sur la tech. Que ce soit une automatisation en Python ou une application, j'aime voir le résultat concret de mon code.
                         Je suis très exigeant sur la qualité : je ne supporte pas de laisser un bug traîner ou de voir un code mal organisé. Pour moi, un code doit être aussi lisible que fonctionnel.
@@ -82,19 +86,19 @@
                     </p>
                 </div>
                 <div class="image-block" data-aos="fade-left">
-                    <img src="./Assets/code.jpg" alt="Setup de code">
+                    <img src="./Assets/code.jpg" alt="Photo de mon environnement de travail avec du code à l'écran">
                 </div>
             </div>
 
             <div class="full-width-container reverse">
                 <div class="text-block" data-aos="fade-left">
-                    <h3><i class="fas fa-microchip"></i> Logique & Résolution de Problèmes</h3>
+                    <h3><i class="fas fa-microchip" aria-hidden="true"></i> Logique & Résolution de Problèmes</h3>
                     <p>
-                        Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel.Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe. Aujourd'hui, j'applique cette même rigueur à la conception de logiciels robustes et à l'automatisation de processus.
+                        Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel. Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe.
                     </p>
                 </div>
                 <div class="image-block" data-aos="fade-right">
-                    <img src="./Assets/code2.jpg" alt="Passion tech">
+                    <img src="./Assets/code2.jpg" alt="Gros plan sur un écran affichant du code informatique">
                 </div>
             </div>
         </section>
@@ -145,19 +149,19 @@
             <div class="services-grid">
                 
                 <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                    <div class="icon-box"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
                     <h3>Développement Logiciel</h3>
                     <p>Création d'outils, de scripts d'automatisation (Python) ou de petites applications Windows (C#). J'aime construire la logique cachée derrière les interfaces.</p>
                 </div>
 
                 <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="icon-box"><i class="fas fa-globe"></i></div>
+                    <div class="icon-box"><i class="fas fa-globe" aria-hidden="true"></i></div>
                     <h3>Intégration Web</h3>
                     <p>Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.</p>
                 </div>
 
                 <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="icon-box"><i class="fas fa-database"></i></div>
+                    <div class="icon-box"><i class="fas fa-database" aria-hidden="true"></i></div>
                     <h3>Data & Automatisation</h3>
                     <p>Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.</p>
                 </div>
@@ -171,8 +175,8 @@
                 
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                     <div class="skill-header">
-                        <h3><i class="fas fa-code"></i> Langages & Web</h3>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <h3><i class="fas fa-code" aria-hidden="true"></i> Langages & Web</h3>
+                        <i class="fas fa-chevron-down arrow-icon" aria-hidden="true"></i>
                     </div>
                     <div class="skill-content">
                         <div class="skill-list">
@@ -188,8 +192,8 @@
 
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
                     <div class="skill-header">
-                        <h3><i class="fas fa-database"></i> Data & Back</h3>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <h3><i class="fas fa-database" aria-hidden="true"></i> Data & Back</h3>
+                        <i class="fas fa-chevron-down arrow-icon" aria-hidden="true"></i>
                     </div>
                     <div class="skill-content">
                         <div class="skill-list">
@@ -203,8 +207,8 @@
 
                 <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
                     <div class="skill-header">
-                        <h3><i class="fas fa-tools"></i> Outils & Créa</h3>
-                        <i class="fas fa-chevron-down arrow-icon"></i>
+                        <h3><i class="fas fa-tools" aria-hidden="true"></i> Outils & Créa</h3>
+                        <i class="fas fa-chevron-down arrow-icon" aria-hidden="true"></i>
                     </div>
                     <div class="skill-content">
                         <div class="skill-list">
@@ -225,9 +229,9 @@
 
             <div class="projects-grid">
                 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-id-card" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-id-card" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>Portfolio Personnel</h3>
@@ -241,15 +245,15 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://github.com/Flowz5/portfolio-leoDupont" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-chart-line" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-chart-line" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>Cyber-Watch : Veille B.I.</h3>
@@ -264,15 +268,15 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://github.com/Flowz5/VeilleTechScraper" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-magnifying-glass" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-magnifying-glass" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>Doc-Hunter : Assistant Dev</h3>
@@ -286,15 +290,15 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://github.com/Flowz5/doc_hunter" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user-shield" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-user-shield" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>SecurePwd Pro</h3>
@@ -308,15 +312,15 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://github.com/Flowz5/securepwd_tool" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="500">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-rocket" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-rocket" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>Réplique "Asteroids"</h3>
@@ -329,18 +333,18 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://asteroid-8iv6.onrender.com" target="_blank" rel="noopener noreferrer" class="btn-link">
-                                <i class="fas fa-play-circle"></i> Jouer au jeu
+                                <i class="fas fa-play-circle" aria-hidden="true"></i> Jouer au jeu
                             </a>
                             <a href="https://github.com/Flowz5/Asteroid" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="600">
                     <div class="project-img" style="background: #1e1b4b; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-tasks" style="font-size: 4rem; color: #5a56d8;"></i>
+                        <i class="fas fa-tasks" style="font-size: 4rem; color: #5a56d8;" aria-hidden="true"></i>
                     </div>
                     <div class="project-info">
                         <h3>Gestionnaire de Projets</h3>
@@ -353,11 +357,11 @@
                         </div>
                         <div class="project-actions" style="display: flex; gap: 1rem; margin-top: 1rem;">
                             <a href="https://github.com/Flowz5/ProjectManager" target="_blank" rel="noopener noreferrer" class="btn-link" style="opacity: 0.8;">
-                                <i class="fab fa-github"></i> Voir le code
+                                <i class="fab fa-github" aria-hidden="true"></i> Voir le code
                             </a>
                         </div>
                     </div>
-                </div>
+                </article>
 
             </div>
         </section>
@@ -369,15 +373,15 @@
             <div class="contact-container">
                 <div class="contact-info" data-aos="fade-right">
                     <div class="info-item">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <span>dupontleo999@gmail.com</span>
                     </div>
                     <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <span>Nantes, France</span>
                     </div>
                     <div class="info-item">
-                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                         <span>Léo Dupont</span>
                     </div>
                 </div>
@@ -390,9 +394,20 @@
 
                     <input type="hidden" name="_next" value="https://portfolio-leodupont-1jr4.onrender.com/">
                     
-                    <input type="text" name="nom" placeholder="Votre Nom" required>
-                    <input type="email" name="email" placeholder="Votre Email" required>
-                    <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
+                    <div>
+                        <label for="nom" class="sr-only">Votre Nom (*)</label>
+                        <input type="text" id="nom" name="nom" placeholder="Votre Nom" required aria-required="true" autocomplete="name">
+                    </div>
+
+                    <div>
+                        <label for="email" class="sr-only">Votre Email (*)</label>
+                        <input type="email" id="email" name="email" placeholder="Votre Email" required aria-required="true" autocomplete="email">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="sr-only">Votre Message (*)</label>
+                        <textarea id="message" name="message" placeholder="Votre Message" rows="5" required aria-required="true"></textarea>
+                    </div>
                     
                     <button type="submit" class="btn-primary">Envoyer</button>
                 </form>
@@ -404,9 +419,9 @@
                 <h3>Léo Dupont</h3>
                 <p>Développeur passionné, prêt à relever de nouveaux défis.</p>
                 <div class="socials">
-                    <a href="https://github.com/Flowz5" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/léo-dupont-646a58385" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:dupontleo999@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/Flowz5" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/in/léo-dupont-646a58385" target="_blank" rel="noopener noreferrer" aria-label="Voir mon profil LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="mailto:dupontleo999@gmail.com" aria-label="M'envoyer un email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -414,8 +429,8 @@
             </div>
         </footer>
 
-        <a href="#" class="scroll-top" id="scroll-top">
-            <i class="fas fa-arrow-up"></i>
+        <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page">
+            <i class="fas fa-arrow-up" aria-hidden="true"></i>
         </a>
 
     </main>
