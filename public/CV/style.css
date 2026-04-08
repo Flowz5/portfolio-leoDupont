@@ -1,74 +1,121 @@
-/* =========================================================
-   THÈME SOMBRE - MATCH PORTFOLIO
-   (Override du Framework W3.CSS)
-========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Police et fond global */
+:root {
+    --bg-main: #141718;
+    --bg-card: #1d2123;
+    --accent: #4ade80;
+    --accent-hover: #22c55e;
+    --text-main: #f8fafc;
+    --text-muted: #9ca3af;
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
 html, body, h1, h2, h3, h4, h5, h6 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #020024; /* Fond bleu nuit */
-    color: #cbd5e1; /* Texte gris clair */
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
 }
 
-/* === MODIFICATION PRINCIPALE ICI === */
-/* Override des cartes blanches W3.CSS */
 .w3-white, .w3-card, .w3-card-4 {
-    background-color: rgba(3, 0, 86, 0.6) !important; /* Fond semi-transparent */
-    color: #cbd5e1 !important;
-    backdrop-filter: blur(10px); /* Effet flou moderne */
-    border: 1px solid rgba(255,255,255,0.05); /* Bordure subtile */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-    
-    /* AJOUT DES COINS ARRONDIS */
+    background-color: var(--bg-card) !important; 
+    color: var(--text-main) !important;
+    border: 1px solid var(--border-color); 
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2) !important;
     border-radius: 16px !important; 
-    /* Important : empêche l'image de dépasser des coins arrondis */
     overflow: hidden; 
 }
 
-/* Titres et textes */
-h2, h5 { 
-    color: #fff !important; 
+h2, h5 { color: var(--text-main) !important; }
+
+.w3-opacity {
+    color: var(--text-main) !important;
+    font-weight: 600;
+    opacity: 1 !important;
 }
 
-.w3-text-grey { 
-    color: #a0aec0 !important; 
+.w3-text-grey { color: var(--text-muted) !important; }
+
+p, li {
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
-/* Remplacement du Vert Teal par le Violet du Portfolio */
+strong, b { color: var(--text-main); font-weight: 600; }
+
 .w3-text-teal { 
-    color: #7773ff !important; /* Icônes en violet clair */
+    color: var(--accent) !important; 
 }
 
 .w3-teal { 
-    background-color: #5a56d8 !important; /* Barres et footer en violet */
+    background-color: var(--accent) !important; 
+    color: var(--bg-main) !important;
+    font-weight: 600;
 }
 
-/* Barres de progression (le fond gris derrière la barre colorée) */
 .w3-light-grey { 
-    background-color: rgba(255,255,255,0.1) !important; 
+    background-color: rgba(255, 255, 255, 0.05) !important; 
 }
 
-/* AJOUT : Arrondir aussi les bouts des barres de progression */
 .w3-round-xlarge {
     border-radius: 16px !important;
 }
 
-/* Séparateurs */
 hr { 
-    border-top: 1px solid rgba(255,255,255,0.1); 
+    border-top: 1px solid var(--border-color); 
+    margin: 20px 0;
 }
 
-/* Petits ajustements pour le texte des compétences */
 .skill-text { 
-    margin-bottom: 2px; 
+    margin-bottom: 6px; 
     display: block; 
     font-weight: 500; 
+    font-size: 0.9rem;
+    color: var(--text-main);
 }
 
-/* AJOUT : Arrondir le footer */
 footer.w3-teal {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted) !important;
     border-radius: 16px !important;
+    padding: 20px 0 !important;
 }
+
+footer a i {
+    color: var(--text-muted);
+    transition: color 0.3s, transform 0.3s;
+}
+
+footer a:hover i {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.w3-display-container img {
+    filter: brightness(0.85) contrast(1.05);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.w3-display-bottomleft h2 {
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.bg-blobs {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; overflow: hidden; pointer-events: none;
+}
+.blob {
+    position: absolute;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.08;
+    border-radius: 50%;
+}
+.blob-1 { top: -10%; left: -10%; width: 400px; height: 400px; }
+.blob-2 { bottom: -10%; right: -10%; width: 500px; height: 500px; }
