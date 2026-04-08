@@ -50,13 +50,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function onScroll() {
         let current = "";
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 150;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-                current = section.getAttribute("id");
-            }
-        });
+        
+        const isAtBottom = (window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 60;
+
+        if (isAtBottom) {
+            current = sections[sections.length - 1].getAttribute("id");
+        } else {
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute("id");
+                }
+            });
+        }
 
         navLinks.forEach((link) => {
             link.classList.remove("active");
