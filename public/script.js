@@ -2,6 +2,35 @@ document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.getElementById("navbar");
     const toggleBtn = document.getElementById("toggle-btn");
 
+    const themeToggle = document.getElementById('theme-toggle');
+    const toggleIcon = document.getElementById('toggle-icon');
+    const themeText = document.getElementById('theme-text');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+        updateToggleUI(true);
+    }
+
+    themeToggle.addEventListener('click', () => {
+        const isLight = body.classList.toggle('light-mode');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateToggleUI(isLight);
+    });
+
+    function updateToggleUI(isLight) {
+        if (isLight) {
+            toggleIcon.classList.replace('fa-moon', 'fa-sun');
+            toggleIcon.style.transform = 'rotate(180deg)';
+            themeText.textContent = 'Mode Clair';
+        } else {
+            toggleIcon.classList.replace('fa-sun', 'fa-moon');
+            toggleIcon.style.transform = 'rotate(0deg)';
+            themeText.textContent = 'Mode Sombre';
+        }
+    }
+
     if(toggleBtn) {
         toggleBtn.addEventListener("click", () => {
             navbar.classList.toggle("nav-open");
