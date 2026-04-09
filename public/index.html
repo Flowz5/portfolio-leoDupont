@@ -7,10 +7,15 @@
     <title>Léo Dupont | Développeur Software</title>
     <meta name="description" content="Portfolio de Léo Dupont, étudiant en BTS SIO SLAM.">
     
-    <link rel="icon" type="image/png" href="./Assets/favicon.png">
     <link rel="stylesheet" href="./style.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 </head>
 <body>
     
@@ -305,8 +310,15 @@
         <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></a>
     </main>
 
-    <script src="script.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init({ offset: 100, once: false });</script>
+    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script>
+        // On attend que tout soit chargé pour initier AOS
+        document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({ offset: 100, once: true });
+        });
+    </script>
+</body>
+</html>
 </body>
 </html>

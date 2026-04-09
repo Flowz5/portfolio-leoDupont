@@ -797,3 +797,31 @@ body {
         gap: 2rem;
     }
 }
+
+/* =========================================================
+    PRINT CSS (Écoconception / Impression)
+   ========================================================= */
+@media print {
+    /* On cache tout ce qui est inutile à l'impression */
+    .navbar, .bg-blobs, .scroll-top, .theme-switch-container, .btn-group {
+        display: none !important;
+    }
+    
+    /* On annule le mode sombre pour économiser l'encre */
+    body, .content, .big-section, .project-card, .service-card, .timeline-content {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* On force les couleurs de textes en noir */
+    h1, h2, h3, p, span {
+        color: #000000 !important;
+    }
+}
