@@ -296,9 +296,10 @@
         <section id="contact" class="big-section" style="margin-bottom: 5rem;">
             <h2 class="section-title" data-aos="fade-up">Me Contacter</h2>
             <div class="contact-container">
-                <form action="https://formsubmit.co/" method="POST" class="contact-form" data-aos="fade-up">
+                <form action="https://formsubmit.co/le.dupont.pro@gmail.com" method="POST" class="contact-form" data-aos="fade-up">
                     <input type="hidden" name="_subject" value="Nouveau contact depuis le Portfolio !">
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://portfolio-leodupont-1jr4.onrender.com/">
                     <input type="text" name="nom" placeholder="Votre Nom" required>
                     <input type="email" name="email" placeholder="Votre Email" required>
                     <textarea name="message" placeholder="Votre Message" rows="5" required></textarea>
@@ -313,7 +314,6 @@
     <script src="script.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script>
-        // On attend que tout soit chargé pour initier AOS
         document.addEventListener("DOMContentLoaded", function() {
             AOS.init({ offset: 100, once: true });
         });
