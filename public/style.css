@@ -4,7 +4,7 @@
 
 :root {
     --bg-main: #141718;
-    --bg-sidebar: rgba(29, 33, 35, 0.4); /* Modifié pour Glassmorphism */
+    --bg-sidebar: rgba(29, 33, 35, 0.4);
     --accent: #4ade80;
     --accent-hover: #22c55e;
     --text-main: #f8fafc;
@@ -16,7 +16,7 @@
 
 body.light-mode {
     --bg-main: #f1f5f9;
-    --bg-sidebar: rgba(255, 255, 255, 0.6); /* Modifié pour Glassmorphism */
+    --bg-sidebar: rgba(255, 255, 255, 0.6);
     --accent: #16a34a;
     --accent-hover: #15803d;
     --text-main: #0f172a;
@@ -106,6 +106,7 @@ html {
     overflow-x: hidden;
 }
 
+/* TRANSITION DE PAGE FLUIDE À L'OUVERTURE */
 body {
     margin: 0;
     padding: 0;
@@ -114,12 +115,17 @@ body {
     color: var(--text-main);
     display: flex;
     min-height: 100vh;
-    /* Fond quadrillé style "Tech" */
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
     background-attachment: fixed;
+    animation: pageFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes pageFadeIn {
+    0% { opacity: 0; filter: blur(5px); }
+    100% { opacity: 1; filter: blur(0); }
 }
 
 /* =========================================================
@@ -154,7 +160,7 @@ body {
 }
 
 /* =========================================================
-    BACKGROUND BLOBS (Halos lumineux décoratifs)
+    BACKGROUND BLOBS
    ========================================================= */
 
 .bg-blobs {
@@ -172,7 +178,7 @@ body {
     position: absolute;
     background: var(--accent);
     filter: blur(120px);
-    opacity: var(--blob-opacity); /* Utilisation de la variable */
+    opacity: var(--blob-opacity);
     border-radius: 50%;
 }
 
@@ -281,7 +287,6 @@ body {
     border-color: var(--accent);
 }
 
-/* Badge de raccourci clavier dans le menu */
 .shortcut-badge {
     margin-left: auto;
     background: rgba(255, 255, 255, 0.05);
@@ -323,12 +328,6 @@ body.light-mode .shortcut-badge {
 
 .socials-sidebar a:hover {
     color: var(--accent);
-}
-
-.copyright {
-    font-size: 0.75rem;
-    color: #6b7280;
-    margin: 0;
 }
 
 .toggle-btn {
@@ -390,7 +389,6 @@ body.light-mode .shortcut-badge {
     margin-bottom: 1rem;
 }
 
-/* Texte avec dégradé moderne */
 .accent-text {
     background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
     -webkit-background-clip: text;
@@ -404,6 +402,18 @@ body.light-mode .shortcut-badge {
     font-weight: 400;
     color: var(--text-main);
     margin-bottom: 1.5rem;
+    min-height: 2.7rem; /* Évite que la hauteur saute pendant la frappe */
+}
+
+/* CURSEUR MACHINE À ÉCRIRE */
+.typewriter-cursor {
+    border-right: 3px solid var(--accent);
+    padding-right: 4px;
+    animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+    50% { border-color: transparent; }
 }
 
 .hero-center p {
@@ -603,16 +613,61 @@ body.light-mode .shortcut-badge {
     border: 1px solid var(--border-color);
     padding: 2rem;
     border-radius: 16px;
-    transition: all 0.3s;
+    /* On laisse Vanilla-tilt s'occuper de la transformation au survol */
+    transition: box-shadow 0.3s, background 0.3s, border-color 0.3s; 
 }
 
-/* Lueur sur les cartes au survol */
-.service-card:hover, 
-.project-card:hover {
+.service-card:hover {
     box-shadow: 0 10px 40px -10px rgba(74, 222, 128, 0.15);
     border-color: rgba(74, 222, 128, 0.4);
     background: rgba(255, 255, 255, 0.03);
-    transform: translateY(-5px);
+}
+
+/* BORDURES ANIMÉES POUR LES PROJETS */
+.project-card {
+    position: relative;
+    overflow: hidden; 
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, transparent, transparent, var(--accent));
+    animation: border-spin 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 0;
+}
+
+.project-card::after {
+    content: "";
+    position: absolute;
+    inset: 1px; /* Masque le gradient sauf sur 1px de bordure */
+    background: #181b1d; /* Simule le fond de la carte */
+    border-radius: 15px;
+    z-index: 1;
+    transition: background 0.3s;
+}
+
+body.light-mode .project-card::after {
+    background: #ffffff;
+}
+
+.project-card > * {
+    position: relative;
+    z-index: 2; /* S'assure que le contenu reste au dessus du faux-fond */
+}
+
+.project-card:hover::before {
+    opacity: 1; /* Affiche l'animation au survol */
+}
+
+@keyframes border-spin {
+    100% { transform: rotate(360deg); }
 }
 
 .icon-box, 
@@ -976,7 +1031,7 @@ body.light-mode .shortcut-badge {
 }
 
 /* =========================================================
-    RESPONSIVE DESIGN (Media Queries)
+    RESPONSIVE DESIGN
    ========================================================= */
 
 @media (max-width: 1024px) {
@@ -1011,31 +1066,6 @@ body.light-mode .shortcut-badge {
     .full-width-container {
         flex-direction: column;
         gap: 2rem;
-    }
-}
-
-/* =========================================================
-    PRINT CSS (Écoconception / Impression)
-   ========================================================= */
-@media print {
-    .navbar, .bg-blobs, .scroll-top, .theme-switch-container, .btn-group {
-        display: none !important;
-    }
-    
-    body, .content, .big-section, .project-card, .service-card, .timeline-content {
-        background: #ffffff !important;
-        color: #000000 !important;
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-    }
-    
-    .content {
-        margin-left: 0 !important;
-        padding: 0 !important;
-    }
-
-    h1, h2, h3, p, span {
-        color: #000000 !important;
     }
 }
 

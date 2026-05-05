@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // NOUVELLES FONCTIONNALITÉS
+    // NOUVELLES FONCTIONNALITÉS & ANIMATIONS
     // =========================================================
 
     // --- 1. BOUTONS MAGNÉTIQUES ---
@@ -116,12 +116,34 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // --- 2. PALETTE DE COMMANDES (CTRL+K) ---
+    // --- 2. EFFET MACHINE À ÉCRIRE ---
+    const heroSubtitle = document.querySelector('.hero-center h2');
+    if (heroSubtitle) {
+        // Sauvegarde le texte et le vide instantanément
+        const textToType = heroSubtitle.textContent;
+        heroSubtitle.textContent = '';
+        heroSubtitle.classList.add('typewriter-cursor');
+        
+        let charIndex = 0;
+        
+        function typeText() {
+            if (charIndex < textToType.length) {
+                heroSubtitle.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 50); // Vitesse de frappe (50ms)
+            }
+        }
+        
+        // Démarrage de l'effet un peu après le chargement pour laisser l'animation AOS se lancer
+        setTimeout(typeText, 1000);
+    }
+
+    // --- 3. PALETTE DE COMMANDES (CTRL+K) ---
     const cmdPalette = document.getElementById('cmd-palette');
     const cmdInput = document.getElementById('cmd-input');
     const cmdResults = document.getElementById('cmd-results');
+    const cmdBtnNav = document.getElementById('cmd-btn-nav');
 
-    // Base de données des commandes
     const commands = [
         { title: "Aller à l'Accueil", icon: "fa-home", action: () => window.location.hash = '#accueil' },
         { title: "Voir le profil", icon: "fa-user", action: () => window.location.hash = '#about' },
@@ -166,20 +188,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Écouteur de raccourci clavier
+    if (cmdBtnNav) {
+        cmdBtnNav.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleCmdPalette();
+            if (window.innerWidth <= 1024) {
+                navbar.classList.remove("nav-open");
+            }
+        });
+    }
+
     document.addEventListener('keydown', (e) => {
-        // Ctrl+K ou Cmd+K
         if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
             e.preventDefault();
             toggleCmdPalette();
         }
-        // Fermer avec Échap
         if (e.key === 'Escape' && !cmdPalette.classList.contains('hidden')) {
             toggleCmdPalette();
         }
     });
 
-    // Filtre de recherche interactif
     if (cmdInput) {
         cmdInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
@@ -188,12 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Fermer en cliquant à l'extérieur
     cmdPalette.addEventListener('click', (e) => {
         if (e.target === cmdPalette) toggleCmdPalette();
     });
 
-    // --- 3. TERMINAL INTERACTIF ---
+    // --- 4. TERMINAL INTERACTIF ---
     const terminalInput = document.getElementById('terminal-input');
     const terminalOutput = document.getElementById('terminal-output');
     const terminalBody = document.getElementById('terminal-body');

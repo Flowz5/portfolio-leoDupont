@@ -12,8 +12,11 @@
     <link rel="stylesheet" href="./style.css">
 
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <!-- Script Vanilla-Tilt pour l'effet 3D -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
     <noscript>
         <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -35,6 +38,10 @@
         </div>
 
         <nav>
+            <a href="#" id="cmd-btn-nav">
+                <i class="fas fa-search"></i> Recherche
+                <span class="shortcut-badge">Ctrl K</span>
+            </a>
             <a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a>
             <a href="#about"><i class="fas fa-user"></i> À Propos</a>
             <a href="#parcours"><i class="fas fa-road"></i> Parcours</a>
@@ -74,6 +81,7 @@
         <section id="accueil" class="hero" data-aos="fade-in" data-aos-duration="1500">
             <div class="hero-center">
                 <h1 data-aos="zoom-in" data-aos-delay="200">Léo Dupont <span class="accent-text">portfolio</span></h1>
+                <!-- Préparation pour la machine à écrire -->
                 <h2 data-aos="fade-up" data-aos-delay="400">Développeur Application & Web</h2>
                 <p data-aos="fade-up" data-aos-delay="600">Passionné par le code et la technologie, je transforme des problèmes complexes en solutions logiques, propres et fonctionnelles.</p>
                 <div class="btn-group" data-aos="fade-up" data-aos-delay="800">
@@ -140,17 +148,18 @@
         <section id="services" class="big-section">
             <h2 class="section-title" data-aos="fade-up">Ce que je peux faire</h2>
             <div class="services-grid">
-                <div class="service-card" data-aos="zoom-in">
+                <!-- Ajout de data-tilt pour l'effet 3D -->
+                <div class="service-card" data-aos="zoom-in" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
                     <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
                     <h3>Développement Logiciel</h3>
                     <p>Création d'outils, de scripts d'automatisation (Python) ou de petites applications Windows (C#). J'aime construire la logique cachée derrière les interfaces.</p>
                 </div>
-                <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="100" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
                     <div class="icon-box"><i class="fas fa-globe"></i></div>
                     <h3>Intégration Web</h3>
                     <p>Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.</p>
                 </div>
-                <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
                     <div class="icon-box"><i class="fas fa-database"></i></div>
                     <h3>Data & Automatisation</h3>
                     <p>Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.</p>
@@ -206,8 +215,8 @@
             <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;" data-aos="fade-up">Des projets pour apprendre, tester et créer.</p>
             
             <div class="projects-grid">
-                
-                <article class="project-card" data-aos="fade-up">
+                <!-- Ajout de data-tilt pour l'effet 3D -->
+                <article class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-robot"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">ChatBot RAG Local</h3>
@@ -221,7 +230,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-chart-line"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">Cyber-Watch : Veille B.I.</h3>
@@ -235,7 +244,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-search"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">Doc-Hunter : Assistant Dev</h3>
@@ -249,7 +258,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-aos="fade-up">
+                <article class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-eye"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">IA Vision Continue</h3>
@@ -263,7 +272,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-rocket"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">Réplique "Asteroids"</h3>
@@ -278,7 +287,7 @@
                     </div>
                 </article>
 
-                <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-max="3" data-tilt-speed="400">
                     <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-hand-paper"></i></div>
                     <div class="project-info">
                         <h3 style="text-align: center;">Hand Tracking AI</h3>
