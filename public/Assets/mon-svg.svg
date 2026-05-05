@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Fond gris sombre (correspond à --bg-sidebar) -->
+  <rect width="512" height="512" rx="128" fill="#1d2123" />
+  
+  <!-- Chevrons vert Mint (correspond à --accent) -->
+  <path d="M160 368 L48 256 L160 144 M352 368 L464 256 L352 144" fill="none" stroke="#4ade80" stroke-width="48" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Slash central blanc cassé (correspond à --text-main) -->
+  <line x1="200" y1="400" x2="312" y2="112" stroke="#f8fafc" stroke-width="48" stroke-linecap="round"/>
+</svg>
