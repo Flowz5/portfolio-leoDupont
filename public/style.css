@@ -34,13 +34,13 @@ body.light-mode {
    ========================================================= */
 
 .theme-switch-container {
-    margin-top: clamp(1rem, 3vh, 2rem);
+    margin-top: clamp(1rem, 0vh, 2rem);
     padding-top: clamp(1rem, 2vh, 1.5rem);
     border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 0px;
 }
 
 .theme-switch {
@@ -249,7 +249,7 @@ body {
 .navbar nav {
     display: flex;
     flex-direction: column;
-    gap: clamp(0.4rem, 1.5vh, 0.8rem);
+    gap: clamp(0.4rem, 0.8vh, 0.8rem);
     flex: 1;
 }
 
@@ -285,7 +285,7 @@ body {
 }
 
 .navbar a.highlight-link {
-    margin-top: 1rem;
+    margin-top: 0rem;
     border-color: transparent;
 }
 
