@@ -211,26 +211,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 const command = this.value.trim().toLowerCase();
                 this.value = '';
 
-                // Affiche la commande tapée
                 terminalOutput.innerHTML += `<p><span class="prompt">guest@portfolio:~$</span> ${command}</p>`;
 
-                // Traite la commande
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
                 } else if (command === '') {
-                    // Rien à faire si on appuie juste sur Entrée
                 } else if (terminalLogic[command]) {
                     terminalOutput.innerHTML += `<p>${terminalLogic[command]}</p>`;
                 } else {
                     terminalOutput.innerHTML += `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
                 }
 
-                // Autoscroll vers le bas
                 terminalBody.scrollTop = terminalBody.scrollHeight;
             }
         });
         
-        // Focus sur le terminal quand on clique dessus
         terminalBody.addEventListener('click', () => {
             terminalInput.focus();
         });
