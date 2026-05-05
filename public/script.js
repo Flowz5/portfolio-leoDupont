@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const terminalBody = document.getElementById('terminal-body');
 
     const terminalLogic = {
-        'help': "Commandes disponibles :<br>- <strong>whoami</strong> : En savoir plus sur moi<br>- <strong>skills</strong> : Afficher mes compétences clés<br>- <strong>contact</strong> : Mes informations de contact<br>- <strong>clear</strong> : Nettoyer le terminal",
+        'help': "Commandes disponibles :<br>- <strong>ctrl+K</strong> : Ouvrir la palette de commandes</strong> : En savoir plus sur moi<br>- <strong>skills</strong> : Afficher mes compétences clés<br>- <strong>contact</strong> : Mes informations de contact<br>- <strong>clear</strong> : Nettoyer le terminal",
         'whoami': "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
         'skills': "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
         'contact': "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>"
