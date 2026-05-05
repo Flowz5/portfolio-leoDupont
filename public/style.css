@@ -34,18 +34,18 @@ body.light-mode {
    ========================================================= */
 
 .theme-switch-container {
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
+    margin-top: clamp(1rem, 3vh, 2rem);
+    padding-top: clamp(1rem, 2vh, 1.5rem);
     border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 10px;
 }
 
 .theme-switch {
-    width: 55px;
-    height: 28px;
+    width: 65px;
+    height: 32px;
     background: #2d3336;
     border-radius: 50px;
     position: relative;
@@ -57,9 +57,9 @@ body.light-mode {
 .switch-ball {
     position: absolute;
     top: 2px;
-    left: 29px;
-    width: 22px;
-    height: 22px;
+    left: 35px;
+    width: 26px;
+    height: 26px;
     background: #141718;
     border-radius: 50%;
     display: flex;
@@ -70,7 +70,7 @@ body.light-mode {
 }
 
 .switch-ball i {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--accent);
     transition: transform 0.4s ease;
 }
@@ -80,7 +80,7 @@ body.light-mode .theme-switch {
 }
 
 body.light-mode .switch-ball {
-    left: 3px;
+    left: 4px;
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -90,7 +90,7 @@ body.light-mode .switch-ball i {
 }
 
 #theme-text {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
     font-weight: 500;
     text-transform: uppercase;
@@ -211,13 +211,14 @@ body {
     -webkit-backdrop-filter: blur(15px);
     display: flex;
     flex-direction: column;
-    padding: 1rem 1.2rem;
+    padding: clamp(1.2rem, 3vh, 2rem) 1.5rem;
     border-right: 1px solid var(--border-color);
     z-index: 999;
     transition: transform 0.3s ease;
     overflow-y: auto;
 }
 
+/* Cache la barre de défilement interne de la navbar pour l'esthétique */
 .navbar::-webkit-scrollbar {
     width: 0px;
 }
@@ -225,44 +226,44 @@ body {
 .profile-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 0.8rem;
+    border-radius: 16px;
+    padding: clamp(1rem, 2vh, 1.5rem) 1rem;
     text-align: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: clamp(1.2rem, 3vh, 2rem);
 }
 
 .profile-box h2 {
     color: var(--accent);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin: 0;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 1px;
 }
 
 .profile-box p {
     color: var(--text-muted);
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     margin: 0;
 }
 
 .navbar nav {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: clamp(0.4rem, 1.5vh, 0.8rem);
     flex: 1;
 }
 
 .navbar a {
     color: var(--text-muted);
     text-decoration: none;
-    padding: 0.4rem 1rem;
+    padding: clamp(0.6rem, 1.5vh, 0.8rem) 1.2rem;
     border-radius: 30px;
     border: 1px solid var(--border-color);
     transition: all 0.3s;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.85rem;
+    gap: 12px;
+    font-size: 0.95rem;
 }
 
 .navbar a i {
@@ -284,7 +285,7 @@ body {
 }
 
 .navbar a.highlight-link {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     border-color: transparent;
 }
 
@@ -296,9 +297,9 @@ body {
     margin-left: auto;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-size: 0.65rem;
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 0.7rem;
     font-family: 'Fira Code', 'Courier New', monospace;
     color: var(--text-muted);
     letter-spacing: 0.5px;
@@ -311,23 +312,23 @@ body.light-mode .shortcut-badge {
 .sidebar-footer {
     text-align: center;
     margin-top: auto;
-    padding-top: 0.5rem;
+    padding-top: 1rem;
 }
 
 .socials-sidebar {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 0.5rem;
+    gap: 15px;
+    margin-bottom: 1rem;
     background: rgba(255, 255, 255, 0.03);
-    padding: 8px;
-    border-radius: 15px;
+    padding: 10px;
+    border-radius: 20px;
     border: 1px solid var(--border-color);
 }
 
 .socials-sidebar a {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transition: color 0.3s;
 }
 
@@ -337,15 +338,15 @@ body.light-mode .shortcut-badge {
 
 .toggle-btn {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    top: 1.5rem;
+    left: 1.5rem;
     background: var(--bg-main);
     color: var(--accent);
     border: 1px solid var(--border-color);
-    padding: 0.5rem 0.8rem;
+    padding: 0.6rem 1rem;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     z-index: 1001;
     transition: 0.3s;
 }
