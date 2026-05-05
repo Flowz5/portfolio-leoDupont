@@ -41,6 +41,7 @@
             <a href="#services"><i class="fas fa-briefcase"></i> Services</a>
             <a href="#skills"><i class="fas fa-laptop-code"></i> Compétences</a>
             <a href="#projects"><i class="fas fa-code"></i> Projets</a>
+            <a href="#terminal-section"><i class="fas fa-terminal"></i> Terminal</a>
             <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
             <a href="./CV/index.html" target="_blank" class="highlight-link">
                 <i class="fas fa-file-alt"></i> Mon CV
@@ -295,6 +296,30 @@
             </div>
         </section>
 
+        <!-- Nouvelle section Terminal interactif -->
+        <section id="terminal-section" class="big-section">
+            <h2 class="section-title" data-aos="fade-up">Terminal</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;" data-aos="fade-up">Un petit aperçu en ligne de commande. Essayez de taper 'help'.</p>
+            <div class="terminal-container" data-aos="fade-up">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">guest@portfolio:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-output" id="terminal-output">
+                        <p>Léo Dupont (Portfolio) [Version 1.0.0]</p>
+                        <p>Tapez 'help' pour afficher la liste des commandes disponibles.</p>
+                    </div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">guest@portfolio:~$ </span>
+                        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="big-section" style="margin-bottom: 5rem;">
             <h2 class="section-title" data-aos="fade-up">Me Contacter</h2>
             <div class="contact-container">
@@ -312,6 +337,20 @@
 
         <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up"></i></a>
     </main>
+
+    <!-- Palette de commandes -->
+    <div id="cmd-palette" class="cmd-palette-overlay hidden">
+        <div class="cmd-palette-box">
+            <div class="cmd-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="cmd-input" placeholder="Rechercher... (Projets, Contact...)">
+                <span class="cmd-esc">ESC</span>
+            </div>
+            <ul id="cmd-results" class="cmd-results">
+                <!-- Les résultats seront injectés ici par JS -->
+            </ul>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
