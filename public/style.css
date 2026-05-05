@@ -24,6 +24,9 @@ body.light-mode {
     --border-color: rgba(0, 0, 0, 0.1);
     --card-bg: #ffffff;
     --blob-opacity: 0.08;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
 }
 
 /* =========================================================
@@ -72,7 +75,6 @@ body.light-mode {
     transition: transform 0.4s ease;
 }
 
-
 body.light-mode .theme-switch {
     background: #e2e8f0;
 }
@@ -108,10 +110,16 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--bg-main);
+    background-color: var(--bg-main);
     color: var(--text-main);
     display: flex;
     min-height: 100vh;
+    /* Fond quadrillé style "Tech" */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-attachment: fixed;
 }
 
 /* =========================================================
@@ -164,7 +172,7 @@ body {
     position: absolute;
     background: var(--accent);
     filter: blur(120px);
-    opacity: 0.12;
+    opacity: var(--blob-opacity); /* Utilisation de la variable */
     border-radius: 50%;
 }
 
@@ -193,7 +201,7 @@ body {
     height: 100vh;
     width: 280px;
     background: var(--bg-sidebar) !important;
-    backdrop-filter: blur(15px); /* Effet verre dépoli */
+    backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     display: flex;
     flex-direction: column;
@@ -203,7 +211,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* En-tête du profil dans la sidebar */
 .profile-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
@@ -227,7 +234,6 @@ body {
     margin: 0;
 }
 
-/* Menu de navigation */
 .navbar nav {
     display: flex;
     flex-direction: column;
@@ -275,7 +281,23 @@ body {
     border-color: var(--accent);
 }
 
-/* Pied de page de la sidebar */
+/* Badge de raccourci clavier dans le menu */
+.shortcut-badge {
+    margin-left: auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+}
+
+body.light-mode .shortcut-badge {
+    background: rgba(0, 0, 0, 0.05);
+}
+
 .sidebar-footer {
     text-align: center;
     margin-top: auto;
@@ -309,7 +331,6 @@ body {
     margin: 0;
 }
 
-/* Bouton Menu Mobile */
 .toggle-btn {
     position: fixed;
     top: 1.5rem;
@@ -369,8 +390,13 @@ body {
     margin-bottom: 1rem;
 }
 
+/* Texte avec dégradé moderne */
 .accent-text {
-    color: var(--accent);
+    background: linear-gradient(135deg, var(--accent) 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .hero-center h2 {
@@ -387,7 +413,6 @@ body {
     margin-bottom: 2.5rem;
 }
 
-/* Boutons de l'accueil */
 .btn-group {
     display: flex;
     gap: 15px;
@@ -405,7 +430,6 @@ body {
     display: inline-block;
 }
 
-/* Modification pour l'effet Bouton Magnétique */
 .btn-primary {
     background: var(--accent);
     color: var(--bg-main);
@@ -460,7 +484,6 @@ body {
     border-radius: 3px;
 }
 
-/* Mise en page Qui suis-je */
 .full-width-container {
     display: flex;
     align-items: center;
@@ -583,11 +606,13 @@ body {
     transition: all 0.3s;
 }
 
+/* Lueur sur les cartes au survol */
 .service-card:hover, 
 .project-card:hover {
-    border-color: var(--accent);
+    box-shadow: 0 10px 40px -10px rgba(74, 222, 128, 0.15);
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(255, 255, 255, 0.03);
     transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.04);
 }
 
 .icon-box, 
@@ -1012,4 +1037,34 @@ body {
     h1, h2, h3, p, span {
         color: #000000 !important;
     }
+}
+
+/* =========================================================
+    SCROLLBAR PERSONNALISÉE
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-main);
+    border-left: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2d3336;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
