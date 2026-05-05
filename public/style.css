@@ -106,7 +106,6 @@ html {
     overflow-x: hidden;
 }
 
-/* TRANSITION DE PAGE FLUIDE À L'OUVERTURE */
 body {
     margin: 0;
     padding: 0;
@@ -120,12 +119,13 @@ body {
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
     background-attachment: fixed;
-    animation: pageFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    /* Le filtre blur a été retiré pour ne pas casser la position fixe */
+    animation: pageFadeIn 0.8s ease-out forwards;
 }
 
 @keyframes pageFadeIn {
-    0% { opacity: 0; filter: blur(5px); }
-    100% { opacity: 1; filter: blur(0); }
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* =========================================================
