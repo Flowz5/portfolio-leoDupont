@@ -34,13 +34,13 @@ body.light-mode {
    ========================================================= */
 
 .theme-switch-container {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .theme-switch {
@@ -106,6 +106,7 @@ html {
     overflow-x: hidden;
 }
 
+/* TRANSITION DE PAGE FLUIDE À L'OUVERTURE */
 body {
     margin: 0;
     padding: 0;
@@ -119,7 +120,6 @@ body {
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
     background-size: 40px 40px;
     background-attachment: fixed;
-    /* Le filtre blur a été retiré pour ne pas casser la position fixe */
     animation: pageFadeIn 0.8s ease-out forwards;
 }
 
@@ -211,53 +211,59 @@ body {
     -webkit-backdrop-filter: blur(15px);
     display: flex;
     flex-direction: column;
-    padding: 2rem 1.5rem;
+    padding: 1.2rem 1.2rem;
     border-right: 1px solid var(--border-color);
     z-index: 999;
     transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Cache la barre de défilement interne de la navbar pour l'esthétique */
+.navbar::-webkit-scrollbar {
+    width: 0px;
 }
 
 .profile-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 1.5rem 1rem;
+    padding: 1rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
 }
 
 .profile-box h2 {
     color: var(--accent);
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     letter-spacing: 1px;
 }
 
 .profile-box p {
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     margin: 0;
 }
 
 .navbar nav {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.4rem;
     flex: 1;
 }
 
 .navbar a {
     color: var(--text-muted);
     text-decoration: none;
-    padding: 0.8rem 1.2rem;
+    padding: 0.6rem 1rem;
     border-radius: 30px;
     border: 1px solid var(--border-color);
     transition: all 0.3s;
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .navbar a i {
@@ -402,7 +408,7 @@ body.light-mode .shortcut-badge {
     font-weight: 400;
     color: var(--text-main);
     margin-bottom: 1.5rem;
-    min-height: 2.7rem; /* Évite que la hauteur saute pendant la frappe */
+    min-height: 2.7rem; 
 }
 
 /* CURSEUR MACHINE À ÉCRIRE */
@@ -613,7 +619,6 @@ body.light-mode .shortcut-badge {
     border: 1px solid var(--border-color);
     padding: 2rem;
     border-radius: 16px;
-    /* On laisse Vanilla-tilt s'occuper de la transformation au survol */
     transition: box-shadow 0.3s, background 0.3s, border-color 0.3s; 
 }
 
@@ -646,8 +651,8 @@ body.light-mode .shortcut-badge {
 .project-card::after {
     content: "";
     position: absolute;
-    inset: 1px; /* Masque le gradient sauf sur 1px de bordure */
-    background: #181b1d; /* Simule le fond de la carte */
+    inset: 1px;
+    background: #181b1d;
     border-radius: 15px;
     z-index: 1;
     transition: background 0.3s;
@@ -659,11 +664,11 @@ body.light-mode .project-card::after {
 
 .project-card > * {
     position: relative;
-    z-index: 2; /* S'assure que le contenu reste au dessus du faux-fond */
+    z-index: 2;
 }
 
 .project-card:hover::before {
-    opacity: 1; /* Affiche l'animation au survol */
+    opacity: 1;
 }
 
 @keyframes border-spin {
@@ -1066,6 +1071,31 @@ body.light-mode .project-card::after {
     .full-width-container {
         flex-direction: column;
         gap: 2rem;
+    }
+}
+
+/* =========================================================
+    PRINT CSS (Écoconception / Impression)
+   ========================================================= */
+@media print {
+    .navbar, .bg-blobs, .scroll-top, .theme-switch-container, .btn-group {
+        display: none !important;
+    }
+    
+    body, .content, .big-section, .project-card, .service-card, .timeline-content {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+
+    h1, h2, h3, p, span {
+        color: #000000 !important;
     }
 }
 
