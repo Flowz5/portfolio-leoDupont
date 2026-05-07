@@ -47,102 +47,6 @@ body.matrix-mode * {
 }
 
 /* =========================================================
-    PARAMÈTRES SIDEBAR (Thème & Langue)
-   ========================================================= */
-
-.settings-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: clamp(1rem, 3vh, 2rem);
-    padding-top: clamp(1rem, 2vh, 1.5rem);
-    border-top: 1px solid var(--border-color);
-}
-
-.theme-switch-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.theme-switch {
-    width: 55px;
-    height: 28px;
-    background: #2d3336;
-    border-radius: 50px;
-    position: relative;
-    cursor: pointer;
-    transition: background 0.4s ease;
-    border: 1px solid var(--border-color);
-}
-
-.switch-ball {
-    position: absolute;
-    top: 2px;
-    left: 29px;
-    width: 22px;
-    height: 22px;
-    background: #141718;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.switch-ball i {
-    font-size: 0.75rem;
-    color: var(--accent);
-    transition: transform 0.4s ease;
-}
-
-body.light-mode .theme-switch {
-    background: #e2e8f0;
-}
-
-body.light-mode .switch-ball {
-    left: 3px;
-    background: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-body.light-mode .switch-ball i {
-    color: #f59e0b;
-}
-
-#theme-text {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.lang-btn {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    padding: 6px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-family: inherit;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.lang-btn:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-}
-
-/* =========================================================
     BASE & ANIMATION D'OUVERTURE
    ========================================================= */
 
@@ -206,7 +110,7 @@ body {
     background: var(--bg-sidebar) !important;
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     display: flex; flex-direction: column;
-    padding: clamp(1.2rem, 3vh, 2rem) 1.5rem;
+    padding: 2rem 1.5rem; /* Marges de base */
     border-right: 1px solid var(--border-color);
     z-index: 999; transition: transform 0.3s ease; overflow-y: auto;
 }
@@ -217,9 +121,9 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: clamp(1rem, 2vh, 1.5rem) 1rem;
+    padding: 1.5rem 1rem;
     text-align: center;
-    margin-bottom: clamp(1.2rem, 3vh, 2rem);
+    margin-bottom: 1.5rem;
 }
 .profile-box h2 {
     color: var(--accent); font-size: 1.5rem; margin: 0; margin-bottom: 0.3rem; letter-spacing: 1px;
@@ -259,10 +163,10 @@ body {
     100% { transform: scale(0.95); opacity: 0.6; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
 }
 
-.navbar nav { display: flex; flex-direction: column; gap: clamp(0.4rem, 1.5vh, 0.8rem); flex: 1; }
+.navbar nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
 .navbar a {
     color: var(--text-muted); text-decoration: none;
-    padding: clamp(0.6rem, 1.5vh, 0.8rem) 1.2rem;
+    padding: 0.8rem 1.2rem;
     border-radius: 30px; border: 1px solid var(--border-color);
     transition: all 0.3s; display: flex; align-items: center; gap: 12px; font-size: 0.95rem;
 }
@@ -279,9 +183,69 @@ body {
 }
 body.light-mode .shortcut-badge { background: rgba(0, 0, 0, 0.05); }
 
-.sidebar-footer { text-align: center; margin-top: auto; padding-top: 1rem; }
+/* PARAMÈTRES SIDEBAR (Thème & Langue) */
+.settings-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto; /* Pousse automatiquement la boite vers le bas */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.theme-switch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.theme-switch {
+    width: 55px;
+    height: 28px;
+    background: #2d3336;
+    border-radius: 50px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.4s ease;
+    border: 1px solid var(--border-color);
+}
+
+.switch-ball {
+    position: absolute;
+    top: 2px;
+    left: 29px;
+    width: 22px;
+    height: 22px;
+    background: #141718;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.switch-ball i { font-size: 0.75rem; color: var(--accent); transition: transform 0.4s ease; }
+body.light-mode .theme-switch { background: #e2e8f0; }
+body.light-mode .switch-ball { left: 3px; background: #ffffff; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+body.light-mode .switch-ball i { color: #f59e0b; }
+
+#theme-text {
+    font-size: 0.75rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.lang-btn {
+    background: transparent; border: 1px solid var(--border-color); color: var(--text-muted);
+    padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
+    font-weight: 600; font-family: inherit; transition: 0.3s; display: flex; align-items: center; gap: 6px;
+}
+.lang-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+.sidebar-footer { text-align: center; padding-top: 1rem; }
 .socials-sidebar {
-    display: flex; justify-content: center; gap: 15px; margin-bottom: 1rem;
+    display: flex; justify-content: center; gap: 15px; margin-bottom: 0;
     background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 20px; border: 1px solid var(--border-color);
 }
 .socials-sidebar a { color: var(--text-muted); font-size: 1.2rem; transition: color 0.3s; }
@@ -476,7 +440,11 @@ body.matrix-mode .terminal-output p, body.matrix-mode #terminal-input { color: #
 .scroll-top:hover { border-color: var(--accent); background: var(--accent); color: var(--bg-main); }
 .scroll-top.active { opacity: 1; pointer-events: all; }
 
-/* RESPONSIVE & PRINT & SCROLLBAR */
+
+/* =========================================================
+    RESPONSIVE DESIGN (LARGEUR / WIDTH)
+   ========================================================= */
+
 @media (max-width: 1024px) {
     .navbar { transform: translateX(-100%); }
     .navbar.nav-open { transform: translateX(0); }
@@ -488,6 +456,48 @@ body.matrix-mode .terminal-output p, body.matrix-mode #terminal-input { color: #
     .hero-center h1 { font-size: 2.8rem; }
     .full-width-container { flex-direction: column; gap: 2rem; }
 }
+
+/* =========================================================
+    RESPONSIVE DESIGN (HAUTEUR VERTICALE / HEIGHT)
+   ========================================================= */
+
+/* Pour les ordinateurs portables standards ou navigateurs chargés */
+@media (max-height: 900px) {
+    .navbar { padding: 1.2rem 1.2rem; }
+    .profile-box { padding: 1rem; margin-bottom: 1rem; border-radius: 12px; }
+    .profile-box h2 { font-size: 1.3rem; }
+    .status-indicator { margin-top: 8px; padding: 4px 10px; }
+    .navbar nav { gap: 0.25rem; }
+    .navbar a { padding: 0.5rem 1rem; font-size: 0.85rem; }
+    .settings-container { padding-top: 1rem; gap: 10px; }
+    .sidebar-footer { padding-top: 0.8rem; }
+    .socials-sidebar { padding: 8px; gap: 10px; }
+}
+
+/* Pour les très petits écrans (MacBook 13", Split screen, etc.) */
+@media (max-height: 750px) {
+    .navbar { padding: 0.8rem 1.2rem; }
+    .profile-box { padding: 0.8rem; margin-bottom: 0.5rem; }
+    .profile-box h2 { font-size: 1.2rem; }
+    .profile-box p { font-size: 0.75rem; }
+    .status-indicator { margin-top: 6px; padding: 3px 8px; }
+    .status-text { font-size: 0.7rem; }
+    .navbar nav { gap: 0.15rem; }
+    .navbar a { padding: 0.4rem 1rem; font-size: 0.8rem; gap: 8px; }
+    .shortcut-badge { padding: 2px 4px; font-size: 0.6rem; }
+    .settings-container { padding-top: 0.5rem; flex-direction: row; }
+    .theme-switch-container { flex-direction: row; align-items: center; } /* Met le switch et le texte à côté */
+    #theme-text { display: none; } /* On cache le texte pour gagner une ligne entière */
+    .sidebar-footer { padding-top: 0.5rem; }
+    .socials-sidebar { padding: 6px; border-radius: 15px; margin-bottom: 0; }
+    .socials-sidebar a { font-size: 1rem; }
+}
+
+
+/* =========================================================
+    PRINT CSS & SCROLLBAR
+   ========================================================= */
+
 @media print {
     .navbar, .bg-blobs, .scroll-top, .theme-switch-container, .btn-group, .status-indicator, #lang-toggle { display: none !important; }
     body, .content, .big-section, .project-card, .service-card, .timeline-content { background: #ffffff !important; color: #000000 !important; box-shadow: none !important; border: 1px solid #ccc !important; }
