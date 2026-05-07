@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const translations = {
         fr: {
             role: "Étudiant en BTS SIO - Option SLAM",
-            status: "Recherche une alternance",
+            status: "En ligne",
             nav_search: "Recherche", nav_home: "Accueil", nav_about: "À Propos", nav_path: "Parcours",
             nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "Mon CV", theme_dark: "Mode Sombre", theme_light: "Mode Clair",
