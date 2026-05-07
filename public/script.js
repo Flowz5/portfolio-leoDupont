@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 8. TERMINAL INTERACTIF & EASTER EGGS
+    // 8. TERMINAL INTERACTIF & EASTER EGGS (VERSION ROBUSTE)
     // =========================================================
     const terminalInput = document.getElementById('terminal-input');
     const terminalOutput = document.getElementById('terminal-output');
@@ -382,46 +382,57 @@ document.addEventListener("DOMContentLoaded", () => {
         'contact': "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>"
     };
 
-    if (terminalInput) {
-        terminalInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                // LE CORRECTIF EST LÀ : Bloque tout comportement inattendu du navigateur
-                e.preventDefault(); 
+    if (terminalInput && terminalOutput) {
+        // Utilisation de 'keyup' au lieu de 'keydown' pour une meilleure compatibilité
+        terminalInput.addEventListener('keyup', function(e) {
+            // Vérification stricte de la touche Entrée
+            if (e.key === 'Enter' || e.code === 'Enter' || e.keyCode === 13) {
+                e.preventDefault();
 
                 const command = this.value.trim().toLowerCase();
                 this.value = '';
 
-                if (!terminalOutput) return;
+                // On crée les nouveaux éléments au lieu de détruire/recréer tout le bloc avec innerHTML
+                const commandLine = document.createElement('p');
+                commandLine.innerHTML = `<span class="prompt">guest@portfolio:~$</span> ${command}`;
+                terminalOutput.appendChild(commandLine);
 
-                terminalOutput.innerHTML += `<p><span class="prompt">guest@portfolio:~$</span> ${command}</p>`;
+                const responseBlock = document.createElement('div');
 
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
                 } else if (command === '') {
                     // Ne rien faire
                 } else if (command === 'sudo') {
-                    terminalOutput.innerHTML += `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
+                    responseBlock.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else if (command === 'matrix') {
                     document.body.classList.toggle('matrix-mode');
                     if (document.body.classList.contains('matrix-mode')) {
-                        terminalOutput.innerHTML += `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
+                        responseBlock.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
                     } else {
-                        terminalOutput.innerHTML += `<p class="info">Déconnexion de la Matrice...</p>`;
+                        responseBlock.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
                     }
+                    terminalOutput.appendChild(responseBlock);
                 } else if (command === 'rm -rf /') {
-                    terminalOutput.innerHTML += `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
+                    responseBlock.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else if (terminalLogic[command]) {
-                    terminalOutput.innerHTML += `<p>${terminalLogic[command]}</p>`;
+                    responseBlock.innerHTML = `<p>${terminalLogic[command]}</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else {
-                    terminalOutput.innerHTML += `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
+                    responseBlock.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 }
 
+                // Défilement automatique vers le bas
                 if (terminalBody) {
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
             }
         });
         
+        // Focus automatique quand on clique n'importe où dans la boîte
         if (terminalBody) {
             terminalBody.addEventListener('click', () => {
                 terminalInput.focus();
