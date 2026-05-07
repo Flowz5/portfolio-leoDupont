@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================================================
-    // 1. VARIABLES GLOBALES (CORRECTION DU BUG DE CHARGEMENT)
+    // 1. VARIABLES GLOBALES
     // =========================================================
     let currentLang = localStorage.getItem('lang') || 'fr';
-    let currentCommands = []; // Déclaré en haut pour être accessible partout
+    let currentCommands = [];
 
     const translations = {
         fr: {
@@ -132,10 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
-            // 1. On lance l'animation de disparition
             document.body.classList.add('lang-switching');
 
-            // 2. On attend la fin du fondu (250ms) pour faire le changement
             setTimeout(() => {
                 currentLang = currentLang === 'fr' ? 'en' : 'fr';
                 localStorage.setItem('lang', currentLang);
@@ -149,13 +147,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         : (currentLang === 'en' ? 'Dark Mode' : 'Mode Sombre');
                 }
 
-                // 3. On retire la classe pour lancer l'animation d'apparition
                 document.body.classList.remove('lang-switching');
             }, 250);
         });
     }
 
-    // INITIALISATION DE LA LANGUE AU CHARGEMENT
     applyLanguage(currentLang);
 
     // =========================================================
