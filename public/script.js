@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         en: {
             role: "BTS SIO Student - SLAM Option",
-            status: "Looking for an apprenticeship",
+            status: "Online",
             nav_search: "Search", nav_home: "Home", nav_about: "About", nav_path: "Journey",
             nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "My Resume", theme_dark: "Dark Mode", theme_light: "Light Mode",
