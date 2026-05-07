@@ -110,7 +110,7 @@ body {
     background: var(--bg-sidebar) !important;
     backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
     display: flex; flex-direction: column;
-    padding: 2rem 1.5rem; /* Marges de base */
+    padding: 1.5rem 1.2rem;
     border-right: 1px solid var(--border-color);
     z-index: 999; transition: transform 0.3s ease; overflow-y: auto;
 }
@@ -121,12 +121,12 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    padding: 1.5rem 1rem;
+    padding: 1.2rem 1rem;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
 }
 .profile-box h2 {
-    color: var(--accent); font-size: 1.5rem; margin: 0; margin-bottom: 0.3rem; letter-spacing: 1px;
+    color: var(--accent); font-size: 1.4rem; margin: 0; margin-bottom: 0.3rem; letter-spacing: 1px;
 }
 .profile-box p { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
 
@@ -135,7 +135,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 12px;
+    margin-top: 10px;
     background: rgba(74, 222, 128, 0.05);
     padding: 6px 12px;
     border-radius: 20px;
@@ -163,12 +163,12 @@ body {
     100% { transform: scale(0.95); opacity: 0.6; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
 }
 
-.navbar nav { display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.navbar nav { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; }
 .navbar a {
     color: var(--text-muted); text-decoration: none;
-    padding: 0.8rem 1.2rem;
+    padding: 0.6rem 1rem;
     border-radius: 30px; border: 1px solid var(--border-color);
-    transition: all 0.3s; display: flex; align-items: center; gap: 12px; font-size: 0.95rem;
+    transition: all 0.3s; display: flex; align-items: center; gap: 12px; font-size: 0.9rem;
 }
 .navbar a i { width: 20px; text-align: center; }
 .navbar a:hover { border-color: var(--accent); color: var(--accent); background: rgba(74, 222, 128, 0.05); }
@@ -183,22 +183,23 @@ body {
 }
 body.light-mode .shortcut-badge { background: rgba(0, 0, 0, 0.05); }
 
-/* PARAMÈTRES SIDEBAR (Thème & Langue) */
+/* PARAMÈTRES SIDEBAR (Thème & Langue) - CORRECTION DE L'ALIGNEMENT */
 .settings-container {
     display: flex;
+    flex-direction: row; /* Tout sur la même ligne */
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-top: auto; /* Pousse automatiquement la boite vers le bas */
-    padding-top: 1.5rem;
+    margin-top: auto; /* Pousse automatiquement vers le bas */
+    padding-top: 1rem;
     border-top: 1px solid var(--border-color);
 }
 
 .theme-switch-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* Icône et texte alignés horizontalement */
     align-items: center;
-    gap: 6px;
+    gap: 10px;
 }
 
 .theme-switch {
@@ -238,7 +239,7 @@ body.light-mode .switch-ball i { color: #f59e0b; }
 
 .lang-btn {
     background: transparent; border: 1px solid var(--border-color); color: var(--text-muted);
-    padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
+    padding: 5px 10px; border-radius: 8px; cursor: pointer; font-size: 0.8rem;
     font-weight: 600; font-family: inherit; transition: 0.3s; display: flex; align-items: center; gap: 6px;
 }
 .lang-btn:hover { color: var(--accent); border-color: var(--accent); }
@@ -246,7 +247,7 @@ body.light-mode .switch-ball i { color: #f59e0b; }
 .sidebar-footer { text-align: center; padding-top: 1rem; }
 .socials-sidebar {
     display: flex; justify-content: center; gap: 15px; margin-bottom: 0;
-    background: rgba(255, 255, 255, 0.03); padding: 10px; border-radius: 20px; border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.03); padding: 8px 12px; border-radius: 20px; border: 1px solid var(--border-color);
 }
 .socials-sidebar a { color: var(--text-muted); font-size: 1.2rem; transition: color 0.3s; }
 .socials-sidebar a:hover { color: var(--accent); }
@@ -461,38 +462,43 @@ body.matrix-mode .terminal-output p, body.matrix-mode #terminal-input { color: #
     RESPONSIVE DESIGN (HAUTEUR VERTICALE / HEIGHT)
    ========================================================= */
 
-/* Pour les ordinateurs portables standards ou navigateurs chargés */
-@media (max-height: 900px) {
-    .navbar { padding: 1.2rem 1.2rem; }
-    .profile-box { padding: 1rem; margin-bottom: 1rem; border-radius: 12px; }
-    .profile-box h2 { font-size: 1.3rem; }
-    .status-indicator { margin-top: 8px; padding: 4px 10px; }
-    .navbar nav { gap: 0.25rem; }
-    .navbar a { padding: 0.5rem 1rem; font-size: 0.85rem; }
-    .settings-container { padding-top: 1rem; gap: 10px; }
-    .sidebar-footer { padding-top: 0.8rem; }
-    .socials-sidebar { padding: 8px; gap: 10px; }
-}
-
-/* Pour les très petits écrans (MacBook 13", Split screen, etc.) */
-@media (max-height: 750px) {
-    .navbar { padding: 0.8rem 1.2rem; }
-    .profile-box { padding: 0.8rem; margin-bottom: 0.5rem; }
+/* Pour les ordinateurs portables (ex: 13/14 pouces, navigateur chargé) */
+@media (max-height: 950px) {
+    .navbar { padding: 1rem; }
+    .profile-box { padding: 0.8rem; margin-bottom: 0.8rem; border-radius: 12px; }
     .profile-box h2 { font-size: 1.2rem; }
     .profile-box p { font-size: 0.75rem; }
-    .status-indicator { margin-top: 6px; padding: 3px 8px; }
-    .status-text { font-size: 0.7rem; }
+    
+    .status-indicator { margin-top: 6px; padding: 4px 8px; }
+    
     .navbar nav { gap: 0.15rem; }
-    .navbar a { padding: 0.4rem 1rem; font-size: 0.8rem; gap: 8px; }
-    .shortcut-badge { padding: 2px 4px; font-size: 0.6rem; }
-    .settings-container { padding-top: 0.5rem; flex-direction: row; }
-    .theme-switch-container { flex-direction: row; align-items: center; } /* Met le switch et le texte à côté */
-    #theme-text { display: none; } /* On cache le texte pour gagner une ligne entière */
-    .sidebar-footer { padding-top: 0.5rem; }
-    .socials-sidebar { padding: 6px; border-radius: 15px; margin-bottom: 0; }
-    .socials-sidebar a { font-size: 1rem; }
+    .navbar a { padding: 0.45rem 1rem; font-size: 0.85rem; }
+    
+    .settings-container { padding-top: 0.8rem; }
+    #theme-text { display: none; } /* CACHE LE TEXTE POUR GAGNER DE LA PLACE */
+    
+    .sidebar-footer { padding-top: 0.8rem; }
+    .socials-sidebar { padding: 6px 15px; margin-bottom: 0; }
 }
 
+/* Pour les très petits écrans ou fenêtres scindées (Split screen) */
+@media (max-height: 700px) {
+    .navbar { padding: 0.8rem; }
+    .profile-box { padding: 0.5rem; margin-bottom: 0.5rem; }
+    .profile-box h2 { font-size: 1.1rem; }
+    
+    .status-indicator { padding: 2px 6px; margin-top: 4px; }
+    .status-text { font-size: 0.65rem; }
+    
+    .navbar nav { gap: 0; }
+    .navbar a { padding: 0.3rem 0.8rem; font-size: 0.8rem; border-color: transparent; }
+    .navbar a:hover, .navbar a.active { border-color: var(--accent); }
+    
+    .settings-container { padding-top: 0.5rem; gap: 10px; }
+    .sidebar-footer { padding-top: 0.5rem; }
+    .socials-sidebar { padding: 4px 10px; }
+    .socials-sidebar a { font-size: 1rem; }
+}
 
 /* =========================================================
     PRINT CSS & SCROLLBAR
