@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================================================
-    // 1. CONFIGURATION GLOBALE ET TRADUCTIONS
+    // 1. VARIABLES GLOBALES (CORRECTION DU BUG DE CHARGEMENT)
     // =========================================================
     let currentLang = localStorage.getItem('lang') || 'fr';
+    let currentCommands = []; // Déclaré en haut pour être accessible partout
 
     const translations = {
         fr: {
             role: "Étudiant en BTS SIO - Option SLAM",
-            status: "En ligne",
+            status: "Recherche une alternance",
             nav_search: "Recherche", nav_home: "Accueil", nav_about: "À Propos", nav_path: "Parcours",
             nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "Mon CV", theme_dark: "Mode Sombre", theme_light: "Mode Clair",
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         en: {
             role: "BTS SIO Student - SLAM Option",
-            status: "Online",
+            status: "Looking for an apprenticeship",
             nav_search: "Search", nav_home: "Home", nav_about: "About", nav_path: "Journey",
             nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "My Resume", theme_dark: "Dark Mode", theme_light: "Light Mode",
@@ -91,9 +92,20 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // =========================================================
-    // 2. BILINGUISME
+    // 2. FONCTIONS DE MISE À JOUR (LANGUE & PALETTE)
     // =========================================================
-    const langBtn = document.getElementById('lang-toggle');
+    function updatePaletteCommands(lang) {
+        currentCommands = [
+            { title: translations[lang].nav_home, icon: "fa-home", action: () => window.location.hash = '#accueil' },
+            { title: translations[lang].nav_about, icon: "fa-user", action: () => window.location.hash = '#about' },
+            { title: translations[lang].nav_projects, icon: "fa-code", action: () => window.location.hash = '#projects' },
+            { title: translations[lang].nav_contact, icon: "fa-envelope", action: () => window.location.hash = '#contact' },
+            { title: translations[lang].nav_terminal, icon: "fa-terminal", action: () => { window.location.hash = '#terminal-section'; setTimeout(() => document.getElementById('terminal-input').focus(), 500); } },
+            { title: translations[lang].nav_cv, icon: "fa-file-alt", action: () => window.open('./CV/index.html', '_blank') },
+            { title: "GitHub", icon: "fa-github", action: () => window.open('https://github.com/Flowz5', '_blank') }
+        ];
+    }
+
     const langText = document.getElementById('lang-text');
 
     function applyLanguage(lang) {
@@ -102,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) {
+            if (translations[lang] && translations[lang][key]) {
                 el.innerHTML = translations[lang][key];
             }
         });
@@ -117,13 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePaletteCommands(lang);
     }
 
+    const langBtn = document.getElementById('lang-toggle');
     if (langBtn) {
         langBtn.addEventListener('click', () => {
             currentLang = currentLang === 'fr' ? 'en' : 'fr';
             localStorage.setItem('lang', currentLang);
             applyLanguage(currentLang);
             
-            // Mise à jour du texte du thème selon la langue
             const themeText = document.getElementById('theme-text');
             const isLight = document.body.classList.contains('light-mode');
             if (themeText) {
@@ -132,11 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     : (currentLang === 'en' ? 'Dark Mode' : 'Mode Sombre');
             }
         });
-        applyLanguage(currentLang);
     }
 
+    // INITIALISATION DE LA LANGUE AU CHARGEMENT
+    applyLanguage(currentLang);
+
     // =========================================================
-    // 3. GESTION DU MENU ET DU THEME
+    // 3. GESTION DU MENU ET DU THÈME
     // =========================================================
     const navbar = document.getElementById("navbar");
     const toggleBtn = document.getElementById("toggle-btn");
@@ -272,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 heroSubtitle.classList.remove('typewriter-cursor');
             }
         }
-        // Attente synchronisée avec la traduction pour éviter les conflits
+        
         setTimeout(() => {
             textToType = heroSubtitle.textContent;
             heroSubtitle.textContent = '';
@@ -281,25 +295,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 7. PALETTE DE COMMANDES (CTRL+K)
+    // 7. GESTION DE LA PALETTE (CTRL+K)
     // =========================================================
     const cmdPalette = document.getElementById('cmd-palette');
     const cmdInput = document.getElementById('cmd-input');
     const cmdResults = document.getElementById('cmd-results');
     const cmdBtnNav = document.getElementById('cmd-btn-nav');
-    let currentCommands = [];
-
-    function updatePaletteCommands(lang) {
-        currentCommands = [
-            { title: translations[lang].nav_home, icon: "fa-home", action: () => window.location.hash = '#accueil' },
-            { title: translations[lang].nav_about, icon: "fa-user", action: () => window.location.hash = '#about' },
-            { title: translations[lang].nav_projects, icon: "fa-code", action: () => window.location.hash = '#projects' },
-            { title: translations[lang].nav_contact, icon: "fa-envelope", action: () => window.location.hash = '#contact' },
-            { title: translations[lang].nav_terminal, icon: "fa-terminal", action: () => { window.location.hash = '#terminal-section'; setTimeout(() => document.getElementById('terminal-input').focus(), 500); } },
-            { title: translations[lang].nav_cv, icon: "fa-file-alt", action: () => window.open('./CV/index.html', '_blank') },
-            { title: "GitHub", icon: "fa-github", action: () => window.open('https://github.com/Flowz5', '_blank') }
-        ];
-    }
 
     function toggleCmdPalette() {
         if (!cmdPalette) return;
@@ -369,77 +370,70 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 8. TERMINAL INTERACTIF (MODE DÉBOGAGE SÉCURISÉ)
+    // 8. TERMINAL INTERACTIF & EASTER EGGS (ROBUSTE)
     // =========================================================
     const terminalInput = document.getElementById('terminal-input');
     const terminalOutput = document.getElementById('terminal-output');
     const terminalBody = document.getElementById('terminal-body');
 
-    // Vérification de sécurité
-    if (terminalInput && terminalOutput && terminalBody) {
-        console.log("✅ Terminal initialisé avec succès !"); // Log dans la console
+    const terminalLogic = {
+        'help': "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
+        'whoami': "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
+        'skills': "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
+        'contact': "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>"
+    };
 
-        terminalInput.addEventListener('keydown', function(e) {
-            // Décommenter la ligne suivante si tu veux voir chaque touche pressée
-            // console.log("Touche pressée :", e.key, e.keyCode); 
+    if (terminalInput && terminalOutput) {
+        terminalInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter' || e.code === 'Enter' || e.keyCode === 13) {
+                e.preventDefault();
 
-            if (e.key === 'Enter' || e.keyCode === 13) {
-                e.preventDefault(); // Bloque tout rechargement natif
-                
-                const command = terminalInput.value.trim().toLowerCase();
-                console.log("🚀 Commande validée :", command);
-                
-                terminalInput.value = '';
+                const command = this.value.trim().toLowerCase();
+                this.value = '';
 
-                // On crée proprement un nouvel élément HTML (sécurisé)
-                const cmdLine = document.createElement('p');
-                cmdLine.innerHTML = `<span class="prompt">guest@portfolio:~$</span> ${command}`;
-                terminalOutput.appendChild(cmdLine);
+                const commandLine = document.createElement('p');
+                commandLine.innerHTML = `<span class="prompt">guest@portfolio:~$</span> ${command}`;
+                terminalOutput.appendChild(commandLine);
 
-                const response = document.createElement('div');
-                
+                const responseBlock = document.createElement('div');
+
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
-                    return; // On arrête là
+                    return;
                 } else if (command === '') {
                     // Ne rien faire
-                } else if (command === 'help') {
-                    response.innerHTML = "<p>Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer</p>";
-                } else if (command === 'whoami') {
-                    response.innerHTML = "<p><span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span></p>";
-                } else if (command === 'skills') {
-                    response.innerHTML = "<p><span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span></p>";
-                } else if (command === 'contact') {
-                    response.innerHTML = "<p>Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a></p>";
                 } else if (command === 'sudo') {
-                    response.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
+                    responseBlock.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else if (command === 'matrix') {
                     document.body.classList.toggle('matrix-mode');
                     if (document.body.classList.contains('matrix-mode')) {
-                        response.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
+                        responseBlock.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
                     } else {
-                        response.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
+                        responseBlock.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
                     }
+                    terminalOutput.appendChild(responseBlock);
                 } else if (command === 'rm -rf /') {
-                    response.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
+                    responseBlock.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
+                    terminalOutput.appendChild(responseBlock);
+                } else if (terminalLogic[command]) {
+                    responseBlock.innerHTML = `<p>${terminalLogic[command]}</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else {
-                    response.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
+                    responseBlock.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
+                    terminalOutput.appendChild(responseBlock);
                 }
 
-                if (command !== '') {
-                    terminalOutput.appendChild(response);
+                if (terminalBody) {
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
-
-                // Faire défiler automatiquement vers le bas
-                terminalBody.scrollTop = terminalBody.scrollHeight;
             }
         });
-
-        // Garder le focus quand on clique dans la boîte
-        terminalBody.addEventListener('click', () => {
-            terminalInput.focus();
-        });
-    } else {
-        console.error("❌ ERREUR : Les éléments du terminal sont introuvables !");
+        
+        if (terminalBody) {
+            terminalBody.addEventListener('click', () => {
+                terminalInput.focus();
+            });
+        }
     }
 });
