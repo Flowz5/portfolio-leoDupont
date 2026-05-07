@@ -369,74 +369,77 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 8. TERMINAL INTERACTIF & EASTER EGGS (VERSION ROBUSTE)
+    // 8. TERMINAL INTERACTIF (MODE DÉBOGAGE SÉCURISÉ)
     // =========================================================
     const terminalInput = document.getElementById('terminal-input');
     const terminalOutput = document.getElementById('terminal-output');
     const terminalBody = document.getElementById('terminal-body');
 
-    const terminalLogic = {
-        'help': "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
-        'whoami': "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
-        'skills': "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
-        'contact': "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>"
-    };
+    // Vérification de sécurité
+    if (terminalInput && terminalOutput && terminalBody) {
+        console.log("✅ Terminal initialisé avec succès !"); // Log dans la console
 
-    if (terminalInput && terminalOutput) {
-        // Utilisation de 'keyup' au lieu de 'keydown' pour une meilleure compatibilité
-        terminalInput.addEventListener('keyup', function(e) {
-            // Vérification stricte de la touche Entrée
-            if (e.key === 'Enter' || e.code === 'Enter' || e.keyCode === 13) {
-                e.preventDefault();
+        terminalInput.addEventListener('keydown', function(e) {
+            // Décommenter la ligne suivante si tu veux voir chaque touche pressée
+            // console.log("Touche pressée :", e.key, e.keyCode); 
 
-                const command = this.value.trim().toLowerCase();
-                this.value = '';
+            if (e.key === 'Enter' || e.keyCode === 13) {
+                e.preventDefault(); // Bloque tout rechargement natif
+                
+                const command = terminalInput.value.trim().toLowerCase();
+                console.log("🚀 Commande validée :", command);
+                
+                terminalInput.value = '';
 
-                // On crée les nouveaux éléments au lieu de détruire/recréer tout le bloc avec innerHTML
-                const commandLine = document.createElement('p');
-                commandLine.innerHTML = `<span class="prompt">guest@portfolio:~$</span> ${command}`;
-                terminalOutput.appendChild(commandLine);
+                // On crée proprement un nouvel élément HTML (sécurisé)
+                const cmdLine = document.createElement('p');
+                cmdLine.innerHTML = `<span class="prompt">guest@portfolio:~$</span> ${command}`;
+                terminalOutput.appendChild(cmdLine);
 
-                const responseBlock = document.createElement('div');
-
+                const response = document.createElement('div');
+                
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
+                    return; // On arrête là
                 } else if (command === '') {
                     // Ne rien faire
+                } else if (command === 'help') {
+                    response.innerHTML = "<p>Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer</p>";
+                } else if (command === 'whoami') {
+                    response.innerHTML = "<p><span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span></p>";
+                } else if (command === 'skills') {
+                    response.innerHTML = "<p><span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span></p>";
+                } else if (command === 'contact') {
+                    response.innerHTML = "<p>Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a></p>";
                 } else if (command === 'sudo') {
-                    responseBlock.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
-                    terminalOutput.appendChild(responseBlock);
+                    response.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
                 } else if (command === 'matrix') {
                     document.body.classList.toggle('matrix-mode');
                     if (document.body.classList.contains('matrix-mode')) {
-                        responseBlock.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
+                        response.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
                     } else {
-                        responseBlock.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
+                        response.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
                     }
-                    terminalOutput.appendChild(responseBlock);
                 } else if (command === 'rm -rf /') {
-                    responseBlock.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
-                    terminalOutput.appendChild(responseBlock);
-                } else if (terminalLogic[command]) {
-                    responseBlock.innerHTML = `<p>${terminalLogic[command]}</p>`;
-                    terminalOutput.appendChild(responseBlock);
+                    response.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
                 } else {
-                    responseBlock.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
-                    terminalOutput.appendChild(responseBlock);
+                    response.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
                 }
 
-                // Défilement automatique vers le bas
-                if (terminalBody) {
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                if (command !== '') {
+                    terminalOutput.appendChild(response);
                 }
+
+                // Faire défiler automatiquement vers le bas
+                terminalBody.scrollTop = terminalBody.scrollHeight;
             }
         });
-        
-        // Focus automatique quand on clique n'importe où dans la boîte
-        if (terminalBody) {
-            terminalBody.addEventListener('click', () => {
-                terminalInput.focus();
-            });
-        }
+
+        // Garder le focus quand on clique dans la boîte
+        terminalBody.addEventListener('click', () => {
+            terminalInput.focus();
+        });
+    } else {
+        console.error("❌ ERREUR : Les éléments du terminal sont introuvables !");
     }
 });
