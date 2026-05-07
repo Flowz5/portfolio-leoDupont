@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const translations = {
         fr: {
             role: "Étudiant en BTS SIO - Option SLAM",
-            status: "Recherche une alternance",
+            status: "En ligne",
             nav_search: "Recherche", nav_home: "Accueil", nav_about: "À Propos", nav_path: "Parcours",
             nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "Mon CV", theme_dark: "Mode Sombre", theme_light: "Mode Clair",
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         en: {
             role: "BTS SIO Student - SLAM Option",
-            status: "Looking for an apprenticeship",
+            status: "Online",
             nav_search: "Search", nav_home: "Home", nav_about: "About", nav_path: "Journey",
             nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal",
             nav_contact: "Contact", nav_cv: "My Resume", theme_dark: "Dark Mode", theme_light: "Light Mode",
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                     terminalOutput.appendChild(responseBlock);
                 } else if (command === 'rm -rf /') {
-                    responseBlock.innerHTML = `<p class="error">Bip boop. Suppression du système... Non je rigole, c'est juste un portfolio.</p>`;
+                    responseBlock.innerHTML = `<p class="error">Suppression totale du système...</p>`;
                     terminalOutput.appendChild(responseBlock);
                 } else if (terminalLogic[command]) {
                     responseBlock.innerHTML = `<p>${terminalLogic[command]}</p>`;
