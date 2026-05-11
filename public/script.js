@@ -276,25 +276,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // 6. MACHINE À ÉCRIRE
     // =========================================================
     const heroSubtitle = document.querySelector('.hero-center h2');
+    
     if (heroSubtitle) {
-        let textToType = heroSubtitle.textContent;
+        // On sauvegarde le texte actuel (qui contient déjà la bonne traduction)
+        const textToType = heroSubtitle.textContent;
+        
+        // On vide la balise pour que l'animation puisse commencer de zéro
         heroSubtitle.textContent = '';
         heroSubtitle.classList.add('typewriter-cursor');
         
         let charIndex = 0;
+        
         function typeText() {
             if (charIndex < textToType.length) {
+                // On ajoute une lettre à la fois
                 heroSubtitle.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeText, 50);
+                setTimeout(typeText, 50); // Vitesse de frappe (50ms)
             } else {
+                // Une fois terminé, on retire le curseur clignotant
                 heroSubtitle.classList.remove('typewriter-cursor');
             }
         }
         
+        // On lance l'animation après 1 seconde sans écraser nos variables
         setTimeout(() => {
-            textToType = heroSubtitle.textContent;
-            heroSubtitle.textContent = '';
             typeText();
         }, 1000);
     }
