@@ -429,6 +429,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     terminalOutput.appendChild(responseBlock);
                 }
 
+                // Rajouter croissantage
+
                 if (terminalBody) {
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
