@@ -448,22 +448,37 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 9. API VEILLE TECHNOLOGIQUE (GNEWS API)
+    // 9. API VEILLE TECHNOLOGIQUE (DEV.TO API - 100% GRATUIT & SANS CORS)
     // =========================================================
     const newsScroller = document.getElementById('news-scroller');
     const scrollLeftBtn = document.getElementById('scroll-left');
     const scrollRightBtn = document.getElementById('scroll-right');
     
-    // Remplace par ta vraie clé GNews (ex: '123456789abcdef...')
-    const GNEWS_API_KEY = '6997dbca82d366276a1a5a1b9632d504'; 
-    
+    // Données de secours complètes au cas où l'utilisateur n'a pas internet
     const mockNewsFR = [
         {
-            source: { name: "Veille Secours" },
-            title: "L'API d'actualités est temporairement indisponible",
-            description: "Revenez plus tard pour découvrir les dernières actualités technologiques en temps réel.",
-            url: "#",
-            image: "./Assets/code2.jpg"
+            user: { name: "FRANDROID" },
+            title: "La double authentification contournée par une IA",
+            description: "Pour la première fois, Google documente un exploit zero-day vraisemblablement conçu avec l'aide d'une intelligence artificielle...",
+            url: "#", cover_image: "./Assets/code2.jpg"
+        },
+        {
+            user: { name: "ZDNET FRANCE" },
+            title: "Google détecte une attaque zero-day développée par IA",
+            description: "Le Google Threat Intelligence Group révèle avoir détecté un code d'exploitation fonctionnel développé à l'aide de l'IA.",
+            url: "#", cover_image: "./Assets/code3.jpg"
+        },
+        {
+            user: { name: "IGENERATION" },
+            title: "Google Maps intègre Gemini sur CarPlay",
+            description: "Gemini débarque sur CarPlay. Ses rivaux n'ont pas perdu de temps et peuvent d'ores et déjà être sollicités à tout moment.",
+            url: "#", cover_image: "./Assets/code2.jpg"
+        },
+        {
+            user: { name: "LES NUMÉRIQUES" },
+            title: "J'ai laissé l'IA fouiller mes comptes : voici le résultat",
+            description: "Entre le streaming, le stockage en ligne et les abonnements oubliés, nos relevés bancaires sont des jungles. L'IA permet de faire le ménage.",
+            url: "#", cover_image: "./Assets/code3.jpg"
         }
     ];
 
@@ -471,42 +486,42 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!newsScroller) return;
         
         try {
-            const query = currentLang === 'fr' ? 'technologie OR developpement OR IA' : 'technology OR programming OR AI';
-            const response = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=${currentLang}&max=6&apikey=${GNEWS_API_KEY}`);
+            // On interroge Dev.to pour les meilleurs articles de la semaine sur la programmation
+            const response = await fetch(`https://dev.to/api/articles?tag=programming&top=7&per_page=6`);
             
             if (!response.ok) throw new Error("Erreur d'accès à l'API");
             
-            const data = await response.json();
+            const articles = await response.json();
             
-            if (data.articles && data.articles.length > 0) {
-                renderNews(data.articles);
+            if (articles && articles.length > 0) {
+                renderNews(articles);
             } else {
                 throw new Error("Aucun article trouvé");
             }
         } catch (error) {
-            console.warn("⚠️ API GNews indisponible. Chargement des données de secours...");
+            console.warn("⚠️ API Dev.to inaccessible (hors ligne ?). Chargement des données de secours...");
             renderNews(mockNewsFR);
         }
     }
 
     function renderNews(articles) {
-        newsScroller.innerHTML = ''; // Ceci retire le texte de chargement
+        newsScroller.innerHTML = ''; 
         
-        // Sécurité pour la traduction du bouton
         const readText = currentLang === 'en' ? "Read Article" : "Lire l'article";
 
         articles.forEach(article => {
             const card = document.createElement('article');
             card.className = 'news-card';
             
-            const imageUrl = article.image || './Assets/code2.jpg';
+            // On récupère l'image de l'article, sinon on met une image par défaut
+            const imageUrl = article.cover_image || article.social_image || './Assets/code2.jpg';
             
             card.innerHTML = `
                 <img src="${imageUrl}" alt="Illustration de l'article" class="news-image" loading="lazy" onerror="this.src='./Assets/code2.jpg'">
                 <div class="news-content">
-                    <span class="news-source">${article.source.name || 'Tech News'}</span>
+                    <span class="news-source">${article.user ? article.user.name : 'Tech News'}</span>
                     <h3 class="news-title">${article.title}</h3>
-                    <p class="news-desc">${article.description || ''}</p>
+                    <p class="news-desc">${article.description || 'Découvrez cet article sur les dernières tendances du développement logiciel.'}</p>
                     <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-link">
                         ${readText} <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i>
                     </a>
@@ -526,7 +541,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Recharge les actualités quand on clique sur le bouton de langue
     const langBtnNews = document.getElementById('lang-toggle');
     if (langBtnNews) {
         langBtnNews.addEventListener('click', () => {
@@ -535,6 +549,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Lancement au démarrage
     fetchTechNews();
 });

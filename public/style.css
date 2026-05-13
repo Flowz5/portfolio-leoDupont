@@ -1027,8 +1027,11 @@ body.matrix-mode #terminal-input {
     position: relative;
     display: flex;
     align-items: center;
-    max-width: 1000px;
+    /* On élargit légèrement pour garder 3 cartes au centre */
+    max-width: 1100px; 
     margin: 0 auto;
+    /* On réserve 60px d'espace vide à gauche et à droite pour les boutons */
+    padding: 0 60px; 
 }
 
 .news-scroller {
@@ -1153,12 +1156,16 @@ body.matrix-mode #terminal-input {
     border-color: var(--accent);
 }
 
+/* ... laisse la classe .scroll-btn et les autres telles quelles ... */
+
 .left-btn {
-    left: -20px;
+    /* On cale le bouton tout à gauche dans l'espace réservé par le padding */
+    left: 0; 
 }
 
 .right-btn {
-    right: -20px;
+    /* On cale le bouton tout à droite dans l'espace réservé */
+    right: 0; 
 }
 
 .news-loading {
