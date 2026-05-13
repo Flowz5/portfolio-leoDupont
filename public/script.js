@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             term_cmd_matrix_on: "Wake up, Neo... The Matrix has you.",
             term_cmd_matrix_off: "Déconnexion de la Matrice...",
             term_cmd_rm: "Suppression totale du système... Non je rigole, c'est juste un portfolio.",
+            term_cmd_croissantage: "Alerte : Règle du croissantage enfreinte. Préparez la carte bleue, redirection en cours...",
             term_cmd_not_found: "Commande introuvable : {cmd}. Tapez 'help' pour la liste.",
             veille_title: "Veille Technologique", veille_sub: "Actualités et tendances en développement et IA.",
             read_article: "Lire l'article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Chargement des actualités...",
@@ -114,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             term_cmd_matrix_on: "Wake up, Neo... The Matrix has you.",
             term_cmd_matrix_off: "Disconnecting from the Matrix...",
             term_cmd_rm: "Total system wipe... Just kidding, it's just a portfolio.",
+            term_cmd_croissantage: "Alert: Croissantage rule broken. Get your credit card ready, redirecting...",
             term_cmd_not_found: "Command not found: {cmd}. Type 'help' for the list.",
             veille_title: "Tech Watch", veille_sub: "News and trends in software development and AI.",
             read_article: "Read Article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Loading news...",
@@ -432,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 terminalOutput.appendChild(commandLine);
 
                 const responseBlock = document.createElement('div');
-                const t = translations[currentLang]; // Récupère les traductions actuelles
+                const t = translations[currentLang]; 
 
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
@@ -453,6 +455,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (command === 'rm -rf /') {
                     responseBlock.innerHTML = `<p class="error">${t.term_cmd_rm}</p>`;
                     terminalOutput.appendChild(responseBlock);
+                } else if (command === 'croissantage') {
+                    responseBlock.innerHTML = `<p class="success">${t.term_cmd_croissantage}</p>`;
+                    terminalOutput.appendChild(responseBlock);
+                    setTimeout(() => {
+                        window.open('https://www.google.com/search?q=r%C3%A8gles+du+croissantage+en+entreprise', '_blank');
+                    }, 1200);
                 } else if (command === 'help') {
                     responseBlock.innerHTML = `<p>${t.term_cmd_help}</p>`;
                     terminalOutput.appendChild(responseBlock);
@@ -523,7 +531,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if(!newsScroller) return;
         
         try {
-            // On interroge Dev.to pour les meilleurs articles de la semaine sur la programmation
             const response = await fetch(`https://dev.to/api/articles?tag=programming&top=7&per_page=6`);
             
             if (!response.ok) throw new Error("Erreur d'accès à l'API");
@@ -550,7 +557,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement('article');
             card.className = 'news-card';
             
-            // On récupère l'image de l'article, sinon on met une image par défaut
             const imageUrl = article.cover_image || article.social_image || './Assets/code2.jpg';
             
             card.innerHTML = `
@@ -578,9 +584,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Le clic sur le bouton de langue recharge l'animation mais pas besoin de rappeler l'event listener, 
-    // l'appel fetchTechNews() se fait déjà dans la fonction applyLanguage().
-
-    // PREMIER LANCEMENT AU DÉMARRAGE (déclenché par applyLanguage() plus haut)
+    // PREMIER LANCEMENT AU DÉMARRAGE
     applyLanguage(currentLang);
 });
