@@ -51,7 +51,7 @@
             <a href="#services"><i class="fas fa-briefcase"></i> <span data-i18n="nav_services">Services</span></a>
             <a href="#skills"><i class="fas fa-laptop-code"></i> <span data-i18n="nav_skills">Compétences</span></a>
             <a href="#projects"><i class="fas fa-code"></i> <span data-i18n="nav_projects">Projets</span></a>
-            <a href="#terminal-section"><i class="fas fa-terminal"></i> <span data-i18n="nav_terminal">Terminal</span></a>
+            <a href="#terminal-section"><i class="fas fa-terminal"></i> <span data-i18n="nav_terminal">Terminal & Veille</span></a>
             <a href="#contact"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contact</span></a>
             <a href="./CV/index.html" target="_blank" class="highlight-link">
                 <i class="fas fa-file-alt"></i> <span data-i18n="nav_cv">Mon CV</span>
@@ -328,6 +328,27 @@
                         <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="veille" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="veille_title">Veille Technologique</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;" data-aos="fade-up" data-i18n="veille_sub">Actualités et tendances en développement et IA.</p>
+            
+            <div class="veille-carousel-wrapper" data-aos="fade-up">
+                <button class="scroll-btn left-btn" id="scroll-left" aria-label="Défiler à gauche">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="news-scroller" id="news-scroller">
+                    <div class="news-loading" id="news-loading">
+                        <i class="fas fa-spinner fa-spin"></i> Chargement des actualités...
+                    </div>
+                    </div>
+
+                <button class="scroll-btn right-btn" id="scroll-right" aria-label="Défiler à droite">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </section>
 

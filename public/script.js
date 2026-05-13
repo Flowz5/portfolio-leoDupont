@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             role: "Étudiant en BTS SIO - Option SLAM",
             status: "En ligne",
             nav_search: "Recherche", nav_home: "Accueil", nav_about: "À Propos", nav_path: "Parcours",
-            nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal",
+            nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal & Veille",
             nav_contact: "Contact", nav_cv: "Mon CV", theme_dark: "Mode Sombre", theme_light: "Mode Clair",
             skip_link: "Aller au contenu principal",
             hero_title: "Léo Dupont <span class='accent-text'>portfolio</span>",
@@ -45,6 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
             btn_code: "Voir le code", btn_play: "Jouer au jeu",
             terminal_title: "Terminal", terminal_sub: "Un petit aperçu en ligne de commande. Essayez de taper 'help'.",
             term_welcome: "Tapez 'help' pour afficher la liste des commandes disponibles.",
+            veille_title: "Veille Technologique", veille_sub: "Actualités et tendances en développement et IA.",
+            read_article: "Lire l'article",
             contact_title: "Me Contacter", btn_send: "Envoyer le message",
             form_name: "Votre Nom", form_email: "Votre Email", form_msg: "Votre Message"
         },
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             role: "BTS SIO Student - SLAM Option",
             status: "Online",
             nav_search: "Search", nav_home: "Home", nav_about: "About", nav_path: "Journey",
-            nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal",
+            nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal & Watch",
             nav_contact: "Contact", nav_cv: "My Resume", theme_dark: "Dark Mode", theme_light: "Light Mode",
             skip_link: "Skip to main content",
             hero_title: "Léo Dupont <span class='accent-text'>portfolio</span>",
@@ -86,6 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
             btn_code: "View source", btn_play: "Play the game",
             terminal_title: "Terminal", terminal_sub: "A quick look at the command line. Try typing 'help'.",
             term_welcome: "Type 'help' to see the list of available commands.",
+            veille_title: "Tech Watch", veille_sub: "News and trends in software development and AI.",
+            read_article: "Read Article",
             contact_title: "Contact Me", btn_send: "Send message",
             form_name: "Your Name", form_email: "Your Email", form_msg: "Your Message"
         }
@@ -127,6 +131,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if(formMsg) formMsg.placeholder = translations[lang].form_msg;
 
         updatePaletteCommands(lang);
+        
+        // Recharge la veille technique dans la bonne langue
+        fetchTechNews();
     }
 
     const langBtn = document.getElementById('lang-toggle');
@@ -151,8 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 250);
         });
     }
-
-    applyLanguage(currentLang);
 
     // =========================================================
     // 3. GESTION DU MENU ET DU THÈME
@@ -278,10 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroSubtitle = document.querySelector('.hero-center h2');
     
     if (heroSubtitle) {
-        // On sauvegarde le texte actuel (qui contient déjà la bonne traduction)
         const textToType = heroSubtitle.textContent;
-        
-        // On vide la balise pour que l'animation puisse commencer de zéro
         heroSubtitle.textContent = '';
         heroSubtitle.classList.add('typewriter-cursor');
         
@@ -289,17 +291,14 @@ document.addEventListener("DOMContentLoaded", () => {
         
         function typeText() {
             if (charIndex < textToType.length) {
-                // On ajoute une lettre à la fois
                 heroSubtitle.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeText, 50); // Vitesse de frappe (50ms)
+                setTimeout(typeText, 50);
             } else {
-                // Une fois terminé, on retire le curseur clignotant
                 heroSubtitle.classList.remove('typewriter-cursor');
             }
         }
         
-        // On lance l'animation après 1 seconde sans écraser nos variables
         setTimeout(() => {
             typeText();
         }, 1000);
@@ -381,7 +380,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 8. TERMINAL INTERACTIF & EASTER EGGS (ROBUSTE)
+    // 8. TERMINAL INTERACTIF & EASTER EGGS
     // =========================================================
     const terminalInput = document.getElementById('terminal-input');
     const terminalOutput = document.getElementById('terminal-output');
@@ -435,8 +434,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     terminalOutput.appendChild(responseBlock);
                 }
 
-                // Rajouter croissantage
-
                 if (terminalBody) {
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
@@ -449,4 +446,95 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+
+    // =========================================================
+    // 9. API VEILLE TECHNOLOGIQUE (GNEWS API)
+    // =========================================================
+    const newsScroller = document.getElementById('news-scroller');
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    
+    // Remplace par ta vraie clé GNews (ex: '123456789abcdef...')
+    const GNEWS_API_KEY = '6997dbca82d366276a1a5a1b9632d504'; 
+    
+    const mockNewsFR = [
+        {
+            source: { name: "Veille Secours" },
+            title: "L'API d'actualités est temporairement indisponible",
+            description: "Revenez plus tard pour découvrir les dernières actualités technologiques en temps réel.",
+            url: "#",
+            image: "./Assets/code2.jpg"
+        }
+    ];
+
+    async function fetchTechNews() {
+        if(!newsScroller) return;
+        
+        try {
+            const query = currentLang === 'fr' ? 'technologie OR developpement OR IA' : 'technology OR programming OR AI';
+            const response = await fetch(`https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=${currentLang}&max=6&apikey=${GNEWS_API_KEY}`);
+            
+            if (!response.ok) throw new Error("Erreur d'accès à l'API");
+            
+            const data = await response.json();
+            
+            if (data.articles && data.articles.length > 0) {
+                renderNews(data.articles);
+            } else {
+                throw new Error("Aucun article trouvé");
+            }
+        } catch (error) {
+            console.warn("⚠️ API GNews indisponible. Chargement des données de secours...");
+            renderNews(mockNewsFR);
+        }
+    }
+
+    function renderNews(articles) {
+        newsScroller.innerHTML = ''; // Ceci retire le texte de chargement
+        
+        // Sécurité pour la traduction du bouton
+        const readText = currentLang === 'en' ? "Read Article" : "Lire l'article";
+
+        articles.forEach(article => {
+            const card = document.createElement('article');
+            card.className = 'news-card';
+            
+            const imageUrl = article.image || './Assets/code2.jpg';
+            
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="Illustration de l'article" class="news-image" loading="lazy" onerror="this.src='./Assets/code2.jpg'">
+                <div class="news-content">
+                    <span class="news-source">${article.source.name || 'Tech News'}</span>
+                    <h3 class="news-title">${article.title}</h3>
+                    <p class="news-desc">${article.description || ''}</p>
+                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-link">
+                        ${readText} <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;"></i>
+                    </a>
+                </div>
+            `;
+            newsScroller.appendChild(card);
+        });
+    }
+
+    if (scrollLeftBtn && scrollRightBtn && newsScroller) {
+        scrollLeftBtn.addEventListener('click', () => {
+            newsScroller.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+        
+        scrollRightBtn.addEventListener('click', () => {
+            newsScroller.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+    }
+
+    // Recharge les actualités quand on clique sur le bouton de langue
+    const langBtnNews = document.getElementById('lang-toggle');
+    if (langBtnNews) {
+        langBtnNews.addEventListener('click', () => {
+            newsScroller.innerHTML = '<div class="news-loading"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
+            setTimeout(fetchTechNews, 300);
+        });
+    }
+
+    // Lancement au démarrage
+    fetchTechNews();
 });
