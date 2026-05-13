@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     // =========================================================
-    // 1. VARIABLES GLOBALES
+    // 1. VARIABLES GLOBALES ET TRADUCTIONS COMPLETES
     // =========================================================
     let currentLang = localStorage.getItem('lang') || 'fr';
     let currentCommands = [];
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
             about_h2: "<i class='fas fa-microchip'></i> Logique & Résolution de Problèmes",
             about_p3: "Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel.",
             about_p4: "Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe.",
-            path_title: "Mon Parcours", path_d1: "Depuis 2025", path_s1: "Lycée La Colinière, Nantes",
+            path_title: "Mon Parcours", path_d1: "Depuis 2025", path_s1: "Lycée La Colinière, Nantes", path_t1: "BTS SIO - Option SLAM",
             path_p1: "Spécialisation en <strong>Solutions Logicielles et Applications Métiers</strong>. Apprentissage approfondi du développement, de la gestion de données et de la cybersécurité.",
             path_t2: "Baccalauréat Général", path_s2: "Mention Assez Bien",
             path_p2: "Spécialités <strong>Mathématiques</strong> et <strong>NSI</strong> (Numérique et Sciences Informatiques). Acquisition des bases solides en algorithmique et logique de programmation.",
@@ -34,8 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
             serv_t2: "Intégration Web", serv_p2: "Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.",
             serv_t3: "Data & Automatisation", serv_p3: "Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.",
             skills_title: "Stack Technique", skill_t1: "<i class='fas fa-code'></i> Langages & Web", skill_t2: "<i class='fas fa-database'></i> Data & Back", skill_t3: "<i class='fas fa-tools'></i> Outils & Créa",
-            skill_sql: "Requêtes / Jointures", skill_algo: "Algorithmique", skill_blend: "Blender (Modé/Anim)",
+            skill_sql: "Requêtes / Jointures", skill_algo: "Algorithmique", skill_blend: "Blender (Modé/Anim)", 
+            skill_csharp: "C# (Bases)", skill_node: "Node.js (Bases)",
             projects_title: "Réalisations", projects_sub: "Des projets pour apprendre, tester et créer.",
+            proj_title_1: "ChatBot RAG Local", proj_title_2: "Cyber-Watch : Veille B.I.", proj_title_3: "Doc-Hunter : Assistant Dev", 
+            proj_title_4: "IA Vision Continue", proj_title_5: "Réplique \"Asteroids\"", proj_title_6: "Hand Tracking AI",
             proj_1: "<strong>Le défi :</strong> Concevoir un assistant IA privé et autonome. Déploiement de modèles de langage en local avec Ollama, orchestration via LangChain, et intégration d'une mémoire vectorielle ChromaDB pour interroger des documents personnels avec Streamlit.",
             proj_2: "<strong>Le défi :</strong> Solution complète de Business Intelligence. Collecte automatisée (Scraping), stockage BDD et restitution via un <strong>Dashboard interactif Streamlit</strong> (KPIs, Analyse sémantique).",
             proj_3: "<strong>Le défi :</strong> Moteur de recherche intégré à l'OS (Hyprland). Permet de scraper les docs officielles et d'afficher des <strong>Cheat Sheets</strong> de code instantanément sans quitter le clavier.",
@@ -44,11 +47,22 @@ document.addEventListener("DOMContentLoaded", () => {
             proj_6: "<strong>Le défi :</strong> Explorer la <strong>Computer Vision</strong> pour détecter et suivre les mains en temps réel via webcam. Utilisation de l'algorithme <strong>MediaPipe</strong> pour mapper 21 points de repère (landmarks) avec une latence minimale.",
             btn_code: "Voir le code", btn_play: "Jouer au jeu",
             terminal_title: "Terminal", terminal_sub: "Un petit aperçu en ligne de commande. Essayez de taper 'help'.",
+            term_header: "Léo Dupont (Portfolio) [Version 1.0.0]",
             term_welcome: "Tapez 'help' pour afficher la liste des commandes disponibles.",
+            term_cmd_help: "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
+            term_cmd_whoami: "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
+            term_cmd_skills: "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
+            term_cmd_contact: "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>",
+            term_cmd_sudo: "L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.",
+            term_cmd_matrix_on: "Wake up, Neo... The Matrix has you.",
+            term_cmd_matrix_off: "Déconnexion de la Matrice...",
+            term_cmd_rm: "Suppression totale du système... Non je rigole, c'est juste un portfolio.",
+            term_cmd_not_found: "Commande introuvable : {cmd}. Tapez 'help' pour la liste.",
             veille_title: "Veille Technologique", veille_sub: "Actualités et tendances en développement et IA.",
-            read_article: "Lire l'article",
+            read_article: "Lire l'article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Chargement des actualités...",
             contact_title: "Me Contacter", btn_send: "Envoyer le message",
-            form_name: "Votre Nom", form_email: "Votre Email", form_msg: "Votre Message"
+            form_name: "Votre Nom", form_email: "Votre Email", form_msg: "Votre Message",
+            cmd_search_placeholder: "Rechercher... (Projets, Contact...)", cmd_no_results: "Aucun résultat"
         },
         en: {
             role: "BTS SIO Student - SLAM Option",
@@ -67,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
             about_h2: "<i class='fas fa-microchip'></i> Logic & Problem Solving",
             about_p3: "My curiosity about the inner workings of systems naturally led me to programming. What interests me is understanding how to transform abstract logic into a functional system.",
             about_p4: "My early projects (such as game mechanics development or 3D modeling with Blender) were excellent exercises to master state management, resource optimization, and complex algorithms.",
-            path_title: "My Journey", path_d1: "Since 2025", path_s1: "La Colinière High School, Nantes",
+            path_title: "My Journey", path_d1: "Since 2025", path_s1: "La Colinière High School, Nantes", path_t1: "BTS SIO - SLAM Option",
             path_p1: "Specializing in <strong>Software Solutions and Business Applications</strong>. In-depth learning of development, data management, and cybersecurity.",
             path_t2: "General Baccalaureate", path_s2: "Graduated with Honors",
             path_p2: "Specialized in <strong>Mathematics</strong> and <strong>Computer Science</strong>. Acquired solid foundations in algorithms and programming logic.",
@@ -78,7 +92,10 @@ document.addEventListener("DOMContentLoaded", () => {
             serv_t3: "Data & Automation", serv_p3: "Developing Python scripts to automate tasks (Web Scraping), manipulate data, and store it in SQL databases. I like making processes efficient.",
             skills_title: "Tech Stack", skill_t1: "<i class='fas fa-code'></i> Languages & Web", skill_t2: "<i class='fas fa-database'></i> Data & Back", skill_t3: "<i class='fas fa-tools'></i> Tools & Design",
             skill_sql: "Queries / Joins", skill_algo: "Algorithms", skill_blend: "Blender (3D/Anim)",
+            skill_csharp: "C# (Basics)", skill_node: "Node.js (Basics)",
             projects_title: "My Work", projects_sub: "Projects to learn, test, and create.",
+            proj_title_1: "Local RAG ChatBot", proj_title_2: "Cyber-Watch: B.I. Watch", proj_title_3: "Doc-Hunter: Dev Assistant", 
+            proj_title_4: "Continuous Vision AI", proj_title_5: "\"Asteroids\" Replica", proj_title_6: "Hand Tracking AI",
             proj_1: "<strong>The Challenge:</strong> Design a private, autonomous AI assistant. Deployed local LLMs with Ollama, orchestrated via LangChain, and integrated ChromaDB vector memory to query personal documents via Streamlit.",
             proj_2: "<strong>The Challenge:</strong> A complete Business Intelligence solution. Automated collection (Scraping), DB storage, and presentation via an <strong>Interactive Streamlit Dashboard</strong> (KPIs, Semantic Analysis).",
             proj_3: "<strong>The Challenge:</strong> An OS-integrated search engine (Hyprland). Scrapes official docs and displays code <strong>Cheat Sheets</strong> instantly without leaving the keyboard.",
@@ -87,11 +104,22 @@ document.addEventListener("DOMContentLoaded", () => {
             proj_6: "<strong>The Challenge:</strong> Explore <strong>Computer Vision</strong> to detect and track hands in real-time via webcam. Used the <strong>MediaPipe</strong> algorithm to map 21 landmarks with minimal latency.",
             btn_code: "View source", btn_play: "Play the game",
             terminal_title: "Terminal", terminal_sub: "A quick look at the command line. Try typing 'help'.",
+            term_header: "Léo Dupont (Portfolio) [Version 1.0.0]",
             term_welcome: "Type 'help' to see the list of available commands.",
+            term_cmd_help: "Commands :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profile<br>- <strong>skills</strong> : Tech Stack<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Clear output",
+            term_cmd_whoami: "<span class='info'>Passionate IT Student. I build things with code.</span>",
+            term_cmd_skills: "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
+            term_cmd_contact: "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>",
+            term_cmd_sudo: "User is not in the sudoers file. This incident will be reported.",
+            term_cmd_matrix_on: "Wake up, Neo... The Matrix has you.",
+            term_cmd_matrix_off: "Disconnecting from the Matrix...",
+            term_cmd_rm: "Total system wipe... Just kidding, it's just a portfolio.",
+            term_cmd_not_found: "Command not found: {cmd}. Type 'help' for the list.",
             veille_title: "Tech Watch", veille_sub: "News and trends in software development and AI.",
-            read_article: "Read Article",
+            read_article: "Read Article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Loading news...",
             contact_title: "Contact Me", btn_send: "Send message",
-            form_name: "Your Name", form_email: "Your Email", form_msg: "Your Message"
+            form_name: "Your Name", form_email: "Your Email", form_msg: "Your Message",
+            cmd_search_placeholder: "Search... (Projects, Contact...)", cmd_no_results: "No results found"
         }
     };
 
@@ -123,16 +151,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        // Placeholders des formulaires et de la barre de recherche
         const formName = document.getElementById('form_name');
         const formEmail = document.getElementById('form_email');
         const formMsg = document.getElementById('form_message');
+        const cmdInputNode = document.getElementById('cmd-input');
+        
         if(formName) formName.placeholder = translations[lang].form_name;
         if(formEmail) formEmail.placeholder = translations[lang].form_email;
         if(formMsg) formMsg.placeholder = translations[lang].form_msg;
+        if(cmdInputNode) cmdInputNode.placeholder = translations[lang].cmd_search_placeholder;
 
         updatePaletteCommands(lang);
         
-        // Recharge la veille technique dans la bonne langue
+        // Relance la requête de veille technique pour changer la langue des articles
         fetchTechNews();
     }
 
@@ -329,7 +361,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!cmdResults) return;
         cmdResults.innerHTML = '';
         if (results.length === 0) {
-            cmdResults.innerHTML = `<li style="padding: 15px 20px; color: var(--text-muted);">${currentLang === 'fr' ? 'Aucun résultat' : 'No results found'}</li>`;
+            const noResText = translations[currentLang].cmd_no_results;
+            cmdResults.innerHTML = `<li style="padding: 15px 20px; color: var(--text-muted);">${noResText}</li>`;
             return;
         }
         results.forEach(cmd => {
@@ -386,13 +419,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const terminalOutput = document.getElementById('terminal-output');
     const terminalBody = document.getElementById('terminal-body');
 
-    const terminalLogic = {
-        'help': "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
-        'whoami': "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
-        'skills': "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
-        'contact': "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>"
-    };
-
     if (terminalInput && terminalOutput) {
         terminalInput.addEventListener('keyup', function(e) {
             if (e.key === 'Enter' || e.code === 'Enter' || e.keyCode === 13) {
@@ -406,6 +432,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 terminalOutput.appendChild(commandLine);
 
                 const responseBlock = document.createElement('div');
+                const t = translations[currentLang]; // Récupère les traductions actuelles
 
                 if (command === 'clear') {
                     terminalOutput.innerHTML = '';
@@ -413,24 +440,34 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (command === '') {
                     // Ne rien faire
                 } else if (command === 'sudo') {
-                    responseBlock.innerHTML = `<p class="error">L'utilisateur n'est pas dans le fichier sudoers. Cet incident sera signalé.</p>`;
+                    responseBlock.innerHTML = `<p class="error">${t.term_cmd_sudo}</p>`;
                     terminalOutput.appendChild(responseBlock);
                 } else if (command === 'matrix') {
                     document.body.classList.toggle('matrix-mode');
                     if (document.body.classList.contains('matrix-mode')) {
-                        responseBlock.innerHTML = `<p class="success">Wake up, Neo... The Matrix has you.</p>`;
+                        responseBlock.innerHTML = `<p class="success">${t.term_cmd_matrix_on}</p>`;
                     } else {
-                        responseBlock.innerHTML = `<p class="info">Déconnexion de la Matrice...</p>`;
+                        responseBlock.innerHTML = `<p class="info">${t.term_cmd_matrix_off}</p>`;
                     }
                     terminalOutput.appendChild(responseBlock);
                 } else if (command === 'rm -rf /') {
-                    responseBlock.innerHTML = `<p class="error">Suppression totale du système...</p>`;
+                    responseBlock.innerHTML = `<p class="error">${t.term_cmd_rm}</p>`;
                     terminalOutput.appendChild(responseBlock);
-                } else if (terminalLogic[command]) {
-                    responseBlock.innerHTML = `<p>${terminalLogic[command]}</p>`;
+                } else if (command === 'help') {
+                    responseBlock.innerHTML = `<p>${t.term_cmd_help}</p>`;
+                    terminalOutput.appendChild(responseBlock);
+                } else if (command === 'whoami') {
+                    responseBlock.innerHTML = `<p>${t.term_cmd_whoami}</p>`;
+                    terminalOutput.appendChild(responseBlock);
+                } else if (command === 'skills') {
+                    responseBlock.innerHTML = `<p>${t.term_cmd_skills}</p>`;
+                    terminalOutput.appendChild(responseBlock);
+                } else if (command === 'contact') {
+                    responseBlock.innerHTML = `<p>${t.term_cmd_contact}</p>`;
                     terminalOutput.appendChild(responseBlock);
                 } else {
-                    responseBlock.innerHTML = `<p class="error">Commande introuvable : ${command}. Tapez 'help' pour la liste.</p>`;
+                    const notFoundText = t.term_cmd_not_found.replace('{cmd}', command);
+                    responseBlock.innerHTML = `<p class="error">${notFoundText}</p>`;
                     terminalOutput.appendChild(responseBlock);
                 }
 
@@ -448,7 +485,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // =========================================================
-    // 9. API VEILLE TECHNOLOGIQUE (DEV.TO API - 100% GRATUIT & SANS CORS)
+    // 9. API VEILLE TECHNOLOGIQUE (DEV.TO API - SANS CORS)
     // =========================================================
     const newsScroller = document.getElementById('news-scroller');
     const scrollLeftBtn = document.getElementById('scroll-left');
@@ -507,7 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderNews(articles) {
         newsScroller.innerHTML = ''; 
         
-        const readText = currentLang === 'en' ? "Read Article" : "Lire l'article";
+        const readText = translations[currentLang].read_article || "Lire l'article";
 
         articles.forEach(article => {
             const card = document.createElement('article');
@@ -541,13 +578,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const langBtnNews = document.getElementById('lang-toggle');
-    if (langBtnNews) {
-        langBtnNews.addEventListener('click', () => {
-            newsScroller.innerHTML = '<div class="news-loading"><i class="fas fa-spinner fa-spin"></i> Chargement...</div>';
-            setTimeout(fetchTechNews, 300);
-        });
-    }
+    // Le clic sur le bouton de langue recharge l'animation mais pas besoin de rappeler l'event listener, 
+    // l'appel fetchTechNews() se fait déjà dans la fonction applyLanguage().
 
-    fetchTechNews();
+    // PREMIER LANCEMENT AU DÉMARRAGE (déclenché par applyLanguage() plus haut)
+    applyLanguage(currentLang);
 });

@@ -1156,15 +1156,12 @@ body.matrix-mode #terminal-input {
     border-color: var(--accent);
 }
 
-/* ... laisse la classe .scroll-btn et les autres telles quelles ... */
 
 .left-btn {
-    /* On cale le bouton tout à gauche dans l'espace réservé par le padding */
     left: 0; 
 }
 
 .right-btn {
-    /* On cale le bouton tout à droite dans l'espace réservé */
     right: 0; 
 }
 
