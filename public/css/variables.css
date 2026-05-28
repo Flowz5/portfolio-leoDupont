@@ -1,0 +1,48 @@
+/* =========================================================
+    VARIABLES DE THÈME
+   ========================================================= */
+:root {
+    --bg-main: #141718;
+    --bg-sidebar: rgba(29, 33, 35, 0.4);
+    --accent: #4ade80;
+    --accent-hover: #22c55e;
+    --text-main: #f8fafc;
+    --text-muted: #bdc3c7; 
+    --border-color: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --blob-opacity: 0.12;
+}
+
+body.light-mode {
+    --bg-main: #f1f5f9;
+    --bg-sidebar: rgba(255, 255, 255, 0.6);
+    --accent: #16a34a;
+    --accent-hover: #15803d;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-bg: #ffffff;
+    --blob-opacity: 0.08;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* =========================================================
+    THEME MATRIX (EASTER EGG)
+   ========================================================= */
+
+body.matrix-mode {
+    --bg-main: #000000;
+    --bg-sidebar: rgba(0, 0, 0, 0.85);
+    --text-main: #00ff41;
+    --text-muted: #008f11;
+    --border-color: #00ff41;
+    --card-bg: rgba(0, 255, 65, 0.05);
+    --accent: #00ff41;
+    background-image: none;
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.matrix-mode * {
+    font-family: 'Courier New', Courier, monospace !important;
+}

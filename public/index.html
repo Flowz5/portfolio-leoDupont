@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Léo Dupont | Développeur Software</title>
+    <link rel="icon" type="image/svg+xml" href="./Assets/74946-website-development-strongloop-programming-node.js-application-interface.png">
+
+    <meta name="description" content="Portfolio de Léo Dupont, étudiant en BTS SIO SLAM.">
+    
+    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/layout.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/navbar.css">
+    <link rel="stylesheet" href="./css/terminal.css">
+    <link rel="stylesheet" href="./css/veille.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    
+    <link rel="stylesheet" href="./css/print.css" media="print">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+</head>
+<body>
+    
+    <div class="bg-blobs" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <a href="#main-content" class="skip-link" data-i18n="skip_link">Aller au contenu principal</a>
+
+    <aside class="navbar" id="navbar" aria-label="Menu principal">
+        <div class="profile-box">
+            <h2>Léo Dupont</h2>
+            <p data-i18n="role">Étudiant en BTS SIO - Option SLAM</p>
+            <div class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text" data-i18n="status">En ligne</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" id="cmd-btn-nav">
+                <i class="fas fa-search" aria-hidden="true"></i> <span data-i18n="nav_search">Recherche</span>
+                <span class="shortcut-badge">Ctrl K</span>
+            </a>
+            <a href="#accueil" class="active"><i class="fas fa-home" aria-hidden="true"></i> <span data-i18n="nav_home">Accueil</span></a>
+            <a href="#about"><i class="fas fa-user" aria-hidden="true"></i> <span data-i18n="nav_about">À Propos</span></a>
+            <a href="#parcours"><i class="fas fa-road" aria-hidden="true"></i> <span data-i18n="nav_path">Parcours</span></a>
+            <a href="#services"><i class="fas fa-briefcase" aria-hidden="true"></i> <span data-i18n="nav_services">Services</span></a>
+            <a href="#skills"><i class="fas fa-laptop-code" aria-hidden="true"></i> <span data-i18n="nav_skills">Compétences</span></a>
+            <a href="#projects"><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="nav_projects">Projets</span></a>
+            <a href="#terminal-section"><i class="fas fa-terminal" aria-hidden="true"></i> <span data-i18n="nav_terminal">Terminal & Veille</span></a>
+            <a href="#contact"><i class="fas fa-envelope" aria-hidden="true"></i> <span data-i18n="nav_contact">Contact</span></a>
+            <a href="./CV/index.html" target="_blank" class="highlight-link">
+                <i class="fas fa-file-alt" aria-hidden="true"></i> <span data-i18n="nav_cv">Mon CV</span>
+            </a>
+            
+            <div class="settings-container">
+                <div class="theme-switch-container">
+                    <div id="theme-toggle" class="theme-switch" role="button" aria-label="Basculer le thème" tabindex="0">
+                        <div class="switch-ball">
+                            <i class="fas fa-moon" id="toggle-icon" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <span id="theme-text" data-i18n="theme_dark">Mode Sombre</span>
+                </div>
+                
+                <button id="lang-toggle" class="lang-btn" aria-label="Changer de langue">
+                    <i class="fas fa-globe" aria-hidden="true"></i> <span id="lang-text">FR</span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="socials-sidebar">
+                <a href="mailto:dupontleo999@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                <a href="https://github.com/Flowz5" target="_blank" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/léo-dupont-646a58385" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <button class="toggle-btn" id="toggle-btn" aria-label="Ouvrir ou fermer le menu">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+    </button>
+
+    <main class="content" id="main-content">
+
+        <section id="accueil" class="hero" data-aos="fade-in" data-aos-duration="1500">
+            <div class="hero-center">
+                <h1 data-aos="zoom-in" data-aos-delay="200" data-i18n="hero_title">Léo Dupont <span class="accent-text">portfolio</span></h1>
+                <h2 data-aos="fade-up" data-aos-delay="400" data-i18n="hero_dev">Développeur Application & Web</h2>
+                <p data-aos="fade-up" data-aos-delay="600" data-i18n="hero_desc">Passionné par le code et la technologie, je transforme des problèmes complexes en solutions logiques, propres et fonctionnelles.</p>
+                <div class="btn-group" data-aos="fade-up" data-aos-delay="800">
+                    <a href="./CV/index.html" target="_blank" class="btn-primary" data-i18n="btn_view_cv">Voir mon CV</a>
+                    <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="btn-secondary" data-i18n="btn_dl_pdf">Télécharger PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="about_title">Qui suis-je ?</h2>
+            <div class="full-width-container">
+                <div class="text-block" data-aos="fade-right">
+                    <h3 data-i18n="about_h1"><i class="fas fa-terminal"></i> Tech & Rigueur</h3>
+                    <p data-i18n="about_p1">Ce qui m'anime, c'est de <strong>créer des choses utiles</strong> et d'être toujours à jour sur la tech. Que ce soit une automatisation en Python ou une application, j'aime voir le résultat concret de mon code. Je suis très exigeant sur la qualité : je ne supporte pas de laisser un bug traîner ou de voir un code mal organisé. Pour moi, un code doit être aussi lisible que fonctionnel.</p>
+                    <p data-i18n="about_p2">Mon objectif est de poursuivre mes études pour maîtriser toutes les notions d'architecture logicielle et devenir un <strong>Développeur Software</strong> complet.</p>
+                </div>
+                <div class="image-block" data-aos="fade-left">
+                    <img src="./Assets/code3.webp" alt="Code à l'écran" width="600" height="400" loading="lazy">
+                </div>
+            </div>
+
+            <div class="full-width-container">
+                <div class="image-block" data-aos="fade-right">
+                    <img src="./Assets/code2.webp" alt="Logique et résolution de problèmes" width="600" height="400" loading="lazy">
+                </div>
+                <div class="text-block" data-aos="fade-left">
+                    <h3 data-i18n="about_h2"><i class="fas fa-microchip"></i> Logique & Résolution de Problèmes</h3>
+                    <p data-i18n="about_p3">Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel.</p>
+                    <p data-i18n="about_p4">Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="parcours" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="path_title">Mon Parcours</h2>
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-date" data-i18n="path_d1">Depuis 2025</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="path_t1">BTS SIO - Option SLAM</h3>
+                        <h4 data-i18n="path_s1">Lycée La Colinière, Nantes</h4>
+                        <p data-i18n="path_p1">Spécialisation en <strong>Solutions Logicielles et Applications Métiers</strong>. Apprentissage approfondi du développement, de la gestion de données et de la cybersécurité.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="path_t2">Baccalauréat Général</h3>
+                        <h4 data-i18n="path_s2">Mention Assez Bien</h4>
+                        <p data-i18n="path_p2">Spécialités <strong>Mathématiques</strong> et <strong>NSI</strong> (Numérique et Sciences Informatiques). Acquisition des bases solides en algorithmique et logique de programmation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-date" data-i18n="path_d3">Avant 2023</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="path_t3">Découverte & Stages</h3>
+                        <p data-i18n="path_p3">Plusieurs stages d'observation en entreprise qui ont confirmé ma volonté de travailler dans le secteur du numérique et du développement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="services_title">Ce que je peux faire</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="zoom-in" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
+                    <div class="icon-box"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
+                    <h3 data-i18n="serv_t1">Développement Logiciel</h3>
+                    <p data-i18n="serv_p1">Création d'outils, de scripts d'automatisation (Python) ou de petites applications Windows (C#). J'aime construire la logique cachée derrière les interfaces.</p>
+                </div>
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="100" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
+                    <div class="icon-box"><i class="fas fa-globe" aria-hidden="true"></i></div>
+                    <h3 data-i18n="serv_t2">Intégration Web</h3>
+                    <p data-i18n="serv_p2">Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.</p>
+                </div>
+                <div class="service-card" data-aos="zoom-in" data-aos-delay="200" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.1">
+                    <div class="icon-box"><i class="fas fa-database" aria-hidden="true"></i></div>
+                    <h3 data-i18n="serv_t3">Data & Automatisation</h3>
+                    <p data-i18n="serv_p3">Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="skills_title">Stack Technique</h2>
+            <div class="skills-wrapper">
+                <div class="skill-category" data-aos="fade-up">
+                    <div class="skill-header">
+                        <h3 data-i18n="skill_t1"><i class="fas fa-code"></i> Langages & Web</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>Python</span>
+                            <span data-i18n="skill_csharp">C# (Bases)</span>
+                            <span>HTML5 / CSS3</span>
+                            <span>JavaScript</span>
+                            <span>Bootstrap</span>
+                            <span>Bash</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-header">
+                        <h3 data-i18n="skill_t2"><i class="fas fa-database"></i> Data & Back</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>SQL (MySQL)</span>
+                            <span data-i18n="skill_sql">Requêtes / Jointures</span>
+                            <span data-i18n="skill_algo">Algorithmique</span>
+                            <span>DBeaver</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-header">
+                        <h3 data-i18n="skill_t3"><i class="fas fa-tools"></i> Outils & Créa</h3>
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="skill-content">
+                        <div class="skill-list">
+                            <span>Git / GitHub</span>
+                            <span>VS Code</span>
+                            <span data-i18n="skill_blend">Blender (Modé/Anim)</span>
+                            <span data-i18n="skill_node">Node.js (Bases)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="projects_title">Réalisations</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;" data-aos="fade-up" data-i18n="projects_sub">Des projets pour apprendre, tester et créer.</p>
+            
+            <div class="projects-grid">
+                <article class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-robot"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_1">ChatBot RAG Local</h3>
+                        <p class="project-desc" data-i18n="proj_1"><strong>Le défi :</strong> Concevoir un assistant IA privé et autonome. Déploiement de modèles de langage en local avec Ollama, orchestration via LangChain, et intégration d'une mémoire vectorielle ChromaDB pour interroger des documents personnels avec Streamlit.</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Ollama</span><span class="tag">ChromaDB</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a href="https://github.com/Flowz5/ChatBot" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-chart-line"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_2">Cyber-Watch : Veille B.I.</h3>
+                        <p class="project-desc" data-i18n="proj_2"><strong>Le défi :</strong> Solution complète de Business Intelligence. Collecte automatisée (Scraping), stockage BDD et restitution via un <strong>Dashboard interactif Streamlit</strong> (KPIs, Analyse sémantique).</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">Python</span><span class="tag">Streamlit</span><span class="tag">MySQL</span><span class="tag">Data Viz</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a href="https://github.com/Flowz5/VeilleTechScraper" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-search"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_3">Doc-Hunter : Assistant Dev</h3>
+                        <p class="project-desc" data-i18n="proj_3"><strong>Le défi :</strong> Moteur de recherche intégré à l'OS (Hyprland). Permet de scraper les docs officielles et d'afficher des <strong>Cheat Sheets</strong> de code instantanément sans quitter le clavier.</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">Python</span><span class="tag">Scraping</span><span class="tag">Linux/System</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a href="https://github.com/Flowz5/doc_hunter" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-aos="fade-up" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-eye"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_4">IA Vision Continue</h3>
+                        <p class="project-desc" data-i18n="proj_4"><strong>Le défi :</strong> Créer un moteur de classification d'images "Human-in-the-loop". Utilisation du modèle CLIP pour l'extraction de caractéristiques visuelles et de ChromaDB pour mémoriser les corrections en temps réel via une interface terminale avancée.</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">Python</span><span class="tag">ChromaDB</span><span class="tag">HuggingFace</span><span class="tag">Rich UI</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a href="https://github.com/Flowz5/ImgRec" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-aos="fade-up" data-aos-delay="100" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-rocket"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_5">Réplique "Asteroids"</h3>
+                        <p class="project-desc" data-i18n="proj_5"><strong>Le défi :</strong> Recréer le célèbre jeu d'arcade en JavaScript. Gestion de la physique, des collisions et du score en temps réel.</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">JavaScript</span><span class="tag">Logique Jeu</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem; gap: 1rem;">
+                            <a href="https://asteroid-8iv6.onrender.com/" target="_blank" class="btn-link"><i class="fas fa-play"></i> <span data-i18n="btn_play">Jouer au jeu</span></a>
+                            <a href="https://github.com/Flowz5/Asteroid" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card" data-aos="fade-up" data-aos-delay="200" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="icon-box" style="font-size: 3rem; text-align: center; margin-bottom: 1.5rem;"><i class="fas fa-hand-paper"></i></div>
+                    <div class="project-info">
+                        <h3 style="text-align: center;" data-i18n="proj_title_6">Hand Tracking AI</h3>
+                        <p class="project-desc" data-i18n="proj_6"><strong>Le défi :</strong> Explorer la <strong>Computer Vision</strong> pour détecter et suivre les mains en temps réel via webcam. Utilisation de l'algorithme <strong>MediaPipe</strong> pour mapper 21 points de repère (landmarks) avec une latence minimale.</p>
+                        <div class="tags" style="justify-content: center;">
+                            <span class="tag">Python</span><span class="tag">OpenCV</span><span class="tag">MediaPipe</span>
+                        </div>
+                        <div class="project-actions" style="justify-content: center; margin-top: 1.5rem;">
+                            <a href="https://github.com/Flowz5/Hand-Tracking-AI" target="_blank" class="btn-link"><i class="fab fa-github"></i> <span data-i18n="btn_code">Voir le code</span></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="terminal-section" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="terminal_title">Terminal</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;" data-aos="fade-up" data-i18n="terminal_sub">Un petit aperçu en ligne de commande. Essayez de taper 'help'.</p>
+            <div class="terminal-container" data-aos="fade-up">
+                <div class="terminal-header">
+                    <span class="terminal-dot red"></span>
+                    <span class="terminal-dot yellow"></span>
+                    <span class="terminal-dot green"></span>
+                    <span class="terminal-title">guest@portfolio:~</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-output" id="terminal-output">
+                        <p data-i18n="term_header">Léo Dupont (Portfolio) [Version 1.0.0]</p>
+                        <p data-i18n="term_welcome">Tapez 'help' pour afficher la liste des commandes disponibles.</p>
+                    </div>
+                    <div class="terminal-input-line">
+                        <label for="terminal-input" class="sr-only">Ligne de commande du terminal</label>
+                        <span class="prompt" aria-hidden="true">guest@portfolio:~$ </span>
+                        <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="veille" class="big-section">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="veille_title">Veille Technologique</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem;" data-aos="fade-up" data-i18n="veille_sub">Actualités et tendances en développement et IA.</p>
+            
+            <div class="veille-carousel-wrapper" data-aos="fade-up">
+                <button class="scroll-btn left-btn" id="scroll-left" aria-label="Défiler à gauche">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                
+                <div class="news-scroller" id="news-scroller">
+                    <div class="news-loading" id="news-loading" data-i18n="news_loading">
+                        <i class="fas fa-spinner fa-spin"></i> Chargement des actualités...
+                    </div>
+                </div>
+
+                <button class="scroll-btn right-btn" id="scroll-right" aria-label="Défiler à droite">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </section>
+
+        <section id="contact" class="big-section" style="margin-bottom: 5rem;">
+            <h2 class="section-title" data-aos="fade-up" data-i18n="contact_title">Me Contacter</h2>
+            <div class="contact-container">
+                <form action="https://formsubmit.co/le.dupont.pro@gmail.com" method="POST" class="contact-form" data-aos="fade-up">
+                    <input type="hidden" name="_subject" value="Nouveau contact depuis le Portfolio !">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://portfolio-leodupont-1jr4.onrender.com/">
+                    
+                    <label for="form_name" id="label_form_name" class="sr-only" data-i18n="form_name">Votre Nom</label>
+                    <input type="text" name="nom" placeholder="Votre Nom" required id="form_name">
+                    
+                    <label for="form_email" id="label_form_email" class="sr-only" data-i18n="form_email">Votre Email</label>
+                    <input type="email" name="email" placeholder="Votre Email" required id="form_email">
+                    
+                    <label for="form_message" id="label_form_message" class="sr-only" data-i18n="form_msg">Votre Message</label>
+                    <textarea name="message" placeholder="Votre Message" rows="5" required id="form_message"></textarea>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="btn_send">Envoyer le message</button>
+                </form>
+            </div>
+        </section>
+
+        <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+    </main>
+
+    <div id="cmd-palette" class="cmd-palette-overlay hidden">
+        <div class="cmd-palette-box">
+            <div class="cmd-input-wrapper">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <label for="cmd-input" class="sr-only">Barre de recherche de la palette de commandes</label>
+                <input type="text" id="cmd-input" placeholder="Rechercher... (Projets, Contact...)">
+                <span class="cmd-esc">ESC</span>
+            </div>
+            <ul id="cmd-results" class="cmd-results">
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            AOS.init({ offset: 100, once: false });
+        });
+    </script>
+</body>
+</html>

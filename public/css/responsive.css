@@ -1,0 +1,137 @@
+/* =========================================================
+    RESPONSIVE DESIGN (LARGEUR / WIDTH)
+   ========================================================= */
+
+@media (max-width: 1024px) {
+    .navbar {
+        transform: translateX(-100%);
+    }
+    .navbar.nav-open {
+        transform: translateX(0);
+    }
+    .content {
+        margin-left: 0 !important;
+    }
+    .toggle-btn {
+        display: block;
+    }
+}
+
+@media (min-width: 1025px) {
+    .toggle-btn {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-center h1 {
+        font-size: 2.8rem;
+    }
+    .full-width-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    /* Masquer les boutons de scroll sur mobile (défilement tactile) */
+    .scroll-btn {
+        display: none;
+    }
+}
+
+/* =========================================================
+    RESPONSIVE DESIGN (HAUTEUR VERTICALE / HEIGHT)
+   ========================================================= */
+
+/* Pour les ordinateurs portables standards ou navigateurs chargés */
+@media (max-height: 900px) {
+    .navbar {
+        padding: 1.2rem 1.2rem;
+    }
+    .profile-box {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+    }
+    .profile-box h2 {
+        font-size: 1.3rem;
+    }
+    .status-indicator {
+        margin-top: 8px;
+        padding: 4px 10px;
+    }
+    .navbar nav {
+        gap: 0.25rem;
+    }
+    .navbar a {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    .settings-container {
+        padding-top: 1rem;
+        gap: 10px;
+    }
+    .sidebar-footer {
+        padding-top: 0.8rem;
+    }
+    .socials-sidebar {
+        padding: 8px;
+        gap: 10px;
+    }
+}
+
+/* Pour les très petits écrans (MacBook 13", Split screen, etc.) */
+@media (max-height: 750px) {
+    .navbar {
+        padding: 0.8rem 1.2rem;
+    }
+    .profile-box {
+        padding: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+    .profile-box h2 {
+        font-size: 1.2rem;
+    }
+    .profile-box p {
+        font-size: 0.75rem;
+    }
+    .status-indicator {
+        margin-top: 6px;
+        padding: 3px 8px;
+    }
+    .status-text {
+        font-size: 0.7rem;
+    }
+    .navbar nav {
+        gap: 0.15rem;
+    }
+    .navbar a {
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        gap: 8px;
+    }
+    .shortcut-badge {
+        padding: 2px 4px;
+        font-size: 0.6rem;
+    }
+    .settings-container {
+        padding-top: 0.5rem;
+        flex-direction: row;
+    }
+    .theme-switch-container {
+        flex-direction: row;
+        align-items: center;
+    }
+    #theme-text {
+        display: none;
+    }
+    .sidebar-footer {
+        padding-top: 0.5rem;
+    }
+    .socials-sidebar {
+        padding: 6px;
+        border-radius: 15px;
+        margin-bottom: 0;
+    }
+    .socials-sidebar a {
+        font-size: 1rem;
+    }
+}

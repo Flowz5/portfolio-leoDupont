@@ -1,0 +1,112 @@
+/* =========================================================
+    TERMINAL INTERACTIF
+   ========================================================= */
+
+.terminal-container {
+    background-color: #0d1117;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.terminal-header {
+    background-color: #161b22;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #30363d;
+}
+
+.terminal-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.terminal-dot.red {
+    background-color: #ff5f56;
+}
+
+.terminal-dot.yellow {
+    background-color: #ffbd2e;
+}
+
+.terminal-dot.green {
+    background-color: #27c93f;
+}
+
+.terminal-title {
+    margin-left: auto;
+    margin-right: auto;
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+
+.terminal-body {
+    padding: 20px;
+    height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-output p {
+    margin: 5px 0;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+    font-family: 'Fira Code', monospace;
+}
+
+.terminal-output .success {
+    color: var(--accent);
+}
+
+.terminal-output .error {
+    color: #ff7b72;
+}
+
+.terminal-output .info {
+    color: #79c0ff;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.terminal-input-line .prompt {
+    color: var(--accent);
+    margin-right: 10px;
+    font-weight: bold;
+    font-family: 'Fira Code', monospace;
+}
+
+#terminal-input {
+    background: transparent;
+    border: none;
+    color: #c9d1d9;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    flex: 1;
+    outline: none;
+}
+
+body.matrix-mode .terminal-container {
+    border-color: #00ff41;
+}
+
+body.matrix-mode .terminal-header {
+    background-color: #002200;
+    border-bottom-color: #00ff41;
+}
+
+body.matrix-mode .terminal-output p, 
+body.matrix-mode #terminal-input {
+    color: #00ff41;
+}

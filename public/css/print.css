@@ -1,0 +1,41 @@
+/* =========================================================
+    PRINT CSS POUR L'ÉCO-CONCEPTION (Ne charge que si on imprime)
+   ========================================================= */
+
+@media print {
+    .navbar, 
+    .bg-blobs, 
+    .scroll-top, 
+    .theme-switch-container, 
+    .btn-group, 
+    .status-indicator, 
+    .veille-carousel-wrapper,
+    #lang-toggle {
+        display: none !important;
+    }
+    
+    body, 
+    .content, 
+    .big-section, 
+    .project-card, 
+    .service-card, 
+    .timeline-content {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    .content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+    
+    h1, 
+    h2, 
+    h3, 
+    p, 
+    span {
+        color: #000000 !important;
+    }
+}

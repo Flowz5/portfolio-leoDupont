@@ -1,0 +1,74 @@
+/* =========================================================
+   THÈME SOMBRE - MATCH PORTFOLIO
+   (Override du Framework W3.CSS)
+========================================================= */
+
+/* Police et fond global */
+html, body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #020024; /* Fond bleu nuit */
+    color: #cbd5e1; /* Texte gris clair */
+}
+
+/* === MODIFICATION PRINCIPALE ICI === */
+/* Override des cartes blanches W3.CSS */
+.w3-white, .w3-card, .w3-card-4 {
+    background-color: rgba(3, 0, 86, 0.6) !important; /* Fond semi-transparent */
+    color: #cbd5e1 !important;
+    backdrop-filter: blur(10px); /* Effet flou moderne */
+    border: 1px solid rgba(255,255,255,0.05); /* Bordure subtile */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+    
+    /* AJOUT DES COINS ARRONDIS */
+    border-radius: 16px !important; 
+    /* Important : empêche l'image de dépasser des coins arrondis */
+    overflow: hidden; 
+}
+
+/* Titres et textes */
+h2, h5 { 
+    color: #fff !important; 
+}
+
+.w3-text-grey { 
+    color: #a0aec0 !important; 
+}
+
+/* Remplacement du Vert Teal par le Violet du Portfolio */
+.w3-text-teal { 
+    color: #7773ff !important; /* Icônes en violet clair */
+}
+
+.w3-teal { 
+    background-color: #5a56d8 !important; /* Barres et footer en violet */
+}
+
+/* Barres de progression (le fond gris derrière la barre colorée) */
+.w3-light-grey { 
+    background-color: rgba(255,255,255,0.1) !important; 
+}
+
+/* AJOUT : Arrondir aussi les bouts des barres de progression */
+.w3-round-xlarge {
+    border-radius: 16px !important;
+}
+
+/* Séparateurs */
+hr { 
+    border-top: 1px solid rgba(255,255,255,0.1); 
+}
+
+/* Petits ajustements pour le texte des compétences */
+.skill-text { 
+    margin-bottom: 2px; 
+    display: block; 
+    font-weight: 500; 
+}
+
+/* AJOUT : Arrondir le footer */
+footer.w3-teal {
+    border-radius: 16px !important;
+}
