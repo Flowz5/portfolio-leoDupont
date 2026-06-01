@@ -1,348 +1,288 @@
-/* =========================================================
-    BOUTONS GLOBAUX
-   ========================================================= */
-
-.btn-group {
-    display: flex;
-    gap: 15px;
+/* Glass Buttons */
+.glass-btn {
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-}
-
-.btn-primary, 
-.btn-secondary {
-    padding: 12px 25px;
-    border-radius: 30px;
-    text-decoration: none;
+    gap: 0.75rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-family: var(--font-mono);
     font-weight: 600;
-    font-size: 0.95rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
     border: 1px solid transparent;
-    display: inline-block;
 }
 
-.btn-primary {
+.glass-btn.primary {
     background: var(--accent);
     color: var(--bg-main);
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
-    will-change: transform;
+    box-shadow: var(--accent-glow);
 }
 
-.btn-primary:hover {
+.glass-btn.primary:hover {
     background: var(--accent-hover);
+    box-shadow: 0 0 30px var(--accent-hover);
+    transform: translateY(-2px);
 }
 
-.btn-secondary {
-    background: transparent;
-    border-color: var(--border-color);
+.glass-btn.secondary {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-color: var(--glass-border);
     color: var(--text-main);
-    transition: 0.3s;
 }
 
-.btn-secondary:hover {
+.glass-btn.secondary:hover {
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-2px);
 }
 
-/* =========================================================
-    TIMELINE (Parcours)
-   ========================================================= */
-
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    border-left: 2px solid var(--border-color);
-    padding-left: 30px;
+.glass-btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
 }
 
-.timeline-item {
-    margin-bottom: 3rem;
+.full-width { width: 100%; }
+
+/* Profile Glass Card */
+.profile-glass-card {
+    background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    width: 300px;
+    box-shadow: var(--glass-shadow);
     position: relative;
+    transform-style: preserve-3d;
 }
 
-.timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -37px;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    background: var(--accent);
+.profile-img-placeholder {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
+    background: var(--bg-main);
+    border: 2px solid var(--accent);
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--accent);
+    box-shadow: var(--accent-glow);
+    transform: translateZ(20px);
 }
 
-.timeline-date {
-    color: var(--accent);
-    font-weight: bold;
+.profile-glass-card h3 {
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    transform: translateZ(15px);
 }
 
-.timeline-content {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 1.5rem;
-    border-radius: 12px;
-}
-
-.timeline-content h3 {
-    margin: 0;
-    margin-bottom: 5px;
-}
-
-.timeline-content h4 {
-    margin: 0;
-    margin-bottom: 10px;
+.profile-glass-card p {
     color: var(--text-muted);
-    font-weight: normal;
     font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    transform: translateZ(10px);
 }
 
-.timeline-content p {
-    color: var(--text-muted);
-    margin: 0;
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    transform: translateZ(20px);
 }
 
-/* =========================================================
-    GRILLES (Services & Projets)
-   ========================================================= */
-
-.services-grid, 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: all 0.3s;
 }
 
-.service-card, 
-.project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 2rem;
-    border-radius: 16px;
-    transition: box-shadow 0.3s, background 0.3s, border-color 0.3s;
-}
-
-.service-card:hover {
-    box-shadow: 0 10px 40px -10px rgba(74, 222, 128, 0.15);
-    border-color: rgba(74, 222, 128, 0.4);
-    background: rgba(255, 255, 255, 0.03);
-}
-
-.project-card {
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(transparent, transparent, transparent, var(--accent));
-    animation: border-spin 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.4s;
-    z-index: 0;
-}
-
-.project-card::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    background: #181b1d;
-    border-radius: 15px;
-    z-index: 1;
-    transition: background 0.3s;
-}
-
-body.light-mode .project-card::after {
-    background: #ffffff;
-}
-
-body.matrix-mode .project-card::after {
-    background: #000000;
-}
-
-.project-card > * {
-    position: relative;
-    z-index: 2;
-}
-
-.project-card:hover::before {
-    opacity: 1;
-}
-
-@keyframes border-spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-.icon-box {
-    font-size: 2rem;
+.social-links a:hover {
     color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
     margin-bottom: 1rem;
 }
 
-.service-card h3, 
-.project-info h3 {
-    margin-top: 0;
-    font-size: 1.3rem;
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulse 2s infinite;
 }
 
-.service-card p, 
-.project-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
 }
 
-/* =========================================================
-    TAGS ET LIENS (Projets)
-   ========================================================= */
-
-.tags {
-    margin: 1rem 0;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.tag {
-    background: transparent;
-    border: 1px solid var(--border-color);
-    color: var(--text-muted);
-    padding: 4px 10px;
-    font-size: 0.8rem;
+/* Projects Card Modern */
+.project-card-modern {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
-}
-
-.btn-link {
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.btn-link:hover {
-    color: var(--accent);
-}
-
-/* =========================================================
-    COMPÉTENCES (Stack technique)
-   ========================================================= */
-
-.skills-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.skill-category {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
+    min-height: 380px;
+    position: relative;
     overflow: hidden;
-}
-
-.skill-header {
-    padding: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
-}
-
-.skill-header h3 {
-    margin: 0;
-    font-size: 1.1rem;
-}
-
-.skill-header h3 i {
-    color: var(--accent);
-    margin-right: 10px;
-}
-
-.skill-list {
-    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.skill-list span {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    border: 1px solid var(--border-color);
+.project-card-modern:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
 }
 
-/* =========================================================
-    PALETTE DE COMMANDES (CTRL+K)
-   ========================================================= */
+.project-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.03);
+    transition: transform 0.5s ease, color 0.5s ease;
+    z-index: 1;
+}
 
+.project-card-modern:hover .project-bg {
+    transform: scale(1.1) rotate(5deg);
+    color: rgba(255, 255, 255, 0.08);
+}
+
+.project-overlay {
+    position: relative;
+    z-index: 2;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-overlay h3 { margin-bottom: 1rem; font-size: 1.4rem; color: var(--text-main); }
+.project-overlay p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+.tag {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    padding: 0.4rem 0.8rem;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 50px;
+    color: var(--accent);
+}
+
+.project-overlay .glass-btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Scroll Top */
+.scroll-top {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 45px;
+    height: 45px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    z-index: 99;
+}
+.scroll-top.visible { opacity: 1; pointer-events: auto; }
+.scroll-top:hover { transform: translateY(-3px); box-shadow: var(--accent-glow); }
+
+/* Form inputs */
+.glass-input {
+    width: 100%;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: var(--font-main);
+    outline: none;
+    transition: border-color 0.3s;
+    margin-bottom: 1rem;
+}
+.glass-input:focus { border-color: var(--accent); }
+
+/* CMD Palette Overlay */
 .cmd-palette-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(5px);
-    z-index: 3000;
+    z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding-top: 10vh;
     opacity: 1;
-    visibility: visible;
-    transition: all 0.2s ease;
+    transition: opacity 0.2s;
 }
-
 .cmd-palette-overlay.hidden {
     opacity: 0;
-    visibility: hidden;
     pointer-events: none;
 }
-
 .cmd-palette-box {
-    background: var(--bg-sidebar);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
     width: 90%;
     max-width: 600px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
     overflow: hidden;
-    transform: translateY(0);
-    transition: transform 0.2s ease;
 }
-
-.cmd-palette-overlay.hidden .cmd-palette-box {
-    transform: translateY(-20px);
-}
-
 .cmd-input-wrapper {
     display: flex;
     align-items: center;
-    padding: 15px 20px;
-    border-bottom: 1px solid var(--border-color);
-    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
 }
-
-.cmd-input-wrapper i {
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    margin-right: 15px;
-}
-
+.cmd-input-wrapper i { color: var(--accent); margin-right: 1rem; }
 #cmd-input {
     flex: 1;
     background: transparent;
@@ -351,125 +291,44 @@ body.matrix-mode .project-card::after {
     font-size: 1.1rem;
     outline: none;
 }
-
 .cmd-esc {
-    font-size: 0.75rem;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 8px;
-    border-radius: 4px;
+    font-size: 0.7rem;
     color: var(--text-muted);
-    border: 1px solid var(--border-color);
+    background: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
 }
-
 .cmd-results {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 350px;
+    max-height: 300px;
     overflow-y: auto;
 }
-
-.cmd-results li a {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    color: var(--text-main);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+.cmd-results li {
+    padding: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
     transition: background 0.2s;
 }
-
-.cmd-results li a:hover, 
-.cmd-results li a.active {
-    background: rgba(74, 222, 128, 0.1);
-    color: var(--accent);
-}
-
-.cmd-results li a i {
-    width: 25px;
-    color: var(--text-muted);
-    transition: color 0.2s;
-}
-
-.cmd-results li a:hover i {
-    color: var(--accent);
-}
-
-/* =========================================================
-    FORMULAIRE DE CONTACT
-   ========================================================= */
-
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact-form input, 
-.contact-form textarea {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    padding: 15px;
-    border-radius: 12px;
-    font-family: inherit;
-    width: 100%;
-    transition: border-color 0.3s;
-    resize: none;
-}
-
-.contact-form input:focus, 
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-}
-
-/* =========================================================
-    STYLE DES PLACEHOLDERS (Formulaire)
-   ========================================================= */
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-    color: #9ca3af; /* Un gris neutre visible pour le contraste */
-    opacity: 1; /* Important : Firefox réduit l'opacité par défaut, cela force la visibilité */
-}
-
-/* =========================================================
-    BOUTON RETOUR EN HAUT
-   ========================================================= */
-
-.scroll-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--accent);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+.cmd-results li:hover { background: rgba(255,255,255,0.05); }
+.cmd-results a {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    color: var(--text-main);
     text-decoration: none;
-    transition: 0.3s;
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1000;
 }
+.cmd-results li:hover a { color: var(--accent); }
 
-.scroll-top:hover {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--bg-main);
-}
-
-.scroll-top.active {
-    opacity: 1;
-    pointer-events: all;
-}
+/* Bento specific details */
+.tile-icon { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
+.skills-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.chip { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.services-mini-grid { display: grid; gap: 1rem; margin-top: 1rem; }
+.srv-item { display: flex; align-items: center; gap: 1rem; background: rgba(255,255,255,0.02); padding: 1rem; border-radius: 12px; }
+.srv-item i { color: var(--accent); font-size: 1.2rem; }
+.mini-timeline { list-style: none; margin-top: 1rem; border-left: 2px solid var(--glass-border); padding-left: 1rem; }
+.mini-timeline li { position: relative; margin-bottom: 1.5rem; }
+.mini-timeline li::before { content: ""; position: absolute; left: -1.4rem; top: 0.2rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.mini-timeline .date { display: block; font-size: 0.8rem; color: var(--text-muted); }

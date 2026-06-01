@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // Initialisation AOS
+    if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 500, once: false });
+    }
 
     // =========================================================
     // 1. VARIABLES GLOBALES ET TRADUCTIONS COMPLETES
@@ -299,14 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const navLinks = document.querySelectorAll(".navbar nav a");
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            if (window.innerWidth <= 1024) {
-                navbar.classList.remove("nav-open");
-            }
-        });
-    });
+    const navLinks = document.querySelectorAll(".floating-nav a.nav-item");
 
     // =========================================================
     // 4. SCROLL ACTIF ET RETOUR EN HAUT
@@ -584,33 +581,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const readText = translations[currentLang].read_article || "Lire l'article";
 
         articles.forEach(article => {
-            const card = document.createElement('article');
-            card.className = 'news-card';
-            
-            const imageUrl = article.cover_image || article.social_image || './Assets/code2.webp';
-            
+            const card = document.createElement('div');
+            card.className = 'veille-item';
             card.innerHTML = `
-                <img src="${imageUrl}" alt="Illustration de l'article" class="news-image" width="320" height="160" loading="lazy" onerror="this.src='./Assets/code2.webp'">
-                <div class="news-content">
-                    <span class="news-source">${article.user ? article.user.name : 'Tech News'}</span>
-                    <h3 class="news-title">${article.title}</h3>
-                    <p class="news-desc">${article.description || 'Découvrez cet article sur les dernières tendances du développement logiciel.'}</p>
-                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-link">
-                        ${readText} <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;" aria-hidden="true"></i>
-                    </a>
-                </div>
+                <h4>${article.title}</h4>
+                <p>${article.description || 'Découvrez cet article sur les dernières tendances du développement logiciel.'}</p>
+                <a href="${article.url}" target="_blank" rel="noopener noreferrer">
+                    ${readText} <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;" aria-hidden="true"></i>
+                </a>
             `;
             newsScroller.appendChild(card);
-        });
-    }
-
-    if (scrollLeftBtn && scrollRightBtn && newsScroller) {
-        scrollLeftBtn.addEventListener('click', () => {
-            newsScroller.scrollBy({ left: -340, behavior: 'smooth' });
-        });
-        
-        scrollRightBtn.addEventListener('click', () => {
-            newsScroller.scrollBy({ left: 340, behavior: 'smooth' });
         });
     }
 

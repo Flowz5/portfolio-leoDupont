@@ -1,151 +1,23 @@
-/* =========================================================
-    SECTION VEILLE TECHNOLOGIQUE (NOUVEAU)
-   ========================================================= */
-
-.veille-carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 1100px; 
-    margin: 0 auto;
-    padding: 0 60px; 
-}
-
-.news-scroller {
-    display: flex;
-    gap: 1.5rem;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 1rem 0;
-    scrollbar-width: none; 
-    -ms-overflow-style: none;
-    width: 100%;
-}
-
-.news-scroller::-webkit-scrollbar {
-    display: none; 
-}
-
-.news-card {
-    min-width: 320px;
-    max-width: 320px;
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    flex-shrink: 0;
-}
-
-.news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px -10px rgba(74, 222, 128, 0.15);
-    border-color: rgba(74, 222, 128, 0.4);
-}
-
-.news-image {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    background: #2d3336;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.news-content {
+.veille-list {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: var(--glass-shadow);
     padding: 1.5rem;
+    height: 395px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    gap: 1rem;
 }
-
-.news-source {
-    font-size: 0.75rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+.veille-item {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
-
-.news-title {
-    font-size: 1.1rem;
-    color: var(--text-main);
-    margin: 0 0 1rem 0;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.news-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0 0 1.5rem 0;
-    line-height: 1.6;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.news-link {
-    color: var(--accent);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    transition: color 0.3s;
-    margin-top: auto;
-}
-
-.news-link:hover {
-    color: var(--text-main);
-}
-
-.scroll-btn {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-main);
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    transition: all 0.3s;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-.scroll-btn:hover {
-    background: var(--accent);
-    color: var(--bg-main);
-    border-color: var(--accent);
-}
-
-
-.left-btn {
-    left: 0; 
-}
-
-.right-btn {
-    right: 0; 
-}
-
-.news-loading {
-    width: 100%;
-    text-align: center;
-    padding: 3rem;
-    color: var(--text-muted);
-    font-size: 1.1rem;
-}
+.veille-item:last-child { border-bottom: none; }
+.veille-item h4 { color: var(--text-main); font-size: 1rem; margin-bottom: 0.5rem; }
+.veille-item p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0.5rem;}
+.veille-item a { color: var(--accent); font-size: 0.8rem; text-decoration: none; font-family: var(--font-mono); }
+.veille-item a:hover { text-decoration: underline; }
+.news-loading { display:flex; justify-content:center; align-items:center; height:100%; color:var(--text-muted); gap:10px; }
