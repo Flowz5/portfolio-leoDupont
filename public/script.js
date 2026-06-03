@@ -208,6 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     function typeText() {
                         if (charIndex < textToType.length) {
                             el.textContent += textToType.charAt(charIndex);
+                            if (window.playKeySound) window.playKeySound();
                             charIndex++;
                             typewriterTimeout = setTimeout(typeText, 50);
                         } else {
@@ -218,7 +219,34 @@ document.addEventListener("DOMContentLoaded", () => {
                     typewriterTimeout = setTimeout(typeText, isInitialLoad ? 1000 : 300);
                 } 
                 else {
-                    el.innerHTML = translations[lang][key];
+                    const targetText = translations[lang][key];
+                    // Don't scramble if it contains HTML
+                    if (targetText.includes('<')) {
+                        el.innerHTML = targetText;
+                    } else {
+                        // Scramble Effect
+                        const chars = '!<>-_\\\\/[]{}—=+*^?#________';
+                        let iteration = 0;
+                        clearInterval(el.dataset.scrambleInterval);
+                        
+                        const interval = setInterval(() => {
+                            el.textContent = targetText
+                                .split('')
+                                .map((letter, index) => {
+                                    if(index < iteration) {
+                                        return targetText[index];
+                                    }
+                                    return chars[Math.floor(Math.random() * chars.length)];
+                                })
+                                .join('');
+                            
+                            if(iteration >= targetText.length){
+                                clearInterval(interval);
+                            }
+                            iteration += 1.5; // Faster unscrambling (was 0.5)
+                        }, 15); // Faster interval (was 20)
+                        el.dataset.scrambleInterval = interval;
+                    }
                 }
             }
         });
@@ -370,15 +398,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // =========================================================
     // 5. BOUTONS MAGNÉTIQUES
     // =========================================================
-    const magneticButtons = document.querySelectorAll('.btn-primary');
-    magneticButtons.forEach(btn => {
+    // Upgrade to Magnetic logic (1.1)
+    const magneticElements = document.querySelectorAll('.btn-primary, .nav-item, .social-links a, .glass-btn');
+    magneticElements.forEach(btn => {
         btn.addEventListener('mousemove', function(e) {
             const position = btn.getBoundingClientRect();
             const x = e.clientX - position.left - position.width / 2;
             const y = e.clientY - position.top - position.height / 2;
+            btn.style.transition = 'none';
             btn.style.transform = `translate(${x * 0.3}px, ${y * 0.4}px)`;
         });
         btn.addEventListener('mouseleave', function() {
+            btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             btn.style.transform = 'translate(0px, 0px)';
         });
     });
@@ -804,6 +835,88 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 300);
         };
         themeToggle.addEventListener('click', fadeThemeHandler);
+    }
+
+    // =========================================================
+    // 16. CV MODAL
+    // =========================================================
+    const btnOpenCv = document.getElementById('btn-open-cv-modal');
+    const cvModal = document.getElementById('cv-modal');
+    const cvModalClose = document.getElementById('cv-modal-close');
+
+    if (btnOpenCv && cvModal && cvModalClose) {
+        btnOpenCv.addEventListener('click', () => {
+            cvModal.classList.add('active');
+        });
+        cvModalClose.addEventListener('click', () => {
+            cvModal.classList.remove('active');
+        });
+        cvModal.addEventListener('click', (e) => {
+            if (e.target === cvModal) {
+                cvModal.classList.remove('active');
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cvModal.classList.contains('active')) {
+                cvModal.classList.remove('active');
+            }
+        });
+    }
+
+    // =========================================================
+    // 17. CUSTOM CURSOR
+    // =========================================================
+    const cursorDot = document.querySelector('.cursor-dot');
+    
+    // Add outline element dynamically
+    let cursorOutline = document.querySelector('.cursor-outline');
+    if (cursorDot && !cursorOutline) {
+        cursorOutline = document.createElement('div');
+        cursorOutline.classList.add('cursor-outline');
+        document.body.appendChild(cursorOutline);
+    }
+
+    if (cursorDot && cursorOutline) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+            
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover effect
+        const interactables = document.querySelectorAll('a, button, input, .project-card-modern, .bento-tile');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    }
+
+    // =========================================================
+    // 18. MECHANICAL KEYBOARD SOUNDS
+    // =========================================================
+    const keySound = new Audio('./Assets/keypress.mp3');
+    keySound.volume = 0.2;
+
+    window.playKeySound = function() {
+        if (!keySound.paused) {
+            keySound.currentTime = 0;
+        }
+        keySound.play().catch(() => {});
+    };
+
+    if (cmdInputNode) {
+        cmdInputNode.addEventListener('keydown', (e) => {
+            if (e.key.length === 1 || e.key === 'Backspace' || e.key === 'Enter') {
+                window.playKeySound();
+            }
+        });
     }
 
     // PREMIER LANCEMENT AU DÉMARRAGE

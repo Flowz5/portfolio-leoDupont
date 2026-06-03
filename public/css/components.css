@@ -149,6 +149,134 @@
     box-shadow: 0 0 10px #ef4444;
     animation: pulseRed 2s infinite;
 }
+
+/* Custom Cursor & Magnetism (Only for precise pointers / desktops) */
+@media (pointer: fine) {
+    body {
+        cursor: none; /* Hide default cursor */
+    }
+
+    a, button, input, .project-card-modern, .bento-tile {
+        cursor: none; /* Hide default cursor on interactive elements */
+    }
+
+    .cursor-dot, .cursor-outline {
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        z-index: 999999;
+        pointer-events: none;
+        transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+
+    .cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: var(--accent);
+    }
+
+    .cursor-outline {
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--accent);
+        opacity: 0.5;
+        transition: width 0.2s, height 0.2s, transform 0.1s ease-out;
+    }
+
+    .cursor-hover .cursor-dot {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+
+    .cursor-hover .cursor-outline {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 240, 255, 0.1);
+        opacity: 1;
+    }
+}
+
+/* Modal CSS */
+.glass-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.glass-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.glass-modal-content {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    position: relative;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-modal.active .glass-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: none;
+    transition: color 0.3s;
+}
+
+.modal-close-btn:hover {
+    color: var(--accent);
+}
+
+.glass-modal-content h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-main);
+}
+
+.cv-preview-container {
+    flex: 1;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.cv-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+}
 .hero-badge.offline {
     border-color: rgba(239, 68, 68, 0.25);
 }

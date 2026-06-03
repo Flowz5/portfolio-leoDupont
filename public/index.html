@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Léo Dupont - Développeur d'applications et de solutions Web">
+    <meta name="keywords" content="portfolio, développeur, web, applicatif, léo dupont, bts sio">
+    <meta name="author" content="Léo Dupont">
+    
+    <!-- Open Graph / Social Media Preview Tags -->
+    <meta property="og:title" content="Léo Dupont - Portfolio">
+    <meta property="og:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta property="og:image" content="https://votre-domaine.com/Assets/apercu-portfolio.jpg">
+    <meta property="og:url" content="https://votre-domaine.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Léo Dupont - Portfolio">
+    <meta name="twitter:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta name="twitter:image" content="https://votre-domaine.com/Assets/apercu-portfolio.jpg">
+
     <title>Léo Dupont | Software Developer</title>
     <link rel="icon" type="image/svg+xml" href="./Assets/74946-website-development-strongloop-programming-node.js-application-interface.png">
     
@@ -36,8 +53,10 @@
         </div>
     </div>
 
-    <!-- Mouse Follower Glow -->
+    <!-- Mouse Follower Glow & Custom Cursor -->
     <div id="mouse-follower" class="mouse-follower"></div>
+    <div id="custom-cursor" class="custom-cursor"></div>
+    <div id="custom-cursor-follower" class="custom-cursor-follower"></div>
 
     <div class="mesh-bg">
         <div class="mesh-orb orb-1"></div>
@@ -74,7 +93,7 @@
                 <h2 class="hero-subtitle typewriter-cursor" data-i18n="hero_dev" data-aos="fade-right" data-aos-delay="100">Développeur Application & Web</h2>
                 <p class="hero-desc" data-i18n="hero_desc" data-aos="fade-right" data-aos-delay="200">Passionné par le code et la technologie, je transforme des problèmes complexes en solutions logiques, propres et fonctionnelles.</p>
                 <div class="hero-actions" data-aos="fade-up" data-aos-delay="300">
-                    <a href="./CV/index.html" target="_blank" class="glass-btn primary"><span data-i18n="btn_view_cv">Voir mon CV</span> <i class="fas fa-arrow-right"></i></a>
+                    <button id="btn-open-cv-modal" class="glass-btn primary"><span data-i18n="btn_view_cv">Voir mon CV</span> <i class="fas fa-arrow-right"></i></button>
                     <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn secondary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
                 </div>
             </div>
@@ -386,9 +405,27 @@
         </div>
     </div>
 
+    <!-- Custom Cursor -->
+    <div class="mouse-follower"></div>
+    <div class="cursor-dot"></div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-    <script src="script.min.js" defer></script>
+    <!-- CV Modal -->
+    <div id="cv-modal" class="glass-modal" role="dialog" aria-modal="true" aria-labelledby="cv_modal_title">
+        <div class="glass-modal-content">
+            <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
+            <div class="cv-preview-container">
+                <iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF"></iframe>
+            </div>
+            <div class="modal-actions">
+                <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.min.js"></script>
 </body>
 </html>
