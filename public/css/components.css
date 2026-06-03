@@ -153,11 +153,11 @@
 /* Custom Cursor & Magnetism (Only for precise pointers / desktops) */
 @media (pointer: fine) {
     body {
-        cursor: none; /* Hide default cursor */
+        cursor: none !important; /* Hide default cursor */
     }
 
-    a, button, input, .project-card-modern, .bento-tile {
-        cursor: none; /* Hide default cursor on interactive elements */
+    * {
+        cursor: none !important;
     }
 
     .cursor-dot, .cursor-outline {

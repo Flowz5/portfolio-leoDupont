@@ -215,6 +215,18 @@
     50% { box-shadow: 0 0 12px #22c55e, 0 0 20px rgba(34, 197, 94, 0.3); }
 }
 
+/* --------------------------------------
+   Language Blur Fade (1.2 fallback)
+-------------------------------------- */
+[data-i18n] {
+    transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.lang-blur-out {
+    opacity: 0 !important;
+    filter: blur(4px);
+}
+
 /* -----------------------------------------
    6. Circular Theme Reveal
    ----------------------------------------- */

@@ -220,32 +220,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 } 
                 else {
                     const targetText = translations[lang][key];
-                    // Don't scramble if it contains HTML
-                    if (targetText.includes('<')) {
+                    
+                    // Smooth Blur-Fade Effect
+                    if (isInitialLoad) {
                         el.innerHTML = targetText;
                     } else {
-                        // Scramble Effect
-                        const chars = '!<>-_\\\\/[]{}—=+*^?#________';
-                        let iteration = 0;
-                        clearInterval(el.dataset.scrambleInterval);
+                        // Apply fade out
+                        el.classList.add('lang-blur-out');
                         
-                        const interval = setInterval(() => {
-                            el.textContent = targetText
-                                .split('')
-                                .map((letter, index) => {
-                                    if(index < iteration) {
-                                        return targetText[index];
-                                    }
-                                    return chars[Math.floor(Math.random() * chars.length)];
-                                })
-                                .join('');
-                            
-                            if(iteration >= targetText.length){
-                                clearInterval(interval);
-                            }
-                            iteration += 1.5; // Faster unscrambling (was 0.5)
-                        }, 15); // Faster interval (was 20)
-                        el.dataset.scrambleInterval = interval;
+                        // Wait for fade out, change text, then fade in
+                        setTimeout(() => {
+                            el.innerHTML = targetText;
+                            el.classList.remove('lang-blur-out');
+                        }, 200); // 200ms matches the CSS transition time
                     }
                 }
             }
@@ -911,8 +898,8 @@ document.addEventListener("DOMContentLoaded", () => {
         keySound.play().catch(() => {});
     };
 
-    if (cmdInputNode) {
-        cmdInputNode.addEventListener('keydown', (e) => {
+    if (document.getElementById('cmd-input')) {
+        document.getElementById('cmd-input').addEventListener('keydown', (e) => {
             if (e.key.length === 1 || e.key === 'Backspace' || e.key === 'Enter') {
                 window.playKeySound();
             }
