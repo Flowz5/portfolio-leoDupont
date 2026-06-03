@@ -17,11 +17,27 @@
     <link rel="stylesheet" href="./css/navbar.css">
     <link rel="stylesheet" href="./css/terminal.css">
     <link rel="stylesheet" href="./css/veille.css">
+    <link rel="stylesheet" href="./css/animations.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-logo">L<span class="splash-accent">.</span>D</div>
+        <div class="splash-bar-container">
+            <div class="splash-bar"></div>
+        </div>
+        <div class="splash-status" id="splash-status">
+            <span class="splash-status-dot"></span>
+            <span data-i18n="status">En ligne</span>
+        </div>
+    </div>
+
+    <!-- Mouse Follower Glow -->
+    <div id="mouse-follower" class="mouse-follower"></div>
+
     <div class="mesh-bg">
         <div class="mesh-orb orb-1"></div>
         <div class="mesh-orb orb-2"></div>
@@ -87,6 +103,20 @@
                     <div class="tile-icon"><i class="fas fa-terminal"></i></div>
                     <h3 data-i18n="about_h1"><i class='fas fa-terminal'></i> Tech & Rigueur</h3>
                     <p data-i18n="about_p1">Ce qui m'anime...</p>
+                    <div class="about-highlights">
+                        <div class="about-highlight-item">
+                            <i class="fas fa-bullseye"></i>
+                            <span data-i18n="about_hl1">Exigence qualité</span>
+                        </div>
+                        <div class="about-highlight-item">
+                            <i class="fas fa-sync-alt"></i>
+                            <span data-i18n="about_hl2">Veille permanente</span>
+                        </div>
+                        <div class="about-highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span data-i18n="about_hl3">Apprentissage continu</span>
+                        </div>
+                    </div>
                     <p data-i18n="about_p2">Mon objectif...</p>
                 </div>
                 
@@ -104,10 +134,13 @@
                     <div class="skills-chips">
                         <span class="chip"><i class="fab fa-python"></i> Python</span>
                         <span class="chip"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="chip"><i class="fab fa-java"></i> Java</span>
                         <span class="chip"><i class="fas fa-database"></i> SQL (MySQL)</span>
                         <span class="chip"><i class="fab fa-html5"></i> HTML/CSS</span>
+                        <span class="chip"><i class="fab fa-angular"></i> Angular</span>
                         <span class="chip"><i class="fab fa-git-alt"></i> Git/GitHub</span>
-                        <span class="chip"><i class="fab fa-windows"></i> <span data-i18n="skill_csharp">C# (Bases)</span></span>
+                        <span class="chip"><i class="fab fa-windows"></i> <span data-i18n="skill_csharp">C#</span></span>
+                        <span class="chip"><i class="fab fa-linux"></i> Linux</span>
                         <span class="chip"><i class="fab fa-linux"></i> Bash</span>
                     </div>
                 </div>
@@ -118,15 +151,24 @@
                     <div class="services-mini-grid">
                         <div class="srv-item">
                             <i class="fas fa-laptop-code"></i>
-                            <h4 data-i18n="serv_t1">Développement Logiciel</h4>
+                            <div class="srv-text">
+                                <h4 data-i18n="serv_t1">Développement Logiciel</h4>
+                                <p data-i18n="serv_p1">Création d'outils, de scripts d'automatisation ou d'applications.</p>
+                            </div>
                         </div>
                         <div class="srv-item">
                             <i class="fas fa-globe"></i>
-                            <h4 data-i18n="serv_t2">Intégration Web</h4>
+                            <div class="srv-text">
+                                <h4 data-i18n="serv_t2">Intégration Web</h4>
+                                <p data-i18n="serv_p2">Transformation de maquettes en pages responsives.</p>
+                            </div>
                         </div>
                         <div class="srv-item">
                             <i class="fas fa-database"></i>
-                            <h4 data-i18n="serv_t3">Data & Automatisation</h4>
+                            <div class="srv-text">
+                                <h4 data-i18n="serv_t3">Data & Automatisation</h4>
+                                <p data-i18n="serv_p3">Scripts Python pour automatiser et stocker en base SQL.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -148,6 +190,28 @@
                             <strong data-i18n="path_t3">Découverte & Stages</strong>
                         </li>
                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Counter Section -->
+        <section class="stats-section" data-aos="fade-up">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="6" data-suffix="+">0</span>
+                    <span class="stat-label" data-i18n="stat_projects">Projets</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="10" data-suffix="+">0</span>
+                    <span class="stat-label" data-i18n="stat_techs">Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="500" data-suffix="+">0</span>
+                    <span class="stat-label" data-i18n="stat_commits">Commits</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="1" data-suffix="">0</span>
+                    <span class="stat-label" data-i18n="stat_passion">Passion</span>
                 </div>
             </div>
         </section>
@@ -293,6 +357,21 @@
 
         <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
     </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Flowz5" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/l%C3%A9o-dupont-646a58385" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:dupontleo999@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-text" data-i18n="footer_text">
+            Fait avec <span class="heart">❤</span> & du code — Léo Dupont © 2025
+        </p>
+    </footer>
+
+    <!-- Theme Reveal Overlay -->
+    <div id="theme-reveal" class="theme-reveal-overlay"></div>
 
     <!-- Command Palette Overlay -->
     <div id="cmd-palette" class="cmd-palette-overlay hidden">

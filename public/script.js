@@ -25,8 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
             hero_desc: "Passionné par le code et la technologie, je transforme des problèmes complexes en solutions logiques, propres et fonctionnelles.",
             btn_view_cv: "Voir mon CV", btn_dl_pdf: "Télécharger PDF",
             about_title: "Qui suis-je ?", about_h1: "<i class='fas fa-terminal'></i> Tech & Rigueur",
-            about_p1: "Ce qui m'anime, c'est de <strong>créer des choses utiles</strong> et d'être toujours à jour sur la tech. Que ce soit une automatisation en Python ou une application, j'aime voir le résultat concret de mon code. Je suis très exigeant sur la qualité : je ne supporte pas de laisser un bug traîner ou de voir un code mal organisé. Pour moi, un code doit être aussi lisible que fonctionnel.",
-            about_p2: "Mon objectif est de poursuivre mes études pour maîtriser toutes les notions d'architecture logicielle et devenir un <strong>Développeur Software</strong> complet.",
+            about_p1: "Ce qui m'anime, c'est de <strong>créer des choses utiles</strong> et d'être toujours à jour sur la tech. Que ce soit une automatisation en Python ou une application, j'aime voir le résultat concret de mon code.",
+            about_hl1: "Exigence qualité — un code aussi lisible que fonctionnel",
+            about_hl2: "Veille permanente — toujours à jour sur les dernières technos",
+            about_hl3: "Apprentissage continu — chaque projet est une occasion de progresser",
+            about_p2: "Mon objectif est de poursuivre mes études pour maîtriser l'architecture logicielle et devenir un <strong>Développeur Software</strong> complet. Je ne supporte pas de laisser un bug traîner ou de voir un code mal organisé.",
             about_h2: "<i class='fas fa-microchip'></i> Logique & Résolution de Problèmes",
             about_p3: "Ma curiosité pour le fonctionnement interne des systèmes m'a naturellement conduit vers la programmation. Ce qui m'intéresse, c'est de comprendre comment transformer une logique abstraite en un système fonctionnel.",
             about_p4: "Mes premiers projets (comme le développement de mécaniques de jeu ou la modélisation 3D avec Blender) ont été d'excellents exercices pour maîtriser la gestion des états, l'optimisation des ressources et l'algorithmie complexe.",
@@ -36,12 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
             path_p2: "Spécialités <strong>Mathématiques</strong> et <strong>NSI</strong> (Numérique et Sciences Informatiques). Acquisition des bases solides en algorithmique et logique de programmation.",
             path_d3: "Avant 2023", path_t3: "Découverte & Stages", path_p3: "Plusieurs stages d'observation en entreprise qui ont confirmé ma volonté de travailler dans le secteur du numérique et du développement.",
             services_title: "Ce que je peux faire", serv_t1: "Développement Logiciel",
-            serv_p1: "Création d'outils, de scripts d'automatisation (Python) ou de petites applications Windows (C#). J'aime construire la logique cachée derrière les interfaces.",
-            serv_t2: "Intégration Web", serv_p2: "Transformation de maquettes ou d'idées en pages Web réelles et responsives. Je m'assure que le HTML/CSS est propre et respecte les standards.",
-            serv_t3: "Data & Automatisation", serv_p3: "Développement de scripts Python pour automatiser des tâches (Web Scraping), manipuler des données et les stocker en base SQL. J'aime rendre les processus efficaces.",
+            serv_p1: "Création d'outils, scripts d'automatisation (Python) ou applications Windows (C#). Construction de la logique cachée derrière les interfaces.",
+            serv_t2: "Intégration Web", serv_p2: "Transformation de maquettes en pages Web responsives. HTML/CSS propre, respectant les standards et l'accessibilité.",
+            serv_t3: "Data & Automatisation", serv_p3: "Scripts Python pour automatiser des tâches (Scraping), manipuler des données et les stocker en base SQL.",
             skills_title: "Stack Technique", skill_t1: "<i class='fas fa-code'></i> Langages & Web", skill_t2: "<i class='fas fa-database'></i> Data & Back", skill_t3: "<i class='fas fa-tools'></i> Outils & Créa",
             skill_sql: "Requêtes / Jointures", skill_algo: "Algorithmique", skill_blend: "Blender (Modé/Anim)", 
-            skill_csharp: "C# (Bases)", skill_node: "Node.js (Bases)",
+            skill_csharp: "C#", skill_node: "Node.js (Bases)",
             projects_title: "Réalisations", projects_sub: "Des projets pour apprendre, tester et créer.",
             proj_title_1: "ChatBot RAG Local", proj_title_2: "Cyber-Watch : Veille B.I.", proj_title_3: "Doc-Hunter : Assistant Dev", 
             proj_title_4: "IA Vision Continue", proj_title_5: "Réplique \"Asteroids\"", proj_title_6: "Hand Tracking AI",
@@ -64,6 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
             term_cmd_matrix_off: "Déconnexion de la Matrice...",
             term_cmd_rm: "Suppression totale du système... Non je rigole, c'est juste un portfolio.",
             term_cmd_croissantage: "Alerte : Règle du croissantage enfreinte. Préparez la carte bleue, redirection en cours...",
+            term_cmd_shutdown: "Arrêt du système... Le portfolio est maintenant hors ligne.",
+            term_cmd_reboot: "Redémarrage... Le portfolio est de nouveau en ligne.",
+            status_offline: "Hors ligne",
             term_cmd_not_found: "Commande introuvable : {cmd}. Tapez 'help' pour la liste.",
             veille_title: "Veille Technologique", veille_sub: "Actualités et tendances en développement et IA.",
             read_article: "Lire l'article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Chargement des actualités...",
@@ -77,7 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
             cmd_lang_toggle: "Changer de langue (FR/EN)",
             cmd_scroll_top: "Remonter en haut de page",
             cmd_matrix: "Prendre la pilule rouge (Matrix)",
-            cmd_croissant: "Enfreindre la règle d'or (Croissantage)"
+            cmd_croissant: "Enfreindre la règle d'or (Croissantage)",
+            stat_projects: "Projets", stat_techs: "Technologies", stat_commits: "Commits", stat_passion: "Passion",
+            footer_text: "Fait avec <span class='heart'>❤</span> & du code — Léo Dupont © 2025"
         },
         en: {
             role: "BTS SIO Student - SLAM Option",
@@ -91,8 +99,11 @@ document.addEventListener("DOMContentLoaded", () => {
             hero_desc: "Passionate about code and technology, I transform complex problems into logical, clean, and functional solutions.",
             btn_view_cv: "View my Resume", btn_dl_pdf: "Download PDF",
             about_title: "Who am I?", about_h1: "<i class='fas fa-terminal'></i> Tech & Rigor",
-            about_p1: "What drives me is <strong>creating useful things</strong> and staying up-to-date with tech. Whether it's Python automation or an app, I love seeing the tangible results of my code. I am highly demanding regarding quality: I can't stand leaving a bug behind or poorly organized code. To me, code must be as readable as it is functional.",
-            about_p2: "My goal is to continue my studies to master software architecture and become a complete <strong>Software Developer</strong>.",
+            about_p1: "What drives me is <strong>creating useful things</strong> and staying up-to-date with tech. Whether it's Python automation or an app, I love seeing the tangible results of my code.",
+            about_hl1: "Quality standards — code as readable as it is functional",
+            about_hl2: "Constant watch — always up-to-date on the latest technologies",
+            about_hl3: "Continuous learning — every project is a chance to grow",
+            about_p2: "My goal is to continue my studies to master software architecture and become a complete <strong>Software Developer</strong>. I can't stand leaving a bug behind or poorly organized code.",
             about_h2: "<i class='fas fa-microchip'></i> Logic & Problem Solving",
             about_p3: "My curiosity about the inner workings of systems naturally led me to programming. What interests me is understanding how to transform abstract logic into a functional system.",
             about_p4: "My early projects (such as game mechanics development or 3D modeling with Blender) were excellent exercises to master state management, resource optimization, and complex algorithms.",
@@ -102,12 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
             path_p2: "Specialized in <strong>Mathematics</strong> and <strong>Computer Science</strong>. Acquired solid foundations in algorithms and programming logic.",
             path_d3: "Before 2023", path_t3: "Discovery & Internships", path_p3: "Several observation internships in IT companies that confirmed my desire to work in the digital and development sector.",
             services_title: "What I can do", serv_t1: "Software Development",
-            serv_p1: "Creating tools, automation scripts (Python), or small Windows applications (C#). I enjoy building the hidden logic behind interfaces.",
-            serv_t2: "Web Integration", serv_p2: "Transforming mockups or ideas into real, responsive web pages. I ensure the HTML/CSS is clean and respects standards.",
-            serv_t3: "Data & Automation", serv_p3: "Developing Python scripts to automate tasks (Web Scraping), manipulate data, and store it in SQL databases. I like making processes efficient.",
+            serv_p1: "Creating tools, automation scripts (Python), or Windows applications (C#). Building the hidden logic behind interfaces.",
+            serv_t2: "Web Integration", serv_p2: "Transforming mockups into real, responsive web pages. Clean HTML/CSS, respecting standards and accessibility.",
+            serv_t3: "Data & Automation", serv_p3: "Python scripts to automate tasks (Scraping), manipulate data, and store it in SQL databases.",
             skills_title: "Tech Stack", skill_t1: "<i class='fas fa-code'></i> Languages & Web", skill_t2: "<i class='fas fa-database'></i> Data & Back", skill_t3: "<i class='fas fa-tools'></i> Tools & Design",
             skill_sql: "Queries / Joins", skill_algo: "Algorithms", skill_blend: "Blender (3D/Anim)",
-            skill_csharp: "C# (Basics)", skill_node: "Node.js (Basics)",
+            skill_csharp: "C#", skill_node: "Node.js (Basics)",
             projects_title: "My Work", projects_sub: "Projects to learn, test, and create.",
             proj_title_1: "Local RAG ChatBot", proj_title_2: "Cyber-Watch: B.I. Watch", proj_title_3: "Doc-Hunter: Dev Assistant", 
             proj_title_4: "Continuous Vision AI", proj_title_5: "\"Asteroids\" Replica", proj_title_6: "Hand Tracking AI",
@@ -130,6 +141,9 @@ document.addEventListener("DOMContentLoaded", () => {
             term_cmd_matrix_off: "Disconnecting from the Matrix...",
             term_cmd_rm: "Total system wipe... Just kidding, it's just a portfolio.",
             term_cmd_croissantage: "Alert: Croissantage rule broken. Get your credit card ready, redirecting...",
+            term_cmd_shutdown: "Shutting down... The portfolio is now offline.",
+            term_cmd_reboot: "Rebooting... The portfolio is back online.",
+            status_offline: "Offline",
             term_cmd_not_found: "Command not found: {cmd}. Type 'help' for the list.",
             veille_title: "Tech Watch", veille_sub: "News and trends in software development and AI.",
             read_article: "Read Article", news_loading: "<i class='fas fa-spinner fa-spin'></i> Loading news...",
@@ -143,7 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
             cmd_lang_toggle: "Switch Language (FR/EN)",
             cmd_scroll_top: "Scroll to top of page",
             cmd_matrix: "Take the red pill (Matrix Mode)",
-            cmd_croissant: "Break the golden rule (Croissantage)"
+            cmd_croissant: "Break the golden rule (Croissantage)",
+            stat_projects: "Projects", stat_techs: "Technologies", stat_commits: "Commits", stat_passion: "Passion",
+            footer_text: "Made with <span class='heart'>❤</span> & code — Léo Dupont © 2025"
         }
     };
 
@@ -290,11 +306,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
+        themeToggle._handler = () => {
             const isLight = body.classList.toggle('light-mode');
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
             updateToggleUI(isLight);
-        });
+        };
+        themeToggle.addEventListener('click', themeToggle._handler);
     }
 
     if(toggleBtn) {
@@ -340,8 +357,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollTopBtn = document.getElementById('scroll-top');
     if (scrollTopBtn) {
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) scrollTopBtn.classList.add('active');
-            else scrollTopBtn.classList.remove('active');
+            if (window.scrollY > 300) scrollTopBtn.classList.add('visible');
+            else scrollTopBtn.classList.remove('visible');
         });
 
         scrollTopBtn.addEventListener('click', (e) => {
@@ -501,6 +518,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 } else if (command === 'contact') {
                     responseBlock.innerHTML = `<p>${t.term_cmd_contact}</p>`;
                     terminalOutput.appendChild(responseBlock);
+                } else if (command === 'shutdown') {
+                    const heroBadge = document.querySelector('.hero-badge');
+                    const statusDot = document.querySelector('.status-dot');
+                    const statusText = document.querySelector('[data-i18n="status"]');
+                    if (heroBadge && !heroBadge.classList.contains('offline')) {
+                        heroBadge.classList.add('offline');
+                        if (statusText) statusText.textContent = t.status_offline;
+                        responseBlock.innerHTML = `<p class="error">${t.term_cmd_shutdown}</p>`;
+                    } else if (heroBadge) {
+                        heroBadge.classList.remove('offline');
+                        if (statusText) statusText.textContent = translations[currentLang].status;
+                        responseBlock.innerHTML = `<p class="success">${t.term_cmd_reboot}</p>`;
+                    }
+                    terminalOutput.appendChild(responseBlock);
                 } else {
                     const notFoundText = t.term_cmd_not_found.replace('{cmd}', command);
                     responseBlock.innerHTML = `<p class="error">${notFoundText}</p>`;
@@ -592,6 +623,187 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
             newsScroller.appendChild(card);
         });
+    }
+
+    // =========================================================
+    // 9. MOUSE FOLLOWER GLOW
+    // =========================================================
+    const follower = document.getElementById('mouse-follower');
+    if (follower) {
+        document.addEventListener('mousemove', (e) => {
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+            if (!follower.classList.contains('active')) {
+                follower.classList.add('active');
+            }
+        });
+        document.addEventListener('mouseleave', () => {
+            follower.classList.remove('active');
+        });
+    }
+
+    // =========================================================
+    // 10. COUNTER ANIMATION (IntersectionObserver)
+    // =========================================================
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (statNumbers.length > 0) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    if (el.classList.contains('counted')) return;
+                    el.classList.add('counted');
+                    const target = parseInt(el.getAttribute('data-target'));
+                    const suffix = el.getAttribute('data-suffix') || '';
+                    let current = 0;
+                    const increment = Math.max(1, Math.floor(target / 40));
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        el.textContent = current + suffix;
+                    }, 30);
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+        statNumbers.forEach(el => counterObserver.observe(el));
+    }
+
+    // =========================================================
+    // 11. BENTO TILES 3D TILT (VanillaTilt)
+    // =========================================================
+    function initBentoTilt() {
+        if (typeof VanillaTilt !== 'undefined') {
+            const bentoTiles = document.querySelectorAll('.bento-tile');
+            bentoTiles.forEach(tile => {
+                VanillaTilt.init(tile, {
+                    max: 5,
+                    speed: 400,
+                    glare: true,
+                    'max-glare': 0.1,
+                    scale: 1.02
+                });
+            });
+        }
+    }
+    // Delay to ensure VanillaTilt is loaded (deferred script)
+    setTimeout(initBentoTilt, 500);
+
+    // =========================================================
+    // 12. AUTO-TYPING TERMINAL ON SCROLL
+    // =========================================================
+    const terminalSection = document.getElementById('terminal-section');
+    let terminalAutoTyped = false;
+    if (terminalSection && terminalInput && terminalOutput) {
+        const terminalObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !terminalAutoTyped) {
+                    terminalAutoTyped = true;
+                    const demoCommand = 'whoami';
+                    let i = 0;
+                    terminalInput.focus();
+                    const typeInterval = setInterval(() => {
+                        if (i < demoCommand.length) {
+                            terminalInput.value += demoCommand[i];
+                            i++;
+                        } else {
+                            clearInterval(typeInterval);
+                            setTimeout(() => {
+                                // Simulate Enter key
+                                const enterEvent = new KeyboardEvent('keyup', {
+                                    key: 'Enter',
+                                    code: 'Enter',
+                                    keyCode: 13,
+                                    bubbles: true
+                                });
+                                terminalInput.dispatchEvent(enterEvent);
+                            }, 300);
+                        }
+                    }, 80);
+                    terminalObserver.unobserve(terminalSection);
+                }
+            });
+        }, { threshold: 0.4 });
+        terminalObserver.observe(terminalSection);
+    }
+
+    // =========================================================
+    // 13. SPLASH SCREEN
+    // =========================================================
+    const splashScreen = document.getElementById('splash-screen');
+    if (splashScreen) {
+        setTimeout(() => {
+            splashScreen.classList.add('fade-out');
+            setTimeout(() => {
+                splashScreen.remove();
+            }, 600);
+        }, 3000);
+    }
+
+    // =========================================================
+    // 14. KONAMI CODE EASTER EGG (confetti)
+    // =========================================================
+    const konamiSequence = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiSequence[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiSequence.length) {
+                konamiIndex = 0;
+                launchConfetti();
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
+    function launchConfetti() {
+        const colors = ['#00f0ff', '#38bdf8', '#a78bfa', '#f472b6', '#34d399', '#fbbf24', '#ef4444'];
+        for (let i = 0; i < 80; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = -10 + 'px';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+            confetti.style.width = (Math.random() * 8 + 5) + 'px';
+            confetti.style.height = (Math.random() * 8 + 5) + 'px';
+            confetti.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
+            confetti.style.animationDelay = (Math.random() * 0.8) + 's';
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 4000);
+        }
+    }
+
+    // =========================================================
+    // 15. CIRCULAR THEME REVEAL
+    // =========================================================
+    const themeRevealOverlay = document.getElementById('theme-reveal');
+    if (themeToggle && themeRevealOverlay) {
+        // Override existing theme toggle with fade reveal
+        themeToggle.removeEventListener('click', themeToggle._handler);
+        const fadeThemeHandler = () => {
+            // Set overlay to the NEW theme color
+            const willBeLight = !body.classList.contains('light-mode');
+            themeRevealOverlay.style.background = willBeLight ? '#f8fafc' : '#050505';
+
+            // Fade in
+            themeRevealOverlay.classList.add('expanding');
+
+            // After fade-in, apply theme and fade out
+            setTimeout(() => {
+                const isLight = body.classList.toggle('light-mode');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+                updateToggleUI(isLight);
+
+                // Fade out
+                themeRevealOverlay.classList.remove('expanding');
+            }, 300);
+        };
+        themeToggle.addEventListener('click', fadeThemeHandler);
     }
 
     // PREMIER LANCEMENT AU DÉMARRAGE

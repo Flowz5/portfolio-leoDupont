@@ -1,0 +1,254 @@
+/* =============================================
+   animations.css — Dark Portfolio Animations
+   ============================================= */
+
+/* -----------------------------------------
+   1. Mouse Follower Glow
+   ----------------------------------------- */
+.mouse-follower {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, opacity 0.3s;
+    opacity: 0;
+}
+.mouse-follower.active {
+    opacity: 1;
+}
+
+/* -----------------------------------------
+   2. Animated Gradient Hero Text (Shimmer)
+   ----------------------------------------- */
+.accent-text {
+    background: linear-gradient(90deg, #00f0ff, #38bdf8, #a78bfa, #00f0ff);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 4s ease-in-out infinite;
+}
+@keyframes shimmerText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* -----------------------------------------
+   3. Stats Counter Section
+   ----------------------------------------- */
+.stats-section {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+.stat-item {
+    text-align: center;
+}
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--accent);
+    display: block;
+}
+.stat-number.counted {
+    animation: countPop 0.6s ease-out forwards;
+}
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+@keyframes countPop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    70% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* -----------------------------------------
+   4. Footer
+   ----------------------------------------- */
+.site-footer {
+    text-align: center;
+    padding: 3rem 2rem 8rem;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 4rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s, transform 0.3s;
+}
+.footer-links a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+.footer-text {
+    margin-top: 0.5rem;
+}
+.footer-text .heart {
+    color: #ef4444;
+    display: inline-block;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* -----------------------------------------
+   5. Splash Screen / Loader
+   ----------------------------------------- */
+.splash-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.splash-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+.splash-logo {
+    font-family: var(--font-mono);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: splashFadeIn 0.8s ease forwards;
+}
+.splash-logo .splash-accent {
+    color: #00f0ff;
+}
+.splash-bar-container {
+    width: 200px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+    opacity: 0;
+    animation: splashFadeIn 0.5s ease 0.3s forwards;
+}
+.splash-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00f0ff, #38bdf8);
+    border-radius: 3px;
+    animation: splashLoad 1.2s ease 0.5s forwards;
+}
+@keyframes splashFadeIn {
+    to { opacity: 1; }
+}
+@keyframes splashLoad {
+    to { width: 100%; }
+}
+.splash-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    background: rgba(34, 197, 94, 0.06);
+    font-size: 0.85rem;
+    color: #22c55e;
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: splashStatusIn 0.5s ease 1.8s forwards;
+}
+.splash-status-dot {
+    width: 7px;
+    height: 7px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #22c55e;
+    animation: splashPulse 1.2s ease-in-out 1.8s infinite;
+}
+@keyframes splashStatusIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes splashPulse {
+    0%, 100% { box-shadow: 0 0 4px #22c55e; }
+    50% { box-shadow: 0 0 12px #22c55e, 0 0 20px rgba(34, 197, 94, 0.3); }
+}
+
+/* -----------------------------------------
+   6. Circular Theme Reveal
+   ----------------------------------------- */
+.theme-reveal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: var(--bg-main);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.theme-reveal-overlay.expanding {
+    opacity: 1;
+}
+
+/* -----------------------------------------
+   7. Konami Confetti
+   ----------------------------------------- */
+.confetti-piece {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 99999;
+    pointer-events: none;
+    animation: confettiFall 2.5s ease-in forwards;
+}
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotateZ(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotateZ(720deg) scale(0.5);
+    }
+}
