@@ -615,7 +615,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card = document.createElement('div');
             card.className = 'veille-item';
             card.innerHTML = `
-                <h4>${article.title}</h4>
+                <h3 class="article-title">${article.title}</h3>
                 <p>${article.description || 'Découvrez cet article sur les dernières tendances du développement logiciel.'}</p>
                 <a href="${article.url}" target="_blank" rel="noopener noreferrer">
                     ${readText} <i class="fas fa-arrow-right" style="font-size: 0.8em; margin-left: 5px;" aria-hidden="true"></i>

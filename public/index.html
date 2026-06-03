@@ -8,19 +8,20 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="./css/variables.css">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/components.css">
-    <link rel="stylesheet" href="./css/navbar.css">
-    <link rel="stylesheet" href="./css/terminal.css">
-    <link rel="stylesheet" href="./css/veille.css">
-    <link rel="stylesheet" href="./css/animations.css">
+    <!-- Optimize Third-Party CSS (Async Loading) -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"></noscript>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    
+    <!-- Minified Local CSS & Print CSS -->
+    <link rel="stylesheet" href="./css/style.min.css" media="screen">
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    
+    <!-- AOS (Kept blocking to prevent FOUC) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 </head>
 <body>
     <!-- Splash Screen -->
@@ -48,11 +49,11 @@
 
     <!-- Floating Navigation Capsule -->
     <nav class="floating-nav" id="navbar">
-        <a href="#home" class="nav-item active"><i class="fas fa-home"></i><span class="tooltip" data-i18n="nav_home">Accueil</span></a>
-        <a href="#bento" class="nav-item"><i class="fas fa-layer-group"></i><span class="tooltip" data-i18n="nav_about">À Propos</span></a>
-        <a href="#projects" class="nav-item"><i class="fas fa-code"></i><span class="tooltip" data-i18n="nav_projects">Projets</span></a>
-        <a href="#terminal-section" class="nav-item"><i class="fas fa-terminal"></i><span class="tooltip" data-i18n="nav_terminal">Terminal</span></a>
-        <a href="#contact" class="nav-item"><i class="fas fa-envelope"></i><span class="tooltip" data-i18n="nav_contact">Contact</span></a>
+        <a href="#home" class="nav-item active" aria-label="Accueil"><i class="fas fa-home"></i><span class="tooltip" data-i18n="nav_home">Accueil</span></a>
+        <a href="#bento" class="nav-item" aria-label="À Propos"><i class="fas fa-layer-group"></i><span class="tooltip" data-i18n="nav_about">À Propos</span></a>
+        <a href="#projects" class="nav-item" aria-label="Projets"><i class="fas fa-code"></i><span class="tooltip" data-i18n="nav_projects">Projets</span></a>
+        <a href="#terminal-section" class="nav-item" aria-label="Terminal"><i class="fas fa-terminal"></i><span class="tooltip" data-i18n="nav_terminal">Terminal</span></a>
+        <a href="#contact" class="nav-item" aria-label="Contact"><i class="fas fa-envelope"></i><span class="tooltip" data-i18n="nav_contact">Contact</span></a>
         
         <div class="nav-divider"></div>
         <button id="theme-toggle" class="nav-action" aria-label="Basculer le thème"><i class="fas fa-moon" id="toggle-icon" aria-hidden="true"></i><span id="theme-text" style="display:none;" data-i18n="theme_dark">Mode Sombre</span></button>
@@ -318,7 +319,7 @@
                             </div>
                             <div class="mac-input-line terminal-input-line">
                                 <span class="prompt">guest@portfolio:~$</span>
-                                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false">
+                                <input type="text" id="terminal-input" autocomplete="off" spellcheck="false" aria-label="Saisie de commande terminal">
                             </div>
                         </div>
                     </div>
@@ -388,6 +389,6 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.min.js" defer></script>
 </body>
 </html>
