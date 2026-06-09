@@ -504,9 +504,94 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 } else if (command === '') {
                     // Ne rien faire
-                } else if (command === 'sudo') {
-                    responseBlock.innerHTML = `<p class="error">${t.term_cmd_sudo}</p>`;
+                } else if (command === 'sudo' || command.startsWith('sudo ')) {
+                    responseBlock.innerHTML = `<p class="info" style="color: #eab308;">[!] Escalation de privilèges détectée...</p>`;
                     terminalOutput.appendChild(responseBlock);
+                    
+                    let lines = [
+                        "Bypassing mainframe security...",
+                        "Decrypting password hashes (SHA-256)...",
+                        "Accessing /etc/shadow...",
+                        "Injecting SQL payload...",
+                        "Overriding system directives...",
+                        "Access GRANTED. Root privileges acquired."
+                    ];
+                    let delay = 500;
+                    lines.forEach((line, index) => {
+                        setTimeout(() => {
+                            const p = document.createElement('p');
+                            p.style.color = index === lines.length - 1 ? "#22c55e" : "var(--accent)";
+                            p.textContent = line;
+                            terminalOutput.appendChild(p);
+                            if (terminalBody) terminalBody.scrollTop = terminalBody.scrollHeight;
+                            if (index === lines.length - 1) {
+                                document.body.classList.add('matrix-mode');
+                            }
+                        }, delay);
+                        delay += 400 + Math.random() * 400;
+                    });
+                    return;
+                } else if (command === 'fetch' || command === 'neofetch') {
+                    responseBlock.innerHTML = `
+<div style="display: flex; gap: 20px; font-family: var(--font-mono); font-size: 0.85rem; margin-top: 10px; overflow-x: auto;">
+    <div style="color: var(--accent); white-space: pre; font-weight: bold;">
+       .::.
+     .:::::.
+   .:::::::::.
+ .:::::::::::::.
+:::::::::::::::
+:::::::::::::::
+ \`:::::::::::::'
+   \`:::::::::'
+     \`:::::'
+       \`:'
+    </div>
+    <div>
+        <p><strong style="color: var(--accent);">guest</strong>@<strong style="color: var(--accent);">portfolio</strong></p>
+        <p>-------------------</p>
+        <p><strong style="color: var(--accent);">OS:</strong> LéoOS (Web)</p>
+        <p><strong style="color: var(--accent);">Kernel:</strong> BTS SIO - SLAM</p>
+        <p><strong style="color: var(--accent);">Uptime:</strong> 19 years</p>
+        <p><strong style="color: var(--accent);">Shell:</strong> ZSH (Web Terminal)</p>
+        <p><strong style="color: var(--accent);">Theme:</strong> Matrix / Light / Dark</p>
+        <p><strong style="color: var(--accent);">CPU:</strong> Brain (Dev Edition)</p>
+        <p><strong style="color: var(--accent);">Memory:</strong> Needs coffee</p>
+        <div style="display: flex; gap: 5px; margin-top: 5px;">
+            <div style="width: 15px; height: 15px; background: #ef4444;"></div>
+            <div style="width: 15px; height: 15px; background: #22c55e;"></div>
+            <div style="width: 15px; height: 15px; background: #eab308;"></div>
+            <div style="width: 15px; height: 15px; background: #3b82f6;"></div>
+            <div style="width: 15px; height: 15px; background: #a855f7;"></div>
+            <div style="width: 15px; height: 15px; background: #06b6d4;"></div>
+        </div>
+    </div>
+</div>`;
+                    terminalOutput.appendChild(responseBlock);
+                } else if (command === 'play snake') {
+                    terminalOutput.innerHTML = '';
+                    const canvasWrapper = document.createElement('div');
+                    canvasWrapper.style.textAlign = "center";
+                    canvasWrapper.style.marginTop = "10px";
+                    
+                    const p = document.createElement('p');
+                    p.innerHTML = "Flèches pour jouer. <button class='glass-btn small' onclick='stopSnake()' style='margin-left: 10px; padding: 2px 10px;'>Quitter</button>";
+                    
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 300;
+                    canvas.height = 300;
+                    canvas.style.border = "1px solid var(--accent)";
+                    canvas.style.backgroundColor = "#000";
+                    canvas.id = "snakeCanvas";
+                    canvas.style.maxWidth = "100%";
+                    
+                    canvasWrapper.appendChild(p);
+                    canvasWrapper.appendChild(canvas);
+                    responseBlock.appendChild(canvasWrapper);
+                    terminalOutput.appendChild(responseBlock);
+                    
+                    window.addEventListener('keydown', preventArrowScroll, { passive: false });
+                    startSnake(canvas);
+                    return;
                 } else if (command === 'matrix') {
                     document.body.classList.toggle('matrix-mode');
                     if (document.body.classList.contains('matrix-mode')) {
@@ -914,4 +999,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // PREMIER LANCEMENT AU DÉMARRAGE
     applyLanguage(currentLang);
+    // =========================================================
+    // 19. SNAKE GAME LOGIC
+    // =========================================================
+    let snakeInterval;
+    window.preventArrowScroll = function(e) {
+        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight","Space"].indexOf(e.code) > -1) {
+            if(document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                e.preventDefault();
+            }
+        }
+    };
+
+    window.stopSnake = function() {
+        clearInterval(snakeInterval);
+        window.removeEventListener('keydown', preventArrowScroll);
+        const terminalOutput = document.getElementById('terminal-output');
+        if (terminalOutput) {
+            terminalOutput.innerHTML = '<p class="info">Jeu quitté.</p>';
+        }
+        const terminalInput = document.getElementById('terminal-input');
+        if (terminalInput) terminalInput.focus();
+    };
+
+    window.startSnake = function(canvas) {
+        const ctx = canvas.getContext('2d');
+        let snake = [{x: 10, y: 10}];
+        let food = {x: 15, y: 15};
+        let dx = 0;
+        let dy = 0;
+        let nextDx = 1;
+        let nextDy = 0;
+        let score = 0;
+        const gridSize = 15;
+        const tileCount = Math.floor(canvas.width / gridSize);
+
+        function drawGame() {
+            dx = nextDx;
+            dy = nextDy;
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+
+            if(head.x < 0) head.x = tileCount - 1;
+            if(head.x >= tileCount) head.x = 0;
+            if(head.y < 0) head.y = tileCount - 1;
+            if(head.y >= tileCount) head.y = 0;
+
+            for(let i = 0; i < snake.length; i++) {
+                if(snake[i].x === head.x && snake[i].y === head.y) {
+                    snake = [{x: 10, y: 10}];
+                    nextDx = 1; nextDy = 0;
+                    score = 0;
+                    return;
+                }
+            }
+
+            snake.unshift(head);
+
+            if(head.x === food.x && head.y === food.y) {
+                score++;
+                food = {
+                    x: Math.floor(Math.random() * tileCount),
+                    y: Math.floor(Math.random() * tileCount)
+                };
+            } else {
+                snake.pop();
+            }
+
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#f43f5e';
+            ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
+
+            ctx.fillStyle = '#22c55e';
+            for(let i = 0; i < snake.length; i++) {
+                ctx.fillRect(snake[i].x * gridSize, snake[i].y * gridSize, gridSize - 1, gridSize - 1);
+            }
+            
+            ctx.fillStyle = '#fff';
+            ctx.font = '12px monospace';
+            ctx.fillText("Score: " + score, 5, 15);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if(e.code === 'ArrowLeft' && dx !== 1) { nextDx = -1; nextDy = 0; }
+            else if(e.code === 'ArrowUp' && dy !== 1) { nextDx = 0; nextDy = -1; }
+            else if(e.code === 'ArrowRight' && dx !== -1) { nextDx = 1; nextDy = 0; }
+            else if(e.code === 'ArrowDown' && dy !== -1) { nextDx = 0; nextDy = 1; }
+        });
+
+        if (snakeInterval) clearInterval(snakeInterval);
+        snakeInterval = setInterval(drawGame, 100);
+    };
+
 });

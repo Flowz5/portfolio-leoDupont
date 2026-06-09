@@ -1,7 +1,19 @@
 /* Custom CV specific styles augmenting the main portfolio CSS */
 
 body {
-    padding-bottom: 100px; /* space for floating nav */
+    /* Custom CV specific styles augmenting the main portfolio CSS */
+}
+
+.top-nav-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+    .top-nav-buttons {
+        justify-content: center;
+    }
 }
 
 .cv-container {
@@ -259,7 +271,7 @@ body {
     }
 
     /* Hide UI elements and background */
-    .mesh-bg, .floating-nav, .cv-footer, .noise-overlay {
+    .mesh-bg, .top-nav-buttons, .cv-footer, .noise-overlay {
         display: none !important;
     }
 
