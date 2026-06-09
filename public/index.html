@@ -30,12 +30,8 @@
     <link rel="preload" href="./css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="./css/all.min.css"></noscript>
     
-    <!-- Minified Local CSS & Print CSS -->
-    <link rel="stylesheet" href="./css/style.min.css" media="screen">
-    <link rel="stylesheet" href="./css/print.css" media="print">
-    
-    <!-- AOS -->
-    <link rel="stylesheet" href="./css/aos.css">
+    <!-- Minified Local CSS (includes AOS & Print) -->
+    <link rel="stylesheet" href="./css/style.min.css" media="all">
 </head>
 <body>
     <a href="#main-content" class="skip-link" data-i18n="skip_link" style="position:absolute; top:-100px; left:0; background:var(--accent); color:var(--bg-main); padding:8px; z-index:100000; transition:top 0.3s; text-decoration:none; font-weight:bold;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Aller au contenu principal</a>
@@ -539,7 +535,8 @@
             <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
             <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
             <div class="cv-preview-container">
-                <iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>
+                <!-- Iframe loaded dynamically to save bandwidth -->
+                <iframe data-src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF"></iframe>
             </div>
             <div class="modal-actions">
                 <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
@@ -548,5 +545,12 @@
     </div>
 
     <script src="script.min.js"></script>
+    <script>
+        // Eco-design: Load CV PDF only when requested
+        document.getElementById('btn-open-cv-modal')?.addEventListener('click', function() {
+            const iframe = document.querySelector('.cv-iframe');
+            if (iframe && !iframe.getAttribute('src')) iframe.setAttribute('src', iframe.getAttribute('data-src'));
+        });
+    </script>
 </body>
 </html>
