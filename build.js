@@ -2,7 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 const publicDir = path.join(__dirname, 'public');
-const cssDir = path.join(publicDir, 'css');
+const publicCssDir = path.join(publicDir, 'css');
+const publicJsDir = path.join(publicDir, 'js');
+const srcDir = path.join(__dirname, 'src');
+const srcCssDir = path.join(srcDir, 'css');
+const srcJsDir = path.join(srcDir, 'js');
 
 // 1. Combine CSS
 const cssFiles = [
@@ -18,7 +22,7 @@ const cssFiles = [
 
 let combinedCss = '';
 for (const file of cssFiles) {
-    const content = fs.readFileSync(path.join(cssDir, file), 'utf8');
+    const content = fs.readFileSync(path.join(srcCssDir, file), 'utf8');
     combinedCss += content + '\n';
 }
 
@@ -30,11 +34,11 @@ const minifiedCss = combinedCss
     .replace(/;\}/g, '}')             // Remove trailing semicolons
     .trim();
 
-fs.writeFileSync(path.join(cssDir, 'style.min.css'), minifiedCss);
+fs.writeFileSync(path.join(publicCssDir, 'style.min.css'), minifiedCss);
 console.log('Created style.min.css');
 
 // 2. Combine & Minify JS
-const jsFile = path.join(publicDir, 'script.js');
+const jsFile = path.join(srcJsDir, 'script.js');
 const jsContent = fs.readFileSync(jsFile, 'utf8');
 
 // Very basic JS minification (remove single line comments, collapse spaces)
@@ -46,7 +50,7 @@ const minifiedJs = jsContent
     .replace(/\n+/g, '\n') // Collapse empty lines
     .trim();
 
-fs.writeFileSync(path.join(publicDir, 'script.min.js'), minifiedJs);
+fs.writeFileSync(path.join(publicJsDir, 'script.min.js'), minifiedJs);
 console.log('Created script.min.js');
 
 // 3. Create print.css
@@ -60,5 +64,5 @@ const printCss = `
 }
 `.replace(/\s+/g, ' ').trim();
 
-fs.writeFileSync(path.join(cssDir, 'print.css'), printCss);
+fs.writeFileSync(path.join(publicCssDir, 'print.css'), printCss);
 console.log('Created print.css');

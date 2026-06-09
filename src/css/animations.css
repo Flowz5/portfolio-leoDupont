@@ -264,3 +264,4 @@
         transform: translateY(100vh) rotateZ(720deg) scale(0.5);
     }
 }
+.mesh-orb { will-change: transform; }
