@@ -535,9 +535,8 @@
         <div class="glass-modal-content">
             <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
             <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
-            <div class="cv-preview-container">
-                <!-- Iframe loaded dynamically to save bandwidth -->
-                <iframe data-src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>
+            <div class="cv-preview-container" id="cv-iframe-container">
+                <!-- L'Iframe sera injectée ici par JavaScript -->
             </div>
             <div class="modal-actions">
                 <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
@@ -547,10 +546,12 @@
 
     <script src="script.min.js"></script>
     <script>
-        // Eco-design: Load CV PDF only when requested
+        // Eco-design: Inject CV PDF iframe only when modal is opened
         document.getElementById('btn-open-cv-modal')?.addEventListener('click', function() {
-            const iframe = document.querySelector('.cv-iframe');
-            if (iframe && !iframe.getAttribute('src')) iframe.setAttribute('src', iframe.getAttribute('data-src'));
+            const container = document.getElementById('cv-iframe-container');
+            if (container && !container.querySelector('iframe')) {
+                container.innerHTML = '<iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>';
+            }
         });
     </script>
 </body>
