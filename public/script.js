@@ -649,8 +649,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const follower = document.getElementById('mouse-follower');
     if (follower) {
         document.addEventListener('mousemove', (e) => {
-            follower.style.left = e.clientX + 'px';
-            follower.style.top = e.clientY + 'px';
+            follower.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
             if (!follower.classList.contains('active')) {
                 follower.classList.add('active');
             }
@@ -673,16 +672,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     el.classList.add('counted');
                     const target = parseInt(el.getAttribute('data-target'));
                     const suffix = el.getAttribute('data-suffix') || '';
-                    let current = 0;
-                    const increment = Math.max(1, Math.floor(target / 40));
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
+                    let startTime = null;
+                    const duration = 1500; // 1.5 seconds
+
+                    function animateCount(timestamp) {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min((timestamp - startTime) / duration, 1);
+                        // easeOutQuart
+                        const easeProgress = 1 - Math.pow(1 - progress, 4);
+                        current = Math.floor(easeProgress * target);
+                        
                         el.textContent = current + suffix;
-                    }, 30);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(animateCount);
+                        } else {
+                            el.textContent = target + suffix;
+                        }
+                    }
+                    requestAnimationFrame(animateCount);
                     counterObserver.unobserve(el);
                 }
             });
@@ -868,12 +876,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const posX = e.clientX;
             const posY = e.clientY;
             
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
+            cursorDot.style.transform = `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`;
             
             cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
+                transform: `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`
             }, { duration: 500, fill: "forwards" });
         });
 

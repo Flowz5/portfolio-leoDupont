@@ -26,19 +26,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Optimize Third-Party CSS (Async Loading) -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&display=swap"></noscript>
-    
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <!-- Google Fonts Removed for better eco-score (using standard fonts) -->
+    <link rel="preload" href="./css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./css/all.min.css"></noscript>
     
     <!-- Minified Local CSS & Print CSS -->
     <link rel="stylesheet" href="./css/style.min.css" media="screen">
     <link rel="stylesheet" href="./css/print.css" media="print">
     
-    <!-- AOS (Kept blocking to prevent FOUC) -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- AOS -->
+    <link rel="stylesheet" href="./css/aos.css">
 </head>
 <body>
     <!-- Splash Screen -->
@@ -410,15 +407,15 @@
     <div class="cursor-dot"></div>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+    <script src="aos.js" defer></script>
+    <script src="vanilla-tilt.min.js" defer></script>
     <!-- CV Modal -->
     <div id="cv-modal" class="glass-modal" role="dialog" aria-modal="true" aria-labelledby="cv_modal_title">
         <div class="glass-modal-content">
             <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
             <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
             <div class="cv-preview-container">
-                <iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF"></iframe>
+                <iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>
             </div>
             <div class="modal-actions">
                 <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
