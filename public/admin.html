@@ -237,6 +237,25 @@
 
     <div id="admin-toast">Action réussie !</div>
 
+    <!-- Inline Script for Custom Cursor (Guarantees it runs instantly) -->
+    <script>
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            if(cursorDot) cursorDot.style.transform = `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`;
+            if(cursorOutline) cursorOutline.animate({
+                transform: `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`
+            }, { duration: 500, fill: "forwards" });
+        });
+        const interactables = document.querySelectorAll('a, button, input, select, .admin-menu-item');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+    </script>
+
     <!-- Load Firebase via Module -->
     <script type="module" src="js/admin.js"></script>
 </body>
