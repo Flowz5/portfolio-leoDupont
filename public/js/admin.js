@@ -36,11 +36,11 @@ async function loadSecurity() {
 
     try {
         // Load lockdown status
-        const docSnap = await getDoc(doc(db, "config", "lockdown"));
+        const docSnap = await getDoc(doc(db, "config", "status"));
         if (docSnap.exists()) {
             const data = docSnap.data();
-            lockdownToggle.checked = !!data.active;
-            lockdownStatus.textContent = data.active ? "(ACTIVÉ)" : "(Désactivé)";
+            lockdownToggle.checked = !!data.lockdown;
+            lockdownStatus.textContent = data.lockdown ? "(ACTIVÉ)" : "(Désactivé)";
         }
 
         // Toggle Lockdown
@@ -48,7 +48,7 @@ async function loadSecurity() {
             const isActive = e.target.checked;
             lockdownStatus.textContent = isActive ? "(ACTIVÉ)" : "(Désactivé)";
             try {
-                await setDoc(doc(db, "config", "lockdown"), { active: isActive }, { merge: true });
+                await setDoc(doc(db, "config", "status"), { lockdown: isActive }, { merge: true });
                 showToast(isActive ? "LOCKDOWN ACTIVÉ" : "Lockdown désactivé");
                 addSysLog(`Lockdown mode set to ${isActive}`, isActive ? "WARN" : "INFO");
             } catch(err) {

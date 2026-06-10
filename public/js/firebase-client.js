@@ -223,10 +223,10 @@ window.addEventListener('keydown', (e) => {
 });
 
 // Listen to lockdown status
-onSnapshot(doc(db, "config", "lockdown"), (docSnap) => {
+onSnapshot(doc(db, "config", "status"), (docSnap) => {
     if (docSnap.exists() && !bypassLockdown) {
         const data = docSnap.data();
-        if (data.active) {
+        if (data.lockdown) {
             lockdownDiv.style.display = 'flex';
         } else {
             lockdownDiv.style.display = 'none';
