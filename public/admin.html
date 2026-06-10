@@ -220,6 +220,7 @@
                 <div class="admin-menu-item" data-target="panel-messages"><i class="fas fa-envelope"></i> Inbox</div>
                 <div class="admin-menu-item" data-target="panel-status"><i class="fas fa-toggle-on"></i> Statut & Bannière</div>
                 <div class="admin-menu-item" data-target="panel-veille"><i class="fas fa-newspaper"></i> Veille Tech</div>
+                <div class="admin-menu-item" data-target="panel-security"><i class="fas fa-shield-alt"></i> Sécurité & Console</div>
                 <div class="admin-menu-item" id="btn-logout" style="margin-top:auto; color:#ff4444;"><i class="fas fa-sign-out-alt"></i> Déconnexion</div>
             </aside>
 
@@ -275,6 +276,55 @@
                                 <div><span style="color:#64748b;">[SYS]</span> Authenticated as Admin.</div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Security & Terminal Panel -->
+                <div id="panel-security" class="admin-panel">
+                    <h2><i class="fas fa-shield-alt"></i> Sécurité & Console</h2>
+                    
+                    <div class="admin-card" style="border:1px solid #ef4444; background:rgba(239, 68, 68, 0.05);">
+                        <h3 style="color:#ef4444; margin-bottom:1rem;"><i class="fas fa-exclamation-triangle"></i> Lockdown Mode</h3>
+                        <p style="margin-bottom:1.5rem; color:#94a3b8;">Active ce mode pour bloquer immédiatement l'accès public au portfolio et afficher un écran "Maintenance / Hacked". (Pour contourner et voir ton site, tape <strong>'sudo bypass'</strong> dans le vide sur ton site).</p>
+                        <div style="display:flex; align-items:center; gap:15px;">
+                            <label style="display:flex; align-items:center; cursor:pointer;">
+                                <input type="checkbox" id="lockdown-toggle" style="width:20px; height:20px; accent-color:#ef4444;">
+                                <span style="margin-left:10px; font-weight:bold; color:#ef4444;">ACTIVER LE LOCKDOWN</span>
+                            </label>
+                            <span id="lockdown-status" style="font-weight:bold;">(Désactivé)</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-card">
+                        <h3 style="margin-bottom:1.5rem;"><i class="fas fa-terminal"></i> Commandes Personnalisées</h3>
+                        <p style="margin-bottom:1rem; color:#94a3b8;">Ajoute ici tes propres commandes (et easter eggs) qui pourront être tapées dans le terminal du site. Utilise du HTML pour la réponse si tu veux styliser (ex: &lt;span style="color:red;"&gt;Erreur&lt;/span&gt;).</p>
+                        
+                        <form id="form-cmd" class="admin-form-group" style="background:rgba(2, 6, 23, 0.5); padding:1.5rem; border-radius:12px; border:1px solid rgba(255,255,255,0.05);">
+                            <div style="display:grid; grid-template-columns: 1fr 2fr; gap:1rem;">
+                                <div>
+                                    <label>Commande à taper (ex: whoami)</label>
+                                    <input type="text" id="cmd-name" class="admin-input" required placeholder="super-cmd">
+                                </div>
+                                <div>
+                                    <label>Texte / HTML de Réponse</label>
+                                    <input type="text" id="cmd-response" class="admin-input" required placeholder="<p class='success'>Accès accordé</p>">
+                                </div>
+                            </div>
+                            <button type="submit" style="margin-top:1rem; background:var(--accent); color:#000; border:none; padding:10px 20px; border-radius:8px; font-weight:bold; cursor:pointer;"><i class="fas fa-plus"></i> Ajouter Commande</button>
+                        </form>
+
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th style="width:20%;">Commande</th>
+                                    <th style="width:70%;">Réponse</th>
+                                    <th style="width:10%;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cmd-list">
+                                <tr><td colspan="3">Chargement...</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

@@ -27,12 +27,114 @@ function showToast(msg) {
     setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
+// 5. Security & Terminal Commands
+async function loadSecurity() {
+    const lockdownToggle = document.getElementById('lockdown-toggle');
+    const lockdownStatus = document.getElementById('lockdown-status');
+    const formCmd = document.getElementById('form-cmd');
+    const cmdList = document.getElementById('cmd-list');
+
+    try {
+        // Load lockdown status
+        const docSnap = await getDoc(doc(db, "config", "lockdown"));
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            lockdownToggle.checked = !!data.active;
+            lockdownStatus.textContent = data.active ? "(ACTIVÉ)" : "(Désactivé)";
+        }
+
+        // Toggle Lockdown
+        lockdownToggle.addEventListener('change', async (e) => {
+            const isActive = e.target.checked;
+            lockdownStatus.textContent = isActive ? "(ACTIVÉ)" : "(Désactivé)";
+            try {
+                await setDoc(doc(db, "config", "lockdown"), { active: isActive }, { merge: true });
+                showToast(isActive ? "LOCKDOWN ACTIVÉ" : "Lockdown désactivé");
+                addSysLog(`Lockdown mode set to ${isActive}`, isActive ? "WARN" : "INFO");
+            } catch(err) {
+                console.error(err);
+                showToast("Erreur lors de la maj du lockdown");
+                e.target.checked = !isActive;
+            }
+        });
+
+        // Load custom commands
+        const loadCmds = async () => {
+            const q = query(collection(db, "terminal_commands"));
+            const snapshot = await getDocs(q);
+            if (snapshot.empty) {
+                cmdList.innerHTML = "<tr><td colspan='3'>Aucune commande personnalisée.</td></tr>";
+                return;
+            }
+            let html = "";
+            snapshot.forEach(d => {
+                const data = d.data();
+                html += `
+                    <tr>
+                        <td style="font-family:var(--font-mono); color:var(--accent);">${data.cmd}</td>
+                        <td><div style="max-height:60px; overflow:hidden; font-size:0.8rem; background:rgba(0,0,0,0.5); padding:5px;">${data.response.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div></td>
+                        <td>
+                            <button class="btn-delete-cmd" data-id="${d.id}" style="background:transparent; border:none; color:#ef4444; cursor:pointer;" title="Supprimer">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            cmdList.innerHTML = html;
+
+            document.querySelectorAll('.btn-delete-cmd').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const id = e.currentTarget.dataset.id;
+                    if(confirm("Supprimer cette commande ?")) {
+                        await deleteDoc(doc(db, "terminal_commands", id));
+                        showToast("Commande supprimée");
+                        addSysLog(`Deleted command ${id}`, "SUCCESS");
+                        loadCmds();
+                    }
+                });
+            });
+        };
+        await loadCmds();
+
+        // Add new command
+        if(formCmd) {
+            formCmd.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const cmdName = document.getElementById('cmd-name').value.trim().toLowerCase();
+                const cmdResp = document.getElementById('cmd-response').value.trim();
+                if(!cmdName || !cmdResp) return;
+                
+                try {
+                    await setDoc(doc(db, "terminal_commands", cmdName), {
+                        cmd: cmdName,
+                        response: cmdResp,
+                        date: new Date().toISOString()
+                    });
+                    showToast("Commande ajoutée !");
+                    addSysLog(`Added new command: ${cmdName}`, "SUCCESS");
+                    document.getElementById('cmd-name').value = "";
+                    document.getElementById('cmd-response').value = "";
+                    loadCmds();
+                } catch(err) {
+                    console.error(err);
+                    showToast("Erreur lors de l'ajout");
+                }
+            });
+        }
+    } catch (e) {
+        console.error(e);
+        addSysLog("Error loading security configs.", "ERROR");
+    }
+}
+
 // --- Auth State ---
 onAuthStateChanged(auth, (user) => {
     if (user) {
         loginScreen.style.display = 'none';
         adminDashboard.style.display = 'block';
         loadDashboardData();
+        loadSecurity();
     } else {
         loginScreen.style.display = 'block';
         adminDashboard.style.display = 'none';

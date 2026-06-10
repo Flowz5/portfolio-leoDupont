@@ -635,6 +635,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         responseBlock.innerHTML = `<p class="success">${t.term_cmd_reboot}</p>`;
                     }
                     terminalOutput.appendChild(responseBlock);
+                } else if (window.customCommands && window.customCommands[command]) {
+                    responseBlock.innerHTML = `<div>${window.customCommands[command]}</div>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else {
                     const notFoundText = t.term_cmd_not_found.replace('{cmd}', command);
                     responseBlock.innerHTML = `<p class="error">${notFoundText}</p>`;
