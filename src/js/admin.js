@@ -10,6 +10,23 @@ const loginError = document.getElementById('login-error');
 const btnLogout = document.getElementById('btn-logout');
 const toast = document.getElementById('admin-toast');
 
+// --- Custom Cursor ---
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+    if(cursorDot) cursorDot.style.transform = `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`;
+    if(cursorOutline) cursorOutline.animate({
+        transform: `translate(calc(${posX}px - 50%), calc(${posY}px - 50%))`
+    }, { duration: 500, fill: "forwards" });
+});
+const interactables = document.querySelectorAll('a, button, input, select, .admin-menu-item');
+interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
 // --- Navigation ---
 document.querySelectorAll('.admin-menu-item').forEach(item => {
     if(item.id === 'btn-logout') return;
