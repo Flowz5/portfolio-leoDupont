@@ -30,9 +30,14 @@ async function trackVisitor() {
         await addDoc(collection(db, "visitors"), {
             ip: geo.ip || "Unknown",
             city: geo.city || "Unknown",
+            postal: geo.postal || "",
             country: geo.country_name || "Unknown",
+            isp: geo.org || "Unknown",
             browser: browser,
             os: os,
+            screen: `${window.screen.width}x${window.screen.height}`,
+            lang: navigator.language || "Unknown",
+            referrer: document.referrer || "Direct",
             date: Date.now()
         });
 

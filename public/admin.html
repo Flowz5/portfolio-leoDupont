@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="./css/style.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Specific Admin Styles - Glassmorphism */
+        /* Specific Admin Styles - Premium Cyber Bento */
         body {
-            background-color: #050505 !important;
-            color: #ffffff !important;
+            background-color: #030712 !important;
+            color: #f8fafc !important;
             font-family: var(--font-main);
             overflow-x: hidden;
             min-height: 100vh;
@@ -20,15 +20,23 @@
         /* Animated Background Orbs for Glassmorphism */
         .admin-bg-mesh {
             position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, #020617 0%, #000000 100%);
         }
         .admin-orb {
-            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
-            animation: float 10s ease-in-out infinite alternate;
+            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.3;
+            animation: float 15s ease-in-out infinite alternate;
         }
-        .orb-1 { width: 40vw; height: 40vw; background: var(--accent); top: -10%; left: -10%; }
-        .orb-2 { width: 35vw; height: 35vw; background: var(--mesh-1); bottom: -10%; right: -5%; animation-delay: -5s; }
-        @keyframes float { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(50px) scale(1.1); } }
+        .orb-1 { width: 45vw; height: 45vw; background: var(--accent); top: -20%; left: -10%; }
+        .orb-2 { width: 40vw; height: 40vw; background: var(--mesh-2); bottom: -10%; right: -5%; animation-delay: -7s; }
+        .orb-3 { width: 30vw; height: 30vw; background: var(--mesh-3); top: 30%; left: 40%; animation-delay: -3s; opacity: 0.15;}
+        @keyframes float { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(80px) scale(1.1); } }
         
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(2, 6, 23, 0.5); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(0, 240, 255, 0.3); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
         #login-screen, #admin-dashboard {
             display: none; /* hidden by default until auth state is known */
             min-height: 100vh;
@@ -37,94 +45,144 @@
 
         /* Login Screen */
         .login-container {
-            max-width: 400px;
-            margin: 10vh auto;
-            background: rgba(10, 25, 47, 0.7);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(0, 240, 255, 0.2);
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 420px;
+            margin: 15vh auto;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-top: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
-        .login-container h2 { color: var(--accent); margin-bottom: 1.5rem; }
-        .login-input {
-            width: 100%; padding: 12px; margin-bottom: 1rem;
-            background: rgba(2, 12, 27, 0.7); border: 1px solid rgba(255,255,255,0.1);
-            color: #fff; border-radius: 8px; box-sizing: border-box;
+        .login-container h2 { 
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem; 
+            font-size: 2rem;
         }
-        .login-input:focus { border-color: var(--accent); outline: none; }
+        .login-input {
+            width: 100%; padding: 14px 16px; margin-bottom: 1.5rem;
+            background: rgba(2, 6, 23, 0.5); border: 1px solid rgba(255,255,255,0.05);
+            color: #fff; border-radius: 12px; box-sizing: border-box;
+            transition: all 0.3s ease; font-family: var(--font-main);
+        }
+        .login-input:focus { border-color: var(--accent); outline: none; background: rgba(2, 6, 23, 0.8); box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2); }
 
         /* Dashboard Layout */
         .dashboard-layout {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            max-width: 1400px;
+            display: flex;
+            gap: 2.5rem;
+            max-width: 1600px;
             margin: 0 auto;
         }
         
-        /* Sidebar */
+        /* Floating Sidebar */
         .admin-sidebar {
-            background: rgba(10, 25, 47, 0.5);
-            backdrop-filter: blur(10px);
-            border-right: 1px solid rgba(0, 240, 255, 0.1);
-            border-radius: 15px;
-            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            width: 260px;
             height: calc(100vh - 4rem);
             position: sticky;
             top: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
         .admin-menu-item {
-            padding: 1rem; margin-bottom: 0.5rem; border-radius: 8px;
-            cursor: pointer; transition: all 0.3s ease; color: var(--text-muted);
-            display: flex; align-items: center; gap: 10px;
+            padding: 14px 18px; margin-bottom: 0.5rem; border-radius: 12px;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            color: #94a3b8; display: flex; align-items: center; gap: 12px;
+            font-weight: 500;
         }
-        .admin-menu-item:hover, .admin-menu-item.active {
-            background: rgba(0, 240, 255, 0.1); color: var(--accent);
+        .admin-menu-item:hover {
+            background: rgba(255, 255, 255, 0.03); color: #e2e8f0; transform: translateX(5px);
+        }
+        .admin-menu-item.active {
+            background: linear-gradient(90deg, rgba(0, 240, 255, 0.15) 0%, rgba(0, 240, 255, 0.05) 100%); 
+            color: var(--accent); border-left: 3px solid var(--accent);
+            transform: translateX(5px);
         }
 
         /* Content Area */
+        main { flex: 1; min-width: 0; }
         .admin-panel { display: none; }
-        .admin-panel.active { display: block; animation: fadeIn 0.4s ease forwards; }
+        .admin-panel.active { display: block; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
+        .admin-panel h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* Premium Bento Cards */
         .admin-card {
-            background: rgba(10, 25, 47, 0.6);
-            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+        .admin-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
         
         /* Tables & Lists */
-        .admin-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .admin-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; margin-top: 0.5rem; }
         .admin-table th, .admin-table td { 
-            padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); 
+            padding: 16px; text-align: left; 
         }
-        .admin-table th { color: var(--accent); font-weight: 600; }
+        .admin-table th { color: #94a3b8; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .admin-table tbody tr {
+            background: rgba(2, 6, 23, 0.4);
+            transition: background 0.2s;
+        }
+        .admin-table tbody tr:hover { background: rgba(0, 240, 255, 0.05); }
+        .admin-table td:first-child { border-top-left-radius: 12px; border-bottom-left-radius: 12px; }
+        .admin-table td:last-child { border-top-right-radius: 12px; border-bottom-right-radius: 12px; }
         
         .msg-card {
-            background: rgba(0,0,0,0.3); border-left: 3px solid var(--accent);
-            padding: 1rem; margin-bottom: 1rem; border-radius: 4px;
+            background: rgba(2, 6, 23, 0.6); border-left: 3px solid var(--accent);
+            padding: 1.5rem; margin-bottom: 1rem; border-radius: 12px; border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
         }
         
         /* Form controls */
         .admin-form-group { margin-bottom: 1.5rem; }
-        .admin-form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-light); }
+        .admin-form-group label { display: block; margin-bottom: 0.75rem; color: #94a3b8; font-weight: 500; font-size: 0.95rem; }
         .admin-select, .admin-input {
-            width: 100%; padding: 10px; background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 6px;
+            width: 100%; padding: 14px 16px; background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(255,255,255,0.05); color: #fff; border-radius: 12px;
+            transition: all 0.3s;
         }
+        .admin-select:focus, .admin-input:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 2px rgba(0, 240, 255, 0.2); }
         
         /* Toast Notification */
         #admin-toast {
-            position: fixed; bottom: 20px; right: 20px;
-            background: var(--accent); color: #000;
-            padding: 12px 24px; border-radius: 8px; font-weight: bold;
-            transform: translateY(100px); opacity: 0; transition: all 0.3s ease;
+            position: fixed; bottom: 30px; right: 30px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--mesh-1) 100%); 
+            color: #000;
+            padding: 16px 32px; border-radius: 12px; font-weight: bold;
+            box-shadow: 0 10px 25px rgba(0, 240, 255, 0.3);
+            transform: translateY(100px) scale(0.9); opacity: 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 1000;
         }
-        #admin-toast.show { transform: translateY(0); opacity: 1; }
+        #admin-toast.show { transform: translateY(0) scale(1); opacity: 1; }
     </style>
 </head>
 <body>
@@ -197,9 +255,10 @@
                                     <thead>
                                         <tr>
                                             <th>Date</th>
+                                            <th>Visiteur & IP</th>
+                                            <th>Appareil</th>
+                                            <th>Source</th>
                                             <th>Localisation</th>
-                                            <th>Système</th>
-                                            <th>Adresse IP</th>
                                         </tr>
                                     </thead>
                                     <tbody id="visitors-list">

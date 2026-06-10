@@ -171,17 +171,31 @@ async function loadVisitors() {
         snapshot.forEach(doc => {
             const data = doc.data();
             const date = data.date ? new Date(data.date).toLocaleString('fr-FR') : '-';
-            const loc = `${data.city || '?'}, ${data.country || '?'}`;
-            
-            // Raw IP is now shown directly since user asked not to anonymize visually
+            const loc = `${data.city || '?'}, ${data.postal || ''} ${data.country || '?'}`;
             const ip = data.ip || 'Inconnue';
+            const isp = data.isp || 'Inconnu';
+            const system = `${data.os} / ${data.browser}`;
+            const screen = data.screen || 'Inconnue';
+            const lang = data.lang || 'Inconnue';
+            const ref = data.referrer ? (data.referrer.length > 30 ? data.referrer.substring(0,27)+'...' : data.referrer) : 'Direct';
             
             html += `
                 <tr>
-                    <td>${date}</td>
-                    <td>${loc}</td>
-                    <td style="font-size:0.8rem;">${data.os} / ${data.browser}</td>
-                    <td><span style="color:var(--accent); font-family:var(--font-mono);">${ip}</span></td>
+                    <td style="white-space:nowrap;">${date}</td>
+                    <td>
+                        <div style="font-family:var(--font-mono); color:var(--accent); font-size:0.9rem;">${ip}</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-network-wired"></i> ${isp}</div>
+                    </td>
+                    <td>
+                        <div>${system}</div>
+                        <div style="font-size:0.8rem; color:var(--text-muted);"><i class="fas fa-desktop"></i> ${screen} | <i class="fas fa-globe"></i> ${lang}</div>
+                    </td>
+                    <td>
+                        <div style="font-size:0.85rem; color:var(--text-light);"><i class="fas fa-link"></i> ${ref}</div>
+                    </td>
+                    <td>
+                        <div>${loc}</div>
+                    </td>
                 </tr>
             `;
         });
