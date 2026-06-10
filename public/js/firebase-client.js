@@ -85,21 +85,45 @@ async function fetchConfig() {
             if (data.text) {
                 const heroBadge = document.querySelector('.hero-badge');
                 if(heroBadge) {
-                    const statusText = heroBadge.querySelector('span:not(.status-dot)') || heroBadge.querySelector('span');
-                    if (statusText) statusText.textContent = data.text;
-                    else {
+                    let statusText = heroBadge.querySelector('span:not(.status-dot)') || heroBadge.querySelector('span');
+                    
+                    if (!statusText) {
                         // fallback if no span wrapping the text
                         const dot = heroBadge.querySelector('.status-dot');
                         heroBadge.innerHTML = '';
                         if(dot) heroBadge.appendChild(dot);
-                        heroBadge.appendChild(document.createTextNode(' ' + data.text));
+                        statusText = document.createElement('span');
+                        heroBadge.appendChild(statusText);
                     }
                     
-                    if (data.text.includes("En ligne") || data.text.includes("recherche")) {
+                    // Remove default translation hook to prevent it from overwriting
+                    statusText.removeAttribute('data-i18n');
+                    statusText.dataset.firebaseStatus = data.text;
+
+                    // Apply translated text based on current language
+                    const applyStatusLang = () => {
+                        const lang = localStorage.getItem('lang') || 'fr';
+                        let text = data.text;
+                        if (lang === 'en') {
+                            if (text.toLowerCase().includes("hors ligne")) text = "Offline";
+                            else if (text.toLowerCase().includes("en ligne")) text = "Online";
+                        }
+                        statusText.textContent = text;
+                    };
+                    applyStatusLang();
+                    
+                    if (data.text.toLowerCase().includes("en ligne") || data.text.toLowerCase().includes("recherche")) {
                         heroBadge.classList.remove('offline');
                     } else {
                         heroBadge.classList.add('offline');
                     }
+
+                    // Listen for language toggle to translate dynamically
+                    document.querySelectorAll('.lang-btn').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            setTimeout(applyStatusLang, 50);
+                        });
+                    });
                 }
             }
         }
