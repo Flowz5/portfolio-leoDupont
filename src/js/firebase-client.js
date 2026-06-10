@@ -199,39 +199,41 @@ window.addEventListener('DOMContentLoaded', () => {
 // --- 5. Security Lockdown Mode ---
 let bypassLockdown = false;
 
-// Create lockdown overlay
-const lockdownDiv = document.createElement('div');
-lockdownDiv.id = "lockdown-overlay";
-lockdownDiv.style.cssText = "display:none; position:fixed; inset:0; z-index:99999; background:#020617; color:#00ff41; font-family:monospace; flex-direction:column; justify-content:center; align-items:center; text-align:center;";
-lockdownDiv.innerHTML = `
-    <style>@keyframes pulse-lock { 0% {opacity:1;} 50% {opacity:0.5;} 100% {opacity:1;} }</style>
-    <h1 style="font-size:3rem; margin-bottom:1rem; text-shadow: 0 0 15px #ef4444; color:#ef4444; animation: pulse-lock 2s infinite;">// SYSTEM LOCKDOWN //</h1>
-    <p style="font-size:1.2rem; max-width:600px; padding:20px;">Maintenance en cours. L'accès au réseau a été suspendu par l'administrateur système.</p>
-`;
-document.body.appendChild(lockdownDiv);
+window.addEventListener('DOMContentLoaded', () => {
+    // Create lockdown overlay
+    const lockdownDiv = document.createElement('div');
+    lockdownDiv.id = "lockdown-overlay";
+    lockdownDiv.style.cssText = "display:none; position:fixed; inset:0; z-index:2147483647; background:#020617; color:#00ff41; font-family:monospace; flex-direction:column; justify-content:center; align-items:center; text-align:center;";
+    lockdownDiv.innerHTML = `
+        <style>@keyframes pulse-lock { 0% {opacity:1;} 50% {opacity:0.5;} 100% {opacity:1;} }</style>
+        <h1 style="font-size:3rem; margin-bottom:1rem; text-shadow: 0 0 15px #ef4444; color:#ef4444; animation: pulse-lock 2s infinite;">// SYSTEM LOCKDOWN //</h1>
+        <p style="font-size:1.2rem; max-width:600px; padding:20px;">Maintenance en cours. L'accès au réseau a été suspendu par l'administrateur système.</p>
+    `;
+    document.body.appendChild(lockdownDiv);
 
-// Secret bypass listener
-let secretBuffer = "";
-window.addEventListener('keydown', (e) => {
-    secretBuffer += e.key;
-    if (secretBuffer.length > 20) secretBuffer = secretBuffer.slice(-20);
-    if (secretBuffer.toLowerCase().includes("sudo bypass")) {
-        bypassLockdown = true;
-        lockdownDiv.style.display = 'none';
-        console.log("Bypass accepted. Welcome back Admin.");
-    }
-});
-
-// Listen to lockdown status
-onSnapshot(doc(db, "config", "status"), (docSnap) => {
-    if (docSnap.exists() && !bypassLockdown) {
-        const data = docSnap.data();
-        if (data.lockdown) {
-            lockdownDiv.style.display = 'flex';
-        } else {
-            lockdownDiv.style.display = 'none';
+    // Secret bypass listener
+    let secretBuffer = "";
+    window.addEventListener('keydown', (e) => {
+        secretBuffer += e.key;
+        if (secretBuffer.length > 20) secretBuffer = secretBuffer.slice(-20);
+        if (secretBuffer.toLowerCase().includes("sudo bypass")) {
+            bypassLockdown = true;
+            lockdownDiv.style.setProperty('display', 'none', 'important');
+            console.log("Bypass accepted. Welcome back Admin.");
         }
-    }
+    });
+
+    // Listen to lockdown status
+    onSnapshot(doc(db, "config", "status"), (docSnap) => {
+        if (docSnap.exists() && !bypassLockdown) {
+            const data = docSnap.data();
+            if (data.lockdown) {
+                lockdownDiv.style.setProperty('display', 'flex', 'important');
+            } else {
+                lockdownDiv.style.setProperty('display', 'none', 'important');
+            }
+        }
+    });
 });
 
 // --- 6. Custom Terminal Commands ---
