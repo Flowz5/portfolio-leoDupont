@@ -10,11 +10,24 @@
     <style>
         /* Specific Admin Styles - Glassmorphism */
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-main);
             overflow-x: hidden;
+            min-height: 100vh;
         }
+
+        /* Animated Background Orbs for Glassmorphism */
+        .admin-bg-mesh {
+            position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .admin-orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+        .orb-1 { width: 40vw; height: 40vw; background: var(--accent); top: -10%; left: -10%; }
+        .orb-2 { width: 35vw; height: 35vw; background: var(--mesh-1); bottom: -10%; right: -5%; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translateY(0) scale(1); } 100% { transform: translateY(50px) scale(1.1); } }
         
         #login-screen, #admin-dashboard {
             display: none; /* hidden by default until auth state is known */
@@ -118,6 +131,12 @@
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+
+    <!-- Background Glow -->
+    <div class="admin-bg-mesh">
+        <div class="admin-orb orb-1"></div>
+        <div class="admin-orb orb-2"></div>
+    </div>
 
     <!-- Login Screen -->
     <div id="login-screen">
