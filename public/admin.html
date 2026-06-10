@@ -169,34 +169,52 @@
             <main>
                 <!-- Analytics Panel -->
                 <div id="panel-stats" class="admin-panel active">
-                    <h2>📊 Analytics des Visiteurs</h2>
-                    <div style="display:flex; gap:1rem; margin-bottom:2rem;">
-                        <div class="admin-card" style="flex:1; text-align:center;">
+                    <h2 style="margin-bottom: 1.5rem;">📊 System Overview</h2>
+                    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem; margin-bottom:1.5rem;">
+                        <div class="admin-card" style="text-align:center; padding: 1.5rem 1rem; margin-bottom:0;">
                             <h3 style="font-size:2.5rem; color:var(--accent);" id="stat-views">0</h3>
-                            <p>Visiteurs Uniques</p>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">Visiteurs Uniques</p>
                         </div>
-                        <div class="admin-card" style="flex:1; text-align:center;">
-                            <h3 style="font-size:2.5rem; color:var(--accent);" id="stat-cv">0</h3>
-                            <p>Téléchargements CV</p>
+                        <div class="admin-card" style="text-align:center; padding: 1.5rem 1rem; margin-bottom:0;">
+                            <h3 style="font-size:2.5rem; color:var(--mesh-1);" id="stat-cv">0</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">Téléchargements CV</p>
+                        </div>
+                        <div class="admin-card" style="text-align:center; padding: 1.5rem 1rem; margin-bottom:0;">
+                            <h3 style="font-size:2.5rem; color:var(--mesh-2);" id="stat-msg">0</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">Messages Reçus</p>
+                        </div>
+                        <div class="admin-card" style="text-align:center; padding: 1.5rem 1rem; margin-bottom:0;">
+                            <h3 style="font-size:2.5rem; color:var(--mesh-4);" id="stat-veille">0</h3>
+                            <p style="font-size:0.85rem; color:var(--text-muted);">Articles Veille</p>
                         </div>
                     </div>
                     
-                    <div class="admin-card">
-                        <h3>Derniers Visiteurs (Tracking)</h3>
-                        <div style="overflow-x:auto;">
-                            <table class="admin-table">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Localisation</th>
-                                        <th>Système</th>
-                                        <th>IP (Anonymisée)</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="visitors-list">
-                                    <tr><td colspan="4">Chargement...</td></tr>
-                                </tbody>
-                            </table>
+                    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
+                        <div class="admin-card" style="margin-bottom:0;">
+                            <h3 style="margin-bottom: 1rem;"><i class="fas fa-users"></i> Trafic Récent</h3>
+                            <div style="overflow-x:auto;">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Localisation</th>
+                                            <th>Système</th>
+                                            <th>Adresse IP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="visitors-list">
+                                        <tr><td colspan="4">Chargement...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="admin-card" style="margin-bottom:0; display:flex; flex-direction:column;">
+                            <h3 style="margin-bottom: 1rem;"><i class="fas fa-terminal"></i> Server Logs</h3>
+                            <div id="live-logs" style="flex:1; background:rgba(2, 6, 23, 0.8); border:1px solid rgba(0,240,255,0.2); border-radius:8px; padding:1rem; font-family:var(--font-mono); font-size:0.8rem; color:#00ff41; overflow-y:auto; height: 300px;">
+                                <div><span style="color:#64748b;">[SYS]</span> Initialize Connection...</div>
+                                <div><span style="color:#64748b;">[SYS]</span> Authenticated as Admin.</div>
+                            </div>
                         </div>
                     </div>
                 </div>

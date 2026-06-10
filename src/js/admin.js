@@ -86,14 +86,32 @@ document.getElementById('btn-save-banner').addEventListener('click', async () =>
     showToast("Bannière mise à jour !");
 });
 
+// Helper to add logs to the terminal
+function addSysLog(msg, type = "INFO") {
+    const logs = document.getElementById('live-logs');
+    if(!logs) return;
+    const time = new Date().toLocaleTimeString('fr-FR');
+    let color = "#64748b"; // default info
+    if(type === "SUCCESS") color = "#00ff41";
+    if(type === "WARN") color = "#eab308";
+    if(type === "ERROR") color = "#ef4444";
+    
+    logs.innerHTML += `<div><span style="color:${color};">[${time}]</span> ${msg}</div>`;
+    logs.scrollTop = logs.scrollHeight;
+}
+
 // 2. Messages Inbox
 async function loadMessages() {
     const msgList = document.getElementById('messages-list');
+    const statMsg = document.getElementById('stat-msg');
     try {
         const q = query(collection(db, "messages"), orderBy("date", "desc"));
         const snapshot = await getDocs(q);
+        if(statMsg) statMsg.textContent = snapshot.size;
+        
         if (snapshot.empty) {
             msgList.innerHTML = "<p>Aucun message.</p>";
+            addSysLog("No new messages found.");
             return;
         }
         let html = "";
@@ -111,9 +129,11 @@ async function loadMessages() {
             `;
         });
         msgList.innerHTML = html;
+        addSysLog(`Loaded ${snapshot.size} messages.`, "SUCCESS");
     } catch(e) { 
         console.error(e);
         msgList.innerHTML = "<p>Erreur de chargement des messages.</p>";
+        addSysLog("Failed to load messages.", "ERROR");
     }
 }
 
@@ -128,17 +148,18 @@ async function loadVisitors() {
         const docSnap = await getDoc(doc(db, "stats", "cv"));
         if(docSnap.exists() && docSnap.data().downloads) {
             statCv.textContent = docSnap.data().downloads;
+            addSysLog(`CV Downloads: ${docSnap.data().downloads}`);
         }
 
         // Fetch Visitors
         const q = query(collection(db, "visitors"), orderBy("date", "desc"), limit(50));
         const snapshot = await getDocs(q);
-        statViews.textContent = snapshot.size; // Showing recent 50 count or need a global counter
+        statViews.textContent = snapshot.size; 
         
-        // Actually, let's get the global global visitor counter if it exists
         const viewSnap = await getDoc(doc(db, "stats", "global"));
         if(viewSnap.exists() && viewSnap.data().views) {
             statViews.textContent = viewSnap.data().views;
+            addSysLog(`Global Views: ${viewSnap.data().views}`);
         }
         
         if (snapshot.empty) {
@@ -152,7 +173,7 @@ async function loadVisitors() {
             const date = data.date ? new Date(data.date).toLocaleString('fr-FR') : '-';
             const loc = `${data.city || '?'}, ${data.country || '?'}`;
             
-            // Mask IP for privacy in UI if preferred, or show it.
+            // Raw IP is now shown directly since user asked not to anonymize visually
             const ip = data.ip || 'Inconnue';
             
             html += `
@@ -160,23 +181,28 @@ async function loadVisitors() {
                     <td>${date}</td>
                     <td>${loc}</td>
                     <td style="font-size:0.8rem;">${data.os} / ${data.browser}</td>
-                    <td>${ip}</td>
+                    <td><span style="color:var(--accent); font-family:var(--font-mono);">${ip}</span></td>
                 </tr>
             `;
         });
         vList.innerHTML = html;
+        addSysLog(`Loaded ${snapshot.size} recent visitors.`, "SUCCESS");
     } catch(e) {
         console.error(e);
         vList.innerHTML = "<tr><td colspan='4'>Erreur de chargement</td></tr>";
+        addSysLog("Failed to load visitors.", "ERROR");
     }
 }
 
 // 4. Veille Tech
 async function loadVeille() {
     const list = document.getElementById('veille-list');
+    const statVeille = document.getElementById('stat-veille');
     try {
         const q = query(collection(db, "veille"), orderBy("date", "desc"));
         const snapshot = await getDocs(q);
+        if(statVeille) statVeille.textContent = snapshot.size;
+        
         let html = "";
         snapshot.forEach(doc => {
             const data = doc.data();
@@ -185,13 +211,19 @@ async function loadVeille() {
             </li>`;
         });
         list.innerHTML = html || "<p>Aucun article.</p>";
-    } catch(e) { console.error(e); }
+        addSysLog(`Loaded ${snapshot.size} tech watch articles.`, "SUCCESS");
+    } catch(e) { 
+        console.error(e); 
+        addSysLog("Failed to load tech watch articles.", "ERROR");
+    }
 }
 
 document.getElementById('btn-add-veille').addEventListener('click', async () => {
     const title = document.getElementById('veille-title').value;
     const url = document.getElementById('veille-url').value;
     if(!title || !url) return;
+    
+    addSysLog(`Adding new article: ${title}...`, "WARN");
     
     await addDoc(collection(db, "veille"), {
         title: title,
@@ -202,5 +234,6 @@ document.getElementById('btn-add-veille').addEventListener('click', async () => 
     document.getElementById('veille-title').value = '';
     document.getElementById('veille-url').value = '';
     showToast("Article ajouté !");
+    addSysLog(`Article added successfully.`, "SUCCESS");
     loadVeille();
 });
