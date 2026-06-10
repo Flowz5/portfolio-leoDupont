@@ -68,14 +68,14 @@ async function loadStatus() {
         const docSnap = await getDoc(doc(db, "config", "status"));
         if (docSnap.exists()) {
             const data = docSnap.data();
-            if(data.text) document.getElementById('status-select').value = data.text;
+            if(data.text) document.getElementById('admin-status').value = data.text;
             if(data.banner) document.getElementById('banner-input').value = data.banner;
         }
     } catch(e) { console.error("Error loading status", e); }
 }
 
 document.getElementById('btn-save-status').addEventListener('click', async () => {
-    const statusText = document.getElementById('status-select').value;
+    const statusText = document.getElementById('admin-status').value;
     await setDoc(doc(db, "config", "status"), { text: statusText }, { merge: true });
     showToast("Statut mis à jour !");
 });
