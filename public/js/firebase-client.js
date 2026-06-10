@@ -1,5 +1,5 @@
 import { db } from './firebase-init.js';
-import { collection, addDoc, doc, getDoc, updateDoc, increment, setDoc, onSnapshot, getDocs, query } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, addDoc, doc, getDoc, updateDoc, increment, setDoc, onSnapshot, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // --- 1. Visitor Tracking ---
 async function trackVisitor() {
@@ -161,7 +161,6 @@ function setupContactForm() {
 }
 
 // --- 5. Fetch Veille Tech ---
-import { getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 async function fetchVeille() {
     const scroller = document.getElementById('news-scroller');
