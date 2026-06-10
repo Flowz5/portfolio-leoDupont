@@ -203,7 +203,7 @@ let bypassLockdown = false;
 // Create lockdown overlay
 const lockdownDiv = document.createElement('div');
 lockdownDiv.id = "lockdown-overlay";
-lockdownDiv.style = "display:none; position:fixed; inset:0; z-index:99999; background:#020617; color:#00ff41; font-family:monospace; flex-direction:column; justify-content:center; align-items:center; text-align:center;";
+lockdownDiv.style.cssText = "display:none; position:fixed; inset:0; z-index:99999; background:#020617; color:#00ff41; font-family:monospace; flex-direction:column; justify-content:center; align-items:center; text-align:center;";
 lockdownDiv.innerHTML = `
     <style>@keyframes pulse-lock { 0% {opacity:1;} 50% {opacity:0.5;} 100% {opacity:1;} }</style>
     <h1 style="font-size:3rem; margin-bottom:1rem; text-shadow: 0 0 15px #ef4444; color:#ef4444; animation: pulse-lock 2s infinite;">// SYSTEM LOCKDOWN //</h1>
