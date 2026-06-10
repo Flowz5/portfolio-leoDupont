@@ -81,16 +81,25 @@ async function fetchConfig() {
                 document.body.prepend(bannerDiv);
             }
             
-            // We could update the subtitle status if there is a place for it
-            // Let's inject it under the hero title
+            // We update the existing hero badge
             if (data.text) {
-                const subtitle = document.querySelector('.hero-subtitle');
-                if(subtitle) {
-                    // Create a badge
-                    const badge = document.createElement('div');
-                    badge.style.cssText = "display:inline-block; margin-top:1rem; padding:5px 15px; background:rgba(0,0,0,0.5); border:1px solid var(--accent); border-radius:20px; font-size:0.9rem;";
-                    badge.textContent = data.text;
-                    subtitle.parentNode.insertBefore(badge, subtitle.nextSibling);
+                const heroBadge = document.querySelector('.hero-badge');
+                if(heroBadge) {
+                    const statusText = heroBadge.querySelector('span:not(.status-dot)') || heroBadge.querySelector('span');
+                    if (statusText) statusText.textContent = data.text;
+                    else {
+                        // fallback if no span wrapping the text
+                        const dot = heroBadge.querySelector('.status-dot');
+                        heroBadge.innerHTML = '';
+                        if(dot) heroBadge.appendChild(dot);
+                        heroBadge.appendChild(document.createTextNode(' ' + data.text));
+                    }
+                    
+                    if (data.text.includes("En ligne") || data.text.includes("recherche")) {
+                        heroBadge.classList.remove('offline');
+                    } else {
+                        heroBadge.classList.add('offline');
+                    }
                 }
             }
         }
