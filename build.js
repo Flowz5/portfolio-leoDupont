@@ -66,3 +66,9 @@ const printCss = `
 
 fs.writeFileSync(path.join(publicCssDir, 'print.css'), printCss);
 console.log('Created print.css');
+
+// 4. Copy ES modules
+try { fs.copyFileSync(path.join(srcJsDir, 'firebase-init.js'), path.join(publicJsDir, 'firebase-init.js')); console.log('Copied firebase-init.js'); } catch(e){}
+try { fs.copyFileSync(path.join(srcJsDir, 'firebase-client.js'), path.join(publicJsDir, 'firebase-client.js')); console.log('Copied firebase-client.js'); } catch(e){}
+try { fs.copyFileSync(path.join(srcJsDir, 'admin.js'), path.join(publicJsDir, 'admin.js')); console.log('Copied admin.js'); } catch(e){}
+
