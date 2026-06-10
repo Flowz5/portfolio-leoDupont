@@ -250,9 +250,9 @@
                     <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
                         <div class="admin-card" style="margin-bottom:0;">
                             <h3 style="margin-bottom: 1rem;"><i class="fas fa-users"></i> Trafic Récent</h3>
-                            <div style="overflow-x:auto;">
+                            <div style="overflow-x:auto; overflow-y:auto; max-height: 400px; padding-right: 5px;" class="custom-scrollbar-container">
                                 <table class="admin-table">
-                                    <thead>
+                                    <thead style="position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 10;">
                                         <tr>
                                             <th>Date</th>
                                             <th>Visiteur & IP</th>
@@ -262,7 +262,7 @@
                                         </tr>
                                     </thead>
                                     <tbody id="visitors-list">
-                                        <tr><td colspan="4">Chargement...</td></tr>
+                                        <tr><td colspan="5">Chargement...</td></tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -122,14 +122,40 @@ async function loadMessages() {
                 <div class="msg-card">
                     <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
                         <strong>${data.name} (${data.email})</strong>
-                        <span style="color:var(--text-muted); font-size:0.8rem;">${date}</span>
+                        <div>
+                            <span style="color:var(--text-muted); font-size:0.8rem; margin-right:15px;">${date}</span>
+                            <button class="btn-delete-msg" data-id="${doc.id}" style="background:transparent; border:none; color:#ef4444; cursor:pointer; font-size:1.1rem; transition:transform 0.2s;" title="Supprimer le message">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
                     </div>
-                    <p style="white-space:pre-wrap;">${data.message}</p>
+                    <p style="white-space:pre-wrap; margin-top:5px; color:#e2e8f0;">${data.message}</p>
                 </div>
             `;
         });
         msgList.innerHTML = html;
         addSysLog(`Loaded ${snapshot.size} messages.`, "SUCCESS");
+
+        // Add delete listeners
+        document.querySelectorAll('.btn-delete-msg').forEach(btn => {
+            btn.addEventListener('mouseenter', () => btn.style.transform = 'scale(1.2)');
+            btn.addEventListener('mouseleave', () => btn.style.transform = 'scale(1)');
+            btn.addEventListener('click', async (e) => {
+                if(confirm("Veux-tu vraiment supprimer ce message ?")) {
+                    const id = e.currentTarget.dataset.id;
+                    addSysLog(`Deleting message ${id}...`, "WARN");
+                    try {
+                        await deleteDoc(doc(db, "messages", id));
+                        showToast("Message supprimé !");
+                        addSysLog(`Message deleted.`, "SUCCESS");
+                        loadMessages(); // reload
+                    } catch(err) {
+                        console.error(err);
+                        addSysLog(`Failed to delete message.`, "ERROR");
+                    }
+                }
+            });
+        });
     } catch(e) { 
         console.error(e);
         msgList.innerHTML = "<p>Erreur de chargement des messages.</p>";
