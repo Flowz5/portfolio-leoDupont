@@ -247,10 +247,10 @@
                         </div>
                     </div>
                     
-                    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem;">
-                        <div class="admin-card" style="margin-bottom:0;">
+                    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:1.5rem; align-items: stretch;">
+                        <div class="admin-card" style="margin-bottom:0; display:flex; flex-direction:column;">
                             <h3 style="margin-bottom: 1rem;"><i class="fas fa-users"></i> Trafic Récent</h3>
-                            <div style="overflow-x:auto; overflow-y:auto; max-height: 400px; padding-right: 5px;" class="custom-scrollbar-container">
+                            <div style="overflow-x:auto; overflow-y:auto; max-height: 500px; padding-right: 5px; flex:1;" class="custom-scrollbar-container">
                                 <table class="admin-table">
                                     <thead style="position: sticky; top: 0; background: rgba(15, 23, 42, 0.95); z-index: 10;">
                                         <tr>
@@ -270,7 +270,7 @@
                         
                         <div class="admin-card" style="margin-bottom:0; display:flex; flex-direction:column;">
                             <h3 style="margin-bottom: 1rem;"><i class="fas fa-terminal"></i> Server Logs</h3>
-                            <div id="live-logs" style="flex:1; background:rgba(2, 6, 23, 0.8); border:1px solid rgba(0,240,255,0.2); border-radius:8px; padding:1rem; font-family:var(--font-mono); font-size:0.8rem; color:#00ff41; overflow-y:auto; height: 300px;">
+                            <div id="live-logs" style="flex:1; background:rgba(2, 6, 23, 0.8); border:1px solid rgba(0,240,255,0.2); border-radius:8px; padding:1rem; font-family:var(--font-mono); font-size:0.8rem; color:#00ff41; overflow-y:auto; min-height: 300px;">
                                 <div><span style="color:#64748b;">[SYS]</span> Initialize Connection...</div>
                                 <div><span style="color:#64748b;">[SYS]</span> Authenticated as Admin.</div>
                             </div>
