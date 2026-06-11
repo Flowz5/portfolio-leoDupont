@@ -217,6 +217,7 @@
             <aside class="admin-sidebar">
                 <h3 style="color:var(--accent); text-align:center; margin-bottom:2rem;">L.D Admin</h3>
                 <div class="admin-menu-item active" data-target="panel-stats"><i class="fas fa-chart-line"></i> Analytics</div>
+                <div class="admin-menu-item" data-target="panel-seo"><i class="fas fa-search-dollar"></i> SEO & Trafic</div>
                 <div class="admin-menu-item" data-target="panel-messages"><i class="fas fa-envelope"></i> Inbox</div>
                 <div class="admin-menu-item" data-target="panel-status"><i class="fas fa-toggle-on"></i> Statut & Bannière</div>
                 <div class="admin-menu-item" data-target="panel-veille"><i class="fas fa-newspaper"></i> Veille Tech</div>
@@ -226,6 +227,23 @@
 
             <!-- Main Content -->
             <main>
+                <!-- SEO Panel -->
+                <div id="panel-seo" class="admin-panel">
+                    <h2 style="margin-bottom: 1.5rem;"><i class="fas fa-search-dollar"></i> Dashboard SEO (Looker Studio)</h2>
+                    <div class="admin-card">
+                        <p style="margin-bottom: 1rem; color: var(--text-muted);">
+                            Collez ici le code d'intégration complet <code>&lt;iframe&gt;...&lt;/iframe&gt;</code> fourni par Google Looker Studio.
+                        </p>
+                        <div style="display:flex; gap:10px; margin-bottom:1.5rem;">
+                            <textarea id="seo-iframe-code" class="login-input" style="flex:1; height: 100px; resize:vertical; background:#0a0e17; border:1px solid #1e293b; color:var(--text-light); padding:10px;" placeholder="<iframe width='600' height='450' src='...' frameborder='0' style='border:0' allowfullscreen></iframe>"></textarea>
+                            <button id="btn-save-seo" class="glass-btn primary" style="height: fit-content; padding: 10px 20px;">Sauvegarder</button>
+                        </div>
+                        <div id="seo-dashboard-container" style="width: 100%; min-height: 500px; background: #0a0e17; border: 1px dashed #1e293b; border-radius: 8px; display:flex; justify-content:center; align-items:center; overflow:hidden;">
+                            <p style="color:var(--text-muted);">Aucun dashboard Looker Studio configuré.</p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Analytics Panel -->
                 <div id="panel-stats" class="admin-panel active">
                     <h2 style="margin-bottom: 1.5rem;">📊 System Overview</h2>
@@ -402,6 +420,6 @@
     </script>
 
     <!-- Load Firebase via Module -->
-    <script type="module" src="js/admin.js?v=7"></script>
+    <script type="module" src="js/admin.js?v=9"></script>
 </body>
 </html>

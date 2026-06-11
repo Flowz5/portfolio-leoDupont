@@ -162,6 +162,7 @@ async function loadDashboardData() {
     loadMessages();
     loadVisitors();
     loadVeille();
+    loadSeo();
 }
 
 // 1. Status & Banner
@@ -379,3 +380,47 @@ document.getElementById('btn-add-veille').addEventListener('click', async () => 
     addSysLog(`Article added successfully.`, "SUCCESS");
     loadVeille();
 });
+// --- 6. SEO Dashboard ---
+async function loadSeo() {
+    const iframeCodeInput = document.getElementById('seo-iframe-code');
+    const container = document.getElementById('seo-dashboard-container');
+    const btnSave = document.getElementById('btn-save-seo');
+
+    if (!iframeCodeInput || !container || !btnSave) return;
+
+    try {
+        const docSnap = await getDoc(doc(db, "config", "seo"));
+        if (docSnap.exists() && docSnap.data().iframeCode) {
+            const code = docSnap.data().iframeCode;
+            iframeCodeInput.value = code;
+            container.innerHTML = code;
+        } else {
+            const defaultCode = `<iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/a0a1afea-1954-41a0-9020-c41f0fe77fc5/page/vYz0F" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>`;
+            iframeCodeInput.value = defaultCode;
+            container.innerHTML = defaultCode;
+            // Auto-save
+            setDoc(doc(db, "config", "seo"), { iframeCode: defaultCode }, { merge: true });
+        }
+    } catch(e) {
+        console.error("Error loading SEO config", e);
+    }
+
+    btnSave.addEventListener('click', async () => {
+        const code = iframeCodeInput.value.trim();
+        // Basic sanitization check to ensure it's an iframe
+        if (code !== "" && !code.toLowerCase().includes("<iframe")) {
+            showToast("Code invalide. Doit contenir <iframe>");
+            return;
+        }
+        
+        try {
+            await setDoc(doc(db, "config", "seo"), { iframeCode: code }, { merge: true });
+            container.innerHTML = code || '<p style="color:var(--text-muted);">Aucun dashboard Looker Studio configuré.</p>';
+            showToast("Dashboard SEO sauvegardé !");
+            addSysLog("SEO Dashboard iframe updated", "SUCCESS");
+        } catch(e) {
+            console.error(e);
+            showToast("Erreur de sauvegarde");
+        }
+    });
+}
