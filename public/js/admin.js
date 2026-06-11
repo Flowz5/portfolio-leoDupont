@@ -395,7 +395,7 @@ async function loadSeo() {
             iframeCodeInput.value = code;
             container.innerHTML = code;
         } else {
-            const defaultCode = `<iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/a0a1afea-1954-41a0-9020-c41f0fe77fc5/page/vYz0F" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>`;
+            const defaultCode = `<iframe width="600" height="450" src="https://datastudio.google.com/embed/reporting/b2005ccd-5155-4322-a56e-ea22205601bf/page/lhz0F" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>`;
             iframeCodeInput.value = defaultCode;
             container.innerHTML = defaultCode;
             // Auto-save
