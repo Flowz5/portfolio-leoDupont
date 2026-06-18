@@ -17,6 +17,7 @@ const cssFiles = [
     'navbar.css',
     'terminal.css',
     'veille.css',
+    'stage.css',
     'animations.css'
 ];
 

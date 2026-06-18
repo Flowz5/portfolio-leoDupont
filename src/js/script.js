@@ -1095,4 +1095,41 @@ document.addEventListener("DOMContentLoaded", () => {
         snakeInterval = setInterval(drawGame, 100);
     };
 
+    // =========================================================
+    // 20. STAGE MODALS LOGIC
+    // =========================================================
+    const modalButtons = document.querySelectorAll('.btn-open-modal');
+    const closeButtons = document.querySelectorAll('.btn-close-modal');
+    const overlays = document.querySelectorAll('.report-modal-overlay');
+
+    modalButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modalId = btn.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        });
+    });
+
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const overlay = btn.closest('.report-modal-overlay');
+            if (overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
+    overlays.forEach(overlay => {
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+
 });
