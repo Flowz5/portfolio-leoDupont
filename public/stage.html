@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Léo Dupont - Développeur d'applications et de solutions Web">
+    <meta name="keywords" content="portfolio, développeur, web, applicatif, léo dupont, bts sio">
+    <meta name="author" content="Léo Dupont">
+    
+    <!-- Open Graph / Social Media Preview Tags -->
+    <meta property="og:title" content="Léo Dupont - Portfolio">
+    <meta property="og:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta property="og:image" content="https://portfolio-leodupont-1jr4.onrender.com/Assets/apercu-portfolio.jpg">
+    <meta property="og:url" content="https://portfolio-leodupont-1jr4.onrender.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Léo Dupont - Portfolio">
+    <meta name="twitter:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta name="twitter:image" content="https://portfolio-leodupont-1jr4.onrender.com/Assets/apercu-portfolio.jpg">
+
+    <title>Léo Dupont | Software Developer</title>
+    <link rel="icon" type="image/svg+xml" href="./Assets/favicon.svg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts Removed for better eco-score (using standard fonts) -->
+    <link rel="preload" href="./css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="./css/all.min.css"></noscript>
+    
+    <!-- Minified Local CSS -->
+    <link rel="stylesheet" href="./css/style.min.css?v=3" media="screen">
+    <link rel="stylesheet" href="./css/print.css" media="print">
+    
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="./css/aos.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link" data-i18n="skip_link" style="position:absolute; top:-100px; left:0; background:var(--accent); color:var(--bg-main); padding:8px; z-index:100000; transition:top 0.3s; text-decoration:none; font-weight:bold;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Aller au contenu principal</a>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-logo">L<span class="splash-accent">.</span>D</div>
+        <div class="splash-bar-container">
+            <div class="splash-bar"></div>
+        </div>
+        <div class="splash-status" id="splash-status">
+            <span class="splash-status-dot"></span>
+            <span data-i18n="status">En ligne</span>
+        </div>
+    </div>
+
+    <div class="mesh-bg">
+        <div class="mesh-orb orb-1"></div>
+        <div class="mesh-orb orb-2"></div>
+        <div class="mesh-orb orb-3"></div>
+        <div class="mesh-orb orb-4"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- Floating Navigation Capsule -->
+    <nav class="floating-nav" id="navbar">
+        <a href="index.html#home" class="nav-item active" aria-label="Accueil"><i class="fas fa-home"></i><span class="tooltip" data-i18n="nav_home">Accueil</span></a>
+        <a href="index.html#bento" class="nav-item" aria-label="À Propos"><i class="fas fa-layer-group"></i><span class="tooltip" data-i18n="nav_about">À Propos</span></a>
+        <a href="index.html#projects" class="nav-item" aria-label="Projets"><i class="fas fa-code"></i><span class="tooltip" data-i18n="nav_projects">Projets</span></a>
+        <a href="#experience" class="nav-item" aria-label="Expérience"><i class="fas fa-briefcase"></i><span class="tooltip" data-i18n="nav_exp">Stage</span></a>
+        <a href="index.html#terminal-section" class="nav-item" aria-label="Terminal"><i class="fas fa-terminal"></i><span class="tooltip" data-i18n="nav_terminal">Terminal</span></a>
+        <a href="index.html#contact" class="nav-item" aria-label="Contact"><i class="fas fa-envelope"></i><span class="tooltip" data-i18n="nav_contact">Contact</span></a>
+        
+        <div class="nav-divider"></div>
+        <button id="theme-toggle" class="nav-action" aria-label="Basculer le thème"><i class="fas fa-moon" id="toggle-icon" aria-hidden="true"></i><span id="theme-text" style="display:none;" data-i18n="theme_dark">Mode Sombre</span></button>
+        <button id="lang-toggle" class="nav-action" aria-label="Changer la langue"><span id="lang-text">FR</span></button>
+        <button id="cmd-btn-nav" class="nav-action" aria-label="Ouvrir la palette de commandes"><i class="fas fa-search" aria-hidden="true"></i></button>
+    </nav>
+
+    <main class="main-container content" id="main-content">
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section" style="grid-template-columns: 1fr;">
+            <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h1 class="hero-title" data-aos="fade-up">Mon Stage <span class="accent-text">chez SPECINOV</span></h1>
+                <h2 class="hero-subtitle typewriter-cursor" data-aos="fade-up" data-aos-delay="100" style="justify-content: center;">Journal de bord & Compte-rendus</h2>
+                <p class="hero-desc" data-aos="fade-up" data-aos-delay="200" style="margin: 0 auto; margin-top: 1.5rem; text-align: center;">Retrouvez ici la chronologie détaillée de mon stage de fin de première année, incluant mes missions sur Klip et Kastor, et mon apprentissage sur l'éco-conception logicielle.</p>
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300" style="justify-content: center; margin-top: 2.5rem;">
+                    <a href="index.html" class="glass-btn secondary"><i class="fas fa-arrow-left"></i> <span>Retour à l'accueil</span></a>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+
+        <!-- Experience & Internship Section -->
+        <section id="experience" class="experience-section">
+            <h2 class="section-heading" data-aos="fade-up" style="text-align: center;">Expérience & Stage</h2>
+            
+            <!-- Global Presentation -->
+            <div class="exp-intro" data-aos="fade-up" data-aos-delay="100">
+                <div class="exp-intro-card">
+                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-building" style="color: var(--accent);"></i> SPECINOV</h3>
+                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:15px;">Mon stage se déroule au sein de <strong>Specinov</strong>, une entreprise spécialisée dans le développement de solutions numériques responsables. J'y contribue activement à deux projets en production : <strong>Klip</strong> et <strong>Kastor</strong>. Ces deux applications ont en commun une forte sensibilité à l'éco-conception et à la qualité logicielle.</p>
+                    <div class="tags" style="justify-content: center;">
+                        <span class="tag">C# / .NET</span>
+                        <span class="tag">Angular</span>
+                        <span class="tag">Éco-conception</span>
+                        <span class="tag">Sécurité</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="timeline-wrapper">
+                <div class="timeline-line"></div>
+
+                <!-- Week 1 -->
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Semaine 1</h4>
+                        <span class="timeline-date">26 mai – 29 mai 2026</span>
+                        <p>Découverte de la stack technique, autoformation C# et Angular, sensibilisation à l'éco-conception (Numérique Responsable).</p>
+                        <div class="tags"><span class="tag">C#</span><span class="tag">Angular</span><span class="tag">NR</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s1"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="timeline-item right" data-aos="fade-left" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Semaine 2</h4>
+                        <span class="timeline-date">1er juin – 5 juin 2026</span>
+                        <p>Premières contributions sur Klip : résolution de bugs de chiffrement de gros fichiers, améliorations UI et montée de version Angular 22.</p>
+                        <div class="tags"><span class="tag">C#</span><span class="tag">Angular 22</span><span class="tag">AES-256</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s2"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Semaine 3</h4>
+                        <span class="timeline-date">8 juin – 12 juin 2026</span>
+                        <p>Débogage approfondi du backend, ajustements responsive, et mise en place de la signature avancée PDF avec certificat (eIDAS).</p>
+                        <div class="tags"><span class="tag">.NET</span><span class="tag">SCSS</span><span class="tag">PDF eIDAS</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s3"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="timeline-item right" data-aos="fade-left" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Semaine 4</h4>
+                        <span class="timeline-date">15 juin – 19 juin 2026</span>
+                        <p>Transition sur Kastor. Refonte UI/UX majeure (SCSS, Flexbox, ::ng-deep) et gestion du routing Angular pour la page d'accueil et d'audits.</p>
+                        <div class="tags"><span class="tag">Angular</span><span class="tag">Routing</span><span class="tag">SCSS</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s4"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                    </div>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="timeline-item left timeline-wip" data-aos="fade-right" data-aos-delay="100">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Semaine 5</h4>
+                        <span class="timeline-date" style="color:var(--accent);">En cours de rédaction...</span>
+                        <p>Rapport en attente de finalisation. Suite du développement sur la plateforme Kastor.</p>
+                        <div class="tags"><span class="tag">WIP</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="https://github.com/Flowz5" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/l%C3%A9o-dupont-646a58385" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:dupontleo999@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="footer-text" data-i18n="footer_text">
+            Fait avec <span class="heart">❤</span> & du code — Léo Dupont © 2025
+        </p>
+    </footer>
+
+    <!-- Theme Reveal Overlay -->
+    <div id="theme-reveal" class="theme-reveal-overlay"></div>
+
+    <!-- Command Palette Overlay -->
+    <div id="cmd-palette" class="cmd-palette-overlay hidden">
+        <div class="cmd-palette-box">
+            <div class="cmd-input-wrapper">
+                <i class="fas fa-search" aria-hidden="true"></i>
+                <input type="text" id="cmd-input" placeholder="Rechercher..." aria-label="Rechercher dans la palette de commandes">
+                <span class="cmd-esc">ESC</span>
+            </div>
+            <ul id="cmd-results" class="cmd-results"></ul>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="mouse-follower"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Scripts -->
+    <script src="js/aos.js" defer></script>
+    <script src="js/vanilla-tilt.min.js" defer></script>
+    <!-- CV Modal -->
+    <div id="cv-modal" class="glass-modal" role="dialog" aria-modal="true" aria-labelledby="cv_modal_title">
+        <div class="glass-modal-content">
+            <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
+            <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
+            <div class="cv-preview-container" id="cv-iframe-container">
+                <!-- L'Iframe sera injectée ici par JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals for Internship Reports -->
+    <!-- Modal S1 -->
+    <div class="report-modal-overlay" id="modal-s1">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 1</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">26 mai – 29 mai 2026 | Projet: SpeciSend (Klip)</p>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Prise en main de l'environnement de travail et montée en compétences sur les technologies utilisées dans le projet SpeciSend : C#, Angular et sensibilisation au Numérique Responsable (NR).</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (3 tickets)</h4>
+                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
+                        <li style="margin-bottom:10px;"><strong>Autoformation NR :</strong> 16h30 de MOOC INR (Sensibilisation, Formation complète, Éco-conception, IA Responsable).</li>
+                        <li style="margin-bottom:10px;"><strong>Autoformation C# :</strong> Fondamentaux, création d'applications ASP.NET Core et persistance des données avec Entity Framework Core.</li>
+                        <li style="margin-bottom:10px;"><strong>Autoformation Angular :</strong> Architecture composants, Data binding, Routing, et gestion des Observables (RxJS).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Découverte de la stack technique du projet SpeciSend avec son architecture en couches (BO → DAL → Controllers). Sensibilisation très forte à l'approche éco-responsable dès les premiers jours du stage.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal S2 -->
+    <div class="report-modal-overlay" id="modal-s2">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 2</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">1er juin – 5 juin 2026 | Projet: SpeciSend (Klip)</p>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Première semaine de contributions concrètes au projet SpeciSend. Prise en main de la base de code existante à travers la résolution de bugs, l'ajout de fonctionnalités et une montée de version du framework frontend.</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (6 tickets)</h4>
+                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
+                        <li style="margin-bottom:10px;"><strong>Chiffrement de fichiers > 2 Go :</strong> Adaptation du chiffrement AES en flux (streaming) pour éviter le crash mémoire.</li>
+                        <li style="margin-bottom:10px;"><strong>Expiration Signature :</strong> Prolongement automatique du délai de +90 jours après une signature.</li>
+                        <li style="margin-bottom:10px;"><strong>Montée de version Angular 22 :</strong> Migration complète, mise à jour des dépendances et tests de non-régression.</li>
+                        <li style="margin-bottom:10px;"><strong>Fix de bugs divers :</strong> Problème d'option en double "A vie", affichage dynamique des noms de fichiers multiples, et corrections responsive.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Immersion réussie dans l'architecture backend C# et résolution de problèmes algorithmiques (Memory Limits). Première expérience majeure de migration de framework en production.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal S3 -->
+    <div class="report-modal-overlay" id="modal-s3">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 3</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">8 juin – 12 juin 2026 | Projet: SpeciSend (Klip)</p>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Remise en état du système de fichiers favoris comportant des bugs critiques, et mise en place de la signature avancée de PDF avec le certificat Klip.</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (6 tickets)</h4>
+                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
+                        <li style="margin-bottom:10px;"><strong>Refonte Fichiers Favoris :</strong> Résolution de 3 bugs critiques (Erreur 400, suppression physique anormale, et persistance orpheline en BDD). Création d'une logique de "téléchargement fantôme" pour éviter de migrer le schéma de données.</li>
+                        <li style="margin-bottom:10px;"><strong>Signature Avancée eIDAS :</strong> Intégration du certificat Klip pour garantir l'intégrité absolue (inaltérabilité) des PDF signés, élevant le niveau de signature à "Avancée".</li>
+                        <li style="margin-bottom:10px;"><strong>Améliorations UX/UI :</strong> Mise en place d'un accusé de réception automatique et correctifs responsive sur mobile.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Debugging backend approfondi en traçant un fichier de A à Z. Découverte technique et réglementaire des différents niveaux de signature électronique (eIDAS).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal S4 -->
+    <div class="report-modal-overlay" id="modal-s4">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 4</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">15 juin – 19 juin 2026 | Projet: Kastor</p>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Transition vers Kastor. Accent majeur sur la refonte graphique (UI/UX) globale de l'application web pour correspondre aux nouvelles maquettes (Stitch). Réorganisation des routes principales.</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (4/5 tickets résolus)</h4>
+                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
+                        <li style="margin-bottom:10px;"><strong>Routing & Architecture :</strong> Nettoyage de l'ancienne page d'accueil, redirection de `/audits` vers `/` via le routeur Angular.</li>
+                        <li style="margin-bottom:10px;"><strong>Intégration UI :</strong> Refonte complète du SCSS de l'accueil, de la navbar et du Dashboard général. Intégration de dégradés et layouts complexes.</li>
+                        <li style="margin-bottom:10px;"><strong>CSS Avancé :</strong> Stylisation dynamique des résultats d'audit. Utilisation de `Flexbox`, positionnement absolu, et perçage de l'encapsulation Angular (`::ng-deep`) pour styliser des infobulles générées depuis des fichiers i18n JSON.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Maîtrise du routing Angular et des méthodes d'intégration SCSS exigeantes (fidélité à une maquette complexe, gestion des tooltips dynamiques).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load main portfolio logic -->
+    <script src="./js/script.min.js?v=8"></script>
+    <script type="module" src="js/firebase-client.js?v=8"></script>
+    <script>
+        // Eco-design: Inject CV PDF iframe only when modal is opened
+        document.getElementById('btn-open-cv-modal')?.addEventListener('click', function() {
+            const container = document.getElementById('cv-iframe-container');
+            if (container && !container.querySelector('iframe')) {
+                container.innerHTML = '<iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>';
+            }
+        });
+    </script>
+</body>
+</html>

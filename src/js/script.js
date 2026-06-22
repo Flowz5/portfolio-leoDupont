@@ -171,6 +171,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (el) {
             const y = el.getBoundingClientRect().top + window.scrollY - 100;
             window.scrollTo({top: y, behavior: 'smooth'});
+        } else {
+            // Si l'élément n'existe pas sur cette page (ex: stage.html), rediriger vers index.html
+            window.location.href = 'index.html#' + id;
         }
     }
 
@@ -180,8 +183,8 @@ document.addEventListener("DOMContentLoaded", () => {
             { title: t.nav_home, icon: "fa-home", action: () => smoothScrollTo('home') },
             { title: t.nav_about, icon: "fa-user", action: () => smoothScrollTo('bento') },
             { title: t.nav_projects, icon: "fa-code", action: () => smoothScrollTo('projects') },
-            { title: "Stage (Expérience)", icon: "fa-briefcase", action: () => smoothScrollTo('experience') },
-            { title: t.nav_terminal, icon: "fa-terminal", action: () => { smoothScrollTo('terminal-section'); setTimeout(() => document.getElementById('terminal-input').focus(), 500); } },
+            { title: "Stage (Expériences)", icon: "fa-briefcase", action: () => smoothScrollTo('experience') },
+            { title: t.nav_terminal, icon: "fa-terminal", action: () => { smoothScrollTo('terminal-section'); setTimeout(() => document.getElementById('terminal-input')?.focus(), 500); } },
             { title: t.nav_contact, icon: "fa-envelope", action: () => smoothScrollTo('contact') },
             { title: t.nav_cv, icon: "fa-file-alt", action: () => window.open('./CV/index.html', '_blank') },
             { title: t.cmd_dl_cv, icon: "fa-download", action: () => { const link = document.createElement('a'); link.href = './CV/mon-cv.pdf'; link.download = 'mon-cv.pdf'; link.click(); } },
