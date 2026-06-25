@@ -88,12 +88,6 @@
             </div>
         </section>
 
-
-
-
-
-
-
         <!-- Experience & Internship Section -->
         <section id="experience" class="experience-section">
             <h2 class="section-heading" data-aos="fade-up" style="text-align: center;">Expérience & Stage</h2>
@@ -165,19 +159,42 @@
                 </div>
 
                 <!-- Week 5 -->
-                <div class="timeline-item left timeline-wip" data-aos="fade-right" data-aos-delay="100">
+                <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h4>Semaine 5</h4>
-                        <span class="timeline-date" style="color:var(--accent);">En cours de rédaction...</span>
-                        <p>Rapport en attente de finalisation. Suite du développement sur la plateforme Kastor.</p>
-                        <div class="tags"><span class="tag">WIP</span></div>
+                        <span class="timeline-date">22 juin – 26 juin 2026</span>
+                        <p>Poursuite de la refonte UI/UX de l'application Kastor et implémentation fullstack du nouveau type d'audit "Accessibilité".</p>
+                        <div class="tags"><span class="tag">Fullstack</span><span class="tag">UI/UX</span><span class="tag">C#</span><span class="tag">Angular</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s5"><i class="fas fa-file-alt"></i> Rapport Complet</button>
                     </div>
                 </div>
 
             </div>
-        </section>
 
+            <!-- Global Final Report Card -->
+            <div class="exp-intro" data-aos="fade-up" data-aos-delay="200" style="margin-top: 3rem;">
+                <div class="exp-intro-card">
+                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Bilan Final du Stage</h3>
+                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:20px;">Au cours de ces 5 semaines chez Specinov, j'ai pu intervenir en profondeur sur les projets <strong>Klip</strong> et <strong>Kastor</strong>, de l'architecture backend complexe jusqu'à l'intégration frontend, tout en consolidant mes compétences de développeur fullstack[cite: 14].</p>
+                    
+                    <h4 style="color:#fff; margin-bottom:10px; font-size:1.2rem;">Compétences consolidées :</h4>
+                    <ul style="color:var(--text-muted); line-height:1.6; padding-left:20px; margin-bottom:20px;">
+                        <li style="margin-bottom:8px;"><strong>C# / .NET :</strong> Architecture en couches, manipulation d'Entity Framework Core, mise en place de chiffrement AES-256 et traitement de signature numérique eIDAS[cite: 14].</li>
+                        <li style="margin-bottom:8px;"><strong>Angular :</strong> Utilisation des Standalone components, implémentation des Signals, lazy loading, routing dynamique, et perçage d'encapsulation pour l'UI complexe[cite: 14].</li>
+                        <li style="margin-bottom:8px;"><strong>Sécurité & Protocoles :</strong> Intégration de l'authentification JWT, 2FA par e-mail, upload résumable (TUS), et horodatage RFC 3161[cite: 14].</li>
+                        <li style="margin-bottom:8px;"><strong>Éco-conception :</strong> Application concrète du Numérique Responsable, calcul d'impact carbone, et paramétrage d'audits web via Lighthouse / Kastor[cite: 14].</li>
+                    </ul>
+                    <div class="tags" style="justify-content: center;">
+                        <span class="tag">Fullstack</span>
+                        <span class="tag">Autonomie</span>
+                        <span class="tag">Architecture</span>
+                        <span class="tag">Clean Code</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
 
         <a href="#" class="scroll-top" id="scroll-top" aria-label="Retour en haut de page"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
     </main>
@@ -216,6 +233,7 @@
     <!-- Scripts -->
     <script src="js/aos.js" defer></script>
     <script src="js/vanilla-tilt.min.js" defer></script>
+    
     <!-- CV Modal -->
     <div id="cv-modal" class="glass-modal" role="dialog" aria-modal="true" aria-labelledby="cv_modal_title">
         <div class="glass-modal-content">
@@ -335,6 +353,35 @@
                 <div>
                     <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
                     <p style="color:var(--text-light); line-height:1.6;">Maîtrise du routing Angular et des méthodes d'intégration SCSS exigeantes (fidélité à une maquette complexe, gestion des tooltips dynamiques).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal S5 -->
+    <div class="report-modal-overlay" id="modal-s5">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 5</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px;">22 juin – 26 juin 2026 | Projet: Kastor</p>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Poursuite du développement sur le projet Kastor avec un accent sur la refonte graphique (UI/UX) pour correspondre aux nouvelles maquettes et implémentation complète du nouveau type d'audit "Accessibilité".</p>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (7 tickets traités)</h4>
+                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
+                        <li style="margin-bottom:10px;"><strong>Historique & Audits :</strong> Refonte visuelle de l'historique des audits, ajout d'une barre contextuelle avec compteur dynamique, et création d'un champ d'édition de titre auto-redimensionnable en CSS.</li>
+                        <li style="margin-bottom:10px;"><strong>Dashboard Détaillé :</strong> Épuration de l'interface des filtres, harmonisation du tableau et injection dynamique de badges colorés selon les scores.</li>
+                        <li style="margin-bottom:10px;"><strong>Implémentation "Accessibilité" (Type 2) :</strong> Feature Fullstack comprenant l'ajout du type en BDD (Entity Framework), la logique dans les contrôleurs C#, et la création de l'UI Angular dédiée avec ses boutons d'action spécifiques.</li>
+                        <li style="margin-bottom:10px;"><strong>Filtres avancés :</strong> Création d'un système multi-select dynamique pour les audits sur le Dashboard, géré via TypeScript, avec un affichage de badges de sélection amovibles.</li>
+                        <li style="margin-bottom:10px;"><strong>Débogage d'état :</strong> Correction du comportement de l'accordéon en créant une variable d'état persistante TypeScript (Set) pour mémoriser les panneaux ouverts.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Compréhension approfondie du cycle de détection des changements d'Angular, séparation claire de l'état visuel (State Management), et maîtrise des layouts complexes pour harmoniser les interfaces.</p>
                 </div>
             </div>
         </div>
