@@ -719,7 +719,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 throw new Error("Aucun article trouvé");
             }
         } catch (error) {
-            console.warn("⚠️ API Dev.to inaccessible (hors ligne ?). Chargement des données de secours...");
+            console.warn("[Avertissement] API Dev.to inaccessible (hors ligne ?). Chargement des données de secours...");
             renderNews(mockNewsFR);
         }
     }
