@@ -3,42 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio de Léo Dupont - Développeur d'applications et de solutions Web">
-    <meta name="keywords" content="portfolio, développeur, web, applicatif, léo dupont, bts sio">
+    <meta name="description" content="Rapports de Stage et Réalisations Professionnelles BTS SIO SLAM - Léo Dupont chez SPECINOV">
+    <meta name="keywords" content="portfolio, développeur, web, applicatif, léo dupont, bts sio, stage, specinov, klip, kastor">
     <meta name="author" content="Léo Dupont">
     
     <!-- Open Graph / Social Media Preview Tags -->
-    <meta property="og:title" content="Léo Dupont - Portfolio">
-    <meta property="og:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta property="og:title" content="Léo Dupont - Rapports de Stage & Réalisations SIO">
+    <meta property="og:description" content="Découvrez le détail des 7 réalisations professionnelles et le tableau de synthèse BTS SIO SLAM de mon stage chez Specinov.">
     <meta property="og:image" content="https://portfolio-leodupont-1jr4.onrender.com/Assets/apercu-portfolio.jpg">
-    <meta property="og:url" content="https://portfolio-leodupont-1jr4.onrender.com">
+    <meta property="og:url" content="https://portfolio-leodupont-1jr4.onrender.com/stage.html">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Léo Dupont - Portfolio">
-    <meta name="twitter:description" content="Développeur Application & Web. Découvrez mes projets, mes compétences et mon parcours.">
+    <meta name="twitter:title" content="Léo Dupont - Stage & Réalisations BTS SIO">
+    <meta name="twitter:description" content="Détail des 7 réalisations professionnelles et rapports techniques sur Klip et Kastor.">
     <meta name="twitter:image" content="https://portfolio-leodupont-1jr4.onrender.com/Assets/apercu-portfolio.jpg">
 
-    <title>Léo Dupont | Software Developer</title>
+    <title>Léo Dupont | Stage & Réalisations BTS SIO</title>
     <link rel="icon" type="image/svg+xml" href="./Assets/favicon.svg">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Google Fonts Removed for better eco-score (using standard fonts) -->
     <link rel="preload" href="./css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="./css/all.min.css"></noscript>
     
     <!-- Minified Local CSS -->
-    <link rel="stylesheet" href="./css/style.min.css?v=3" media="screen">
+    <link rel="stylesheet" href="./css/style.min.css?v=5" media="screen">
     <link rel="stylesheet" href="./css/print.css" media="print">
     
     <!-- AOS CSS -->
     <link rel="stylesheet" href="./css/aos.css">
+
+    <style>
+        /* Custom Styles for Synthesis Table and Project Cards */
+        .synthesis-section {
+            max-width: 1150px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .synthesis-table-container {
+            background: rgba(20, 20, 22, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            overflow-x: auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        .synthesis-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.88rem;
+            min-width: 800px;
+        }
+        .synthesis-table th {
+            background: rgba(0, 255, 204, 0.08);
+            color: var(--accent);
+            padding: 16px 12px;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(0, 255, 204, 0.3);
+            vertical-align: middle;
+            line-height: 1.3;
+        }
+        .synthesis-table td {
+            padding: 16px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-light);
+            transition: background 0.2s ease;
+            vertical-align: middle;
+        }
+        .synthesis-table tr:hover td {
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .synthesis-table .col-realisation {
+            text-align: left;
+            font-weight: 600;
+            color: #fff;
+            max-width: 240px;
+        }
+        .synthesis-table .col-periode {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+        .check-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            filter: drop-shadow(0 0 6px rgba(0, 255, 204, 0.6));
+        }
+        .comp-badge {
+            display: inline-block;
+            background: rgba(0, 255, 204, 0.08);
+            border: 1px solid rgba(0, 255, 204, 0.25);
+            color: var(--accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            margin: 3px;
+            font-weight: 500;
+        }
+        .report-section-title {
+            color: #fff;
+            font-size: 1.25rem;
+            margin: 25px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 8px;
+        }
+        .report-section-title i {
+            color: var(--accent);
+        }
+        .ticket-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid var(--accent);
+            padding: 14px 18px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .ticket-box h5 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .ticket-box p {
+            font-size: 0.92rem;
+            margin-bottom: 10px !important;
+            color: var(--text-light);
+        }
+        .obsidian-code {
+            background: #0e1117;
+            border: 1px solid rgba(0, 255, 204, 0.25);
+            border-radius: 10px;
+            padding: 16px;
+            margin: 12px 0 6px;
+            overflow-x: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.83rem;
+            color: #e0e6ed;
+            line-height: 1.6;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.6);
+        }
+        .obsidian-code .kw { color: #ff7b72; font-weight: bold; }
+        .obsidian-code .type { color: #79c0ff; }
+        .obsidian-code .str { color: #a5d6ff; }
+        .obsidian-code .com { color: #8b949e; font-style: italic; }
+        .obsidian-code .fn { color: #d2a8ff; }
+        .obsidian-code .num { color: #79c0ff; }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link" data-i18n="skip_link" style="position:absolute; top:-100px; left:0; background:var(--accent); color:var(--bg-main); padding:8px; z-index:100000; transition:top 0.3s; text-decoration:none; font-weight:bold;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Aller au contenu principal</a>
+    
     <!-- Splash Screen -->
     <div id="splash-screen" class="splash-screen">
         <div class="splash-logo">L<span class="splash-accent">.</span>D</div>
@@ -61,10 +186,10 @@
 
     <!-- Floating Navigation Capsule -->
     <nav class="floating-nav" id="navbar">
-        <a href="index.html#home" class="nav-item active" aria-label="Accueil"><i class="fas fa-home"></i><span class="tooltip" data-i18n="nav_home">Accueil</span></a>
+        <a href="index.html#home" class="nav-item" aria-label="Accueil"><i class="fas fa-home"></i><span class="tooltip" data-i18n="nav_home">Accueil</span></a>
         <a href="index.html#bento" class="nav-item" aria-label="À Propos"><i class="fas fa-layer-group"></i><span class="tooltip" data-i18n="nav_about">À Propos</span></a>
         <a href="index.html#projects" class="nav-item" aria-label="Projets"><i class="fas fa-code"></i><span class="tooltip" data-i18n="nav_projects">Projets</span></a>
-        <a href="#experience" class="nav-item" aria-label="Expérience"><i class="fas fa-briefcase"></i><span class="tooltip" data-i18n="nav_exp">Stage</span></a>
+        <a href="#experience" class="nav-item active" aria-label="Expérience"><i class="fas fa-briefcase"></i><span class="tooltip" data-i18n="nav_exp">Stage</span></a>
         <a href="index.html#terminal-section" class="nav-item" aria-label="Terminal"><i class="fas fa-terminal"></i><span class="tooltip" data-i18n="nav_terminal">Terminal</span></a>
         <a href="index.html#contact" class="nav-item" aria-label="Contact"><i class="fas fa-envelope"></i><span class="tooltip" data-i18n="nav_contact">Contact</span></a>
         
@@ -78,11 +203,13 @@
         
         <!-- Hero Section -->
         <section id="home" class="hero-section" style="grid-template-columns: 1fr;">
-            <div class="hero-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <h1 class="hero-title" data-aos="fade-up">Mon Stage <span class="accent-text">chez SPECINOV</span></h1>
-                <h2 class="hero-subtitle typewriter-cursor" data-aos="fade-up" data-aos-delay="100" style="justify-content: center;">Journal de bord & Compte-rendus</h2>
-                <p class="hero-desc" data-aos="fade-up" data-aos-delay="200" style="margin: 0 auto; margin-top: 1.5rem; text-align: center;">Retrouvez ici la chronologie détaillée de mon stage de fin de première année, incluant mes missions sur Klip et Kastor, et mon apprentissage sur l'éco-conception logicielle.</p>
-                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300" style="justify-content: center; margin-top: 2.5rem;">
+            <div class="hero-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
+                <h1 class="hero-title" data-aos="fade-up">Réalisations <span class="accent-text">BTS SIO SLAM</span></h1>
+                <h2 class="hero-subtitle typewriter-cursor" data-aos="fade-up" data-aos-delay="100" style="justify-content: center;">Rapports de Stage & Projets SPECINOV</h2>
+                <p class="hero-desc" data-aos="fade-up" data-aos-delay="200" style="margin: 0 auto; margin-top: 1.5rem; text-align: center;">Retrouvez ci-dessous l'intégralité de mes rapports de stage structurés autour des <strong>7 réalisations professionnelles</strong> du tableau de synthèse officiel (Session 2026), illustrés par des <strong>extraits de code concrets</strong> tirés de mes notes de stage sur <strong>Klip</strong> et <strong>Kastor</strong>.</p>
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="300" style="justify-content: center; margin-top: 2.5rem; gap: 15px; flex-wrap: wrap;">
+                    <a href="#tableau-synthese" class="glass-btn primary"><i class="fas fa-table"></i> <span>Tableau de Synthèse</span></a>
+                    <a href="#realisations-timeline" class="glass-btn secondary"><i class="fas fa-project-diagram"></i> <span>Détail par Projet</span></a>
                     <a href="index.html" class="glass-btn secondary"><i class="fas fa-arrow-left"></i> <span>Retour à l'accueil</span></a>
                 </div>
             </div>
@@ -90,106 +217,245 @@
 
         <!-- Experience & Internship Section -->
         <section id="experience" class="experience-section">
-            <h2 class="section-heading" data-aos="fade-up" style="text-align: center;">Expérience & Stage</h2>
             
             <!-- Global Presentation -->
-            <div class="exp-intro" data-aos="fade-up" data-aos-delay="100">
+            <div class="exp-intro" data-aos="fade-up">
                 <div class="exp-intro-card">
-                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-building" style="color: var(--accent);"></i> SPECINOV</h3>
-                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:15px;">Mon stage se déroule au sein de <strong>Specinov</strong>, une entreprise spécialisée dans le développement de solutions numériques responsables. J'y contribue activement à deux projets en production : <strong>Klip</strong> et <strong>Kastor</strong>. Ces deux applications ont en commun une forte sensibilité à l'éco-conception et à la qualité logicielle.</p>
+                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-building" style="color: var(--accent);"></i> SPECINOV — Éco-conception & Solutions Numériques</h3>
+                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:15px;">Mon stage de première année s'est déroulé au sein de <strong>Specinov</strong> à Nantes. J'y ai contribué activement au développement en production de deux solutions majeures : <strong>Klip</strong> (transfert sécurisé de fichiers volumineux éco-responsable) et <strong>Kastor</strong> (plateforme d'audit de sites web orientée Numérique Responsable).</p>
                     <div class="tags" style="justify-content: center;">
-                        <span class="tag">C# / .NET</span>
-                        <span class="tag">Angular</span>
-                        <span class="tag">Éco-conception</span>
-                        <span class="tag">Sécurité</span>
+                        <span class="tag">C# / .NET 8</span>
+                        <span class="tag">Angular 22 Standalone</span>
+                        <span class="tag">Entity Framework Core</span>
+                        <span class="tag">Numérique Responsable (NR)</span>
+                        <span class="tag">Sécurité eIDAS</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Timeline -->
-            <div class="timeline-wrapper">
+            <!-- Tableau de Synthèse Officiel -->
+            <div id="tableau-synthese" class="synthesis-section" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="section-heading" style="text-align: center; margin-bottom: 10px;">Tableau de Synthèse des Réalisations</h2>
+                <p style="text-align: center; color: var(--text-muted); margin-bottom: 25px;">Mapping officiel des compétences mises en œuvre durant mon stage en milieu professionnel (BTS SIO Session 2026).</p>
+                
+                <div class="synthesis-table-container">
+                    <table class="synthesis-table">
+                        <thead>
+                            <tr>
+                                <th class="col-realisation">Réalisations professionnelles</th>
+                                <th>Période</th>
+                                <th>Gérer le patrimoine informatique</th>
+                                <th>Répondre aux incidents & assistance</th>
+                                <th>Développer la présence en ligne</th>
+                                <th>Travailler en mode projet</th>
+                                <th>Mettre à disposition un service</th>
+                                <th>Organiser son dev. professionnel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-realisation"><a href="#p1" style="color: #fff; text-decoration: none;">1. Autoformation C# et Angular</a></td>
+                                <td class="col-periode">26/05 au 29/05</td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p2" style="color: #fff; text-decoration: none;">2. Formation Numérique Responsable</a></td>
+                                <td class="col-periode">26/05 au 29/05</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p3" style="color: #fff; text-decoration: none;">3. Migration Angular 22</a></td>
+                                <td class="col-periode">01/06 au 05/06</td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p4" style="color: #fff; text-decoration: none;">4. Résolution bugs Klip</a></td>
+                                <td class="col-periode">01/06 au 12/06</td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p5" style="color: #fff; text-decoration: none;">5. Intégration signature avancée</a></td>
+                                <td class="col-periode">08/06 au 12/06</td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p6" style="color: #fff; text-decoration: none;">6. Refonte front Kastor</a></td>
+                                <td class="col-periode">15/06 au 26/06</td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="col-realisation"><a href="#p7" style="color: #fff; text-decoration: none;">7. Dev. audits accessibilité</a></td>
+                                <td class="col-periode">22/06 au 26/06</td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td><i class="fas fa-check check-icon" title="Validé"></i></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Timeline par Projet / Réalisation -->
+            <div id="realisations-timeline" class="timeline-wrapper" style="margin-top: 50px;">
                 <div class="timeline-line"></div>
 
-                <!-- Week 1 -->
-                <div class="timeline-item left" data-aos="fade-right">
+                <!-- Projet 1 -->
+                <div id="p1" class="timeline-item left" data-aos="fade-right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h4>Semaine 1</h4>
-                        <span class="timeline-date">26 mai – 29 mai 2026</span>
-                        <p>Découverte de la stack technique, autoformation C# et Angular, sensibilisation à l'éco-conception (Numérique Responsable).</p>
-                        <div class="tags"><span class="tag">C#</span><span class="tag">Angular</span><span class="tag">NR</span></div>
-                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s1"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                        <span class="timeline-date">26 mai – 29 mai 2026 | Projet : Klip / Transverse</span>
+                        <h4>1. Autoformation C# / .NET et Angular</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Gérer le patrimoine informatique</span>
+                            <span class="comp-badge">Organiser son dev. professionnel</span>
+                        </div>
+                        <p>Immersion dans l'écosystème de Specinov. Apprentissage approfondi de l'architecture en couches C# / ASP.NET Core (BO, DTO, DAL), de la persistance avec Entity Framework Core et des pratiques modernes d'Angular (Signals, Zoneless, Standalone components).</p>
+                        <div class="tags"><span class="tag">C# .NET</span><span class="tag">Entity Framework Core</span><span class="tag">Angular Standalone</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p1"><i class="fas fa-code"></i> Rapport & Exemples de Code</button>
                     </div>
                 </div>
 
-                <!-- Week 2 -->
-                <div class="timeline-item right" data-aos="fade-left" data-aos-delay="100">
+                <!-- Projet 2 -->
+                <div id="p2" class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h4>Semaine 2</h4>
-                        <span class="timeline-date">1er juin – 5 juin 2026</span>
-                        <p>Premières contributions sur Klip : résolution de bugs de chiffrement de gros fichiers, améliorations UI et montée de version Angular 22.</p>
-                        <div class="tags"><span class="tag">C#</span><span class="tag">Angular 22</span><span class="tag">AES-256</span></div>
-                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s2"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                        <span class="timeline-date">26 mai – 29 mai 2026 | Projet : Specinov / Green IT</span>
+                        <h4>2. Formation Numérique Responsable</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Organiser son dev. professionnel</span>
+                        </div>
+                        <p>Suivi et certification du MOOC complet dispensé par l'Institut du Numérique Responsable (INR) : 16h30 de formation sur les impacts environnementaux du numérique, les stratégies d'éco-conception logicielle et l'IA responsable.</p>
+                        <div class="tags"><span class="tag">Éco-conception</span><span class="tag">MOOC INR</span><span class="tag">Green IT</span><span class="tag">Lighthouse</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p2"><i class="fas fa-code"></i> Bilan & Algo Impact Carbone</button>
                     </div>
                 </div>
 
-                <!-- Week 3 -->
-                <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+                <!-- Projet 3 -->
+                <div id="p3" class="timeline-item left" data-aos="fade-right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h4>Semaine 3</h4>
-                        <span class="timeline-date">8 juin – 12 juin 2026</span>
-                        <p>Débogage approfondi du backend, ajustements responsive, et mise en place de la signature avancée PDF avec certificat (eIDAS).</p>
-                        <div class="tags"><span class="tag">.NET</span><span class="tag">SCSS</span><span class="tag">PDF eIDAS</span></div>
-                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s3"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                        <span class="timeline-date">1er juin – 5 juin 2026 | Projet : Klip (SpeciSend)</span>
+                        <h4>3. Migration Angular 22</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Gérer le patrimoine informatique</span>
+                            <span class="comp-badge">Mettre à disposition un service</span>
+                        </div>
+                        <p>Montée de version majeure de l'application cliente Klip vers Angular 22. Résolution des breaking changes et correction d'un bug subtil lié à la réactivité des Signals Angular lors de la mutation des tableaux d'upload de fichiers.</p>
+                        <div class="tags"><span class="tag">Angular 22</span><span class="tag">Signals</span><span class="tag">RxJS</span><span class="tag">Tests non-régression</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p3"><i class="fas fa-code"></i> Rapport & Correctif Signals</button>
                     </div>
                 </div>
 
-                <!-- Week 4 -->
-                <div class="timeline-item right" data-aos="fade-left" data-aos-delay="100">
+                <!-- Projet 4 -->
+                <div id="p4" class="timeline-item right" data-aos="fade-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h4>Semaine 4</h4>
-                        <span class="timeline-date">15 juin – 19 juin 2026</span>
-                        <p>Transition sur Kastor. Refonte UI/UX majeure (SCSS, Flexbox, ::ng-deep) et gestion du routing Angular pour la page d'accueil et d'audits.</p>
-                        <div class="tags"><span class="tag">Angular</span><span class="tag">Routing</span><span class="tag">SCSS</span></div>
-                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s4"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                        <span class="timeline-date">1er juin – 12 juin 2026 | Projet : Klip (SpeciSend)</span>
+                        <h4>4. Résolution de bugs & Évolutions Klip</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Répondre aux incidents & assistance</span>
+                        </div>
+                        <p>Prise en charge de 9 tickets correctifs et évolutifs en production : chiffrement AES-256 en flux pour les fichiers > 2 Go, prolongation automatique de +90 jours après signature (Ticket 367), et réintégration complète des Fichiers Favoris (Ticket 432).</p>
+                        <div class="tags"><span class="tag">C# .NET</span><span class="tag">AES-256 Streaming</span><span class="tag">EF Core DAL</span><span class="tag">CRUD Favoris</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p4"><i class="fas fa-code"></i> Code des Tickets 367 & 432</button>
                     </div>
                 </div>
 
-                <!-- Week 5 -->
-                <div class="timeline-item left" data-aos="fade-right" data-aos-delay="100">
+                <!-- Projet 5 -->
+                <div id="p5" class="timeline-item left" data-aos="fade-right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <h4>Semaine 5</h4>
-                        <span class="timeline-date">22 juin – 26 juin 2026</span>
-                        <p>Poursuite de la refonte UI/UX de l'application Kastor et implémentation fullstack du nouveau type d'audit "Accessibilité".</p>
-                        <div class="tags"><span class="tag">Fullstack</span><span class="tag">UI/UX</span><span class="tag">C#</span><span class="tag">Angular</span></div>
-                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-s5"><i class="fas fa-file-alt"></i> Rapport Complet</button>
+                        <span class="timeline-date">8 juin – 12 juin 2026 | Projet : Klip (SpeciSend)</span>
+                        <h4>5. Intégration signature avancée (eIDAS)</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Répondre aux incidents & assistance</span>
+                            <span class="comp-badge">Travailler en mode projet</span>
+                            <span class="comp-badge">Mettre à disposition un service</span>
+                        </div>
+                        <p>Élévation du niveau de signature électronique au standard "Avancé" (eIDAS). Génération de page de garde PDF, fusion documentaire, scellement cryptographique par certificat PFX inaltérable et horodatage certifié RFC 3161 via TSA DigiCert.</p>
+                        <div class="tags"><span class="tag">Sécurité eIDAS</span><span class="tag">PDFsharp / iText</span><span class="tag">Horodatage RFC 3161</span><span class="tag">2FA OTP</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p5"><i class="fas fa-code"></i> Code PoC Cryptographie</button>
+                    </div>
+                </div>
+
+                <!-- Projet 6 -->
+                <div id="p6" class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">15 juin – 26 juin 2026 | Projet : Kastor</span>
+                        <h4>6. Refonte Front & UI/UX Kastor</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Répondre aux incidents & assistance</span>
+                            <span class="comp-badge">Développer la présence en ligne</span>
+                        </div>
+                        <p>Modernisation globale de la plateforme d'audit éco-responsable Kastor (maquettes Stitch). Restructuration du routage Angular (page d'accueil racine `/`), intégration SCSS complexe avec perçage `::ng-deep` pour tooltips i18n et filtres multi-select dynamiques.</p>
+                        <div class="tags"><span class="tag">Angular Routing</span><span class="tag">SCSS / Flexbox</span><span class="tag">i18n JSON</span><span class="tag">State Management</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p6"><i class="fas fa-code"></i> Code Routage & Refonte</button>
+                    </div>
+                </div>
+
+                <!-- Projet 7 -->
+                <div id="p7" class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">22 juin – 26 juin 2026 | Projet : Kastor</span>
+                        <h4>7. Dev. audits accessibilité (Fullstack)</h4>
+                        <div style="margin: 10px 0 15px;">
+                            <span class="comp-badge">Répondre aux incidents & assistance</span>
+                            <span class="comp-badge">Travailler en mode projet</span>
+                            <span class="comp-badge">Mettre à disposition un service</span>
+                        </div>
+                        <p>Implémentation fullstack complète du nouveau type d'audit "Accessibilité" (Type 2). Exposition dans les DTO et contrôleurs C#, adaptation de la DAL Entity Framework Core, et création de l'interface de pilotage et d'historique Angular.</p>
+                        <div class="tags"><span class="tag">Fullstack .NET / Angular</span><span class="tag">Entity Framework Core</span><span class="tag">Accessibilité Web</span></div>
+                        <button class="glass-btn secondary small btn-open-modal" data-modal="modal-p7"><i class="fas fa-code"></i> Code Fullstack (C# & Angular)</button>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Global Final Report Card -->
-            <div class="exp-intro" data-aos="fade-up" data-aos-delay="200" style="margin-top: 3rem;">
+            <!-- Bilan Final -->
+            <div class="exp-intro" data-aos="fade-up" style="margin-top: 4rem;">
                 <div class="exp-intro-card">
-                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Bilan Final du Stage</h3>
-                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:20px;">Au cours de ces 5 semaines chez Specinov, j'ai pu intervenir en profondeur sur les projets <strong>Klip</strong> et <strong>Kastor</strong>, de l'architecture backend complexe jusqu'à l'intégration frontend, tout en consolidant mes compétences de développeur fullstack.</p>
-                    
-                    <h4 style="color:#fff; margin-bottom:10px; font-size:1.2rem;">Compétences consolidées :</h4>
-                    <ul style="color:var(--text-muted); line-height:1.6; padding-left:20px; margin-bottom:20px;">
-                        <li style="margin-bottom:8px;"><strong>C# / .NET :</strong> Architecture en couches, manipulation d'Entity Framework Core, mise en place de chiffrement AES-256 et traitement de signature numérique eIDAS.</li>
-                        <li style="margin-bottom:8px;"><strong>Angular :</strong> Utilisation des Standalone components, implémentation des Signals, lazy loading, routing dynamique, et perçage d'encapsulation pour l'UI complexe.</li>
-                        <li style="margin-bottom:8px;"><strong>Sécurité & Protocoles :</strong> Intégration de l'authentification JWT, 2FA par e-mail, upload résumable (TUS), et horodatage RFC 3161.</li>
-                        <li style="margin-bottom:8px;"><strong>Éco-conception :</strong> Application concrète du Numérique Responsable, calcul d'impact carbone, et paramétrage d'audits web via Lighthouse / Kastor.</li>
-                    </ul>
+                    <h3 style="font-size:1.8rem; margin-bottom:10px;"><i class="fas fa-graduation-cap" style="color: var(--accent);"></i> Bilan Général & Compétences SIO</h3>
+                    <p style="color: var(--text-muted); line-height:1.6; margin-bottom:20px;">Ce stage chez <strong>Specinov</strong> m'a permis de valider avec succès les 6 grandes compétences du référentiel BTS SIO SLAM. De l'analyse rigoureuse d'incidents complexes en C# jusqu'à l'intégration d'interfaces modernes et éco-conçues en Angular, j'ai acquis une véritable autonomie professionnelle.</p>
                     <div class="tags" style="justify-content: center;">
-                        <span class="tag">Fullstack</span>
+                        <span class="tag">Rigueur technique</span>
                         <span class="tag">Autonomie</span>
-                        <span class="tag">Architecture</span>
-                        <span class="tag">Clean Code</span>
+                        <span class="tag">Code Propre & Sécurisé</span>
+                        <span class="tag">Sensibilité Green IT</span>
                     </div>
                 </div>
             </div>
@@ -207,7 +473,7 @@
             <a href="mailto:dupontleo999@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
         <p class="footer-text" data-i18n="footer_text">
-            Fait avec <span class="heart">❤</span> & du code — Léo Dupont © 2025
+            Fait avec <span class="heart">❤</span> & du code — Léo Dupont © 2025-2026
         </p>
     </footer>
 
@@ -234,170 +500,349 @@
     <script src="js/aos.js" defer></script>
     <script src="js/vanilla-tilt.min.js" defer></script>
     
-    <!-- CV Modal -->
-    <div id="cv-modal" class="glass-modal" role="dialog" aria-modal="true" aria-labelledby="cv_modal_title">
-        <div class="glass-modal-content">
-            <button id="cv-modal-close" class="modal-close-btn" aria-label="Close modal"><i class="fas fa-times"></i></button>
-            <h2 id="cv_modal_title" data-i18n="cv_modal_title">Mon Curriculum Vitae</h2>
-            <div class="cv-preview-container" id="cv-iframe-container">
-                <!-- L'Iframe sera injectée ici par JavaScript -->
-            </div>
-            <div class="modal-actions">
-                <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modals for Internship Reports -->
-    <!-- Modal S1 -->
-    <div class="report-modal-overlay" id="modal-s1">
+    <!-- Modals des 7 Réalisations Professionnelles avec Exemples de Code Obsidian -->
+    
+    <!-- Modal P1 -->
+    <div class="report-modal-overlay" id="modal-p1">
         <div class="report-modal-content">
             <button class="btn-close-modal"><i class="fas fa-times"></i></button>
             <div class="report-modal-body">
-                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 1</h3>
-                <p style="color:var(--text-muted); margin-bottom:20px;">26 mai – 29 mai 2026 | Projet: SpeciSend (Klip)</p>
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">1. Autoformation C# / .NET et Angular</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">26 mai – 29 mai 2026 | Projet : Klip & Transverse</p>
+                
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Prise en main de l'environnement de travail et montée en compétences sur les technologies utilisées dans le projet SpeciSend : C#, Angular et sensibilisation au Numérique Responsable (NR).</p>
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Gérer le patrimoine informatique :</strong> Recensement et identification des standards et bibliothèques utilisés chez Specinov (architecture en couches .NET, normes de code propres).<br><strong>• Organiser son développement professionnel :</strong> Mise en place de l'environnement d'apprentissage personnel et appropriation autonome de frameworks complexes.</p>
                 </div>
-                <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (3 tickets)</h4>
-                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
-                        <li style="margin-bottom:10px;"><strong>Autoformation NR :</strong> 16h30 de MOOC INR (Sensibilisation, Formation complète, Éco-conception, IA Responsable).</li>
-                        <li style="margin-bottom:10px;"><strong>Autoformation C# :</strong> Fondamentaux, création d'applications ASP.NET Core et persistance des données avec Entity Framework Core.</li>
-                        <li style="margin-bottom:10px;"><strong>Autoformation Angular :</strong> Architecture composants, Data binding, Routing, et gestion des Observables (RxJS).</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Découverte de la stack technique du projet SpeciSend avec son architecture en couches (BO → DAL → Controllers). Sensibilisation très forte à l'approche éco-responsable dès les premiers jours du stage.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal S2 -->
-    <div class="report-modal-overlay" id="modal-s2">
-        <div class="report-modal-content">
-            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
-            <div class="report-modal-body">
-                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 2</h3>
-                <p style="color:var(--text-muted); margin-bottom:20px;">1er juin – 5 juin 2026 | Projet: SpeciSend (Klip)</p>
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Première semaine de contributions concrètes au projet SpeciSend. Prise en main de la base de code existante à travers la résolution de bugs, l'ajout de fonctionnalités et une montée de version du framework frontend.</p>
+                    <h4 class="report-section-title"><i class="fas fa-code"></i> Exemples de code (Extraits des notes Obsidian)</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Lors de mon autoformation, j'ai rédigé un cours complet sur la persistance de données en C# avec Entity Framework Core. Voici un exemple concret de configuration de contexte et de mapping relationnel via la Fluent API :</p>
+                    
+                    <pre class="obsidian-code"><code><span class="com">// Extrait de mes notes Obsidian : Configuration DbContext & Fluent API</span>
+<span class="kw">using</span> Microsoft.EntityFrameworkCore;
+
+<span class="kw">public class</span> <span class="type">KlipDbContext</span> : <span class="type">DbContext</span>
+{
+    <span class="kw">public</span> <span class="type">DbSet</span>&lt;<span class="type">Telechargement</span>&gt; Telechargements { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public</span> <span class="type">DbSet</span>&lt;<span class="type">Fichier</span>&gt; Fichiers { <span class="kw">get</span>; <span class="kw">set</span>; }
+
+    <span class="kw">protected override void</span> <span class="fn">OnModelCreating</span>(<span class="type">ModelBuilder</span> modelBuilder)
+    {
+        <span class="kw">base</span>.<span class="fn">OnModelCreating</span>(modelBuilder);
+
+        <span class="com">// Configuration Fluent API pour garantir l'intégrité et les index en BDD</span>
+        modelBuilder.<span class="fn">Entity</span>&lt;<span class="type">Telechargement</span>&gt;(entity =&gt;
+        {
+            entity.<span class="fn">HasKey</span>(e =&gt; e.TelechargementId);
+            entity.<span class="fn">Property</span>(e =&gt; e.DateCreation).<span class="fn">HasDefaultValueSql</span>(<span class="str">"GETUTCDATE()"</span>);
+            entity.<span class="fn">HasIndex</span>(e =&gt; e.Reference).<span class="fn">IsUnique</span>();
+            
+            <span class="com">// Relation 1-N avec suppression en cascade</span>
+            entity.<span class="fn">HasMany</span>(t =&gt; t.Fichiers)
+                  .<span class="fn">WithOne</span>(f =&gt; f.Telechargement)
+                  .<span class="fn">HasForeignKey</span>(f =&gt; f.TelechargementId)
+                  .<span class="fn">OnDelete</span>(<span class="type">DeleteBehavior</span>.Cascade);
+        });
+    }
+}</code></pre>
                 </div>
-                <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (6 tickets)</h4>
-                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
-                        <li style="margin-bottom:10px;"><strong>Chiffrement de fichiers > 2 Go :</strong> Adaptation du chiffrement AES en flux (streaming) pour éviter le crash mémoire.</li>
-                        <li style="margin-bottom:10px;"><strong>Expiration Signature :</strong> Prolongement automatique du délai de +90 jours après une signature.</li>
-                        <li style="margin-bottom:10px;"><strong>Montée de version Angular 22 :</strong> Migration complète, mise à jour des dépendances et tests de non-régression.</li>
-                        <li style="margin-bottom:10px;"><strong>Fix de bugs divers :</strong> Problème d'option en double "A vie", affichage dynamique des noms de fichiers multiples, et corrections responsive.</li>
-                    </ul>
-                </div>
+
                 <div>
-                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Immersion réussie dans l'architecture backend C# et résolution de problèmes algorithmiques (Memory Limits). Première expérience majeure de migration de framework en production.</p>
+                    <h4 class="report-section-title"><i class="fas fa-lightbulb"></i> Bilan technique</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Cette première semaine a posé des bases architecturales solides et m'a permis d'adopter immédiatement les conventions de code strictes et propres exigées en milieu professionnel.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal S3 -->
-    <div class="report-modal-overlay" id="modal-s3">
+    <!-- Modal P2 -->
+    <div class="report-modal-overlay" id="modal-p2">
         <div class="report-modal-content">
             <button class="btn-close-modal"><i class="fas fa-times"></i></button>
             <div class="report-modal-body">
-                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 3</h3>
-                <p style="color:var(--text-muted); margin-bottom:20px;">8 juin – 12 juin 2026 | Projet: SpeciSend (Klip)</p>
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">2. Formation Numérique Responsable (MOOC INR)</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">26 mai – 29 mai 2026 | Projet : Specinov / Green IT</p>
+                
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Remise en état du système de fichiers favoris comportant des bugs critiques, et mise en place de la signature avancée de PDF avec le certificat Klip.</p>
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Organiser son développement professionnel :</strong> Mise en œuvre d'une veille et d'une formation certifiante sur les enjeux environnementaux et éthiques du numérique (Green IT).</p>
                 </div>
+
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (6 tickets)</h4>
-                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
-                        <li style="margin-bottom:10px;"><strong>Refonte Fichiers Favoris :</strong> Résolution de 3 bugs critiques (Erreur 400, suppression physique anormale, et persistance orpheline en BDD). Création d'une logique de "téléchargement fantôme" pour éviter de migrer le schéma de données.</li>
-                        <li style="margin-bottom:10px;"><strong>Signature Avancée eIDAS :</strong> Intégration du certificat Klip pour garantir l'intégrité absolue (inaltérabilité) des PDF signés, élevant le niveau de signature à "Avancée".</li>
-                        <li style="margin-bottom:10px;"><strong>Améliorations UX/UI :</strong> Mise en place d'un accusé de réception automatique et correctifs responsive sur mobile.</li>
-                    </ul>
+                    <h4 class="report-section-title"><i class="fas fa-leaf"></i> Impact algorithmique & Exemples de Code</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Sur <strong>Klip</strong>, la sensibilisation à l'éco-conception s'est traduite par la mise en avant du calculateur d'empreinte carbone évitée (comparant un envoi éphémère par lien au stockage perpétuel de pièces jointes e-mail dans des datacenters multiples) :</p>
+                    
+                    <pre class="obsidian-code"><code><span class="com">// Algorithme d'évaluation de l'impact carbone évité (Klip Green IT)</span>
+<span class="kw">public static double</span> <span class="fn">CalculerCarboneEvite</span>(<span class="kw">long</span> tailleBytes, <span class="kw">int</span> nbDestinataires)
+{
+    <span class="com">// 1 Mo envoyé par PJ classique = ~19g CO2e (duplication serveurs SMTP + stockage perpétuel)</span>
+    <span class="kw">double</span> tailleMo = tailleBytes / (<span class="num">1024.0</span> * <span class="num">1024.0</span>);
+    <span class="kw">double</span> impactEmailClassique = tailleMo * <span class="num">19.0</span> * nbDestinataires;
+    
+    <span class="com">// Lien Klip éphémère = stockage unique mutualisé + purge automatique par CRON</span>
+    <span class="kw">double</span> impactKlip = (tailleMo * <span class="num">3.5</span>) + (<span class="num">0.5</span> * nbDestinataires);
+    
+    <span class="kw">return</span> <span class="type">Math</span>.<span class="fn">Round</span>(<span class="type">Math</span>.<span class="fn">Max</span>(<span class="num">0</span>, impactEmailClassique - impactKlip), <span class="num">2</span>);
+}</code></pre>
                 </div>
+
                 <div>
-                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Debugging backend approfondi en traçant un fichier de A à Z. Découverte technique et réglementaire des différents niveaux de signature électronique (eIDAS).</p>
+                    <h4 class="report-section-title"><i class="fas fa-project-diagram"></i> Application concrète sur Kastor</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Sur <strong>Kastor</strong>, j'ai veillé à minimiser le poids des assets et à optimiser les requêtes DOM afin d'obtenir un score Lighthouse et EcoIndex optimal lors de nos propres audits.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal S4 -->
-    <div class="report-modal-overlay" id="modal-s4">
+    <!-- Modal P3 -->
+    <div class="report-modal-overlay" id="modal-p3">
         <div class="report-modal-content">
             <button class="btn-close-modal"><i class="fas fa-times"></i></button>
             <div class="report-modal-body">
-                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 4</h3>
-                <p style="color:var(--text-muted); margin-bottom:20px;">15 juin – 19 juin 2026 | Projet: Kastor</p>
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">3. Migration Angular 22</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">1er juin – 5 juin 2026 | Projet : Klip (SpeciSend) Frontend</p>
+                
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Transition vers Kastor. Accent majeur sur la refonte graphique (UI/UX) globale de l'application web pour correspondre aux nouvelles maquettes (Stitch). Réorganisation des routes principales.</p>
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Gérer le patrimoine informatique :</strong> Exploiter des référentiels et vérifier les niveaux de sécurité et d'évolutivité en maintenant le framework à jour.<br><strong>• Mettre à disposition des utilisateurs un service informatique :</strong> Réalisation rigoureuse des tests d'intégration et de non-régression.</p>
                 </div>
+
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (4/5 tickets résolus)</h4>
-                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
-                        <li style="margin-bottom:10px;"><strong>Routing & Architecture :</strong> Nettoyage de l'ancienne page d'accueil, redirection de `/audits` vers `/` via le routeur Angular.</li>
-                        <li style="margin-bottom:10px;"><strong>Intégration UI :</strong> Refonte complète du SCSS de l'accueil, de la navbar et du Dashboard général. Intégration de dégradés et layouts complexes.</li>
-                        <li style="margin-bottom:10px;"><strong>CSS Avancé :</strong> Stylisation dynamique des résultats d'audit. Utilisation de `Flexbox`, positionnement absolu, et perçage de l'encapsulation Angular (`::ng-deep`) pour styliser des infobulles générées depuis des fichiers i18n JSON.</li>
-                    </ul>
+                    <h4 class="report-section-title"><i class="fas fa-tools"></i> Correctif technique sur la réactivité (Signals)</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Lors des tests de non-régression post-migration, j'ai identifié un bug critique : la mutation directe des tableaux de fichiers lors du glisser-déposer corrompait l'état visuel des Signals en Angular 22. Voici la correction apportée :</p>
+                    
+                    <pre class="obsidian-code"><code><span class="com">// Correction du bug de réactivité sur les Signals lors du Drag & Drop en Angular 22</span>
+<span class="kw">import</span> { Component, signal } <span class="kw">from</span> <span class="str">'@angular/core'</span>;
+
+<span class="kw">export class</span> <span class="type">UploadZoneComponent</span> {
+  <span class="com">// Signal gérant l'état réactif de la liste des fichiers en cours d'envoi</span>
+  files = <span class="fn">signal</span>&lt;<span class="type">FileItem</span>[]&gt;([]);
+
+  <span class="fn">onFileDropped</span>(newFile: <span class="type">FileItem</span>) {
+    <span class="com">// ❌ AVANT (Bug) : La mutation directe via .push() n'informe pas le moteur Zoneless</span>
+    <span class="com">// this.files().push(newFile);</span>
+
+    <span class="com">// ✅ APRÈS (Correction) : Mise à jour immuable (.update) recréant la référence</span>
+    <span class="kw">this</span>.files.<span class="fn">update</span>(currentFiles =&gt; [...currentFiles, newFile]);
+  }
+}</code></pre>
                 </div>
+
                 <div>
-                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Maîtrise du routing Angular et des méthodes d'intégration SCSS exigeantes (fidélité à une maquette complexe, gestion des tooltips dynamiques).</p>
+                    <h4 class="report-section-title"><i class="fas fa-shield-alt"></i> Validation & Déploiement</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Une série complète de tests d'upload de gros fichiers, de téléchargement chiffré et de génération de liens a été menée avec succès avant la validation de la Merge Request.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal S5 -->
-    <div class="report-modal-overlay" id="modal-s5">
+    <!-- Modal P4 -->
+    <div class="report-modal-overlay" id="modal-p4">
         <div class="report-modal-content">
             <button class="btn-close-modal"><i class="fas fa-times"></i></button>
             <div class="report-modal-body">
-                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:10px;">Semaine 5</h3>
-                <p style="color:var(--text-muted); margin-bottom:20px;">22 juin – 26 juin 2026 | Projet: Kastor</p>
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">4. Résolution de bugs & Évolutions sur Klip</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">1er juin – 12 juin 2026 | Projet : Klip (SpeciSend) Fullstack</p>
+                
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Objectif de la semaine</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Poursuite du développement sur le projet Kastor avec un accent sur la refonte graphique (UI/UX) pour correspondre aux nouvelles maquettes et implémentation complète du nouveau type d'audit "Accessibilité".</p>
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Répondre aux incidents et aux demandes d'assistance et d'évolution :</strong> Collecte, diagnostic de bugs critiques en production, et implémentation d'évolutions applicatives demandées par les clients.</p>
                 </div>
+
                 <div style="margin-bottom:20px;">
-                    <h4 style="color:#fff; margin-bottom:10px;">Tâches réalisées (7 tickets traités)</h4>
-                    <ul style="color:var(--text-light); line-height:1.6; padding-left:20px;">
-                        <li style="margin-bottom:10px;"><strong>Historique & Audits :</strong> Refonte visuelle de l'historique des audits, ajout d'une barre contextuelle avec compteur dynamique, et création d'un champ d'édition de titre auto-redimensionnable en CSS.</li>
-                        <li style="margin-bottom:10px;"><strong>Dashboard Détaillé :</strong> Épuration de l'interface des filtres, harmonisation du tableau et injection dynamique de badges colorés selon les scores.</li>
-                        <li style="margin-bottom:10px;"><strong>Implémentation "Accessibilité" (Type 2) :</strong> Feature Fullstack comprenant l'ajout du type en BDD (Entity Framework), la logique dans les contrôleurs C#, et la création de l'UI Angular dédiée avec ses boutons d'action spécifiques.</li>
-                        <li style="margin-bottom:10px;"><strong>Filtres avancés :</strong> Création d'un système multi-select dynamique pour les audits sur le Dashboard, géré via TypeScript, avec un affichage de badges de sélection amovibles.</li>
-                        <li style="margin-bottom:10px;"><strong>Débogage d'état :</strong> Correction du comportement de l'accordéon en créant une variable d'état persistante TypeScript (Set) pour mémoriser les panneaux ouverts.</li>
-                    </ul>
+                    <h4 class="report-section-title"><i class="fas fa-bug"></i> Extraits de code concrets des Tickets résolus</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Voici deux des interventions majeures réalisées sur la couche d'accès aux données (DAL) et les entités métier :</p>
+                    
+                    <div class="ticket-box">
+                        <h5>Ticket 367 — Prolongement légal après signature (+90 jours)</h5>
+                        <p>Lorsqu'un document est signé par un utilisateur, le système prolonge automatiquement sa date d'échéance de 90 jours dans `DAL_Telechargements.cs` pour éviter sa purge prématurée par le CRON :</p>
+                        <pre class="obsidian-code"><code><span class="com">// Extrait exact de mes notes (Ticket 367) : DAL/DAL_Telechargements.cs</span>
+<span class="kw">public static void</span> <span class="fn">DesactiverPossibiliteSignature</span>(<span class="type">Guid</span> telechargementId)
+{
+    <span class="kw">using var</span> db = <span class="kw">new</span> <span class="type">KlipDbContext</span>();
+    <span class="kw">var</span> _telechargement = db.Telechargements
+        .<span class="fn">FirstOrDefault</span>(o =&gt; o.TelechargementId == telechargementId);
+        
+    <span class="kw">if</span> (_telechargement != <span class="kw">null</span>)
+    {
+        _telechargement.IsSignable = <span class="kw">false</span>;
+        
+        <span class="com">// Ajout automatique de 90 jours si la conservation n'est pas perpétuelle (HasValue)</span>
+        _telechargement.DateEcheance = _telechargement.DateEcheance?.<span class="fn">AddDays</span>(<span class="num">90</span>);
+
+        db.Telechargements.<span class="fn">Update</span>(_telechargement);
+        db.<span class="fn">SaveChanges</span>();
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="ticket-box">
+                        <h5>Ticket 432 — Réintégration des Fichiers Favoris</h5>
+                        <p>Refonte de la persistance en remplaçant les dossiers virtuels par un attribut direct sur l'entité `Fichier`, avec modification du build d'archive `.zip` via un mécanisme de "téléchargement fantôme" qui préserve le fichier sur le serveur après envoi :</p>
+                        <pre class="obsidian-code"><code><span class="com">// Entité BO/Fichier.cs enrichie pour le support des favoris réutilisables</span>
+<span class="kw">public class</span> <span class="type">Fichier</span>
+{
+    <span class="kw">public</span> <span class="type">Guid</span> FichierId { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public string</span> NomOriginal { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public long</span> TailleOctets { <span class="kw">get</span>; <span class="kw">set</span>; }
+    
+    <span class="com">// Nouveau booléen évitant la complexité d'une table ou dossier virtuel séparé</span>
+    <span class="kw">public bool</span> EstFavori { <span class="kw">get</span>; <span class="kw">set</span>; } = <span class="kw">false</span>;
+}</code></pre>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal P5 -->
+    <div class="report-modal-overlay" id="modal-p5">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">5. Intégration signature avancée (eIDAS)</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">8 juin – 12 juin 2026 | Projet : Klip (SpeciSend) Backend & Sécurité</p>
+                
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Répondre aux incidents et aux demandes d'assistance et d'évolution :</strong> Évolution majeure de la valeur juridique des documents transférés.<br><strong>• Travailler en mode projet :</strong> Planification des étapes de validation cryptographique.<br><strong>• Mettre à disposition un service informatique :</strong> Déploiement d'une fonctionnalité critique en production.</p>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-file-contract"></i> Code du PoC de Scellement Cryptographique (Ticket 396)</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Pour hisser Klip au niveau de <strong>Signature Avancée</strong> (eIDAS), j'ai intégré le service de scellement cryptographique PDFsharp avec horodatage certifié RFC 3161 via l'autorité DigiCert :</p>
+                    
+                    <pre class="obsidian-code"><code><span class="com">// Extrait de Ticket 396.md : Service de signature inaltérable avec horodatage TSA</span>
+<span class="kw">using</span> PdfSharp.Pdf;
+<span class="kw">using</span> PdfSharp.Pdf.IO;
+<span class="kw">using</span> PdfSharp.Pdf.Signatures;
+<span class="kw">using</span> System.Security.Cryptography.X509Certificates;
+
+<span class="kw">public static class</span> <span class="type">PdfSignatureService</span>
+{
+    <span class="kw">public static void</span> <span class="fn">SignPdf</span>(<span class="kw">string</span> inputPdf, <span class="kw">string</span> outputPdf, <span class="kw">string</span> pfxPath, <span class="kw">string</span> pfxPwd, <span class="kw">string</span> tsaUrl)
+    {
+        <span class="com">// 1) Chargement du certificat serveur PFX (avec clé privée exportable)</span>
+        <span class="kw">var</span> cert = <span class="kw">new</span> <span class="type">X509Certificate2</span>(pfxPath, pfxPwd, <span class="type">X509KeyStorageFlags</span>.MachineKeySet | <span class="type">X509KeyStorageFlags</span>.Exportable);
+
+        <span class="com">// 2) Ouverture du document PDF fusionné en modification</span>
+        <span class="type">PdfDocument</span> document = <span class="type">PdfReader</span>.<span class="fn">Open</span>(inputPdf, <span class="type">PdfDocumentOpenMode</span>.Modify);
+
+        <span class="com">// 3) Configuration de l'autorité d'horodatage certifiée (DigiCert TSA RFC 3161)</span>
+        <span class="type">Uri</span> tsaUri = !<span class="kw">string</span>.<span class="fn">IsNullOrWhiteSpace</span>(tsaUrl) ? <span class="kw">new</span> <span class="type">Uri</span>(tsaUrl) : <span class="kw">null</span>;
+        <span class="kw">var</span> signer = <span class="kw">new</span> <span class="type">PdfSharpDefaultSigner</span>(cert, <span class="type">PdfMessageDigestType</span>.SHA256, tsaUri);
+
+        <span class="com">// 4) Apposition du scellement cryptographique SHA-256 et sauvegarde</span>
+        <span class="type">DigitalSignatureHandler</span>.<span class="fn">ForDocument</span>(document, signer, <span class="kw">new</span> <span class="type">DigitalSignatureOptions</span> { Reason = <span class="str">"Signature Avancée eIDAS"</span> });
+        document.<span class="fn">Save</span>(outputPdf);
+    }
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal P6 -->
+    <div class="report-modal-overlay" id="modal-p6">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">6. Refonte Frontend & Architecture UX/UI Kastor</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">15 juin – 26 juin 2026 | Projet : Kastor Frontend</p>
+                
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Répondre aux incidents et aux demandes d'assistance et d'évolution :</strong> Restructuration complète de l'ergonomie applicative.<br><strong>• Développer la présence en ligne de l'organisation :</strong> Valorisation de l'image de la plateforme par une interface moderne, fluide et éco-conçue.</p>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-paint-brush"></i> Code de restructuration du routage Angular</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Extrait de ma note `Modif page d'accueil.md` illustrant la suppression de l'ancienne page d'accueil redondante pour charger directement le module de lancement d'audit sur la route racine (`/`) :</p>
+                    
+                    <pre class="obsidian-code"><code><span class="com">// Extrait de src/app/app.routes.ts : Modernisation de l'accueil en page d'audit</span>
+<span class="kw">export const</span> routes: <span class="type">Routes</span> = [
+  { 
+    <span class="com">// Chargement lazy-loaded du module de lancement d'audit directement sur la racine</span>
+    path: <span class="str">""</span>, 
+    loadChildren: () =&gt; <span class="kw">import</span>(<span class="str">"./features/run-audit/run-audit.module"</span>).<span class="fn">then</span>(m =&gt; m.<span class="type">RunAuditModule</span>) 
+  },
+  { 
+    <span class="com">// Redirection transparente pour préserver les favoris et backlinks existants</span>
+    path: <span class="str">"audits"</span>, 
+    redirectTo: <span class="str">"/"</span>, 
+    pathMatch: <span class="str">"full"</span> 
+  }
+];</code></pre>
+                </div>
+
                 <div>
-                    <h4 style="color:#fff; margin-bottom:10px;">Points clés & Apprentissages</h4>
-                    <p style="color:var(--text-light); line-height:1.6;">Compréhension approfondie du cycle de détection des changements d'Angular, séparation claire de l'état visuel (State Management), et maîtrise des layouts complexes pour harmoniser les interfaces.</p>
+                    <h4 class="report-section-title"><i class="fas fa-css3-alt"></i> SCSS Avancé & Perçage d'encapsulation (`::ng-deep`)</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">J'ai également utilisé `::ng-deep` pour styliser dynamiquement les infobulles (*tooltips*) dont le HTML est injecté à la volée depuis les fichiers de traduction JSON (`fr.json`, `en.json`).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal P7 -->
+    <div class="report-modal-overlay" id="modal-p7">
+        <div class="report-modal-content">
+            <button class="btn-close-modal"><i class="fas fa-times"></i></button>
+            <div class="report-modal-body">
+                <h3 style="color:var(--accent); font-size:1.8rem; margin-bottom:5px;">7. Développement Fullstack du module d'audits "Accessibilité"</h3>
+                <p style="color:var(--text-muted); margin-bottom:20px; font-family:'JetBrains Mono', monospace;">22 juin – 26 juin 2026 | Projet : Kastor Fullstack (.NET / Angular)</p>
+                
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-check-square"></i> Compétences BTS SIO sollicitées</h4>
+                    <p style="color:var(--text-light); line-height:1.6;"><strong>• Répondre aux incidents et aux demandes d'assistance et d'évolution :</strong> Ajout d'un nouveau moteur d'évaluation métier.<br><strong>• Travailler en mode projet :</strong> Planification rigoureuse et exécution d'un plan de développement fullstack.<br><strong>• Mettre à disposition un service informatique :</strong> Déploiement d'une nouvelle fonctionnalité clé pour les utilisateurs de Kastor.</p>
+                </div>
+
+                <div style="margin-bottom:20px;">
+                    <h4 class="report-section-title"><i class="fas fa-universal-access"></i> Code Fullstack C# / Angular (Plan Audit Accessibilité)</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Extrait de ma checklist `Audit Access.md` montrant l'exposition du nouveau `Type = 2` dans le DTO C# et son rendu conditionnel dans le template Angular :</p>
+                    
+                    <div class="ticket-box">
+                        <h5>1. Backend C# : Exposition dans BO\Dto\AuditDto.cs</h5>
+                        <pre class="obsidian-code"><code><span class="kw">public class</span> <span class="type">AuditDto</span>
+{
+    <span class="kw">public string</span> Label { <span class="kw">get</span>; <span class="kw">set</span>; }
+    <span class="kw">public int</span> AuditType { <span class="kw">get</span>; <span class="kw">set</span>; } <span class="com">// 0=Flow, 1=Simple, 2=Accessibilité</span>
+
+    <span class="kw">public</span> <span class="fn">AuditDto</span>(<span class="type">Audit</span> audit)
+    {
+        <span class="kw">this</span>.Label = audit.Label;
+        <span class="com">// Le DTO hérite dynamiquement du type défini sur le projet parent en base</span>
+        <span class="kw">this</span>.AuditType = audit.Projects.Type; 
+    }
+}</code></pre>
+                    </div>
+
+                    <div class="ticket-box">
+                        <h5>2. Frontend Angular : history.component.html</h5>
+                        <pre class="obsidian-code"><code><span class="com">&lt;!-- Section dédiée aux audits d'accessibilité (Type 2) --&gt;</span>
+&lt;<span class="kw">ul</span> *<span class="type">ngIf</span>=<span class="str">"project.type == 2"</span> <span class="type">class</span>=<span class="str">"card-wrapper audit-cards-grid"</span>&gt;
+    &lt;<span class="kw">ng-container</span> *<span class="type">ngFor</span>=<span class="str">"let audit of project.audits; let y = index;"</span>&gt;
+        &lt;<span class="kw">div</span> <span class="type">class</span>=<span class="str">"audit-badge-container"</span>&gt;
+            <span class="com">&lt;!-- Badge dynamique différenciant le premier audit des contrôles ultérieurs --&gt;</span>
+            &lt;<span class="kw">span</span> *<span class="type">ngIf</span>=<span class="str">"audit.auditType === 2"</span> <span class="type">class</span>=<span class="str">"audit-badge"</span>&gt;
+                {{ y === project.audits.length - <span class="num">1</span> ? <span class="str">'AUDIT INITIAL'</span> : <span class="str">'AUDIT DE CONTRÔLE'</span> }}
+            &lt;/<span class="kw">span</span>&gt;
+        &lt;/<span class="kw">div</span>&gt;
+    &lt;/<span class="kw">ng-container</span>&gt;
+&lt;/<span class="kw">ul</span>&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="report-section-title"><i class="fas fa-check-circle"></i> Bilan de la mission</h4>
+                    <p style="color:var(--text-light); line-height:1.6;">Cette fonctionnalité complète et autonome représente l'aboutissement technique de mon stage, combinant maîtrise du backend de données .NET et réactivité des interfaces Angular.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Load main portfolio logic -->
-    <script src="./js/script.min.js?v=8"></script>
-    <script type="module" src="js/firebase-client.js?v=8"></script>
-    <script>
-        // Eco-design: Inject CV PDF iframe only when modal is opened
-        document.getElementById('btn-open-cv-modal')?.addEventListener('click', function() {
-            const container = document.getElementById('cv-iframe-container');
-            if (container && !container.querySelector('iframe')) {
-                container.innerHTML = '<iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>';
-            }
-        });
-    </script>
+    <script src="./js/script.min.js?v=10"></script>
+    <script type="module" src="js/firebase-client.js?v=10"></script>
 </body>
 </html>
