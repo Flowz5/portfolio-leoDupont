@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             role: "Étudiant en BTS SIO - Option SLAM",
             status: "En ligne",
             nav_search: "Recherche", nav_home: "Accueil", nav_about: "À Propos", nav_path: "Parcours",
-            nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_terminal: "Terminal & Veille",
+            nav_services: "Services", nav_skills: "Compétences", nav_projects: "Projets", nav_exp: "Stage", nav_terminal: "Terminal & Veille",
             nav_contact: "Contact", nav_cv: "Mon CV", theme_dark: "Mode Sombre", theme_light: "Mode Clair",
             skip_link: "Aller au contenu principal",
             hero_title: "Léo Dupont <span class='accent-text'>portfolio</span>",
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
             role: "BTS SIO Student - SLAM Option",
             status: "Online",
             nav_search: "Search", nav_home: "Home", nav_about: "About", nav_path: "Journey",
-            nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_terminal: "Terminal & Watch",
+            nav_services: "Services", nav_skills: "Skills", nav_projects: "Projects", nav_exp: "Internship", nav_terminal: "Terminal & Watch",
             nav_contact: "Contact", nav_cv: "My Resume", theme_dark: "Dark Mode", theme_light: "Light Mode",
             skip_link: "Skip to main content",
             hero_title: "Léo Dupont <span class='accent-text'>portfolio</span>",
@@ -272,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updatePaletteCommands(lang);
         fetchTechNews();
         
+        window.dispatchEvent(new CustomEvent('langChanged', { detail: { lang: lang } }));
         isInitialLoad = false;
     }
 

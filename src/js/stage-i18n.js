@@ -1,0 +1,162 @@
+// Traduction spécifique à la page de stage (stage.html)
+const stageTranslations = {
+    fr: {
+        stage_hero_title: "Réalisations <span class='accent-text'>BTS SIO SLAM</span>",
+        stage_hero_sub: "Rapports de Stage & Projets SPECINOV",
+        stage_hero_desc: "Retrouvez ci-dessous l'intégralité de mes rapports de stage structurés autour des <strong>7 réalisations professionnelles</strong> du tableau de synthèse officiel (Session 2026), illustrés par des <strong>extraits de code concrets</strong> tirés de mes notes de stage sur <strong>Klip</strong> et <strong>Kastor</strong>.",
+        stage_btn_table: "<i class='fas fa-table'></i> <span>Tableau de Synthèse</span>",
+        stage_btn_detail: "<i class='fas fa-project-diagram'></i> <span>Détail par Projet</span>",
+        stage_btn_home: "<i class='fas fa-arrow-left'></i> <span>Retour à l'accueil</span>",
+
+        stage_intro_h3: "<i class='fas fa-building'></i> SPECINOV — Éco-conception & Solutions Numériques",
+        stage_intro_p: "Mon stage de première année s'est déroulé au sein de <strong>Specinov</strong> à Nantes. J'y ai contribué activement au développement en production de deux solutions majeures : <strong>Klip</strong> (transfert sécurisé de fichiers volumineux éco-responsable) et <strong>Kastor</strong> (plateforme d'audit de sites web orientée Numérique Responsable).",
+
+        synth_h2: "Tableau de Synthèse des Réalisations",
+        synth_sub: "Mapping officiel des compétences mises en œuvre durant mon stage en milieu professionnel (BTS SIO Session 2026).",
+        th_real: "Réalisations professionnelles",
+        th_period: "Période",
+        th_gpi: "Gérer le patrimoine informatique",
+        th_inc: "Répondre aux incidents & assistance",
+        th_pres: "Développer la présence en ligne",
+        th_proj: "Travailler en mode projet",
+        th_serv: "Mettre à disposition un service",
+        th_dev: "Organiser son dev. professionnel",
+
+        real_1: "1. Autoformation C# et Angular",
+        real_2: "2. Formation Numérique Responsable",
+        real_3: "3. Migration Angular 22",
+        real_4: "4. Résolution bugs Klip",
+        real_5: "5. Intégration signature avancée",
+        real_6: "6. Refonte front Kastor",
+        real_7: "7. Dev. audits accessibilité",
+
+        p1_date: "26 mai – 29 mai 2026 | Projet : Klip / Transverse",
+        p1_h4: "1. Autoformation C# / .NET et Angular",
+        p1_p: "Immersion dans l'écosystème de Specinov. Apprentissage approfondi de l'architecture en couches C# / ASP.NET Core (BO, DTO, DAL), de la persistance avec Entity Framework Core et des pratiques modernes d'Angular (Signals, Zoneless, Standalone components).",
+        p1_btn: "<i class='fas fa-code'></i> Rapport & Exemples de Code",
+
+        p2_date: "26 mai – 29 mai 2026 | Projet : Specinov / Green IT",
+        p2_h4: "2. Formation Numérique Responsable",
+        p2_p: "Suivi et certification du MOOC complet dispensé par l'Institut du Numérique Responsable (INR) : 16h30 de formation sur les impacts environnementaux du numérique, les stratégies d'éco-conception logicielle et l'IA responsable.",
+        p2_btn: "<i class='fas fa-code'></i> Bilan & Algo Impact Carbone",
+
+        p3_date: "1er juin – 5 juin 2026 | Projet : Klip (SpeciSend)",
+        p3_h4: "3. Migration Angular 22",
+        p3_p: "Montée de version majeure de l'application cliente Klip vers Angular 22. Résolution des breaking changes et correction d'un bug subtil lié à la réactivité des Signals Angular lors de la mutation des tableaux d'upload de fichiers.",
+        p3_btn: "<i class='fas fa-code'></i> Rapport & Correctif Signals",
+
+        p4_date: "1er juin – 12 juin 2026 | Projet : Klip (SpeciSend)",
+        p4_h4: "4. Résolution de bugs & Évolutions Klip",
+        p4_p: "Prise en charge de 9 tickets correctifs et évolutifs en production : chiffrement AES-256 en flux pour les fichiers > 2 Go, prolongation automatique de +90 jours après signature (Ticket 367), et réintégration complète des Fichiers Favoris (Ticket 432).",
+        p4_btn: "<i class='fas fa-code'></i> Code des Tickets 367 & 432",
+
+        p5_date: "8 juin – 12 juin 2026 | Projet : Klip (SpeciSend)",
+        p5_h4: "5. Intégration signature avancée (eIDAS)",
+        p5_p: "Élévation du niveau de signature électronique au standard \"Avancé\" (eIDAS). Génération de page de garde PDF, fusion documentaire, scellement cryptographique par certificat PFX inaltérable et horodatage certifié RFC 3161 via TSA DigiCert.",
+        p5_btn: "<i class='fas fa-code'></i> Code PoC Cryptographie",
+
+        p6_date: "15 juin – 26 juin 2026 | Projet : Kastor",
+        p6_h4: "6. Refonte Front & UI/UX Kastor",
+        p6_p: "Modernisation globale de la plateforme d'audit éco-responsable Kastor (maquettes Stitch). Restructuration du routage Angular (page d'accueil racine `/`), intégration SCSS complexe avec perçage `::ng-deep` pour tooltips i18n et filtres multi-select dynamiques.",
+        p6_btn: "<i class='fas fa-code'></i> Code Routage & Refonte",
+
+        p7_date: "22 juin – 26 juin 2026 | Projet : Kastor",
+        p7_h4: "7. Dev. audits accessibilité (Fullstack)",
+        p7_p: "Implémentation fullstack complète du nouveau type d'audit \"Accessibilité\" (Type 2). Exposition dans les DTO et contrôleurs C#, adaptation de la DAL Entity Framework Core, et création de l'interface de pilotage et d'historique Angular.",
+        p7_btn: "<i class='fas fa-code'></i> Code Fullstack (C# & Angular)",
+
+        bilan_h3: "<i class='fas fa-graduation-cap'></i> Bilan Général & Compétences SIO",
+        bilan_p: "Ce stage chez <strong>Specinov</strong> m'a permis de valider avec succès les 6 grandes compétences du référentiel BTS SIO SLAM. De l'analyse rigoureuse d'incidents complexes en C# jusqu'à l'intégration d'interfaces modernes et éco-conçues en Angular, j'ai acquis une véritable autonomie professionnelle."
+    },
+    en: {
+        stage_hero_title: "Work Achievements <span class='accent-text'>BTS SIO SLAM</span>",
+        stage_hero_sub: "Internship Reports & SPECINOV Projects",
+        stage_hero_desc: "Find below all my internship reports structured around the <strong>7 professional achievements</strong> of the official synthesis grid (2026 Session), illustrated with <strong>concrete code snippets</strong> from my work notes on <strong>Klip</strong> and <strong>Kastor</strong>.",
+        stage_btn_table: "<i class='fas fa-table'></i> <span>Synthesis Table</span>",
+        stage_btn_detail: "<i class='fas fa-project-diagram'></i> <span>Project Details</span>",
+        stage_btn_home: "<i class='fas fa-arrow-left'></i> <span>Back to Home</span>",
+
+        stage_intro_h3: "<i class='fas fa-building'></i> SPECINOV — Eco-design & Digital Solutions",
+        stage_intro_p: "My first-year internship took place at <strong>Specinov</strong> in Nantes. I actively contributed to the production development of two major solutions: <strong>Klip</strong> (eco-responsible secure transfer of large files) and <strong>Kastor</strong> (Responsible Digital web audit platform).",
+
+        synth_h2: "Synthesis Table of Achievements",
+        synth_sub: "Official mapping of skills implemented during my professional internship (BTS SIO 2026 Session).",
+        th_real: "Professional achievements",
+        th_period: "Period",
+        th_gpi: "Manage IT assets",
+        th_inc: "Incident response & support",
+        th_pres: "Develop online presence",
+        th_proj: "Work in project mode",
+        th_serv: "Provide a service",
+        th_dev: "Organize professional dev.",
+
+        real_1: "1. C# and Angular Self-training",
+        real_2: "2. Responsible Digital Training",
+        real_3: "3. Angular 22 Migration",
+        real_4: "4. Klip Bug Fixing & Evolutions",
+        real_5: "5. Advanced Signature Integration",
+        real_6: "6. Kastor Frontend Redesign",
+        real_7: "7. Accessibility Audits Dev.",
+
+        p1_date: "May 26 – May 29, 2026 | Project: Klip / Transverse",
+        p1_h4: "1. C# / .NET and Angular Self-training",
+        p1_p: "Immersion in Specinov's ecosystem. In-depth learning of layered C# / ASP.NET Core architecture (BO, DTO, DAL), persistence with Entity Framework Core, and modern Angular practices (Signals, Zoneless, Standalone components).",
+        p1_btn: "<i class='fas fa-code'></i> Report & Code Examples",
+
+        p2_date: "May 26 – May 29, 2026 | Project: Specinov / Green IT",
+        p2_h4: "2. Responsible Digital Training",
+        p2_p: "Completion and certification of the full MOOC provided by the Institute for Responsible Digital (INR): 16.5 hours of training on environmental impacts of IT, software eco-design strategies, and responsible AI.",
+        p2_btn: "<i class='fas fa-code'></i> Review & Carbon Algo",
+
+        p3_date: "June 1 – June 5, 2026 | Project: Klip (SpeciSend)",
+        p3_h4: "3. Angular 22 Migration",
+        p3_p: "Major upgrade of the Klip client application to Angular 22. Resolved breaking changes and fixed a subtle bug related to Angular Signals reactivity during file upload array mutations.",
+        p3_btn: "<i class='fas fa-code'></i> Report & Signals Fix",
+
+        p4_date: "June 1 – June 12, 2026 | Project: Klip (SpeciSend)",
+        p4_h4: "4. Bug Fixing & Evolutions on Klip",
+        p4_p: "Interventions on 9 production corrective and evolutionary tickets: AES-256 stream encryption for files > 2 GB, automatic +90 days extension after signature (Ticket 367), and complete reintegration of User Favorites (Ticket 432).",
+        p4_btn: "<i class='fas fa-code'></i> Tickets 367 & 432 Code",
+
+        p5_date: "June 8 – June 12, 2026 | Project: Klip (SpeciSend)",
+        p5_h4: "5. Advanced Signature Integration (eIDAS)",
+        p5_p: "Elevation of electronic signature level to \"Advanced\" standard (eIDAS). PDF cover page generation, document merging, cryptographic sealing by unalterable PFX certificate, and RFC 3161 certified timestamping via DigiCert TSA.",
+        p5_btn: "<i class='fas fa-code'></i> Cryptography PoC Code",
+
+        p6_date: "June 15 – June 26, 2026 | Project: Kastor",
+        p6_h4: "6. Kastor Frontend Redesign & UI/UX",
+        p6_p: "Comprehensive modernization of the Kastor eco-responsible audit platform (Stitch mockups). Angular routing restructuring (root home `/`), complex SCSS integration with `::ng-deep` piercing for i18n tooltips and dynamic multi-select filters.",
+        p6_btn: "<i class='fas fa-code'></i> Routing & Redesign Code",
+
+        p7_date: "June 22 – June 26, 2026 | Project: Kastor",
+        p7_h4: "7. Accessibility Audits Dev. (Fullstack)",
+        p7_p: "Complete fullstack implementation of the new \"Accessibility\" audit type (Type 2). Exposure in C# DTOs and controllers, Entity Framework Core DAL adaptation, and creation of the Angular control and history interface.",
+        p7_btn: "<i class='fas fa-code'></i> Fullstack Code (C# & Angular)",
+
+        bilan_h3: "<i class='fas fa-graduation-cap'></i> General Review & SIO Skills",
+        bilan_p: "This internship at <strong>Specinov</strong> allowed me to successfully validate the 6 core skills of the BTS SIO SLAM repository. From rigorous analysis of complex C# incidents to integrating modern, eco-designed Angular interfaces, I gained true professional autonomy."
+    }
+};
+
+function applyStageLanguage(lang) {
+    const t = stageTranslations[lang] || stageTranslations.fr;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+            el.innerHTML = t[key];
+        }
+    });
+}
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => {
+    const currentLang = localStorage.getItem('lang') || 'fr';
+    applyStageLanguage(currentLang);
+});
+
+// Listen to language changes from main script.js
+window.addEventListener('langChanged', (e) => {
+    if (e.detail && e.detail.lang) {
+        applyStageLanguage(e.detail.lang);
+    }
+});

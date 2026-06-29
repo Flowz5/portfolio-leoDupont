@@ -54,6 +54,21 @@ const minifiedJs = jsContent
 fs.writeFileSync(path.join(publicJsDir, 'script.min.js'), minifiedJs);
 console.log('Created script.min.js');
 
+// 2b. Minify stage-i18n.js
+try {
+    const stageJsFile = path.join(srcJsDir, 'stage-i18n.js');
+    const stageJsContent = fs.readFileSync(stageJsFile, 'utf8');
+    const minifiedStageJs = stageJsContent
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/^\s+/gm, '')
+        .replace(/\n+/g, '\n')
+        .trim();
+    fs.writeFileSync(path.join(publicJsDir, 'stage-i18n.min.js'), minifiedStageJs);
+    console.log('Created stage-i18n.min.js');
+} catch(e) {
+    console.error('Error processing stage-i18n.js:', e);
+}
+
 // 3. Create print.css
 const printCss = `
 @media print {
