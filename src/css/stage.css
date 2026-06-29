@@ -14,13 +14,15 @@
 }
 
 .exp-intro-card {
-    background: rgba(20, 20, 22, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 16px;
     padding: 30px;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     text-align: center;
+    color: var(--text-main);
 }
 
 /* Timeline Container */
@@ -85,8 +87,9 @@
 
 /* Content Card */
 .stage-timeline .timeline-content {
-    background: rgba(20, 20, 22, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
     border-radius: 16px;
     padding: 25px;
     backdrop-filter: blur(12px);
@@ -96,12 +99,12 @@
 
 .stage-timeline .timeline-content:hover {
     transform: translateY(-5px);
-    border-color: rgba(0, 255, 204, 0.3);
+    border-color: var(--accent);
 }
 
 .stage-timeline .timeline-content h4 {
     font-size: 1.4rem;
-    color: #fff;
+    color: var(--text-main);
     margin-bottom: 5px;
 }
 
@@ -114,7 +117,7 @@
 }
 
 .stage-timeline .timeline-content p {
-    color: var(--text-light);
+    color: var(--text-muted);
     line-height: 1.6;
     margin-bottom: 20px;
 }
@@ -199,8 +202,8 @@
 }
 
 .report-modal-content {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-main);
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     width: 90%;
     max-width: 800px;
@@ -209,7 +212,8 @@
     position: relative;
     transform: scale(0.9);
     transition: transform 0.3s ease;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--glass-shadow);
+    color: var(--text-main);
 }
 
 .report-modal-overlay.active .report-modal-content {
@@ -224,9 +228,9 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    color: #fff;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-main);
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -234,11 +238,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .btn-close-modal:hover {
     background: rgba(255, 0, 50, 0.6);
+    color: #fff;
 }
 
 /* Custom Scrollbar for Modal */
@@ -340,14 +345,14 @@
     margin-bottom: 25px;
 }
 .synthesis-table-container {
-    background: rgba(20, 20, 22, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
     border-radius: 16px;
     padding: 25px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     overflow-x: auto;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    box-shadow: var(--glass-shadow);
 }
 .synthesis-table {
     width: 100%;
@@ -357,32 +362,32 @@
     min-width: 800px;
 }
 .synthesis-table th {
-    background: rgba(0, 255, 204, 0.08);
+    background: rgba(128, 128, 128, 0.08);
     color: var(--accent);
     padding: 16px 12px;
     font-weight: 600;
-    border-bottom: 2px solid rgba(0, 255, 204, 0.3);
+    border-bottom: 2px solid var(--glass-border);
     vertical-align: middle;
     line-height: 1.3;
 }
 .synthesis-table td {
     padding: 16px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: var(--text-light);
+    border-bottom: 1px solid var(--glass-border);
+    color: var(--text-main);
     transition: background 0.2s ease;
     vertical-align: middle;
 }
 .synthesis-table tr:hover td {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(128, 128, 128, 0.08);
 }
 .synthesis-table .col-realisation {
     text-align: left;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-main);
     max-width: 240px;
 }
 .synthesis-table .col-realisation a {
-    color: #fff;
+    color: var(--text-main);
     text-decoration: none;
     transition: color 0.2s ease;
 }
@@ -420,13 +425,13 @@
 
 /* Modal Styling Improvements */
 .report-section-title {
-    color: #fff;
+    color: var(--text-main);
     font-size: 1.25rem;
     margin: 25px 0 10px;
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid var(--glass-border);
     padding-bottom: 8px;
 }
 .report-section-title i {
@@ -446,11 +451,11 @@
     margin-bottom: 20px;
 }
 .report-modal-body p {
-    color: var(--text-light);
+    color: var(--text-muted);
     line-height: 1.6;
 }
 .report-modal-body ul {
-    color: var(--text-light);
+    color: var(--text-muted);
     line-height: 1.6;
     padding-left: 20px;
     margin-top: 10px;
@@ -459,14 +464,14 @@
     margin-bottom: 8px;
 }
 .ticket-box {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(128, 128, 128, 0.08);
     border-left: 3px solid var(--accent);
     padding: 14px 18px;
     margin: 15px 0;
     border-radius: 0 8px 8px 0;
 }
 .ticket-box h5 {
-    color: #fff;
+    color: var(--text-main);
     font-size: 1.05rem;
     margin-bottom: 8px;
     display: flex;
@@ -476,7 +481,7 @@
 .ticket-box p {
     font-size: 0.92rem;
     margin-bottom: 10px !important;
-    color: var(--text-light);
+    color: var(--text-muted);
 }
 .obsidian-code {
     background: #0e1117;
