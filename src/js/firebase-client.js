@@ -186,9 +186,51 @@ async function fetchVeille() {
     } catch(e) { console.error("Error fetching veille", e); }
 }
 
+function initCookieConsent() {
+    if (localStorage.getItem('cookieConsent') !== null) {
+        if (localStorage.getItem('cookieConsent') === 'true') {
+            trackVisitor();
+        }
+        return;
+    }
+    
+    const banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.style.cssText = "position:fixed; bottom:20px; left:20px; right:20px; background:rgba(15,23,42,0.95); backdrop-filter:blur(10px); padding:20px; border-radius:12px; border:1px solid var(--accent); z-index:9999; display:flex; flex-direction:column; gap:15px; color:#fff; box-shadow:0 10px 25px rgba(0,0,0,0.5);";
+    
+    const style = document.createElement('style');
+    style.innerHTML = "@media(min-width:768px){ #cookie-banner { flex-direction:row; align-items:center; justify-content:space-between; } }";
+    document.head.appendChild(style);
+
+    banner.innerHTML = `
+        <div style="flex:1;">
+            <h4 style="margin:0 0 8px 0; color:var(--accent); font-family:var(--font-mono);"><i class="fas fa-cookie-bite"></i> Cookies & Analytics</h4>
+            <p style="margin:0; font-size:0.9rem; line-height:1.4;">
+                Ce site collecte des données de visite (IP, navigateur) pour des statistiques anonymisées. Acceptez-vous d'être suivi ?
+            </p>
+        </div>
+        <div style="display:flex; gap:10px; justify-content:flex-end; flex-shrink:0;">
+            <button id="btn-refuse-cookies" style="padding:10px 18px; border:1px solid #ef4444; background:transparent; color:#ef4444; border-radius:6px; cursor:pointer; font-weight:bold; transition:all 0.2s;" onmouseover="this.style.background='#ef4444'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='#ef4444';">Refuser</button>
+            <button id="btn-accept-cookies" style="padding:10px 18px; border:none; background:var(--accent); color:#000; font-weight:bold; border-radius:6px; cursor:pointer; transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.05)';" onmouseout="this.style.transform='scale(1)';">Accepter</button>
+        </div>
+    `;
+    document.body.appendChild(banner);
+    
+    document.getElementById('btn-accept-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'true');
+        banner.remove();
+        trackVisitor();
+    });
+    
+    document.getElementById('btn-refuse-cookies').addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'false');
+        banner.remove();
+    });
+}
+
 // Initialize
 window.addEventListener('DOMContentLoaded', () => {
-    trackVisitor();
+    initCookieConsent();
     trackCV();
     fetchConfig();
     setupContactForm();

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page introuvable - Portfolio de Léo Dupont">
+    <title>404 - Page non trouvée | Léo Dupont</title>
+    <link rel="icon" type="image/svg+xml" href="./Assets/favicon.svg">
+    <link rel="stylesheet" href="./css/style.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            margin: 0;
+            line-height: 1;
+            font-family: var(--font-mono);
+        }
+        
+        .error-text {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #f8fafc;
+        }
+        
+        .error-desc {
+            max-width: 500px;
+            color: #94a3b8;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body class="dark-mode">
+    <div class="matrix-bg" id="matrix-bg"></div>
+
+    <div class="error-container">
+        <h1 class="error-code">404</h1>
+        <h2 class="error-text">Système hors ligne ou page introuvable</h2>
+        <p class="error-desc">
+            La ressource que vous avez demandée n'existe pas ou a été déplacée. 
+            Mais pas d'inquiétude, vous n'êtes pas perdu dans la matrice.
+        </p>
+        <a href="./index.html" class="glass-btn primary" style="text-decoration: none;">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+
+    <script src="./js/script.min.js" defer></script>
+</body>
+</html>
