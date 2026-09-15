@@ -189,6 +189,27 @@ document.getElementById('btn-save-banner').addEventListener('click', async () =>
     showToast("Bannière mise à jour !");
 });
 
+document.getElementById('btn-set-likes').addEventListener('click', async () => {
+    const inputValue = document.getElementById('input-set-likes').value;
+    const newCount = parseInt(inputValue, 10);
+    if (isNaN(newCount)) {
+        showToast("Veuillez entrer un nombre valide.");
+        return;
+    }
+    if (confirm(`Forcer le compteur de likes à ${newCount} ?`)) {
+        await setDoc(doc(db, "likes", "portfolio"), { count: newCount });
+        document.getElementById('input-set-likes').value = '';
+        showToast("Likes mis à jour !");
+    }
+});
+
+document.getElementById('btn-reset-likes').addEventListener('click', async () => {
+    if (confirm("Remettre les likes à zéro ?")) {
+        await setDoc(doc(db, "likes", "portfolio"), { count: 0 });
+        showToast("Likes réinitialisés à 0.");
+    }
+});
+
 // Helper to add logs to the terminal
 function addSysLog(msg, type = "INFO") {
     const logs = document.getElementById('live-logs');
