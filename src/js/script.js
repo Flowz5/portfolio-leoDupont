@@ -58,7 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
             terminal_title: "Terminal", terminal_sub: "Un petit aperçu en ligne de commande. Essayez de taper 'help'.",
             term_header: "Léo Dupont (Portfolio) [Version 1.0.0]",
             term_welcome: "Tapez 'help' pour afficher la liste des commandes disponibles.",
-            term_cmd_help: "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
+            term_cmd_help: "Commandes :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profil<br>- <strong>skills</strong> : Compétences<br>- <strong>cv</strong> : Résumé CV<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Nettoyer",
+            term_cmd_cv: "<pre style='font-size:0.8em; line-height:1.2; color:var(--accent); margin:10px 0;'>\n+---------------------------------------+\n| LÉO DUPONT - DÉVELOPPEUR WEB & APP    |\n+---------------------------------------+\n| BTS SIO SLAM - La Châtaigneraie       |\n| Spécialités: Python, JS, C#, HTML/CSS |\n| Soft Skills: Curieux, Rigoureux       |\n+---------------------------------------+\n</pre><a href='CV/CV.pdf' target='_blank' style='color:var(--text-light);text-decoration:underline;'>Télécharger la version complète PDF</a>",
             term_cmd_whoami: "<span class='info'>Étudiant passionné en BTS SIO SLAM. Je construis des choses avec du code.</span>",
             term_cmd_skills: "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
             term_cmd_contact: "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>",
@@ -132,7 +133,8 @@ document.addEventListener("DOMContentLoaded", () => {
             terminal_title: "Terminal", terminal_sub: "A quick look at the command line. Try typing 'help'.",
             term_header: "Léo Dupont (Portfolio) [Version 1.0.0]",
             term_welcome: "Type 'help' to see the list of available commands.",
-            term_cmd_help: "Commands :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profile<br>- <strong>skills</strong> : Tech Stack<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Clear output",
+            term_cmd_help: "Commands :<br>- <strong>ctrl+K</strong> : Palette<br>- <strong>whoami</strong> : Profile<br>- <strong>skills</strong> : Tech Stack<br>- <strong>cv</strong> : Resume ASCII<br>- <strong>contact</strong> : Infos<br>- <strong>clear</strong> : Clear output",
+            term_cmd_cv: "<pre style='font-size:0.8em; line-height:1.2; color:var(--accent); margin:10px 0;'>\n+---------------------------------------+\n| LÉO DUPONT - WEB & APP DEVELOPER      |\n+---------------------------------------+\n| BTS SIO SLAM - La Châtaigneraie       |\n| Stack: Python, JS, C#, HTML/CSS       |\n| Soft Skills: Curious, Rigorous        |\n+---------------------------------------+\n</pre><a href='CV/CV.pdf' target='_blank' style='color:var(--text-light);text-decoration:underline;'>Download full PDF resume</a>",
             term_cmd_whoami: "<span class='info'>Passionate IT Student. I build things with code.</span>",
             term_cmd_skills: "<span class='success'>Python, JavaScript, SQL, HTML/CSS, Git, C#, Linux.</span>",
             term_cmd_contact: "Email: <a href='mailto:dupontleo999@gmail.com' style='color:#79c0ff;'>dupontleo999@gmail.com</a><br>GitHub: <a href='https://github.com/Flowz5' target='_blank' style='color:#79c0ff;'>Flowz5</a>",
@@ -648,6 +650,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         responseBlock.innerHTML = `<p class="success">${t.term_cmd_reboot}</p>`;
                     }
                     terminalOutput.appendChild(responseBlock);
+                } else if (command === 'cv') {
+                    responseBlock.innerHTML = `<div>${t.term_cmd_cv}</div>`;
+                    terminalOutput.appendChild(responseBlock);
                 } else if (window.customCommands && window.customCommands[command]) {
                     responseBlock.innerHTML = `<div>${window.customCommands[command]}</div>`;
                     terminalOutput.appendChild(responseBlock);
@@ -1144,5 +1149,49 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    
+    // --- TAG FILTERING LOGIC ---
+    const allTags = document.querySelectorAll('.project-overlay .tag');
+    const allProjects = document.querySelectorAll('.project-card-modern');
+    let currentFilter = null;
 
-});
+    allTags.forEach(tag => {
+        tag.style.cursor = 'pointer';
+        tag.title = "Cliquez pour filtrer";
+        
+        tag.addEventListener('click', (e) => {
+            const selectedTech = e.target.textContent.trim().toLowerCase();
+            
+            // Toggle off if already active
+            if (currentFilter === selectedTech) {
+                currentFilter = null;
+                allProjects.forEach(proj => proj.style.display = 'block');
+                allTags.forEach(t => t.style.boxShadow = 'none');
+                return;
+            }
+            
+            currentFilter = selectedTech;
+            
+            // Highlight selected tags across all projects
+            allTags.forEach(t => {
+                if(t.textContent.trim().toLowerCase() === currentFilter) {
+                    t.style.boxShadow = '0 0 10px var(--accent)';
+                } else {
+                    t.style.boxShadow = 'none';
+                }
+            });
+            
+            // Filter projects
+            allProjects.forEach(proj => {
+                const projTags = Array.from(proj.querySelectorAll('.tag')).map(t => t.textContent.trim().toLowerCase());
+                if (projTags.includes(currentFilter)) {
+                    proj.style.display = 'block';
+                    proj.style.animation = 'fadeInUp 0.5s ease forwards';
+                } else {
+                    proj.style.display = 'none';
+                }
+            });
+        });
+    });
+
+}); // End of window.addEventListener('DOMContentLoaded')
