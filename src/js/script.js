@@ -1193,5 +1193,47 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+    
+    // --- DYNAMIC GITHUB STATUS (EASTER EGG) ---
+    async function updateGithubStatus() {
+        const statusText = document.querySelector('[data-i18n="status"]');
+        if (!statusText || statusText.textContent === translations[currentLang].status_offline) return;
+
+        try {
+            const response = await fetch('https://api.github.com/users/Flowz5/events/public');
+            if (!response.ok) return;
+            const events = await response.json();
+            
+            // Find the most recent PushEvent
+            const lastPush = events.find(e => e.type === 'PushEvent');
+            if (lastPush) {
+                const pushDate = new Date(lastPush.created_at);
+                const now = new Date();
+                const hoursSincePush = (now - pushDate) / (1000 * 60 * 60);
+                
+                // If pushed within the last 24 hours, change the status
+                if (hoursSincePush < 24) {
+                    const repoName = lastPush.repo.name.split('/')[1] || lastPush.repo.name;
+                    const codingMsg = currentLang === 'fr' 
+                        ? `En train de coder sur ${repoName}`
+                        : `Coding on ${repoName}`;
+                        
+                    // Add a nice animation to the dot
+                    const statusDot = document.querySelector('.status-dot');
+                    if(statusDot) {
+                        statusDot.style.backgroundColor = '#a855f7'; // Purple for coding
+                        statusDot.style.boxShadow = '0 0 10px #a855f7';
+                    }
+                    
+                    statusText.textContent = codingMsg;
+                }
+            }
+        } catch (error) {
+            console.log("Github status fetch failed, keeping default status.");
+        }
+    }
+    
+    // Run after a short delay so it doesn't block initial render
+    setTimeout(updateGithubStatus, 2000);
 
 }); // End of window.addEventListener('DOMContentLoaded')
