@@ -322,3 +322,51 @@ async function loadCustomCommands() {
     }
 }
 loadCustomCommands();
+
+// --- 8. Like Counter ---
+const likeWidget = document.getElementById('like-widget');
+const likeCountEl = document.getElementById('like-count');
+
+if (likeWidget && likeCountEl) {
+    const likeDocRef = doc(db, 'likes', 'portfolio');
+    
+    // Listen for realtime updates
+    onSnapshot(likeDocRef, (docSnap) => {
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            likeCountEl.textContent = data.count || 0;
+        } else {
+            // Create if doesn't exist
+            setDoc(likeDocRef, { count: 0 }).catch(console.error);
+        }
+    });
+
+    likeWidget.addEventListener('click', async (e) => {
+        // Only allow clicking once per page load to prevent spam
+        if (!likeWidget.classList.contains('liked')) {
+            likeWidget.classList.add('liked');
+            
+            // Animation for flying heart
+            const heart = document.createElement('i');
+            heart.className = 'fas fa-heart flying-heart';
+            
+            const rect = likeWidget.getBoundingClientRect();
+            heart.style.left = (rect.left + rect.width / 2) + 'px';
+            heart.style.top = (rect.top + rect.height / 2) + 'px';
+            
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+
+            // Increment in Firestore
+            try {
+                await updateDoc(likeDocRef, {
+                    count: increment(1)
+                });
+            } catch (err) {
+                if (err.code === 'not-found') {
+                    await setDoc(likeDocRef, { count: 1 });
+                }
+            }
+        }
+    });
+}
