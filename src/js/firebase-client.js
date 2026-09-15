@@ -105,17 +105,47 @@ async function fetchConfig() {
                     statusText.removeAttribute('data-i18n');
                     statusText.dataset.firebaseStatus = data.text;
 
+                    let githubStatusFR = null;
+                    let githubStatusEN = null;
+
                     // Apply translated text based on current language
                     const applyStatusLang = () => {
                         const lang = localStorage.getItem('lang') || 'fr';
                         let text = data.text;
-                        if (lang === 'en') {
+                        
+                        if (githubStatusFR && githubStatusEN && data.text.toLowerCase().includes("en ligne")) {
+                            text = lang === 'en' ? githubStatusEN : githubStatusFR;
+                        } else if (lang === 'en') {
                             if (text.toLowerCase().includes("hors ligne")) text = "Offline";
                             else if (text.toLowerCase().includes("en ligne")) text = "Online";
                         }
                         statusText.textContent = text;
                     };
                     applyStatusLang();
+
+                    // Fetch GitHub status if currently online
+                    if (data.text.toLowerCase().includes("en ligne")) {
+                        fetch('https://api.github.com/users/Flowz5/events/public')
+                            .then(res => res.json())
+                            .then(events => {
+                                const lastPush = events.find(e => e.type === 'PushEvent');
+                                if (lastPush) {
+                                    const pushDate = new Date(lastPush.created_at);
+                                    if ((new Date() - pushDate) / (1000 * 60 * 60) < 24) {
+                                        const repoName = lastPush.repo.name.split('/')[1] || lastPush.repo.name;
+                                        githubStatusFR = `En train de coder sur ${repoName}`;
+                                        githubStatusEN = `Coding on ${repoName}`;
+                                        
+                                        const dot = heroBadge.querySelector('.status-dot');
+                                        if(dot) {
+                                            dot.style.backgroundColor = '#a855f7';
+                                            dot.style.boxShadow = '0 0 10px #a855f7';
+                                        }
+                                        applyStatusLang();
+                                    }
+                                }
+                            }).catch(() => {});
+                    }
                     
                     if (data.text.toLowerCase().includes("en ligne") || data.text.toLowerCase().includes("recherche")) {
                         heroBadge.classList.remove('offline');
