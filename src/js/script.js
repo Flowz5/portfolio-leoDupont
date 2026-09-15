@@ -1214,9 +1214,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // If pushed within the last 24 hours, change the status
                 if (hoursSincePush < 24) {
                     const repoName = lastPush.repo.name.split('/')[1] || lastPush.repo.name;
-                    const codingMsg = currentLang === 'fr' 
-                        ? `En train de coder sur ${repoName}`
-                        : `Coding on ${repoName}`;
+                    
+                    // Update global translations so it persists across language switches
+                    translations.fr.status = `En train de coder sur ${repoName}`;
+                    translations.en.status = `Coding on ${repoName}`;
                         
                     // Add a nice animation to the dot
                     const statusDot = document.querySelector('.status-dot');
@@ -1225,7 +1226,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         statusDot.style.boxShadow = '0 0 10px #a855f7';
                     }
                     
-                    statusText.textContent = codingMsg;
+                    // Apply immediately
+                    statusText.textContent = translations[currentLang].status;
                 }
             }
         } catch (error) {
