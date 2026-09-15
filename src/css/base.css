@@ -135,3 +135,70 @@ h1, h2, h3, h4, h5, h6 {
 body.lang-switching .main-container {
     opacity: 0;
 }
+
+/* =========================================
+   LIKE WIDGET
+========================================= */
+.like-widget {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    background: var(--bg-main);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    color: var(--text-main);
+    font-family: var(--font-main);
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.like-widget:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+}
+
+.like-widget .heart-icon {
+    color: var(--text-muted);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
+}
+
+.like-widget.liked .heart-icon {
+    color: #f43f5e;
+    animation: heartPulse 0.5s ease;
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+.flying-heart {
+    position: fixed;
+    color: #f43f5e;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 10010;
+    animation: flyUp 1.5s ease-out forwards;
+}
+
+@keyframes flyUp {
+    0% {
+        transform: translate(-50%, 0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -100px) scale(1.5) rotate(15deg);
+        opacity: 0;
+    }
+}

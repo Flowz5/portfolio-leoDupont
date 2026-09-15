@@ -341,10 +341,18 @@ if (likeWidget && likeCountEl) {
         }
     });
 
+    // Restore state from local storage
+    if (localStorage.getItem('portfolio_liked') === 'true') {
+        likeWidget.classList.add('liked');
+    }
+
     likeWidget.addEventListener('click', async (e) => {
-        // Only allow clicking once per page load to prevent spam
-        if (!likeWidget.classList.contains('liked')) {
+        const isLiked = likeWidget.classList.contains('liked');
+        
+        if (!isLiked) {
+            // Liking
             likeWidget.classList.add('liked');
+            localStorage.setItem('portfolio_liked', 'true');
             
             // Animation for flying heart
             const heart = document.createElement('i');
@@ -367,6 +375,17 @@ if (likeWidget && likeCountEl) {
                     await setDoc(likeDocRef, { count: 1 });
                 }
             }
+        } else {
+            // Un-liking
+            likeWidget.classList.remove('liked');
+            localStorage.setItem('portfolio_liked', 'false');
+            
+            // Decrement in Firestore
+            try {
+                await updateDoc(likeDocRef, {
+                    count: increment(-1)
+                });
+            } catch (err) {}
         }
     });
 }
