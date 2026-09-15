@@ -582,7 +582,7 @@
                 <!-- L'Iframe sera injectée ici par JavaScript -->
             </div>
             <div class="modal-actions">
-                <a href="./CV/mon-cv.pdf" download="mon-cv.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
+                <a href="./CV/CV.pdf" download="CV.pdf" class="glass-btn primary"><i class="fas fa-download"></i> <span data-i18n="btn_dl_pdf">Télécharger PDF</span></a>
             </div>
         </div>
     </div>
@@ -597,7 +597,7 @@
         document.getElementById('btn-open-cv-modal')?.addEventListener('click', function() {
             const container = document.getElementById('cv-iframe-container');
             if (container && !container.querySelector('iframe')) {
-                container.innerHTML = '<iframe src="./CV/mon-cv.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>';
+                container.innerHTML = '<iframe src="./CV/CV.pdf" class="cv-iframe" title="CV PDF" loading="lazy"></iframe>';
             }
         });
     </script>

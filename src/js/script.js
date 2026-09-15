@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { title: t.nav_terminal, icon: "fa-terminal", action: () => { smoothScrollTo('terminal-section'); setTimeout(() => document.getElementById('terminal-input')?.focus(), 500); } },
             { title: t.nav_contact, icon: "fa-envelope", action: () => smoothScrollTo('contact') },
             { title: t.nav_cv, icon: "fa-file-alt", action: () => window.open('./CV/index.html', '_blank') },
-            { title: t.cmd_dl_cv, icon: "fa-download", action: () => { const link = document.createElement('a'); link.href = './CV/mon-cv.pdf'; link.download = 'mon-cv.pdf'; link.click(); } },
+            { title: t.cmd_dl_cv, icon: "fa-download", action: () => { const link = document.createElement('a'); link.href = './CV/CV.pdf'; link.download = 'CV.pdf'; link.click(); } },
             { title: "GitHub", icon: "fa-github", action: () => window.open('https://github.com/Flowz5', '_blank') },
             { title: t.cmd_linkedin, icon: "fa-linkedin", action: () => window.open('https://www.linkedin.com/in/léo-dupont-646a58385', '_blank') },
             { title: t.cmd_copy_email, icon: "fa-copy", action: () => { navigator.clipboard.writeText('le.dupont.pro@gmail.com'); alert(lang === 'fr' ? 'Email copié !' : 'Email copied!'); } },

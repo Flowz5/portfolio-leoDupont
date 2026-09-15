@@ -58,7 +58,7 @@ async function trackVisitor() {
 
 // --- 2. CV Download Tracking ---
 function trackCV() {
-    const cvButtons = document.querySelectorAll('a[href*="mon-cv.pdf"]');
+    const cvButtons = document.querySelectorAll('a[href*="CV.pdf"]');
     cvButtons.forEach(btn => {
         btn.addEventListener('click', async () => {
             const cvRef = doc(db, "stats", "cv");
