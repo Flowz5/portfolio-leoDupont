@@ -144,7 +144,7 @@ body.lang-switching .main-container {
     top: 30px;
     right: 30px;
     z-index: 10000;
-    background: #3b82f6; /* Bleu vif */
+    background: var(--accent);
     border: none;
     border-radius: 50px;
     padding: 10px 20px;
@@ -155,21 +155,21 @@ body.lang-switching .main-container {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
-    color: #ffffff;
+    color: var(--bg-main);
     font-family: var(--font-main);
     font-weight: bold;
     font-size: 1.1rem;
-    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
+    box-shadow: var(--accent-glow);
 }
 
 .like-widget:hover {
     transform: translateY(-3px) scale(1.05);
-    background: #2563eb; /* Bleu un peu plus foncé au survol */
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.6);
+    background: var(--accent-hover);
+    box-shadow: 0 8px 16px var(--accent-hover);
 }
 
 .like-widget .heart-icon {
-    color: #ffffff;
+    color: var(--bg-main);
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s;
 }
 
