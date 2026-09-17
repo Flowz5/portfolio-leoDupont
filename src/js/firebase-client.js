@@ -131,7 +131,7 @@ async function fetchConfig() {
                                 const lastPush = events.find(e => e.type === 'PushEvent');
                                 if (lastPush) {
                                     const pushDate = new Date(lastPush.created_at);
-                                    if ((new Date() - pushDate) / (1000 * 60 * 60) < 24) {
+                                    if ((new Date() - pushDate) / (1000 * 60 * 60) < 5) {
                                         const repoName = lastPush.repo.name.split('/')[1] || lastPush.repo.name;
                                         githubStatusFR = `En train de coder sur ${repoName}`;
                                         githubStatusEN = `Coding on ${repoName}`;

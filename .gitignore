@@ -10,3 +10,15 @@ Thumbs.db
 
 # AI / Gemini context
 gemini.md
+
+# Environment variables & API Keys
+.env
+.env.local
+.env.*.local
+
+# Firebase / GCP sensitive files
+firebase-adminsdk.json
+*.pem
+*.key
+.firebase/
+firebase-debug.log
