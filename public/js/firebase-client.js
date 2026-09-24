@@ -105,17 +105,47 @@ async function fetchConfig() {
                     statusText.removeAttribute('data-i18n');
                     statusText.dataset.firebaseStatus = data.text;
 
+                    let githubStatusFR = null;
+                    let githubStatusEN = null;
+
                     // Apply translated text based on current language
                     const applyStatusLang = () => {
                         const lang = localStorage.getItem('lang') || 'fr';
                         let text = data.text;
-                        if (lang === 'en') {
+                        
+                        if (githubStatusFR && githubStatusEN && data.text.toLowerCase().includes("en ligne")) {
+                            text = lang === 'en' ? githubStatusEN : githubStatusFR;
+                        } else if (lang === 'en') {
                             if (text.toLowerCase().includes("hors ligne")) text = "Offline";
                             else if (text.toLowerCase().includes("en ligne")) text = "Online";
                         }
                         statusText.textContent = text;
                     };
                     applyStatusLang();
+
+                    // Fetch GitHub status if currently online
+                    if (data.text.toLowerCase().includes("en ligne")) {
+                        fetch('https://api.github.com/users/Flowz5/events/public')
+                            .then(res => res.json())
+                            .then(events => {
+                                const lastPush = events.find(e => e.type === 'PushEvent');
+                                if (lastPush) {
+                                    const pushDate = new Date(lastPush.created_at);
+                                    if ((new Date() - pushDate) / (1000 * 60 * 60) < 5) {
+                                        const repoName = lastPush.repo.name.split('/')[1] || lastPush.repo.name;
+                                        githubStatusFR = `En train de coder sur ${repoName}`;
+                                        githubStatusEN = `Coding on ${repoName}`;
+                                        
+                                        const dot = heroBadge.querySelector('.status-dot');
+                                        if(dot) {
+                                            dot.style.backgroundColor = '#a855f7';
+                                            dot.style.boxShadow = '0 0 10px #a855f7';
+                                        }
+                                        applyStatusLang();
+                                    }
+                                }
+                            }).catch(() => {});
+                    }
                     
                     if (data.text.toLowerCase().includes("en ligne") || data.text.toLowerCase().includes("recherche")) {
                         heroBadge.classList.remove('offline');
@@ -292,3 +322,70 @@ async function loadCustomCommands() {
     }
 }
 loadCustomCommands();
+
+// --- 8. Like Counter ---
+const likeWidget = document.getElementById('like-widget');
+const likeCountEl = document.getElementById('like-count');
+
+if (likeWidget && likeCountEl) {
+    const likeDocRef = doc(db, 'likes', 'portfolio');
+    
+    // Listen for realtime updates
+    onSnapshot(likeDocRef, (docSnap) => {
+        if (docSnap.exists()) {
+            const data = docSnap.data();
+            likeCountEl.textContent = data.count || 0;
+        } else {
+            // Create if doesn't exist
+            setDoc(likeDocRef, { count: 0 }).catch(console.error);
+        }
+    });
+
+    // Restore state from local storage
+    if (localStorage.getItem('portfolio_liked') === 'true') {
+        likeWidget.classList.add('liked');
+    }
+
+    likeWidget.addEventListener('click', async (e) => {
+        const isLiked = likeWidget.classList.contains('liked');
+        
+        if (!isLiked) {
+            // Liking
+            likeWidget.classList.add('liked');
+            localStorage.setItem('portfolio_liked', 'true');
+            
+            // Animation for flying heart
+            const heart = document.createElement('i');
+            heart.className = 'fas fa-heart flying-heart';
+            
+            const rect = likeWidget.getBoundingClientRect();
+            heart.style.left = (rect.left + rect.width / 2) + 'px';
+            heart.style.top = (rect.top + rect.height / 2) + 'px';
+            
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+
+            // Increment in Firestore
+            try {
+                await updateDoc(likeDocRef, {
+                    count: increment(1)
+                });
+            } catch (err) {
+                if (err.code === 'not-found') {
+                    await setDoc(likeDocRef, { count: 1 });
+                }
+            }
+        } else {
+            // Un-liking
+            likeWidget.classList.remove('liked');
+            localStorage.setItem('portfolio_liked', 'false');
+            
+            // Decrement in Firestore
+            try {
+                await updateDoc(likeDocRef, {
+                    count: increment(-1)
+                });
+            } catch (err) {}
+        }
+    });
+}

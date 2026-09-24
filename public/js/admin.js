@@ -189,27 +189,6 @@ document.getElementById('btn-save-banner').addEventListener('click', async () =>
     showToast("Bannière mise à jour !");
 });
 
-document.getElementById('btn-set-likes').addEventListener('click', async () => {
-    const inputValue = document.getElementById('input-set-likes').value;
-    const newCount = parseInt(inputValue, 10);
-    if (isNaN(newCount)) {
-        showToast("Veuillez entrer un nombre valide.");
-        return;
-    }
-    if (confirm(`Forcer le compteur de likes à ${newCount} ?`)) {
-        await setDoc(doc(db, "likes", "portfolio"), { count: newCount });
-        document.getElementById('input-set-likes').value = '';
-        showToast("Likes mis à jour !");
-    }
-});
-
-document.getElementById('btn-reset-likes').addEventListener('click', async () => {
-    if (confirm("Remettre les likes à zéro ?")) {
-        await setDoc(doc(db, "likes", "portfolio"), { count: 0 });
-        showToast("Likes réinitialisés à 0.");
-    }
-});
-
 // Helper to add logs to the terminal
 function addSysLog(msg, type = "INFO") {
     const logs = document.getElementById('live-logs');
@@ -242,14 +221,10 @@ async function loadMessages() {
         snapshot.forEach(doc => {
             const data = doc.data();
             const date = data.date ? new Date(data.date).toLocaleString('fr-FR') : 'Inconnue';
-            const safeName = (data.name || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            const safeEmail = (data.email || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            const safeMessage = (data.message || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            
             html += `
                 <div class="msg-card">
                     <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-                        <strong>${safeName} (${safeEmail})</strong>
+                        <strong>${data.name} (${data.email})</strong>
                         <div>
                             <span style="color:var(--text-muted); font-size:0.8rem; margin-right:15px;">${date}</span>
                             <button class="btn-delete-msg" data-id="${doc.id}" style="background:transparent; border:none; color:#ef4444; cursor:pointer; font-size:1.1rem; transition:transform 0.2s;" title="Supprimer le message">
@@ -257,7 +232,7 @@ async function loadMessages() {
                             </button>
                         </div>
                     </div>
-                    <p style="white-space:pre-wrap; margin-top:5px; color:#e2e8f0;">${safeMessage}</p>
+                    <p style="white-space:pre-wrap; margin-top:5px; color:#e2e8f0;">${data.message}</p>
                 </div>
             `;
         });
