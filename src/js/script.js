@@ -398,26 +398,6 @@ document.addEventListener("DOMContentLoaded", () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-
-    // =========================================================
-    // 5. BOUTONS MAGNÉTIQUES
-    // =========================================================
-    // Upgrade to Magnetic logic (1.1)
-    const magneticElements = document.querySelectorAll('.btn-primary, .nav-item, .social-links a, .glass-btn');
-    magneticElements.forEach(btn => {
-        btn.addEventListener('mousemove', function(e) {
-            const position = btn.getBoundingClientRect();
-            const x = e.clientX - position.left - position.width / 2;
-            const y = e.clientY - position.top - position.height / 2;
-            btn.style.transition = 'none';
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.4}px)`;
-        });
-        btn.addEventListener('mouseleave', function() {
-            btn.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            btn.style.transform = 'translate(0px, 0px)';
-        });
-    });
-
     // =========================================================
     // 6. GESTION DE LA PALETTE (CTRL+K)
     // =========================================================
